@@ -104,6 +104,8 @@ class Setting < ApplicationRecord
         "homepage.widgets.feeds.debates": true,
         "homepage.widgets.feeds.processes": true,
         "homepage.widgets.feeds.proposals": true,
+        "homepage.widgets.feeds.city_hall_proposals": true,
+        "homepage.widgets.feeds.citizen_proposals": true,
         # Code to be included at the top (inside <body>) of every page
         "html.per_page_code_body": "",
         # Code to be included at the top (inside <head>) of every page (useful for tracking)
@@ -185,7 +187,8 @@ class Setting < ApplicationRecord
         "remote_census.response.gender": "",
         "remote_census.response.name": "",
         "remote_census.response.surname": "",
-        "remote_census.response.valid": ""
+        "remote_census.response.valid": "",
+        "last_citizens_official_level": "1"
       }
     end
 

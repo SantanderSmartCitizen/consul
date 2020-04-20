@@ -1,4 +1,12 @@
 module SearchHelper
+
+  def user_profile_search_options
+    options_for_select([
+      [t("shared.advanced_search.city_hall"), "city_hall"],
+      [t("shared.advanced_search.citizen"), "citizen"]],
+                       params[:advanced_search].try(:[], :user_profile))
+  end
+
   def official_level_search_options
     options_for_select((1..5).map { |i| [setting["official_level_#{i}_name"], i] },
                        params[:advanced_search].try(:[], :official_level))

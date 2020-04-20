@@ -7,6 +7,14 @@ module FeedsHelper
     feed.kind == "proposals"
   end
 
+  def feed_city_hall_proposals?(feed)
+    feed.kind == "city_hall_proposals"
+  end
+
+  def feed_citizen_proposals?(feed)
+    feed.kind == "citizen_proposals"
+  end
+
   def feed_processes?(feed)
     feed.kind == "processes"
   end
@@ -17,6 +25,14 @@ module FeedsHelper
 
   def feed_proposals_enabled?
     Setting["homepage.widgets.feeds.proposals"].present?
+  end
+
+  def feed_city_hall_proposals_enabled?
+    Setting["homepage.widgets.feeds.city_hall_proposals"].present?
+  end
+
+  def feed_citizen_proposals_enabled?
+    Setting["homepage.widgets.feeds.citizen_proposals"].present?
   end
 
   def feed_processes_enabled?
