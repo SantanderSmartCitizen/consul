@@ -85,6 +85,8 @@ class Proposal < ApplicationRecord
   scope :published,                -> { where.not(published_at: nil) }
   scope :draft,                    -> { where(published_at: nil) }
   scope :created_by,               ->(author) { where(author: author) }
+  scope :city_hall,                -> { joins(:author).where("users.official_level > ?", Setting["last_citizens_official_level"].to_i) }
+  scope :citizen,                  -> { joins(:author).where("users.official_level <= ?", Setting["last_citizens_official_level"].to_i) }
 
   def url
     proposal_path(self)
