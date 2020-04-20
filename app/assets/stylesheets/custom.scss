@@ -3,3 +3,286 @@
 // * English: https://github.com/consul/consul/blob/master/CUSTOMIZE_EN.md#css
 // * Spanish: https://github.com/consul/consul/blob/master/CUSTOMIZE_ES.md#css
 //
+
+body {
+	font-family: 'Lato' !important;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	font-family: 'Lato' !important;
+}
+
+
+h1, .h1 {
+  font-size: 2.125em;
+  margin-bottom: 0.5em;
+}
+
+
+h2, .h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h3, .h3 {
+  font-size: 1.25em;
+  margin-bottom: 0.5em;
+}
+
+h4, .h4 {
+  font-size: 1.125em;
+  margin-bottom: 0.5em;
+}
+
+h5, .h5 {
+  font-size: 1em;
+  margin-bottom: 0.5em;
+}
+
+h6, .h6 {
+  font-size: 0.875em;
+  margin-bottom: 0.5em;
+}
+
+@media print, screen and (min-width: 40em) {
+  h1, .h1 {
+    font-size: 2.75em;
+  }
+  h2, .h2 {
+    font-size: 2.125em;
+  }
+  h3, .h3 {
+    font-size: 1.5em;
+  }
+  h4, .h4 {
+    font-size: 1.1875em;
+  }
+  h5, .h5 {
+    font-size: 1em;
+  }
+  h6, .h6 {
+    font-size: 0.8125em;
+  }
+}
+
+.footer, .push {
+    font-size: 16px;
+    min-height: 10em;
+}
+
+footer a, footer a:active, footer a:focus {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover, footer a:active:hover, footer a:focus:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.wrapper {
+    margin: 0 auto -10em;
+}
+
+/*
+.card a {
+	border: solid 1px #dfdfdf;
+	border-radius: 4px;
+}
+*/
+.card-footer {
+    border-top: none;
+}
+
+.card img {
+
+}
+
+.row {
+    display: block;
+	max-width: none;
+    width: 100%;
+}
+
+.locale-form {
+font-size: 14px;
+}
+
+header .locale a {
+	color: white !important;
+}
+
+header .locale::after {
+	display: none;
+}
+
+.delimiter {
+	display: inline-block;
+}
+
+.subnavigation a {
+	font-size: 16px;
+    color: #595959;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.subnavigation a:hover {
+	color: #428bca;
+	text-decoration: none;
+}
+
+.footer-column-container {
+   padding: 35px 21px 1px 21px;
+}
+
+a.footer-social-icons {
+    background-color: white;
+    border-radius: 50%;
+    color: #4d9dbe;
+    min-width: 32px;
+    height: 32px;
+    padding: 3px 0px 0px 0px;
+}
+
+a.footer-social-icons:hover, 
+a.footer-social-icons:active, 
+a.footer-social-icons:focus,
+a.footer-social-icons:active:hover,
+a.footer-social-icons:focus:hover {
+    color: #4d9dbe;
+}
+
+a.footer-social-icons.twitter:hover {
+    background-color: #00aced;
+}
+
+a.footer-social-icons.facebook:hover {
+    background-color: #2a6496;
+}
+
+a.footer-social-icons.telegram:hover {
+    background-color: #00aced;
+}
+
+a.footer-social-icons.youtube:hover {
+    background-color: #c82929;
+}
+
+a.footer-social-icons.instagram:hover {
+    background-color: #9a8f62;
+}
+
+.social a {
+    margin: 0 0.50em;
+}
+
+a:focus {
+    outline: 3px solid #07708c;
+}
+
+.indicators-frame {
+    background: repeating-linear-gradient(
+      0deg,
+      #4d9dbe 20px,
+      #4d9dbe 40px,
+      #6eaecb 40px,
+      #6eaecb 60px
+    );
+    padding: 40px;
+}
+
+.indicators-content {
+	background-color: white;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+.collapse {
+    display: block;
+}
+
+.admin-content {
+    overflow: auto;
+}
+
+.pl-10p {
+    padding-left: 10%;
+}
+
+.pr-10p {
+    padding-right: 10%;
+}
+
+.ml-10p {
+    margin-left: 10%;
+}
+
+.mr-10p {
+    margin-right: 10%;
+}
+
+.pl-15p {
+    padding-left: 15%;
+}
+
+.pr-15p {
+    padding-right: 15%;
+}
+
+.ml-15p {
+    margin-left: 15%;
+}
+
+.mr-15p {
+    margin-right: 15%;
+}
+
+.button {
+    font-weight: 700;
+    border-radius: 14px;
+    border: solid 2px #0c4d87;
+    color: #0c4d87;
+    background: transparent;
+}
+
+.main-button {
+    background: #004a83;
+    color: #fefefe;
+}
+
+.main-button:hover {
+    background-color: #14679e;
+    color: #fefefe;
+}
+
+.icon-forum-background {
+    background-color: #566573;
+    color: white;
+}
+
+.icon-forum {
+    font-size: 7em;
+}
+
+.forum-header {
+    float: left;
+}
+
+.forum-info {
+    margin-top: 0.75em;
+    float: right;
+}
+
+.feature-title {
+    text-align:center; 
+    display:table;
+    width:100%;
+    min-height: 8em;
+}
+
+.feature-title h2 {
+    color: #07708c;
+    display:table-cell;
+    vertical-align:middle;
+}

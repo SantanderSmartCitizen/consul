@@ -190,7 +190,8 @@ a {
 }
 
 .no-margin-top {
-  margin-top: rem-calc(-24);
+  /*margin-top: rem-calc(-24);*/
+  margin-top: 0px;
 }
 
 .padding {
@@ -455,7 +456,7 @@ a {
 header {
   background: $brand;
   border-bottom: 1px solid $border;
-  margin-bottom: $line-height;
+  /*margin-bottom: $line-height;*/
 
   @include breakpoint(small down) {
     position: relative;
@@ -571,7 +572,7 @@ header {
 
       @include breakpoint(medium) {
         font-size: $small-font-size;
-        padding: rem-calc(11) rem-calc(16);
+        padding: rem-calc(16) rem-calc(16);
       }
     }
 
@@ -703,7 +704,7 @@ header {
 
   @include breakpoint(medium) {
     background: #fff;
-    padding-bottom: 0;
+    /*padding-bottom: 0;*/
   }
 
   ul {
@@ -875,8 +876,8 @@ footer {
 }
 
 .footer {
-  background: #f1f1f1;
-  margin-top: $line-height * 2;
+  background: transparent;
+  /*margin-top: $line-height * 2;*/
   padding-top: $line-height;
 }
 
@@ -2116,17 +2117,16 @@ table {
     padding: $line-height / 4;
     position: relative;
 
-    .relative,
-    [class^="icon-arrow"] {
-      padding-left: $line-height / 2;
+    .relative {
+      padding-left: rem-calc(18);
     }
 
-    [class^="icon-arrow"] {
-      font-size: $base-font-size;
-      left: -20px;
+    .far {
+      font-size: $small-font-size;
+      left: 0;
       position: absolute;
       text-decoration: none;
-      top: -1px;
+      top: 2px;
     }
 
     .divider {
