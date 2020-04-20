@@ -247,6 +247,7 @@
 // ---------------------
 
 .debate-form,
+.forum-form,
 .proposal-form,
 .budget-investment-form,
 .document-form,
@@ -292,7 +293,8 @@
   }
 }
 
-.debate-form {
+.debate-form, 
+.forum-form {
 
   .recommendations li::before {
     color: $debates;
@@ -327,15 +329,18 @@
 // ----------------------
 
 .debate-show,
+.forum-show,
 .proposal-show,
 .poll-question-show,
 .investment-project-show,
 .budget-investment-show,
 .polls-show,
 .debate-quiz,
+.forum-quiz,
 .budget-investment-show,
 .draft-panels,
 .debate-questions,
+.forum-question,
 .communities-show,
 .topic-show,
 .milestone-content {
@@ -394,6 +399,7 @@
   }
 
   .debate-description,
+  .forum-description,
   .proposal-description {
     font-size: rem-calc(15);
     line-height: rem-calc(30);
@@ -558,6 +564,7 @@
 // ----------------------
 
 .debates-list,
+.forum-list,
 .proposals-list,
 .investment-projects-list,
 .budget-investments-list {
@@ -613,6 +620,7 @@
 }
 
 .debate,
+.forum,
 .proposal,
 .investment-project,
 .budget-investment,
@@ -660,6 +668,7 @@
   }
 
   .debate-content,
+  .forum-content,
   .proposal-content,
   .investment-project-content,
   .budget-investment-content {
@@ -700,6 +709,7 @@
   }
 
   .debate-info,
+  .forum,-info,
   .proposal-info,
   .investment-project-info,
   .budget-investment-info,
@@ -719,6 +729,7 @@
   }
 
   .debate-description,
+  .forum-description,
   .proposal-description,
   .investment-project-description,
   .budget-investment-description {
@@ -765,7 +776,9 @@
 }
 
 .debate,
+.forum,
 .debate-show,
+.forum-show,
 .proposal-show,
 .legislation-proposals {
 
@@ -790,6 +803,7 @@
 }
 
 .proposal-show .votes,
+.forum-show .votes,
 .debate-show .votes {
   border: 0;
   padding: $line-height / 2 0;
@@ -1002,6 +1016,7 @@
 }
 
 .debate,
+.forum,
 .proposal,
 .budget-investment {
 
@@ -1009,6 +1024,7 @@
 
     .panel,
     .debate-content,
+    .forum-content,
     .proposal-content,
     .budget-investment-content {
       min-height: 0;
@@ -1028,6 +1044,7 @@
 // ------------
 
 .featured-debates,
+.featured-forums,
 .featured-proposals,
 .enquiries-list {
   padding: $line-height / 2 0;
@@ -1059,7 +1076,7 @@
   }
 }
 
-.featured-debates {
+.featured-debates, .featured-forums {
   background: $highlight;
 }
 
