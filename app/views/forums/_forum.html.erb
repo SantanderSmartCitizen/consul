@@ -1,0 +1,61 @@
+<% cache [locale_and_user_status, forum, @forum_votes[forum.id]] do %>
+  <div id="<%= dom_id(forum) %>" class="forum clear" data-type="forum">
+    <div class="panel">
+      <div class="row">
+        <div class="hide-for-small-only medium-3 column text-center">
+            <div class="icon-forum-background">
+              <i class="icon-comments icon-forum"></i>
+            </div>
+        </div>
+
+        <div class="small-12 medium-9 column">
+          <div class="forum-content">
+            <div>
+              <h3 class="forum-header"><%= link_to forum.title, forum %></h3>
+              <p class="forum-info">
+                <span class="icon-comments"></span>&nbsp;
+                <%= link_to t("forums.forum.comments", count: forum.comments_count), forum_path(forum, anchor: "comments") %>
+                <span class="bullet">&nbsp;&bull;&nbsp;</span>
+                <%= l forum.created_at.to_date %>
+
+                <% if forum.author.hidden? || forum.author.erased? %>
+                  <span class="bullet">&nbsp;&bull;&nbsp;</span>
+                  <span class="author">
+                    <%= t("forums.show.author_deleted") %>
+                  </span>
+                <% else %>
+                  <span class="bullet">&nbsp;&bull;&nbsp;</span>
+                  <span class="author">
+                    <%= forum.author.name %>
+                  </span>
+                  <% if forum.author.display_official_position_badge? %>
+                    <span class="bullet">&nbsp;&bull;&nbsp;</span>
+                    <span class="label round level-<%= forum.author.official_level %>">
+                      <%= forum.author.official_position %>
+                    </span>
+                  <% end %>
+                <% end %>
+
+                <% if forum.author.verified_organization? %>
+                  <span class="bullet">&nbsp;&bull;&nbsp;</span>
+                  <span class="label round is-association">
+                    <%= t("shared.collective") %>
+                  </span>
+                <% end %>
+
+              </p>
+              <div style="clear: both;"></div>
+            </div>
+
+            <div class="forum-description">
+              <%= wysiwyg(forum.description) %>
+              <div class="truncate"></div>
+            </div>
+            <%= render "shared/tags", taggable: forum, limit: 5 %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<div id="featured-forums" class="row featured-forums">
+
+  <div class="small-12 column">
+    <h2><%= t("forums.index.featured_forums") %></h2>
+  </div>
+
+  <% @featured_forums.each do |forum| %>
+    <div class="small-12 medium-6 column end">
+      <h3><%= link_to forum.title, forum %></h3>
+      <%= link_to forum.author.name, user_path(forum.author) %>
+    </div>
+  <% end %>
+</div>

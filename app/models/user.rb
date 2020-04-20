@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :flags
   has_many :identities, dependent: :destroy
   has_many :debates, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
+  has_many :forums, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :proposals, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :activities
   has_many :budget_investments, -> { with_hidden },
@@ -149,6 +150,11 @@ class User < ApplicationRecord
     voted.each_with_object({}) { |v, h| h[v.votable_id] = v.value }
   end
 
+  def forum_votes(forums)
+    voted = votes.for_forums(Array(forums).map(&:id))
+    voted.each_with_object({}) { |v, h| h[v.votable_id] = v.value }
+  end
+
   def proposal_votes(proposals)
     voted = votes.for_proposals(Array(proposals).map(&:id))
     voted.each_with_object({}) { |v, h| h[v.votable_id] = v.value }
@@ -236,6 +242,7 @@ class User < ApplicationRecord
 
   def block
     debates_ids = Debate.where(author_id: id).pluck(:id)
+    forums_ids = Forum.where(author_id: id).pluck(:id)
     comments_ids = Comment.where(user_id: id).pluck(:id)
     proposal_ids = Proposal.where(author_id: id).pluck(:id)
     investment_ids = Budget::Investment.where(author_id: id).pluck(:id)
@@ -244,6 +251,7 @@ class User < ApplicationRecord
     hide
 
     Debate.hide_all debates_ids
+    Forum.hide_all forums_ids
     Comment.hide_all comments_ids
     Proposal.hide_all proposal_ids
     Budget::Investment.hide_all investment_ids
@@ -373,6 +381,10 @@ class User < ApplicationRecord
 
   def public_debates
     public_activity? ? debates : User.none
+  end
+
+  def public_forums
+    public_activity? ? forums : User.none
   end
 
   def public_comments

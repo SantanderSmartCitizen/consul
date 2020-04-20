@@ -1,0 +1,21 @@
+<% if can? :hide, forum %>
+  <%= link_to t("admin.actions.hide").capitalize, hide_moderation_forum_path(forum),
+              method: :put, remote: true, data: { confirm: t("admin.actions.confirm") } %>
+<% end %>
+
+<% if can? :hide, forum.author %>
+  &nbsp;|&nbsp;
+  <%= link_to t("admin.actions.hide_author").capitalize, hide_moderation_user_path(forum.author_id),
+              method: :put, data: { confirm: t("admin.actions.confirm") } %>
+<% end %>
+
+<% if can? :mark_featured, forum %>
+  &nbsp;|&nbsp;
+  <% if forum.featured? %>
+    <%= link_to t("admin.actions.unmark_featured").capitalize, unmark_featured_forum_path(forum),
+              method: :put, data: { confirm: t("admin.actions.confirm") } %>
+  <% else %>
+    <%= link_to t("admin.actions.mark_featured").capitalize, mark_featured_forum_path(forum),
+              method: :put, data: { confirm: t("admin.actions.confirm") } %>
+  <% end %>
+<% end %>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   draw :devise
   draw :direct_upload
   draw :document
+  draw :forum
   draw :graphql
   draw :legislation
   draw :management

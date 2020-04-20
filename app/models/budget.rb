@@ -3,6 +3,7 @@ class Budget < ApplicationRecord
   include Sluggable
   include StatsVersionable
   include Reportable
+  include Graphqlable
 
   translates :name, touch: true
   include Globalizable
@@ -52,6 +53,7 @@ class Budget < ApplicationRecord
   scope :balloting, -> { where(phase: "balloting") }
   scope :reviewing_ballots, -> { where(phase: "reviewing_ballots") }
   scope :finished, -> { where(phase: "finished") }
+  scope :public_for_api, -> { all }
 
   class << self; undef :open; end
   scope :open, -> { where.not(phase: "finished") }

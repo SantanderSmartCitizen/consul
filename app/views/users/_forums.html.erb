@@ -1,0 +1,18 @@
+<table class="margin-top">
+  <thead>
+    <tr>
+      <th scope="col"><%= t("users.show.forums") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @forums.each do |forum| %>
+      <tr id="forum_<%= forum.id %>">
+        <td>
+          <%= link_to forum.title, forum %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @forums %>

@@ -11,6 +11,9 @@ module Abilities
       can :restore, Debate
       cannot :restore, Debate, hidden_at: nil
 
+      can :restore, Forum
+      cannot :restore, Forum, hidden_at: nil
+
       can :restore, Proposal
       cannot :restore, Proposal, hidden_at: nil
 
@@ -33,6 +36,9 @@ module Abilities
       can :confirm_hide, Debate
       cannot :confirm_hide, Debate, hidden_at: nil
 
+      can :confirm_hide, Forum
+      cannot :confirm_hide, Forum, hidden_at: nil
+
       can :confirm_hide, Proposal
       cannot :confirm_hide, Proposal, hidden_at: nil
 
@@ -48,7 +54,10 @@ module Abilities
       can :mark_featured, Debate
       can :unmark_featured, Debate
 
-      can :comment_as_administrator, [Debate, Comment, Proposal, Poll::Question, Budget::Investment,
+      can :mark_featured, Forum
+      can :unmark_featured, Forum
+
+      can :comment_as_administrator, [Debate, Forum, Comment, Proposal, Poll::Question, Budget::Investment,
                                       Legislation::Question, Legislation::Proposal, Legislation::Annotation, Topic]
 
       can [:search, :create, :index, :destroy, :edit, :update], ::Administrator

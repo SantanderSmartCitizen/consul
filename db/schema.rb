@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191108173350) do
+ActiveRecord::Schema.define(version: 20200102104500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -590,6 +590,54 @@ ActiveRecord::Schema.define(version: 20191108173350) do
     t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id", using: :btree
     t.index ["user_id", "followable_type", "followable_id"], name: "access_follows", using: :btree
     t.index ["user_id"], name: "index_follows_on_user_id", using: :btree
+  end
+
+  create_table "forum_translations", force: :cascade do |t|
+    t.integer  "forum_id",    null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "title"
+    t.text     "description"
+    t.datetime "hidden_at"
+    t.index ["forum_id"], name: "index_forum_translations_on_forum_id", using: :btree
+    t.index ["hidden_at"], name: "index_forum_translations_on_hidden_at", using: :btree
+    t.index ["locale"], name: "index_forum_translations_on_locale", using: :btree
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string   "deprecated_title",             limit: 80
+    t.text     "deprecated_description"
+    t.integer  "author_id"
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.string   "visit_id"
+    t.datetime "hidden_at"
+    t.integer  "flags_count",                             default: 0
+    t.datetime "ignored_flag_at"
+    t.integer  "cached_votes_total",                      default: 0
+    t.integer  "cached_votes_up",                         default: 0
+    t.integer  "cached_votes_down",                       default: 0
+    t.integer  "comments_count",                          default: 0
+    t.datetime "confirmed_hide_at"
+    t.integer  "cached_anonymous_votes_total",            default: 0
+    t.integer  "cached_votes_score",                      default: 0
+    t.bigint   "hot_score",                               default: 0
+    t.integer  "confidence_score",                        default: 0
+    t.integer  "geozone_id"
+    t.tsvector "tsv"
+    t.datetime "featured_at"
+    t.index ["author_id", "hidden_at"], name: "index_forums_on_author_id_and_hidden_at", using: :btree
+    t.index ["author_id"], name: "index_forums_on_author_id", using: :btree
+    t.index ["cached_votes_down"], name: "index_forums_on_cached_votes_down", using: :btree
+    t.index ["cached_votes_score"], name: "index_forums_on_cached_votes_score", using: :btree
+    t.index ["cached_votes_total"], name: "index_forums_on_cached_votes_total", using: :btree
+    t.index ["cached_votes_up"], name: "index_forums_on_cached_votes_up", using: :btree
+    t.index ["confidence_score"], name: "index_forums_on_confidence_score", using: :btree
+    t.index ["geozone_id"], name: "index_forums_on_geozone_id", using: :btree
+    t.index ["hidden_at"], name: "index_forums_on_hidden_at", using: :btree
+    t.index ["hot_score"], name: "index_forums_on_hot_score", using: :btree
+    t.index ["tsv"], name: "index_forums_on_tsv", using: :gin
   end
 
   create_table "geozones", force: :cascade do |t|
@@ -1403,7 +1451,9 @@ ActiveRecord::Schema.define(version: 20191108173350) do
     t.integer "budget/investments_count",                default: 0
     t.integer "legislation/proposals_count",             default: 0
     t.integer "legislation/processes_count",             default: 0
+    t.integer "forums_count",                            default: 0
     t.index ["debates_count"], name: "index_tags_on_debates_count", using: :btree
+    t.index ["forums_count"], name: "index_tags_on_forums_count", using: :btree
     t.index ["legislation/processes_count"], name: "index_tags_on_legislation/processes_count", using: :btree
     t.index ["legislation/proposals_count"], name: "index_tags_on_legislation/proposals_count", using: :btree
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree

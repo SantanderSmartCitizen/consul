@@ -12,6 +12,11 @@ module Abilities
         debate.editable_by?(user)
       end
 
+      can :read, Forum
+      can :update, Forum do |forum|
+        forum.editable_by?(user)
+      end
+
       can :read, Proposal
       can :update, Proposal do |proposal|
         proposal.editable_by?(user)
@@ -46,10 +51,12 @@ module Abilities
 
       can :create, Comment
       can :create, Debate
+      can :create, Forum
       can [:create, :created], Proposal
       can :create, Legislation::Proposal
 
       can :suggest, Debate
+      can :suggest, Forum
       can :suggest, Proposal
       can :suggest, Legislation::Proposal
       can :suggest, Tag
@@ -59,6 +66,9 @@ module Abilities
 
       can [:flag, :unflag], Debate
       cannot [:flag, :unflag], Debate, author_id: user.id
+
+      can [:flag, :unflag], Forum
+      cannot [:flag, :unflag], Forum, author_id: user.id
 
       can [:flag, :unflag], Proposal
       cannot [:flag, :unflag], Proposal, author_id: user.id
@@ -81,6 +91,7 @@ module Abilities
 
       unless user.organization?
         can :vote, Debate
+        can :vote, Forum
         can :vote, Comment
       end
 
@@ -118,7 +129,7 @@ module Abilities
       can [:create], Topic
       can [:update, :destroy], Topic, author_id: user.id
 
-      can :disable_recommendations, [Debate, Proposal]
+      can :disable_recommendations, [Debate, Forum, Proposal]
     end
   end
 end

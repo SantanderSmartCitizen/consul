@@ -31,6 +31,15 @@ namespace :admin do
 
   resources :debates, only: [:index, :show]
 
+  resources :hidden_forums, only: :index do
+    member do
+      put :restore
+      put :confirm_hide
+    end
+  end
+
+  resources :forums, only: [:index, :show]
+
   resources :proposals, only: [:index, :show, :update] do
     member { patch :toggle_selection }
     resources :milestones, controller: "proposal_milestones"

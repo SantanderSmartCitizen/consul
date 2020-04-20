@@ -1,0 +1,14 @@
+<div class="forum-form row">
+
+  <div class="small-12 column">
+    <%= back_link_to %>
+
+    <div class="float-right">
+      <%= link_to t("forums.edit.show_link"), @forum %>
+    </div>
+
+    <h1><%= t("forums.edit.editing") %></h1>
+
+    <%= render "form" %>
+  </div>
+</div>

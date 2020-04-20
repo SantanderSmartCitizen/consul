@@ -21,6 +21,13 @@ SitemapGenerator::Sitemap.create do
     end
   end
 
+  if Setting["process.forums"]
+    add forums_path, priority: 0.7, changefreq: "daily"
+    Forum.find_each do |forum|
+      add forum_path(forum), lastmod: forum.updated_at
+    end
+  end
+
   if Setting["process.proposals"]
     add proposals_path, priority: 0.7, changefreq: "daily"
     Proposal.find_each do |proposal|

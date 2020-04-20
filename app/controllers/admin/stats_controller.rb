@@ -4,10 +4,12 @@ class Admin::StatsController < Admin::BaseController
 
     @visits    = Visit.count
     @debates   = Debate.with_hidden.count
+    @forums    = Forum.with_hidden.count
     @proposals = Proposal.with_hidden.count
     @comments  = Comment.not_valuations.with_hidden.count
 
     @debate_votes   = Vote.where(votable_type: "Debate").count
+    @forum_votes    = Vote.where(votable_type: "Forum").count
     @proposal_votes = Vote.where(votable_type: "Proposal").count
     @comment_votes  = Vote.where(votable_type: "Comment").count
 

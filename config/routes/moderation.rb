@@ -13,6 +13,11 @@ namespace :moderation do
     put :moderate, on: :collection
   end
 
+  resources :forums, only: :index do
+    put :hide, on: :member
+    put :moderate, on: :collection
+  end
+
   resources :proposals, only: :index do
     put :hide, on: :member
     put :moderate, on: :collection

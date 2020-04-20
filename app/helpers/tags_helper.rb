@@ -3,6 +3,8 @@ module TagsHelper
     case taggable_type
     when "debate"
       debates_path(search: tag_name)
+    when "forum"
+      forums_path(search: tag_name)
     when "proposal"
       proposals_path(search: tag_name)
     when "budget/investment"
@@ -19,6 +21,8 @@ module TagsHelper
     case taggable_type
     when "debate"
       debate_path(taggable)
+    when "forum"
+      forum_path(taggable)
     when "proposal"
       proposal_path(taggable)
     when "budget/investment"
