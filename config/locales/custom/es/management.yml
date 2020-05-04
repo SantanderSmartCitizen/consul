@@ -1,0 +1,7 @@
+es:
+  management:
+    account_info:
+      username_label: "Usuario/alias:"
+    budgets:
+      no_budgets: No hay presupuestos activos.
+    username_label: Nombre de usuario/alias

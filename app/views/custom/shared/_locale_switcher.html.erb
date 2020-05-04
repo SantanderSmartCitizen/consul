@@ -1,0 +1,16 @@
+<% if I18n.available_locales.size > 1 %>
+  <div class="locale" id="js-locale" data-current-locale="<%= I18n.locale %>">
+    <form class="locale-form">
+
+      <p class="delimiter">(</p>
+      <% I18n.available_locales.map do |loc| %>
+        <%= link_to loc.upcase, current_path_with_query_params(locale: loc), class: ("selected" if loc == I18n.locale) %>
+        <% if loc != I18n.available_locales.last %>
+          <p class="delimiter">|</p>
+        <% end %>
+      <% end %>
+      <p class="delimiter">)</p>
+
+    </form>
+  </div>
+<% end %>

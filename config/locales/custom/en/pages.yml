@@ -1,0 +1,42 @@
+en:
+  pages:
+    help:
+      menu:
+        forums: "Forum"
+        budgets: "Budgets"
+        polls: "Polls/Questions"
+      forums:
+        title: "Forum"
+        description: "In the %{link} section you can present and share your opinion with other people on issues of concern to you related to the city."
+        link: "forum"
+        feature: "You can open threads in the forum and comment on them. For that you have to %{link}."
+        feature_link: "register in %{org}"
+      budgets:
+        title: "Budgets"
+        link: "budgets"
+        image_alt: "Different phases of a budget"
+        figcaption: '"Support" and "Voting" phases of budgets.'
+      polls:
+        title: "Polls/Questions"
+        link: "polls/questions"
+      processes:
+        feature_1: To participate in a process you have to %{link_1} and check the %{link_2} page periodically to see which regulations and policies are being discussed and consulted.
+        feature_1_link: "register in %{org_name}"
+    accessibility:
+      keyboard_shortcuts:
+        navigation_table:
+          rows:
+            - key_column: 0
+              page_column: Home
+            - key_column: 1
+              page_column: Debates
+            - key_column: 2
+              page_column: Proposals
+            - key_column: 3
+              page_column: Polls/Questions
+            - key_column: 4
+              page_column: Budgets
+            - key_column: 5
+              page_column: Processes
+            - key_column: 6
+              page_column: Forum

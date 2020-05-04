@@ -1,0 +1,7 @@
+es:
+  flash:
+    actions:
+      create:
+        forum: "Tema creado correctamente."
+      update:
+        forum: "Tema actualizado correctamente."

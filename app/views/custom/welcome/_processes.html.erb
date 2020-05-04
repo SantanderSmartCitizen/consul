@@ -1,0 +1,54 @@
+<div class="feeds-list">
+  <% @feeds.each do |feed| %>
+
+    <% if feed_processes?(feed) %>
+      <div class="feed-content">
+
+
+          <div class="row margin-top text-center">
+            <h1 class="small-12"><%= t("welcome.feed.most_active.#{feed.kind}") %></h1>
+            <h3 class="small-12">Lorem ipsum dolor</h3>
+          </div>
+
+          <div class="row card-deck margin-top">
+
+            <% feed.items.each do |item| %>
+
+              <div class="card">
+                <%= link_to url_for(item) do %>
+                  <figure class="figure-card <%= item.class.to_s.parameterize(separator: "_") %>">
+                    <%= image_tag("welcome_process.png", alt: "") %>
+                    <figcaption>
+                      <span><%= t("welcome.feed.process_label") %></span><br>
+                      <h3><%= item.title %></h3>
+                    </figcaption>
+                  </figure>
+                  <p class="description small"><%= item.summary %></p>
+                  <div class="text-center">
+                    <div class="btn btn-primary" style="margin-bottom: 20px;">
+                      <%= t("welcome.feed.see_process") %>
+                    </div>
+                  </div>
+                <% end %>
+
+                <%= render "shared/social_share",
+                  share_title: t("proposals.show.share"),
+                  title: item.title,
+                  url: legislation_process_url(item),
+                  description: item.title,
+                  mobile: item.title
+                %>
+
+              </div>
+
+            <% end %>
+
+          </div>
+
+          <%= link_to t("welcome.feed.see_all_processes"), legislation_processes_path, class: "button float-right mt-4" %>
+
+      </div>
+    <% end %>
+
+  <% end %>
+</div>

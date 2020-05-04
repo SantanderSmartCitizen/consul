@@ -1,0 +1,107 @@
+es:
+  admin:
+    banners:
+      banner:
+        sections:
+          budgets: Presupuestos
+    budgets:
+      index:
+        title: Presupuestos
+        no_budgets: "No hay presupuestos."
+      create:
+        notice: '¡Presupuestos creados con éxito!'
+      update:
+        notice: Presupuestos actualizados
+      edit:
+        title: Editar presupuestos
+      destroy:
+        unable_notice_polls: No se puede eliminar un presupuesto con una encuesta/consulta asociada
+    forums:
+      index:
+        id: ID
+        author: Autor
+        title: Foro
+        no_forums: No hay entradas en el foro.
+    hidden_forums:
+      index:
+        filter: Filtro
+        filters:
+          all: Todos
+          with_confirmed_hide: Confirmados
+          without_confirmed_hide: Pendientes
+        title: Entradas ocultas
+        no_hidden_debates: No hay entradas ocultas.
+    legislation:
+      processes:
+        index:
+          title: Procesos
+        new:
+          title: Crear nuevo proceso
+    menu:
+      budgets: Presupuestos
+      polls: Encuestas/Consultas
+      site_customization:
+        information_texts_menu:
+          polls: "Encuestas/Consultas"
+      legislation: Procesos
+    system_emails:
+      budget_investment_created:
+        description: "Enviado cuando un usuario crea un proyecto de presupuestos."
+      budget_investment_selected:
+        description: "Enviado al autor de un proyecto de presupuestos que ha sido seleccionado."
+      budget_investment_unfeasible:
+        description: "Enviado al autor de un proyecto de presupuestos que ha sido marcado como inviable."
+      budget_investment_unselected:
+        description: "Enviado al autor de un proyecto de presupuestos que no ha sido seleccionado para la fase de votación."
+    active_polls:
+      edit:
+        title: "Descripción general de encuestas/consultas"
+      form:
+        description:
+          help_text: "Este texto aparecerá en la cabecera de la página de encuestas/consultas. Puedes usarlo para añadir un contexto a las encuestas/consultas abiertas"
+    polls:
+      index:
+        title: "Listado de encuestas/consultas"
+        no_polls: "No hay encuestas/consultas."
+        create: "Crear encuesta/consulta"
+      new:
+        title: "Nueva encuesta/consulta"
+        submit_button: "Crear encuesta/consulta"
+      edit:
+        title: "Editar encuesta/consulta"
+        submit_button: "Actualizar encuesta/consulta"
+      show:
+        no_questions: "No hay preguntas asignadas a esta encuesta/consulta."
+      flash:
+        question_added: "Pregunta añadida a esta encuesta/consulta"
+      destroy:
+        alert: "Esta acción eliminará la encuesta/consulta y todas sus preguntas asociadas."
+        success_notice: "Encuesta/Consulta eliminada correctamente"
+        unable_notice: "No se pueden eliminar encuestas/consultas con votos"
+    questions:
+      index:
+        title: "Preguntas de encuestas/eonsultas"
+        filter_poll: Filtrar por encuesta/consulta
+        select_poll: Seleccionar encuesta/consulta
+        create_question: "Crear pregunta para encuesta/consulta"
+        table_poll: "Encuesta/Consulta"
+        poll_not_assigned: "Encuesta/Consulta no asignada"
+      new:
+        title: "Crear pregunta ciudadana para la encuesta/consulta %{poll}"
+    stats:
+      show:
+        budgets_title: Presupuestos
+        participatory_budgets: Presupuestos
+        polls: Encuestas/Consultas
+      budgets:
+        title: "Presupuestos - Estadisticas de participación"
+      polls:
+        title: Estadísticas de encuestas/consultas
+        all: Encuestas/Consultas
+        poll_questions: "Preguntas de encuesta/consulta: %{poll}"
+        table:
+          poll_name: Encuesta/Consulta
+    homepage:
+      feeds:
+        citizen_proposals: Propuestas ciudadanos
+        city_hall_proposals: Propuestas Ayuntamiento
