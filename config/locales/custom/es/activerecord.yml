@@ -1,0 +1,13 @@
+es:
+  activerecord:
+    models:
+      budget:
+        one: "Presupuesto"
+        other: "Presupuestos"
+      poll:
+        one: "Encuesta/Consulta"
+        other: "Encuestas/Consultas"
+    attributes:
+      user:
+        login: "Email o nombre de usuario/alias"
+        username: "Nombre de usuario/alias"

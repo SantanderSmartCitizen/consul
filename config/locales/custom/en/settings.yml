@@ -1,0 +1,6 @@
+en:
+  settings:
+    org_name: "Santander SmartCitizen"
+    process:
+      polls: "Polls/Questions"
+      polls_description:  "Citizens' polls/questions are a participatory mechanism by which citizens with voting rights can make direct decisions"

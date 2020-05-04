@@ -1,0 +1,7 @@
+en:
+  flash:
+    actions:
+      create:
+        forum: "Thread created successfully."
+      update:
+        forum: "Thread updated successfully."

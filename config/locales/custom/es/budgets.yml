@@ -1,0 +1,18 @@
+es:
+  budgets:
+    index:
+      title: Presupuestos
+      empty_budgets: No hay presupuestos.
+      section_header:
+        icon_alt: Icono de Presupuestos
+        title: Presupuestos
+        help: Ayuda sobre presupuestos
+      all_phases: Fases de los presupuestos
+      finished_budgets: Presupuestos terminados
+      section_footer:
+        title: Ayuda sobre presupuestos
+        description: Con los presupuestos la ciudadanía decide a qué proyectos va destinada una parte del presupuesto.
+      index:
+        title: Presupuestos
+    results:
+      heading: "Resultados presupuestos"

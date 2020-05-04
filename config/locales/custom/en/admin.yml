@@ -1,0 +1,71 @@
+en:
+  admin:
+    budgets:
+      destroy:
+        unable_notice_polls: You cannot delete a budget that has an associated poll/question
+    forums:
+      index:
+        id: ID
+        author: Author
+        title: Forum
+        no_forums: There are no posts in the forum.
+    hidden_forums:
+      index:
+        filter: Filter
+        filters:
+          all: All
+          with_confirmed_hide: Confirmed
+          without_confirmed_hide: Pending
+        title: Hidden posts
+        no_hidden_debates: There are no hidden posts.
+    legislation:
+        index:
+          title: Processes
+        new:
+          title: Create new process
+          submit_button: Create process
+    menu:
+      polls: Polls/Questions
+      site_customization:
+        information_texts_menu:
+          polls: "Polls/Questions"
+      legislation: Processes
+    active_polls:
+      edit:
+        title: "Polls/Questions description"
+      form:
+        description:
+          help_text: "This text will appear in the header of the polls/questions page. It can be used to add a context to the open polls/questions."
+    polls:
+      index:
+        title: "List of polls/questions"
+        no_polls: "There are no polls/questions."
+        create: "Create poll/question"
+      new:
+        title: "New poll/question"
+        submit_button: "Create poll/question"
+      edit:
+        title: "Edit poll/question"
+        submit_button: "Update poll/question"
+      show:
+        no_questions: "There are no questions assigned to this poll/question."
+      flash:
+        question_added: "Question added to this poll/question"
+      destroy:
+        alert: "This action will remove the poll/question and all its associated questions."
+        success_notice: "Poll/Question deleted successfully"
+        unable_notice: "You cannot delete a poll/question that has votes"
+    questions:
+      index:
+        filter_poll: Filter by Poll/Question
+        select_poll: Select Poll/Question
+        table_poll: "Poll/Question"
+        poll_not_assigned: "Poll/Question not assigned"
+      edit:
+        title: "Edit Question"
+      new:
+        title: "Create question to poll/question %{poll}"
+    homepage:
+      feeds:
+        citizen_proposals: Citizen Proposals
+        city_hall_proposals: City Hall Proposals

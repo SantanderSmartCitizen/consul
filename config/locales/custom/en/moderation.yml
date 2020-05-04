@@ -1,0 +1,5 @@
+en:
+  moderation:
+    users:
+      index:
+        search_placeholder: email or username/alias

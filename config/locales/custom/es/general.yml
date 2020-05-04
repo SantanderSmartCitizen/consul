@@ -1,0 +1,161 @@
+es:
+  account:
+    show:
+      user_permission_votes: Participar en las encuestas finales*
+      username_label: Nombre de usuario/alias
+  forums:
+    create:
+      form:
+        submit_button: Empieza un tema
+    forum:
+      comments:
+        zero: Sin comentarios
+        one: 1 Comentario
+        other: "%{count} Comentarios"
+      votes:
+        zero: Sin votos
+        one: 1 voto
+        other: "%{count} votos"
+    edit:
+      editing: Editar tema
+      form:
+        submit_button: Guardar cambios
+      show_link: Ver tema
+    form:
+      forum_title: Título del tema
+      tags_instructions: Etiqueta este tema.
+      tags_placeholder: "Escribe las etiquetas que desees separadas por coma (',')"
+    index:
+      featured_forums: Destacar
+      filter_topic:
+        one: " con el tema '%{topic}'"
+        other: " con el tema '%{topic}'"
+      orders:
+        created_at: Nuevos
+        hot_score: Más activos
+        most_commented: Más comentados
+        relevance: Más relevantes
+        recommendations: Recomendaciones
+      recommendations:
+        without_results: No existen temas relacionados con tus intereses
+        without_interests: Sigue temas para que podamos darte recomendaciones
+        disable: "Si ocultas los temas para foros, no se volverán a mostrar. Puedes volver a activarlos en 'Mi cuenta'"
+        actions:
+          success: "Las recomendaciones de temas han sido desactivadas"
+          error: "Ha ocurrido un error. Por favor dirígete al apartado 'Mi cuenta' para desactivar las recomendaciones manualmente"
+      search_form:
+        button: Buscar
+        placeholder: Buscar temas...
+        title: Buscar
+      search_results:
+        one: " que contenga <strong>'%{search_term}'</strong>"
+        other: " que contengan <strong>'%{search_term}'</strong>"
+      select_order: Ordenar por
+      start_forum: Empieza un tema
+      title: Foro
+      section_header:
+        icon_alt: Icono del foro
+        title: Foro
+        help: Ayuda sobre el foro
+      section_footer:
+        title: Ayuda sobre el foro
+        description: Inicia un tema para compartir puntos de vista con otras personas sobre los temas que te preocupan.
+        help_text_1: "El espacio de Foro está dirigido a que cualquier persona pueda exponer temas que le preocupan y sobre los que quiera compartir puntos de vista con otras personas."
+        help_text_2: 'Para abrir un tema es necesario registrarse en %{org}. Los usuarios ya registrados también pueden comentar los temas abiertos.'
+    new:
+      form:
+        submit_button: Empieza un tema
+      info: Si lo que quieres es hacer un tema, esta es la sección incorrecta, entra en %{info_link}.
+      info_link: crear nuevo tema
+      more_info: Más información
+      recommendation_four: Disfruta de este espacio, de las voces que lo llenan, también es tuyo.
+      recommendation_one: No escribas el título del tema o frases enteras en mayúsculas. En internet eso se considera gritar. Y a nadie le gusta que le griten.
+      recommendation_three: Las críticas despiadadas son muy bienvenidas. Este es un espacio de pensamiento. Pero te recomendamos conservar la elegancia y la inteligencia. El mundo es mejor con ellas presentes.
+      recommendation_two: Cualquier tema o comentario que implique una acción ilegal será eliminado, también los que tengan la intención de sabotear los espacios del foro, todo lo demás está permitido.
+      recommendations_title: Recomendaciones para crear un tema
+      start_new: Empezar un tema
+    show:
+      author_deleted: Usuario eliminado
+      comments:
+        zero: Sin comentarios
+        one: 1 Comentario
+        other: "%{count} Comentarios"
+      comments_title: Comentarios
+      edit_forum_link: Editar tema
+      flag: Este debate ha sido marcado como inapropiado por varios usuarios.
+      share: Compartir
+      author: Autor
+    update:
+      form:
+        submit_button: Guardar cambios
+  layouts:
+    footer:
+      consul: aplicación Santander SmartCitizen
+      copyright: Ayuntamiento de Santander
+    header:
+      collaborative_legislation: PROCESOS
+      debates: DEBATES
+      logo: Logo de Santander SmartCitizen
+      help: AYUDA
+      proposals: PROPUESTAS
+      poll_questions: ENCUESTAS/CONSULTAS
+      budgets: PRESUPUESTOS
+      forum: FORO
+  omniauth:
+    finish_signup:
+      username_warning: "Debido a que hemos cambiado la forma en la que nos conectamos con redes sociales y es posible que tu nombre de usuario/alias aparezca como 'ya en uso', incluso si antes podías acceder con él. Si es tu caso, por favor elige un nombre de usuario/alias distinto."
+  polls:
+    index:
+      title: "Encuestas/Consultas"
+      participate_button: "Participar en esta encuesta"
+      participate_button_expired: "Encuesta terminada"
+      already_answer: "Ya has participado en esta encuesta"
+      cant_answer: "Esta encuesta no está disponible en tu zona"
+      section_header:
+        icon_alt: Icono de Encuestas/Consultas
+        title: Encuestas/Consultas
+        help: Ayuda sobre las encuestas/consultas
+      section_footer:
+        title: Ayuda sobre las encuestas/consultas
+        description: Las encuestas ciudadanas son un mecanismo de participación por el que la ciudadanía con derecho a voto puede tomar decisiones de forma directa.
+      no_polls: "No hay encuestas abiertas."
+    show:
+      already_voted_in_booth: "Ya has participado en esta encuesta en urnas presenciales, no puedes volver a participar."
+      already_voted_in_web: "Ya has participado en esta encuesta. Si vuelves a votar se sobreescribirá tu resultado anterior."
+      back: Volver a encuestas/consultas
+      cant_answer_expired: "Esta encuesta ha terminado."
+      cant_answer_wrong_geozone: "Esta encuesta no está disponible en tu zona."
+      evaluate: "Evaluar la encuesta/consulta"
+      results_menu: "Resultados de la encuesta"
+  shared:
+    send: "ENVIAR"
+    advanced_search:
+      user_profile: "Por perfil de autor"
+      user_profile_blank: "Elige un perfil"
+      city_hall: Ayuntamiento
+      citizen: Ciudadano
+  users:
+    show:
+      deleted_forum: Este tema ha sido eliminado
+      budget_investments: Proyectos de presupuestos
+      forums: Temas del foro
+      filters:
+        forums:
+          one: 1 Tema en el foro
+          other: "%{count} Temas en el foro"
+        budget_investments:
+          one: 1 Proyecto de presupuestos
+          other: "%{count} Proyectos de presupuestos"
+  welcome:
+    feed:
+      see_all_debates: VER TODOS LOS DEBATES
+      see_all_proposals: VER TODAS LAS PROPUESTAS
+      see_all_processes: VER TODOS LOS PROCESOS
+    welcome:
+      user_permission_votes: Participar en las encuestas finales*
+  rating:
+    bad: Mala
+    poor: Pobre
+    regular: Regular
+    good: Buena
+    gorgeous: Maravillosa
