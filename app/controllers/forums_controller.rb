@@ -4,7 +4,6 @@ class ForumsController < ApplicationController
   include FlagActions
   include Translatable
 
-  before_action :parse_tag_filter, only: :index
   before_action :authenticate_user!, except: [:index, :show, :map]
   before_action :set_view, only: :index
   before_action :forums_recommendations, only: :index, if: :current_user

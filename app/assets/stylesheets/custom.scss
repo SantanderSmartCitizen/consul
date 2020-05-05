@@ -133,16 +133,15 @@ header .locale::after {
 }
 
 .footer-column-container {
-   padding: 35px 21px 1px 21px;
+   /* padding: 35px 0px 1px 0px; */
 }
 
 a.footer-social-icons {
     background-color: white;
     border-radius: 50%;
     color: #4d9dbe;
-    min-width: 32px;
-    height: 32px;
-    padding: 3px 0px 0px 0px;
+    min-width: 34px;
+    height: 34px;
 }
 
 a.footer-social-icons:hover, 
@@ -174,7 +173,7 @@ a.footer-social-icons.instagram:hover {
 }
 
 .social a {
-    margin: 0 0.50em;
+    margin: 0 0.30em;
 }
 
 a:focus {
