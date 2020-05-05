@@ -16,7 +16,7 @@ set :server_name, deploysecret(:server_name)
 set :db_server, deploysecret(:db_server)
 set :ssh_options, port: deploysecret(:ssh_port)
 
-set :repo_url, "https://github.com/consul/consul.git"
+set :repo_url, "https://github.com/SantanderSmartCitizen/consul.git"
 
 set :revision, `git rev-parse --short #{fetch(:branch)}`.strip
 
@@ -71,7 +71,7 @@ end
 task :install_bundler_gem do
   on roles(:app) do
     within release_path do
-      execute :rvm, fetch(:rvm1_ruby_version), "do", "gem install bundler --version 1.17.1"
+      execute :rvm, fetch(:rvm1_ruby_version), "do", "gem install bundler --version 2.0.2"
     end
   end
 end
