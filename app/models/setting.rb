@@ -154,12 +154,12 @@ class Setting < ApplicationRecord
         # Users with this email domain will automatically be marked as level 1 officials
         # Emails under the domain's subdomains will also be included
         "email_domain_for_officials": "",
-        "facebook_handle": nil,
-        "instagram_handle": nil,
+        "facebook_handle": "CONSUL",
+        "instagram_handle": "CONSUL",
         "telegram_handle": nil,
-        "twitter_handle": nil,
-        "twitter_hashtag": nil,
-        "youtube_handle": nil,
+        "twitter_handle": "@consul_dev",
+        "twitter_hashtag": "#consul_dev",
+        "youtube_handle": CONSUL,
         "url": "http://example.com", # Public-facing URL of the app.
         # CONSUL installation's organization name
         "org_name": "CONSUL",
