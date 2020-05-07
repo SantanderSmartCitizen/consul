@@ -159,7 +159,7 @@ class Setting < ApplicationRecord
         "telegram_handle": nil,
         "twitter_handle": "@consul_dev",
         "twitter_hashtag": "#consul_dev",
-        "youtube_handle": CONSUL,
+        "youtube_handle": "CONSUL",
         "url": "http://example.com", # Public-facing URL of the app.
         # CONSUL installation's organization name
         "org_name": "CONSUL",
