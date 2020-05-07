@@ -114,6 +114,7 @@ class Setting < ApplicationRecord
         "map.longitude": 0.0,
         "map.zoom": 10,
         "process.debates": true,
+        "process.forums": true,
         "process.proposals": true,
         "process.polls": true,
         "process.budgets": true,
