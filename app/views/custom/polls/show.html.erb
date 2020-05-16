@@ -42,9 +42,6 @@
     <div class="row margin">
       <div class="small-12 medium-9 column">
         <h3><%= t("polls.show.evaluate") %></h3>
-        
-        <%= image_tag(image_path_for("star-on.png"), class: "rounded-circle", alt: "Generic placeholder image", style: "", width: "100", height: "100") %>
-
         <div style="display: flex;">
           <div class="poll-rating" data-score="3.5" ></div>
           <div id="targetKeep-hint" style="margin-left: 15px;"></div>
@@ -160,7 +157,10 @@
       targetKeep: true,
       score: function() {
         return $(this).attr('data-score');
-      }
+      },
+      starHalf:  "<%=asset_path('star-half.png')%>",
+      starOff:   "<%=asset_path('star-off.png')%>",
+      starOn:    "<%=asset_path('star-on.png')%>"
     });
     /* reload to remove ghost stars on browser back tracing: */
     $( '.poll-rating' ).raty( 'reload' );
