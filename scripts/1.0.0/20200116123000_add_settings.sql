@@ -13,4 +13,10 @@ UPDATE settings SET value = 'Organización Municipal' WHERE key = 'official_leve
 UPDATE settings SET value = 'Directivos' WHERE key = 'official_level_3_name';
 UPDATE settings SET value = 'Concejales' WHERE key = 'official_level_4_name';
 UPDATE settings SET value = 'Alcalde' WHERE key = 'official_level_5_name';
+UPDATE settings SET value = 'CONSUL' WHERE key = "facebook_handle";
+UPDATE settings SET value = 'CONSUL' WHERE key = "instagram_handle";
+UPDATE settings SET value = '@consul_dev' WHERE key = "twitter_handle";
+UPDATE settings SET value = '#consul_dev' WHERE key = "twitter_hashtag";
+UPDATE settings SET value = 'CONSUL' WHERE key = "youtube_handle";
+UPDATE settings SET value = 'Santander SmartCitizen' WHERE key = "org_name";
 commit;

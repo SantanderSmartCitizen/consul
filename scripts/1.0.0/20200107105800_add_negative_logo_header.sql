@@ -1,1 +1,0 @@
-insert into site_customization_images (name, image_file_name, image_content_type, image_file_size, image_updated_at, created_at, updated_at) values ('negative_logo_header','negative_logo_header.png','image/png',30063, '2020-01-07 11:41:33', '2020-01-07 10:57:21', '2020-01-07 11:41:33');
