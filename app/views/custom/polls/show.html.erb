@@ -44,7 +44,7 @@
         <h3><%= t("polls.show.evaluate") %></h3>
         
         <%= image_tag(image_path_for("star-on.png"), class: "rounded-circle", alt: "Generic placeholder image", style: "", width: "100", height: "100") %>
-        
+
         <div style="display: flex;">
           <div class="poll-rating" data-score="3.5" ></div>
           <div id="targetKeep-hint" style="margin-left: 15px;"></div>
@@ -156,7 +156,6 @@
       readOnly: false,
       halfShow : true,
       half: true,
-      path: '/assets',
       target: '#targetKeep-hint',
       targetKeep: true,
       score: function() {
