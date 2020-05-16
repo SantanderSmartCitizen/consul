@@ -143,19 +143,28 @@
 </div>
 
 <script>
-  $.fn.raty.defaults.hints = ['<%= t("rating.bad") %>', '<%= t("rating.poor") %>', '<%= t("rating.regular") %>', '<%= t("rating.good") %>', '<%= t("rating.gorgeous") %>'];
 
-  $('.poll-rating').raty({
-    readOnly: false,
-    halfShow : true,
-    half: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/',
-    target: '#targetKeep-hint',
-    targetKeep: true
+  /* Read and convert numeric rating to Stars (on views/reviews/_review): */
+  $(document).ready(function() {
+
+    $.fn.raty.defaults.hints = ['<%= t("rating.bad") %>', '<%= t("rating.poor") %>', '<%= t("rating.regular") %>', '<%= t("rating.good") %>', '<%= t("rating.gorgeous") %>'];
+
+    $( '.poll-rating' ).raty({
+      readOnly: false,
+      halfShow : true,
+      half: true,
+      path: '/assets/',
+      target: '#targetKeep-hint',
+      targetKeep: true,
+      score: function() {
+        return $(this).attr('data-score');
+      }
+    });
+    /* reload to remove ghost stars on browser back tracing: */
+    $( '.poll-rating' ).raty( 'reload' );
+
   });
-      /* targetType : 'score' */
+    /* targetType : 'score' */
+
 
 </script>
