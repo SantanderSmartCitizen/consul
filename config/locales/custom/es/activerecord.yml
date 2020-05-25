@@ -11,3 +11,5 @@ es:
       user:
         login: "Email o nombre de usuario/alias"
         username: "Nombre de usuario/alias"
+      poll:
+        only_terminals: Mostrar solo en Terminales

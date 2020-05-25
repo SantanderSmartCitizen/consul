@@ -41,6 +41,7 @@ en:
         title: "List of polls/questions"
         no_polls: "There are no polls/questions."
         create: "Create poll/question"
+        only_terminals: Only Terminals
       new:
         title: "New poll/question"
         submit_button: "Create poll/question"

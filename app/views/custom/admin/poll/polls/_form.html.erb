@@ -32,10 +32,16 @@
       <div class="small-12 column">
         <%= translations_form.text_area :description, rows: 8 %>
       </div>
+
     <% end %>
   </div>
 
   <div class="row">
+
+    <div class="small-12 column">
+      <%= f.check_box :only_terminals %>
+    </div>
+
     <div class="small-12 column">
       <%= render "images/admin_image", imageable: @poll, f: f %>
     </div>
