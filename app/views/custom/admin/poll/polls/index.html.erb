@@ -8,6 +8,8 @@
             new_admin_poll_path,
             class: "button float-right" %>
 
+<%= render "filter_subnav", i18n_namespace: "admin.polls.index" %>
+
 <% if @polls.any? %>
   <table>
     <thead>

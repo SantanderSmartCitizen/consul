@@ -7,8 +7,15 @@ class Admin::Poll::PollsController < Admin::Poll::BaseController
   before_action :load_search, only: [:search_booths, :search_officers]
   before_action :load_geozones, only: [:new, :create, :edit, :update]
 
+  valid_filters = %w[only_users only_terminals]
+  has_filters valid_filters, only: [:index]
+
   def index
-    @polls = Poll.not_budget.created_by_admin.order(starts_at: :desc)
+    if @current_filter == "only_terminals"
+      @polls = Poll.not_budget.created_by_admin.only_terminals.order(starts_at: :desc)
+    else
+      @polls = Poll.not_budget.created_by_admin.only_users.order(starts_at: :desc)
+    end
   end
 
   def show

@@ -47,6 +47,8 @@ class Poll < ApplicationRecord
   scope :by_geozone_id, ->(geozone_id) { where(geozones: { id: geozone_id }.joins(:geozones)) }
   scope :public_for_api, -> { all }
   scope :not_budget, -> { where(budget_id: nil) }
+  scope :only_terminals, -> { where("only_terminals = ?", true) }
+  scope :only_users, -> { where("only_terminals = ?", false) }
   scope :created_by_admin, -> { where(related_type: nil) }
 
   def self.sort_for_list
