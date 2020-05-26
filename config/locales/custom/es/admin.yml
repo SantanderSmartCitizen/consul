@@ -64,6 +64,11 @@ es:
         title: "Listado de encuestas/consultas"
         no_polls: "No hay encuestas/consultas."
         create: "Crear encuesta/consulta"
+        only_terminals: Solo Terminales
+        filter: Filtro
+        filters:
+          only_users: Visibles por Usuarios
+          only_terminals: Visibles en Terminales
       new:
         title: "Nueva encuesta/consulta"
         submit_button: "Crear encuesta/consulta"
