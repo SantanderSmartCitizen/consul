@@ -5,6 +5,8 @@ class Poll::Question < ApplicationRecord
   acts_as_paranoid column: :hidden_at
   include ActsAsParanoidAliases
 
+  ANSWER_TYPES = %w[simple multiple star_rating smileys free_text].freeze
+
   translates :title, touch: true
   include Globalizable
 
@@ -26,7 +28,8 @@ class Poll::Question < ApplicationRecord
 
   accepts_nested_attributes_for :question_answers, reject_if: :all_blank, allow_destroy: true
 
-  scope :by_poll_id,    ->(poll_id) { where(poll_id: poll_id) }
+  scope :by_poll_id,      ->(poll_id) { where(poll_id: poll_id) }
+  scope :by_answer_type,  ->(answer_type) { where(answer_type: answer_type) }
 
   scope :sort_for_list, -> { order("poll_questions.proposal_id IS NULL", :created_at) }
   scope :for_render,    -> { includes(:author, :proposal) }
@@ -34,6 +37,7 @@ class Poll::Question < ApplicationRecord
   def self.search(params)
     results = all
     results = results.by_poll_id(params[:poll_id]) if params[:poll_id].present?
+    results = results.by_answer_type(params[:answer_type]) if params[:answer_type].present?
     results = results.pg_search(params[:search])   if params[:search].present?
     results
   end

@@ -66,6 +66,16 @@ en:
         select_poll: Select Poll/Question
         table_poll: "Poll/Question"
         poll_not_assigned: "Poll/Question not assigned"
+        answer_type: Answer type
+        select_answer_type: Select answer type
+        filter_answer_type: Filter by answer type
+        all_answer_types: All
+      question_types:
+        simple: Simple answer
+        multiple: Multiple answer
+        star_rating: Star rating
+        smileys: Smileys
+        free_text: Free text
       edit:
         title: "Edit Question"
       new:

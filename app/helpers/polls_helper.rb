@@ -11,6 +11,10 @@ module PollsHelper
     [I18n.t("polls.all"), admin_questions_path]
   end
 
+  def all_answer_types
+    [I18n.t("admin.questions.index.all_answer_types"), admin_questions_path]
+  end
+
   def poll_dates(poll)
     if poll.starts_at.blank? || poll.ends_at.blank?
       I18n.t("polls.no_dates")
@@ -57,4 +61,17 @@ module PollsHelper
   def show_polls_description?
     @active_poll.present? && @current_filter == "current"
   end
+
+  def poll_question_answer_types
+    Poll::Question::ANSWER_TYPES.map { |type| [t("admin.questions.question_types.#{type}"), type] }
+  end
+
+  def poll_question_answer_types_select_options(include_all = nil)
+    answer_type_options = Poll::Question::ANSWER_TYPES.map do |type| 
+      [t("admin.questions.question_types.#{type}"), current_path_with_query_params(answer_type: type)] 
+    end
+    answer_type_options << all_answer_types if include_all
+    options_for_select(answer_type_options, request.fullpath)
+  end
+
 end
