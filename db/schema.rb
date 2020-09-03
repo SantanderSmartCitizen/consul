@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200525093432) do
+ActiveRecord::Schema.define(version: 20200526083434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1127,6 +1127,7 @@ ActiveRecord::Schema.define(version: 20200525093432) do
     t.datetime "updated_at"
     t.tsvector "tsv"
     t.string   "video_url"
+    t.string   "answer_type",         default: "simple"
     t.index ["author_id"], name: "index_poll_questions_on_author_id", using: :btree
     t.index ["poll_id"], name: "index_poll_questions_on_poll_id", using: :btree
     t.index ["proposal_id"], name: "index_poll_questions_on_proposal_id", using: :btree

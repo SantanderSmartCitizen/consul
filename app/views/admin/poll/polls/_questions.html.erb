@@ -31,8 +31,12 @@
         </td>
         <td>
           <div class="small-4 column">
-            <%= link_to t("admin.polls.show.edit_answers"), admin_question_path(question),
+            <% if question.answer_type == "simple" || question.answer_type == "multiple"%>
+              <%= link_to t("admin.polls.show.edit_answers"), admin_question_path(question),
                                                             class: "button hollow expanded" %>
+            <% else %>
+              <p></p>
+            <% end %>
           </div>
           <div class="small-4 column">
             <%= link_to t("shared.edit"), edit_admin_question_path(question),
