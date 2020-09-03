@@ -64,6 +64,11 @@ es:
         title: "Listado de encuestas/consultas"
         no_polls: "No hay encuestas/consultas."
         create: "Crear encuesta/consulta"
+        only_terminals: Solo Terminales
+        filter: Filtro
+        filters:
+          only_users: Visibles por Usuarios
+          only_terminals: Visibles en Terminales
       new:
         title: "Nueva encuesta/consulta"
         submit_button: "Crear encuesta/consulta"
@@ -80,12 +85,22 @@ es:
         unable_notice: "No se pueden eliminar encuestas/consultas con votos"
     questions:
       index:
-        title: "Preguntas de encuestas/eonsultas"
+        title: "Preguntas de encuestas/consultas"
         filter_poll: Filtrar por encuesta/consulta
         select_poll: Seleccionar encuesta/consulta
         create_question: "Crear pregunta para encuesta/consulta"
         table_poll: "Encuesta/Consulta"
         poll_not_assigned: "Encuesta/Consulta no asignada"
+        answer_type: Tipo de respuesta
+        select_answer_type: Seleccionar tipo de respuesta
+        filter_answer_type: Filtrar tipo de respuesta
+        all_answer_types: Todos
+      question_types:
+        simple: Respuesta simple
+        multiple: Respuesta múltiple
+        star_rating: Calificación de estrellas
+        smileys: Emoticonos
+        free_text: Texto libre
       new:
         title: "Crear pregunta ciudadana para la encuesta/consulta %{poll}"
     stats:

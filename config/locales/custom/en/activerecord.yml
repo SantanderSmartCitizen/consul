@@ -11,3 +11,5 @@ en:
       user:
         login: "Email or username/alias"
         username: "Username/alias"
+      poll:
+        only_terminals: Show only in Terminals
