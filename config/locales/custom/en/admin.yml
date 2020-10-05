@@ -30,6 +30,7 @@ en:
         information_texts_menu:
           polls: "Polls/Questions"
       legislation: Processes
+      gamification: Gamification
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -84,3 +85,13 @@ en:
       feeds:
         citizen_proposals: Citizen Proposals
         city_hall_proposals: City Hall Proposals
+    gamification:
+      show:
+        gamification_title: Gamification
+        ranking: Ranking
+        ranking_table:
+          user: User
+          total_score: Total score
+          score_1: Citizen participation score
+          score_2: Gamification score 1
+          score_3: Gamification score 2

@@ -211,6 +211,10 @@ namespace :admin do
     get :polls, on: :collection
   end
 
+  resource :gamification, only: :show do
+    get :budgets, on: :collection
+  end
+
   namespace :legislation do
     resources :processes do
       resources :questions
