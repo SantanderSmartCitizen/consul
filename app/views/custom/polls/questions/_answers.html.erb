@@ -1,0 +1,62 @@
+<div class="poll-question-answers"> 
+
+  <% if can?(:answer, question) && !question.poll.voted_in_booth?(current_user) %>
+
+    <!-- Si usuario puede votar && no ha votado en cabina -->
+
+    <% if question.answer_type == "simple" %>
+      <% question.question_answers.each do |answer| %>
+        <% if @answers_by_question_id[question.id] == answer.title &&
+              (!voted_before_sign_in(question) ||
+               question.poll.voted_in_booth?(current_user)) %>
+          <!-- Pregunta respondida -->
+          <span class="button answered"
+                title="<%= t("poll_questions.show.voted", answer: answer.title) %>">
+            <%= answer.title %>
+          </span>
+
+        <% else %>
+          <!-- Pregunta sin responder -->
+          <%= link_to answer.title,
+            answer_question_path(question, answer: answer.title, token: token),
+            method: :post,
+            remote: true,
+            title: t("poll_questions.show.vote_answer", answer: answer.title),
+            class: "button secondary hollow js-question-answer" %>
+        <% end %>
+      <% end %>
+
+    <% elsif question.answer_type == "multiple" %>
+      <p>Respuesta multiple</p>
+    <% elsif question.answer_type == "star_rating" %>
+      <p>Calificación de estrellas</p>
+    <% elsif question.answer_type == "smileys" %>
+      <p>Emoticonos</p>
+    <% elsif question.answer_type == "free_text" %>
+      <p>Texto libre</p>
+    <% end %>
+
+
+  <% elsif !user_signed_in? %>
+    <!-- Si usuario no esta logueado -->
+    <% question.question_answers.order(id: :desc).each do |answer| %>
+      <%= link_to answer.title, new_user_session_path, class: "button secondary hollow" %>
+    <% end %>
+
+  
+  <% elsif !current_user.level_two_or_three_verified? %>
+    <!-- Si usuario logueado pero nivel de verificacion no es ni 2 ni 3 -->
+    <% question.question_answers.order(id: :desc).each do |answer| %>
+      <%= link_to answer.title, verification_path, class: "button secondary hollow" %>
+    <% end %>
+
+
+  <% else %>
+    <!-- Para cualquier otro caso se deshabilitan respuestas -->
+    <% question.question_answers.order(id: :desc).each do |answer| %>
+      <span class="button secondary hollow disabled"><%= answer.title %></span>
+    <% end %>
+  <% end %>
+
+
+</div>
