@@ -143,6 +143,9 @@ es:
         forums:
           one: 1 Tema en el foro
           other: "%{count} Temas en el foro"
+        score:
+          one: 1 Punto obtenido
+          other: "%{count} Puntos obtenidos"
         budget_investments:
           one: 1 Proyecto de presupuestos
           other: "%{count} Proyectos de presupuestos"

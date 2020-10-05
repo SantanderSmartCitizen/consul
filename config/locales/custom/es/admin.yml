@@ -44,6 +44,7 @@ es:
         information_texts_menu:
           polls: "Encuestas/Consultas"
       legislation: Procesos
+      gamification: Gamificación
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -120,3 +121,14 @@ es:
       feeds:
         citizen_proposals: Propuestas ciudadanos
         city_hall_proposals: Propuestas Ayuntamiento
+    gamification:
+      show:
+        gamification_title: Gamificación
+        ranking: Clasificación
+        ranking_table:
+          ranking_position: Clasificación
+          user: Usuario
+          total_score: Puntuación total
+          score_1: Puntuación participación ciudadana
+          score_2: Puntuación gamificación 1
+          score_3: Puntuación gamificación 2

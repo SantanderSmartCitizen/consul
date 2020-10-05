@@ -129,7 +129,10 @@ en:
       filters:
         forums:
           one: 1 Thread in the forum
-          other: "%{count} Threads in the forum"          
+          other: "%{count} Threads in the forum"
+        score:
+          one: 1 Point obtained
+          other: "%{count} Points obtained"   
   welcome:
     feed:
       see_all_debates: SEE ALL DEBATES
