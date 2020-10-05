@@ -4,3 +4,4 @@
 <%= render "forums" if @forums.present? && feature?(:forums) %>
 <%= render "budget_investments" if @budget_investments.present? && feature?(:budgets) %>
 <%= render "comments" if @comments.present? %>
+<%= render "score" %>
