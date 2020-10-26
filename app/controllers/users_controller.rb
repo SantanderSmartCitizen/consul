@@ -87,7 +87,7 @@ class UsersController < ApplicationController
     end
 
     def load_score
-      
+      @score = 220
     end
 
     def valid_access?
