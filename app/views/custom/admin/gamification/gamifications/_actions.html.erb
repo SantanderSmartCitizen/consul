@@ -1,0 +1,12 @@
+<h3 class="inline-block"><%= t("admin.gamifications.show.actions_title") %></h3>
+
+<%= link_to t("admin.gamification.actions.index.create"), new_admin_gamification_action_path(gamification_id: @gamification.id),
+            class: "button float-right" %>
+
+<% if @gamification.actions.empty? %>
+  <div class="callout primary margin-top">
+    <%= t("admin.gamifications.show.no_actions") %>
+  </div>
+
+
+<% end %>

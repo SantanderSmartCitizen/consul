@@ -211,8 +211,12 @@ namespace :admin do
     get :polls, on: :collection
   end
 
-  resource :gamification, only: :show do
-    get :budgets, on: :collection
+  scope module: :gamification do
+    resources :gamifications do
+      patch :add_action, on: :member
+      resources :actions
+      resources :rewards
+    end
   end
 
   namespace :legislation do

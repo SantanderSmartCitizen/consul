@@ -85,7 +85,53 @@ en:
       feeds:
         citizen_proposals: Citizen Proposals
         city_hall_proposals: City Hall Proposals
+    gamifications:
+      index:
+        table_title: Gamification
+        create: Create gamification
+        ranking: See ranking
+        key: Key
+        title: Title
+        description: Description
+        no_gamifications: There are no gamifications.
+      new:
+        title: New gamification
+        submit_button: Create gamification
+      edit:
+        title: Edit gamification
+        submit_button: Update gamification
+      show:
+        header_title: "Gamification: "
+        actions_tab: Actions
+        rewards_tab: Rewards
+        ranking_tab: Ranking
+        no_actions: "There are no actions assigned to this gamification."
+        actions_title: "List of actions"
+      flash:
+        action_added: "Action added to this gamification"
+        error_on_action_added: "Action could not be added to this gamification"
+      destroy:
+        alert: "This action will remove the gamification and all its associated actions."
+        success_notice: "Gamification deleted successfully"
+        unable_notice: "You cannot delete a gamification that has rewards"
+      ranking:
+        title: Ranking
     gamification:
+      actions:
+        index:
+          title: Actions
+          create: Create action
+          key: Key
+          title: Title
+          description: Description
+        new:
+          title: "Create action to gamification '%{gamification}'"
+          general_title: "Create gamification action"
+        edit:
+          title: "Edit gamification action"
+
+
+
       show:
         gamification_title: Gamification
         ranking: Ranking

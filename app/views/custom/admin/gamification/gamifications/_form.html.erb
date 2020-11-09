@@ -1,0 +1,37 @@
+<%= render "shared/globalize_locales", resource: @gamification %>
+
+<%= translatable_form_for [:admin, @gamification] do |f| %>
+
+  <%= render "shared/errors", resource: @gamification %>
+
+  <div class="row">
+    <div class="clear">
+      <div class="small-12 medium-6 column">
+        <%= f.text_field :key,
+                          value: @gamification.key,
+                          label: t("admin.gamifications.index.key") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.translatable_fields do |translations_form| %>
+      <div class="small-12 medium-6 column">
+        <%= translations_form.text_field :title %>
+      </div>
+
+      <div class="small-12 column">
+        <%= translations_form.text_area :description, rows: 8 %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="clear">
+      <div class="small-12 medium-3 column clear end">
+        <%= f.submit t("admin.gamifications.#{admin_submit_action(@gamification)}.submit_button"), class: "button success expanded margin-top" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

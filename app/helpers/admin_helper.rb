@@ -38,6 +38,11 @@ module AdminHelper
       action_name != "booth_assignments"
   end
 
+  def menu_gamifications?
+    controllers_names = ["gamifications"]
+    controllers_names.include?(controller_name)
+  end
+
   def menu_booths?
     %w[officers booths shifts booth_assignments officer_assignments].include?(controller_name) ||
       controller_name == "polls" && action_name == "booth_assignments"

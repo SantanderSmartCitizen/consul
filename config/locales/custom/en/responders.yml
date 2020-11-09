@@ -3,5 +3,7 @@ en:
     actions:
       create:
         forum: "Thread created successfully."
+        gamification: "Gamification created successfully."
       update:
         forum: "Thread updated successfully."
+        gamification: "Gamification updated successfully."

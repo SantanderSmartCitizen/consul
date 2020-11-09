@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200526083434) do
+ActiveRecord::Schema.define(version: 20201109204301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -638,6 +638,67 @@ ActiveRecord::Schema.define(version: 20200526083434) do
     t.index ["hidden_at"], name: "index_forums_on_hidden_at", using: :btree
     t.index ["hot_score"], name: "index_forums_on_hot_score", using: :btree
     t.index ["tsv"], name: "index_forums_on_tsv", using: :gin
+  end
+
+  create_table "gamification_action_translations", force: :cascade do |t|
+    t.integer  "gamification_action_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_action_id", "locale"], name: "idx_gamification_action_translations_on_action_id_and_locale", unique: true, using: :btree
+    t.index ["gamification_action_id"], name: "idx_gamification_action_translations_on_gamification_action_id", using: :btree
+  end
+
+  create_table "gamification_actions", force: :cascade do |t|
+    t.string   "key"
+    t.integer  "score"
+    t.integer  "gamification_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["gamification_id"], name: "index_gamification_actions_on_gamification_id", using: :btree
+    t.index ["key", "gamification_id"], name: "index_gamification_actions_on_key_and_gamification_id", unique: true, using: :btree
+  end
+
+  create_table "gamification_reward_translations", force: :cascade do |t|
+    t.integer  "gamification_reward_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "description"
+    t.text     "reward"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_reward_id", "locale"], name: "idx_gamification_reward_translations_on_reward_id_and_locale", unique: true, using: :btree
+    t.index ["gamification_reward_id"], name: "idx_gamification_reward_translations_on_gamification_reward_id", using: :btree
+  end
+
+  create_table "gamification_rewards", force: :cascade do |t|
+    t.integer  "minimum_score"
+    t.integer  "gamification_id"
+    t.boolean  "active"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["gamification_id"], name: "index_gamification_rewards_on_gamification_id", using: :btree
+  end
+
+  create_table "gamification_translations", force: :cascade do |t|
+    t.integer  "gamification_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["gamification_id", "locale"], name: "index_gamification_translations_on_gamification_id_and_locale", unique: true, using: :btree
+    t.index ["gamification_id"], name: "index_gamification_translations_on_gamification_id", using: :btree
+  end
+
+  create_table "gamifications", force: :cascade do |t|
+    t.string   "key"
+    t.boolean  "locked",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["key"], name: "index_gamifications_on_key", unique: true, using: :btree
   end
 
   create_table "geozones", force: :cascade do |t|
@@ -1668,6 +1729,8 @@ ActiveRecord::Schema.define(version: 20200526083434) do
   add_foreign_key "failed_census_calls", "users"
   add_foreign_key "flags", "users"
   add_foreign_key "follows", "users"
+  add_foreign_key "gamification_actions", "gamifications"
+  add_foreign_key "gamification_rewards", "gamifications"
   add_foreign_key "geozones_polls", "geozones"
   add_foreign_key "geozones_polls", "polls"
   add_foreign_key "identities", "users"

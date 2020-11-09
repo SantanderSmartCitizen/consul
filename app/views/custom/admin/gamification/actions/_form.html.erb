@@ -1,0 +1,52 @@
+<%= render "shared/globalize_locales", resource: @action %>
+
+<%= translatable_form_for(@action, url: form_url) do |f| %>
+
+  <%= render "shared/errors", resource: @action %>
+
+  <div class="row">
+    <div class="small-12">
+      <% if @gamification.present? %>
+        <%= f.hidden_field :gamification_id, value: @gamification.id %>
+      <% elsif @action.gamification.present? %>
+        <%= f.hidden_field :gamification_id, value: @action.gamification.id %>
+      <% else %>
+        <div class="small-12 medium-6 large-4 column">
+          <% select_options = Gamification.all.map { |p| [p.key, p.id] } %>
+          <%= f.select :gamification_id,
+                        options_for_select(select_options),
+                        prompt: t("admin.actions.index.select_gamification") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="clear">
+      <div class="small-12 medium-6 column">
+        <%= f.text_field :key,
+                          value: @action.key,
+                          label: t("admin.gamifications.action.key") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.translatable_fields do |translations_form| %>
+      <div class="small-12 medium-6 column">
+        <%= translations_form.text_field :title %>
+      </div>
+
+      <div class="small-12 column">
+        <%= translations_form.text_area :description, rows: 8 %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-3 column clear end">
+      <%= f.submit t("admin.gamifications.#{admin_submit_action(@action)}.submit_button"), class: "button success expanded margin-top" %>
+    </div>
+  </div>
+
+<% end %>

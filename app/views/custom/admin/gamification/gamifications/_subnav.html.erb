@@ -1,0 +1,19 @@
+<ul class="menu simple clear" id="assigned-resources-tabs">
+
+  <% if controller_name == "gamifications" %>
+    <li class="is-active">
+      <h2>
+        <%= t("admin.gamifications.show.actions_tab") %>
+        (<%= @gamification.actions.count %>)
+      </h2>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to admin_gamification_path(@gamification) do %>
+        <%= t("admin.gamifications.show.actions_tab") %>
+        (<%= @gamification.actions.count %>)
+      <% end %>
+    </li>
+  <% end %>
+
+</ul>

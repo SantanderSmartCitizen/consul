@@ -13,3 +13,13 @@ es:
         username: "Nombre de usuario/alias"
       poll:
         only_terminals: Mostrar solo en Terminales
+      gamification/translation:
+        title: Título
+        description: Descripción
+      gamification/action/translation:
+        title: Título
+        description: Descripción
+      gamification/reward/translation:
+        title: Título
+        description: Descripción
+        reward: Recompensa

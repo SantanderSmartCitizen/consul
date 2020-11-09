@@ -3,5 +3,7 @@ es:
     actions:
       create:
         forum: "Tema creado correctamente."
+        gamification: "Gamificación creada correctamente."
       update:
         forum: "Tema actualizado correctamente."
+        gamification: "Gamificación actualizada correctamente."

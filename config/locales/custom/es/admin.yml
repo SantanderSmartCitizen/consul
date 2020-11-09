@@ -121,7 +121,53 @@ es:
       feeds:
         citizen_proposals: Propuestas ciudadanos
         city_hall_proposals: Propuestas Ayuntamiento
+    gamifications:
+      index:
+        table_title: Gamificación
+        create: Crear gamificación
+        ranking: Ver clasificación
+        key: Clave
+        title: Título
+        description: Descripción
+        no_gamifications: No hay gamificaciones.
+      new:
+        title: Nueva gamificación
+        submit_button: Crear gamificación
+      edit:
+        title: Editar gamificación
+        submit_button: Actualizar gamificación
+      show:
+        header_title: "Gamificación: "
+        actions_tab: Acciones
+        rewards_tab: Retos
+        ranking_tab: Clasificación
+        no_actions: "No hay acciones asignadas a esta gamificación."
+        actions_title: "Listado de acciones asignadas"
+      flash:
+        action_added: "Acción añadida a esta gamificación"
+        error_on_action_added: "No pudo añadirse la acción"
+      destroy:
+        alert: "Esta acción eliminará la votación y todas sus preguntas asociadas."
+        success_notice: "Votación eliminada correctamente"
+        unable_notice: "No se pueden eliminar votaciones con votos"
+      ranking:
+        title: Clasificación
     gamification:
+      actions:
+        index:
+          title: Acciones
+          create: Crear acción
+          key: Key
+          title: Title
+          description: Description
+        new:
+          title: "Crear acción para la gamificación '%{gamification}'"
+          general_title: "Crear acción de gamificación"
+        edit:
+          title: "Editar acción de gamificación"
+
+
+
       show:
         gamification_title: Gamificación
         ranking: Clasificación
