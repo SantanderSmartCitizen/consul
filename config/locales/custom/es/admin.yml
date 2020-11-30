@@ -44,7 +44,7 @@ es:
         information_texts_menu:
           polls: "Encuestas/Consultas"
       legislation: Procesos
-      gamification: Gamificación
+      gamification: Gamificaciones
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -123,13 +123,14 @@ es:
         city_hall_proposals: Propuestas Ayuntamiento
     gamifications:
       index:
-        table_title: Gamificación
+        table_title: Gamificaciones
         create: Crear gamificación
         ranking: Ver clasificación
         key: Clave
         title: Título
         description: Descripción
         no_gamifications: No hay gamificaciones.
+        back: Volver a gamificaciones
       new:
         title: Nueva gamificación
         submit_button: Crear gamificación
@@ -157,14 +158,21 @@ es:
         index:
           title: Acciones
           create: Crear acción
-          key: Key
-          title: Title
-          description: Description
+          key: Clave
+          title: Título
+          description: Descripción
+          score: Puntuación
+          back: Volver a gamificación
         new:
           title: "Crear acción para la gamificación '%{gamification}'"
           general_title: "Crear acción de gamificación"
+          submit_button: Crear acción
         edit:
-          title: "Editar acción de gamificación"
+          title: "Editar acción de la gamificación '%{gamification}'"
+          general_title: "Editar acción de gamificación"
+          submit_button: Actualizar acción
+        show:
+          edit_action: Editar acción
 
 
 

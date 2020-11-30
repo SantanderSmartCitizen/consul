@@ -30,7 +30,7 @@ en:
         information_texts_menu:
           polls: "Polls/Questions"
       legislation: Processes
-      gamification: Gamification
+      gamification: Gamifications
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -87,13 +87,14 @@ en:
         city_hall_proposals: City Hall Proposals
     gamifications:
       index:
-        table_title: Gamification
+        table_title: Gamifications
         create: Create gamification
         ranking: See ranking
         key: Key
         title: Title
         description: Description
         no_gamifications: There are no gamifications.
+        back: Go back to gamifications
       new:
         title: New gamification
         submit_button: Create gamification
@@ -124,11 +125,16 @@ en:
           key: Key
           title: Title
           description: Description
+          score: Score
+          back: Go back to gamification
         new:
           title: "Create action to gamification '%{gamification}'"
           general_title: "Create gamification action"
         edit:
-          title: "Edit gamification action"
+          title: "Edit action to gamification '%{gamification}'"
+          general_title: "Edit gamification action"
+        show:
+          edit_action: Edit action
 
 
 

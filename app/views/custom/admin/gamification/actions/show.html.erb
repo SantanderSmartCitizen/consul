@@ -1,0 +1,31 @@
+<%= back_link_to admin_gamification_path(@action.gamification), t("admin.gamification.actions.index.back") %>
+
+<%= link_to t("admin.gamification.actions.show.edit_action"), edit_admin_gamification_action_path(@action.gamification,@action),
+            class: "button hollow float-right" %>
+
+<div class="clear"></div>
+
+<div class="small-12 medium-6">
+  <div class="callout highlight">
+    <p>
+      <strong><%= t("admin.gamification.actions.index.key") %></strong>
+      <br>
+      <%= @action.key %>
+    </p>
+    <p>
+      <strong><%= t("admin.gamification.actions.index.title") %></strong>
+      <br>
+      <%= @action.title %>
+    </p>
+    <p>
+      <strong><%= t("admin.gamification.actions.index.description") %></strong>
+      <br>
+      <%= @action.description %>
+    </p>
+    <p>
+      <strong><%= t("admin.gamification.actions.index.score") %></strong>
+      <br>
+      <%= @action.score %>
+    </p>
+  </div>
+</div>

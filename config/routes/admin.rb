@@ -213,7 +213,6 @@ namespace :admin do
 
   scope module: :gamification do
     resources :gamifications do
-      patch :add_action, on: :member
       resources :actions
       resources :rewards
     end

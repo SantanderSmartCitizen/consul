@@ -32,6 +32,11 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   end
 
   def update
+    if @action.update(action_params)
+      redirect_to admin_gamification_path(@action.gamification), notice: t("flash.actions.save_changes.notice")
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,7 +45,7 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   private
 
     def action_params
-      attributes = [:gamification_id, :key]
+      attributes = [:gamification_id, :key, :score]
       params.require(:gamification_action).permit(
         *attributes, translation_params(Gamification::Action)
       )

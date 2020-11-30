@@ -26,7 +26,7 @@
       <div class="small-12 medium-6 column">
         <%= f.text_field :key,
                           value: @action.key,
-                          label: t("admin.gamifications.action.key") %>
+                          label: t("admin.gamification.actions.index.key") %>
       </div>
     </div>
   </div>
@@ -44,8 +44,16 @@
   </div>
 
   <div class="row">
+    <div class="small-12 medium-6 column">
+      <%= f.text_field :score, maxlength: 6,
+                        value: @action.score,
+                        label: t("admin.gamification.actions.index.score") %>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="small-12 medium-3 column clear end">
-      <%= f.submit t("admin.gamifications.#{admin_submit_action(@action)}.submit_button"), class: "button success expanded margin-top" %>
+      <%= f.submit t("admin.gamification.actions.#{admin_submit_action(@action)}.submit_button"), class: "button success expanded margin-top" %>
     </div>
   </div>
 
