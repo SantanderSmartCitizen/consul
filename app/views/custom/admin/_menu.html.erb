@@ -228,10 +228,26 @@
       <% end %>
     </li>
 
-    <li class="section-title <%= "is-active" if controller_name == "gamifications" || params[:controller] == "admin/gamification/actions" || params[:controller] == "admin/gamification/rewards" %>">
-      <%= link_to admin_gamifications_path do %>
-        <span class="icon-gamification"></span><%= t("admin.menu.gamification") %>
-      <% end %>
+    <li class="section-title">
+      <a href="#">
+        <span class="icon-gamification"></span>
+        <strong><%= t("admin.menu.title_gamification") %></strong>
+      </a>
+      <ul <%= "class=is-active" if menu_gamifications? %>>
+
+        <li <%= "class=is-active" if controller_name == "gamifications"  %>>
+          <%= link_to t("admin.menu.gamification.gamifications"), admin_gamifications_path %>
+        </li>
+
+        <li <%= "class=is-active" if params[:controller] == "admin/gamification/actions" %>>
+          <%= link_to t("admin.menu.gamification.actions"), admin_gamification_actions_path %>
+        </li>
+
+        <!-- Añadir rewards -->
+        <!-- Añadir requested_rewards -->
+        <!-- Añadir ranking -->
+
+      </ul>
     </li>
 
     <li class="section-title">

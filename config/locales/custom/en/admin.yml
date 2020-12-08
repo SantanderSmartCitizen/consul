@@ -30,7 +30,13 @@ en:
         information_texts_menu:
           polls: "Polls/Questions"
       legislation: Processes
-      gamification: Gamifications
+      title_gamification: Gamification
+      gamification: 
+        gamifications: Gamifications
+        actions: Actions
+        rewards: Rewards
+        requested_rewards: Requested rewards
+        ranking: Ranking
     active_polls:
       edit:
         title: "Polls/Questions description"

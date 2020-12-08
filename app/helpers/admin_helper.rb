@@ -40,7 +40,8 @@ module AdminHelper
 
   def menu_gamifications?
     controllers_names = ["gamifications"]
-    controllers_names.include?(controller_name)
+    controller_params = ["admin/gamification/actions", "admin/gamification/rewards"]
+    controllers_names.include?(controller_name) || controller_params.include?(params[:controller])
   end
 
   def menu_booths?
@@ -73,7 +74,8 @@ module AdminHelper
   end
 
   def menu_dashboard?
-    ["actions", "administrator_tasks"].include?(controller_name)
+    ["administrator_tasks"].include?(controller_name) ||
+     ["admin/dashboard/actions"].include?(params[:controller])
   end
 
   def submenu_local_census_records?

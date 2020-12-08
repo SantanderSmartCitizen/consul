@@ -44,7 +44,13 @@ es:
         information_texts_menu:
           polls: "Encuestas/Consultas"
       legislation: Procesos
-      gamification: Gamificaciones
+      title_gamification: Gamificación
+      gamification: 
+        gamifications: Gamificaciones
+        actions: Acciones
+        rewards: Recompensas
+        requested_rewards: Recompensas solicitadas
+        ranking: Clasificación
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -156,7 +162,7 @@ es:
     gamification:
       actions:
         index:
-          title: Acciones
+          table_title: Acciones
           create: Crear acción
           key: Clave
           title: Título

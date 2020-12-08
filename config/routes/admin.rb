@@ -211,11 +211,22 @@ namespace :admin do
     get :polls, on: :collection
   end
 
+=begin
   scope module: :gamification do
     resources :gamifications do
       resources :actions
       resources :rewards
     end
+  end
+=end
+
+  scope module: :gamification do
+    resources :gamifications
+  end
+
+  namespace :gamification do
+    resources :actions
+    resources :rewards
   end
 
   namespace :legislation do

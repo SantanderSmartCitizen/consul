@@ -1,6 +1,6 @@
 <h3 class="inline-block"><%= t("admin.gamifications.show.actions_title") %></h3>
 
-<%= link_to t("admin.gamification.actions.index.create"), new_admin_gamification_action_path(@gamification),
+<%= link_to t("admin.gamification.actions.index.create"), new_admin_gamification_action_path(:gamification_id => @gamification.id),
             class: "button float-right" %>
 
 <% if @gamification.actions.empty? %>
@@ -25,7 +25,7 @@
       <tr id="<%= dom_id(action) %>">
         <td>
           <strong>
-            <%= link_to action.key, admin_gamification_action_path(@gamification,action) %>
+            <%= link_to action.key, admin_gamification_action_path(action) %>
           </strong>
         </td>
 		<td>
@@ -38,10 +38,10 @@
 			<%= action.score %>
 		</td>
         <td>
-	        <%= link_to t("shared.edit"), edit_admin_gamification_action_path(@gamification,action),
+	        <%= link_to t("shared.edit"), edit_admin_gamification_action_path(action),
 	                                      class: "button hollow" %>
 
-	        <%= link_to t("shared.delete"), admin_gamification_action_path(@gamification,action),
+	        <%= link_to t("shared.delete"), admin_gamification_action_path(action),
 	                                        class: "button hollow alert",
 	                                        method: :delete %>
         </td>
