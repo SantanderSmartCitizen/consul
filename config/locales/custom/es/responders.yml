@@ -3,7 +3,11 @@ es:
     actions:
       create:
         forum: "Tema creado correctamente."
-        gamification: "Gamificación creada correctamente."
+        gamification: "Juego creado correctamente."
+        gamification_action: "Acción creada correctamente."
+        gamification_reward: "Recompensa creada correctamente."
       update:
         forum: "Tema actualizado correctamente."
-        gamification: "Gamificación actualizada correctamente."
+        gamification: "Juego actualizado correctamente."
+        gamification_action: "Acción actualizada correctamente."
+        gamification_reward: "Recompensa actualizada correctamente."

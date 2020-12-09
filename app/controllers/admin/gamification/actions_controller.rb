@@ -19,7 +19,7 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
 
     if @action.save
       redirect_to admin_gamification_path(@gamification),
-               notice: t("flash.actions.create.poll_question_answer")
+               notice: t("flash.actions.create.gamification_action")
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
 
   def update
     if @action.update(action_params)
-      redirect_to admin_gamification_path(@action.gamification), notice: t("flash.actions.save_changes.notice")
+      redirect_to admin_gamification_path(@action.gamification), notice: t("flash.actions.update.gamification_action")
     else
       render :edit
     end

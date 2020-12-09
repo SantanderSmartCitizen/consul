@@ -4,6 +4,7 @@ class CreateGamificationRewards < ActiveRecord::Migration[5.0]
       t.integer :minimum_score
       t.references :gamification, foreign_key: true
       t.boolean :active
+      t.boolean :request_to_administrators
 
       t.timestamps
     end
@@ -12,7 +13,6 @@ class CreateGamificationRewards < ActiveRecord::Migration[5.0]
       t.string     :locale
       t.string     :title
       t.text       :description
-      t.text       :reward
       t.timestamps
     end
 

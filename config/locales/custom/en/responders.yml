@@ -3,7 +3,11 @@ en:
     actions:
       create:
         forum: "Thread created successfully."
-        gamification: "Gamification created successfully."
+        gamification: "Game created successfully."
+        gamification_action: "Action created successfully."
+        gamification_reward: "Reward created successfully."
       update:
         forum: "Thread updated successfully."
-        gamification: "Gamification updated successfully."
+        gamification: "Game updated successfully."
+        gamification_action: "Action updated successfully."
+        gamification_reward: "Reward updated successfully."

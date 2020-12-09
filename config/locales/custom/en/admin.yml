@@ -32,7 +32,7 @@ en:
       legislation: Processes
       title_gamification: Gamification
       gamification: 
-        gamifications: Gamifications
+        gamifications: Games
         actions: Actions
         rewards: Rewards
         requested_rewards: Requested rewards
@@ -93,34 +93,36 @@ en:
         city_hall_proposals: City Hall Proposals
     gamifications:
       index:
-        table_title: Gamifications
-        create: Create gamification
+        table_title: Games
+        create: Create game
         ranking: See ranking
         key: Key
         title: Title
         description: Description
-        no_gamifications: There are no gamifications.
-        back: Go back to gamifications
+        no_gamifications: There are no games.
+        back: Go back to games
       new:
-        title: New gamification
-        submit_button: Create gamification
+        title: New game
+        submit_button: Create game
       edit:
-        title: Edit gamification
-        submit_button: Update gamification
+        title: Edit game
+        submit_button: Update game
       show:
-        header_title: "Gamification: "
+        header_title: "Game: "
         actions_tab: Actions
         rewards_tab: Rewards
         ranking_tab: Ranking
-        no_actions: "There are no actions assigned to this gamification."
+        no_actions: "There are no actions assigned to this game."
         actions_title: "List of actions"
+        no_rewards: "There are no rewards assigned to this game."
+        rewards_title: "List of rewards"
       flash:
-        action_added: "Action added to this gamification"
-        error_on_action_added: "Action could not be added to this gamification"
+        action_added: "Action added to this game"
+        error_on_action_added: "Action could not be added to this game"
       destroy:
-        alert: "This action will remove the gamification and all its associated actions."
-        success_notice: "Gamification deleted successfully"
-        unable_notice: "You cannot delete a gamification that has rewards"
+        alert: "This action will remove the game and all its associated actions."
+        success_notice: "Game deleted successfully"
+        unable_notice: "You cannot delete a game that has rewards"
       ranking:
         title: Ranking
     gamification:
@@ -132,16 +134,39 @@ en:
           title: Title
           description: Description
           score: Score
-          back: Go back to gamification
+          back: Go back to game
+        form:
+          gamification: Game
+          select_gamification: Select game
         new:
-          title: "Create action to gamification '%{gamification}'"
-          general_title: "Create gamification action"
+          title: "Create action to game '%{gamification}'"
+          general_title: "Create action"
         edit:
-          title: "Edit action to gamification '%{gamification}'"
-          general_title: "Edit gamification action"
+          title: "Edit action to game '%{gamification}'"
+          general_title: "Edit action"
         show:
           edit_action: Edit action
-
+      rewards:
+        index:
+          title: Rewards
+          create: Create reward
+          title: Title
+          description: Description
+          minimum_score: Minimum score
+          active: Active
+          request_to_administrators: Include in the reward a button to request the reward from administrators
+          back: Go back to game
+        form:
+          gamification: Game
+          select_gamification: Select game
+        new:
+          title: "Create reward to game '%{gamification}'"
+          general_title: "Create reward"
+        edit:
+          title: "Edit reward to game '%{gamification}'"
+          general_title: "Edit reward"
+        show:
+          edit_reward: Edit reward
 
 
       show:

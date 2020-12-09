@@ -7,9 +7,11 @@ class Gamification::Action < ApplicationRecord
   include Globalizable
 
 
+  validates :gamification_id, presence: true
+  validates :key, presence: true, uniqueness: true
   validates_translation :title, presence: true, length: { in: 4..Gamification::Action.title_max_length }
   validates_translation :description, presence: true, length: { in: 10..Gamification::Action.description_max_length }
-  validates :key, presence: true, uniqueness: true
+  validates :score, presence: true, length: { in: 1..6 }
 
   belongs_to :gamification
   

@@ -666,7 +666,6 @@ ActiveRecord::Schema.define(version: 20201109204301) do
     t.string   "locale"
     t.string   "title"
     t.text     "description"
-    t.text     "reward"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["gamification_reward_id", "locale"], name: "idx_gamification_reward_translations_on_reward_id_and_locale", unique: true, using: :btree
@@ -677,8 +676,9 @@ ActiveRecord::Schema.define(version: 20201109204301) do
     t.integer  "minimum_score"
     t.integer  "gamification_id"
     t.boolean  "active"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "request_to_administrators"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["gamification_id"], name: "index_gamification_rewards_on_gamification_id", using: :btree
   end
 

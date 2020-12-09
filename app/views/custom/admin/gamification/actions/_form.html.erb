@@ -15,7 +15,8 @@
           <% select_options = Gamification.all.map { |p| [p.key, p.id] } %>
           <%= f.select :gamification_id,
                         options_for_select(select_options),
-                        prompt: t("admin.actions.index.select_gamification") %>
+                        prompt: t("admin.gamification.actions.form.select_gamification"),
+                        label: t("admin.gamification.actions.form.gamification") %>
         </div>
       <% end %>
     </div>
@@ -25,7 +26,6 @@
     <div class="clear">
       <div class="small-12 medium-6 column">
         <%= f.text_field :key,
-                          value: @action.key,
                           label: t("admin.gamification.actions.index.key") %>
       </div>
     </div>
@@ -45,8 +45,8 @@
 
   <div class="row">
     <div class="small-12 medium-6 column">
-      <%= f.text_field :score, maxlength: 6,
-                        value: @action.score,
+
+      <%= f.number_field :score, step: 1, min: 1,
                         label: t("admin.gamification.actions.index.score") %>
     </div>
   </div>

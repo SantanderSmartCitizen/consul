@@ -1,0 +1,31 @@
+<%= back_link_to admin_gamification_path(@reward.gamification, :tab => "rewards"), t("admin.gamification.rewards.index.back") %>
+
+<%= link_to t("admin.gamification.rewards.show.edit_reward"), edit_admin_gamification_reward_path(@reward),
+            class: "button hollow float-right" %>
+
+<div class="clear"></div>
+
+<div class="small-12 medium-6">
+  <div class="callout highlight">
+    <p>
+      <strong><%= t("admin.gamification.rewards.index.title") %></strong>
+      <br>
+      <%= @reward.title %>
+    </p>
+    <p>
+      <strong><%= t("admin.gamification.rewards.index.description") %></strong>
+      <br>
+      <%= @reward.description %>
+    </p>
+    <p>
+      <strong><%= t("admin.gamification.rewards.index.minimum_score") %></strong>
+      <br>
+      <%= @reward.minimum_score %>
+    </p>
+    <p>
+      <strong><%= t("admin.gamification.rewards.index.active") %></strong>
+      <br>
+      <%= active_human_readable(@reward.active) %>
+    </p>
+  </div>
+</div>
