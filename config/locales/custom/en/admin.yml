@@ -134,6 +134,7 @@ en:
           title: Title
           description: Description
           score: Score
+          gamification_key: Game
           back: Go back to game
         form:
           gamification: Game
@@ -155,6 +156,7 @@ en:
           minimum_score: Minimum score
           active: Active
           request_to_administrators: Include in the reward a button to request the reward from administrators
+          gamification_key: Game
           back: Go back to game
         form:
           gamification: Game

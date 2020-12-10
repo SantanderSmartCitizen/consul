@@ -170,6 +170,7 @@ es:
           title: Título
           description: Descripción
           score: Puntuación
+          gamification_key: Juego
           back: Volver a juego
         form:
           gamification: Juego
@@ -193,6 +194,7 @@ es:
           minimum_score: Puntuación mínima
           active: Activa
           request_to_administrators: Incluir en la recompensa un botón para solicitar la recompensa a los administradores
+          gamification_key: Juego
           back: Volver a juego
         form:
           gamification: Juego

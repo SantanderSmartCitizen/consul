@@ -7,6 +7,7 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   load_and_authorize_resource :action, class: "Gamification::Action"
 
   def index
+    @actions = ::Gamification::Action.all
   end
 
   def new
@@ -18,8 +19,12 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
     @gamification = @action.gamification
 
     if @action.save
-      redirect_to admin_gamification_path(@gamification),
-               notice: t("flash.actions.create.gamification_action")
+      if params[:gamification_action][:return_to] == "gamification"
+        return_path = admin_gamification_path(@gamification)
+      else
+        return_path = admin_gamification_actions_path()
+      end
+      redirect_to return_path, notice: t("flash.actions.create.gamification_action")
     else
       render :new
     end
@@ -33,7 +38,12 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
 
   def update
     if @action.update(action_params)
-      redirect_to admin_gamification_path(@action.gamification), notice: t("flash.actions.update.gamification_action")
+      if params[:gamification_action][:return_to] == "gamification"
+        return_path = admin_gamification_path(@action.gamification)
+      else
+        return_path = admin_gamification_actions_path()
+      end
+      redirect_to return_path, notice: t("flash.actions.update.gamification_action")
     else
       render :edit
     end

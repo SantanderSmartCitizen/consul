@@ -1,6 +1,6 @@
 <h3 class="inline-block"><%= t("admin.gamifications.show.rewards_title") %></h3>
 
-<%= link_to t("admin.gamification.rewards.index.create"), new_admin_gamification_reward_path(:gamification_id => @gamification.id),
+<%= link_to t("admin.gamification.rewards.index.create"), new_admin_gamification_reward_path(:gamification_id => @gamification.id, :return_to => "gamification"),
             class: "button float-right" %>
 
 <% if @gamification.rewards.empty? %>
@@ -25,7 +25,7 @@
       <tr id="<%= dom_id(reward) %>">
         <td>
           <strong>
-            <%= link_to reward.title, admin_gamification_reward_path(reward) %>
+            <%= reward.title %>
           </strong>
         </td>
     		<td>
@@ -38,7 +38,7 @@
           <%= active_human_readable(reward.active) %>
         </td>
         <td>
-	        <%= link_to t("shared.edit"), edit_admin_gamification_reward_path(reward),
+	        <%= link_to t("shared.edit"), edit_admin_gamification_reward_path(reward, :return_to => "gamification"),
 	                                      class: "button hollow" %>
 
 	        <%= link_to t("shared.delete"), admin_gamification_reward_path(reward),

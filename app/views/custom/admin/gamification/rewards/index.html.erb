@@ -1,1 +1,53 @@
 <h2 class="inline-block"><%= t("admin.gamification.rewards.index.table_title") %></h2>
+
+<%= link_to t("admin.gamification.rewards.index.create"), 
+	new_admin_gamification_reward_path(), class: "button float-right" %>
+
+<% if @rewards.empty? %>
+  
+  <div class="callout primary margin-top">
+    <%= t("admin.gamifications.show.no_rewards") %>
+  </div>
+
+<% else %>
+  
+  <table class="fixed margin">
+    <thead>
+      <tr>
+	      <th><%= t("admin.gamification.rewards.index.title") %></th>
+	      <th><%= t("admin.gamification.rewards.index.gamification_key") %></th>
+	      <th class="text-center"><%= t("admin.gamification.rewards.index.minimum_score") %></th>
+          <th class="text-center"><%= t("admin.gamification.rewards.index.active") %></th>
+	      <th><%= t("admin.actions.actions") %></th>
+      </tr>
+    </thead>
+    <% @rewards.each do |reward| %>
+      <tr id="<%= dom_id(reward) %>">
+        <td>
+          <strong>
+            <%= reward.title %>
+          </strong>
+        </td>
+		<td>
+			<%= reward.gamification.key %>
+		</td>
+		<td class="text-center">
+			<%= reward.minimum_score %>
+		</td>
+        <td class="text-center">
+          <%= active_human_readable(reward.active) %>
+        </td>
+        <td>
+	        <%= link_to t("shared.edit"), edit_admin_gamification_reward_path(reward),
+	                                      class: "button hollow" %>
+
+	        <%= link_to t("shared.delete"), admin_gamification_reward_path(reward),
+	                                        class: "button hollow alert",
+	                                        method: :delete %>
+        </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+<% end %>

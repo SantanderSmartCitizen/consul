@@ -7,6 +7,7 @@ class Admin::Gamification::RewardsController < Admin::Gamification::BaseControll
   load_and_authorize_resource :reward, class: "Gamification::Reward"
 
   def index
+    @rewards = ::Gamification::Reward.all
   end
 
   def new
@@ -22,8 +23,12 @@ class Admin::Gamification::RewardsController < Admin::Gamification::BaseControll
     @gamification = @reward.gamification
 
     if @reward.save
-      redirect_to admin_gamification_path(@gamification, :tab => "rewards"),
-        notice: t("flash.actions.create.gamification_reward")
+      if params[:gamification_reward][:return_to] == "gamification"
+        return_path = admin_gamification_path(@gamification, :tab => "rewards")
+      else
+        return_path = admin_gamification_rewards_path()
+      end
+      redirect_to return_path, notice: t("flash.actions.create.gamification_reward")
     else
       render :new
     end
@@ -37,8 +42,12 @@ class Admin::Gamification::RewardsController < Admin::Gamification::BaseControll
 
   def update
     if @reward.update(reward_params)
-      redirect_to admin_gamification_path(@reward.gamification, :tab => "rewards"), 
-        notice: t("flash.actions.update.gamification_reward")
+      if params[:gamification_reward][:return_to] == "gamification"
+        return_path = admin_gamification_path(@reward.gamification, :tab => "rewards")
+      else
+        return_path = admin_gamification_rewards_path()
+      end
+      redirect_to return_path, notice: t("flash.actions.update.gamification_reward")
     else
       render :edit
     end
