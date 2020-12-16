@@ -227,6 +227,7 @@ namespace :admin do
   namespace :gamification do
     resources :actions
     resources :rewards
+    resources :requested_rewards
   end
 
   namespace :legislation do

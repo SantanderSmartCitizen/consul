@@ -166,15 +166,17 @@ es:
         index:
           table_title: Acciones
           create: Crear acción
+          back: Volver a juego
+        form:
+          gamification: Juego
           key: Clave
           title: Título
           description: Descripción
           score: Puntuación
-          gamification_key: Juego
-          back: Volver a juego
-        form:
-          gamification: Juego
+          process_type: Tipo de proceso participativo
+          operation: Operación
           select_gamification: Selecciona un juego
+          select_process_type: ...
         new:
           title: "Crear acción para el juego '%{gamification}'"
           general_title: "Crear acción"
@@ -185,19 +187,25 @@ es:
           submit_button: Actualizar acción
         show:
           edit_action: Editar acción
+        process_types:
+          debate: Debate
+          proposal: Propuesta
+          poll: Encuesta/Consulta
+          budget_investment: Proyecto de Gasto
+          process: Proceso
+          forum: Foro
       rewards:
         index:
           table_title: Recompensas
           create: Crear recompensa
+          back: Volver a juego
+        form:
+          gamification: Juego
           title: Título
           description: Descripción
           minimum_score: Puntuación mínima
           active: Activa
           request_to_administrators: Incluir en la recompensa un botón para solicitar la recompensa a los administradores
-          gamification_key: Juego
-          back: Volver a juego
-        form:
-          gamification: Juego
           select_gamification: Selecciona un juego
         new:
           title: "Crear recompensa para el juego '%{gamification}'"
@@ -209,7 +217,32 @@ es:
           submit_button: Actualizar recompensa
         show:
           edit_reward: Editar recompensa
-
+      requested_rewards:
+        index:
+          description: "Las recompensas pueden incluir un botón para solicitarlas a los administradores. A continuación se muestran las solicitudes de los usuarios."
+          title: Recompensas solicitadas
+          solve: Resolver
+          no_records: No hay recompensas solicitadas
+          request_date: Fecha solicitud
+          user: Usuario
+          reward: Recompensa solicitada
+          administrator: Administrador
+          solve_date: Fecha de resolución
+          filter: Filtro
+          filters:
+            pending: Pendientes
+            done: Resueltas
+        edit:
+          back: Volver a la lista de solicitudes pendientes
+          solving: Resolver solicitud pendiente
+        form:
+          solve: Marcar como resuelta
+          send: Enviar
+          request_date: Fecha solicitud
+          user: Usuario
+          reward: Recompensa solicitada
+        update:
+          success: La solicitud ha sido marcada como resuelta
 
       show:
         gamification_title: Gamificación

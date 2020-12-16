@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201109204301) do
+ActiveRecord::Schema.define(version: 20201214125314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -652,13 +652,37 @@ ActiveRecord::Schema.define(version: 20201109204301) do
   end
 
   create_table "gamification_actions", force: :cascade do |t|
-    t.string   "key"
+    t.string   "key",             null: false
     t.integer  "score"
-    t.integer  "gamification_id"
+    t.integer  "gamification_id", null: false
+    t.string   "process_type"
+    t.string   "operation"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["gamification_id", "process_type", "operation"], name: "idx_gamification_internal_actions", unique: true, where: "((process_type IS NOT NULL) AND ((process_type)::text <> ''::text) AND (operation IS NOT NULL) AND ((operation)::text <> ''::text))", using: :btree
     t.index ["gamification_id"], name: "index_gamification_actions_on_gamification_id", using: :btree
     t.index ["key", "gamification_id"], name: "index_gamification_actions_on_key_and_gamification_id", unique: true, using: :btree
+  end
+
+  create_table "gamification_additional_scores", force: :cascade do |t|
+    t.integer  "gamification_action_id", null: false
+    t.integer  "process_id",             null: false
+    t.integer  "additional_score",       null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_action_id"], name: "index_gamification_additional_scores_on_gamification_action_id", using: :btree
+  end
+
+  create_table "gamification_requested_rewards", force: :cascade do |t|
+    t.integer  "gamification_reward_id", null: false
+    t.integer  "user_id",                null: false
+    t.integer  "administrator_id"
+    t.datetime "executed_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["administrator_id"], name: "index_gamification_requested_rewards_on_administrator_id", using: :btree
+    t.index ["gamification_reward_id"], name: "index_gamification_requested_rewards_on_gamification_reward_id", using: :btree
+    t.index ["user_id"], name: "index_gamification_requested_rewards_on_user_id", using: :btree
   end
 
   create_table "gamification_reward_translations", force: :cascade do |t|
@@ -674,7 +698,7 @@ ActiveRecord::Schema.define(version: 20201109204301) do
 
   create_table "gamification_rewards", force: :cascade do |t|
     t.integer  "minimum_score"
-    t.integer  "gamification_id"
+    t.integer  "gamification_id",           null: false
     t.boolean  "active"
     t.boolean  "request_to_administrators"
     t.datetime "created_at",                null: false
@@ -693,8 +717,20 @@ ActiveRecord::Schema.define(version: 20201109204301) do
     t.index ["gamification_id"], name: "index_gamification_translations_on_gamification_id", using: :btree
   end
 
+  create_table "gamification_user_actions", force: :cascade do |t|
+    t.integer  "user_id",                null: false
+    t.integer  "gamification_action_id", null: false
+    t.integer  "action_score",           null: false
+    t.integer  "process_id"
+    t.integer  "additional_score"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_action_id"], name: "index_gamification_user_actions_on_gamification_action_id", using: :btree
+    t.index ["user_id"], name: "index_gamification_user_actions_on_user_id", using: :btree
+  end
+
   create_table "gamifications", force: :cascade do |t|
-    t.string   "key"
+    t.string   "key",                        null: false
     t.boolean  "locked",     default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
@@ -1730,7 +1766,13 @@ ActiveRecord::Schema.define(version: 20201109204301) do
   add_foreign_key "flags", "users"
   add_foreign_key "follows", "users"
   add_foreign_key "gamification_actions", "gamifications"
+  add_foreign_key "gamification_additional_scores", "gamification_actions"
+  add_foreign_key "gamification_requested_rewards", "gamification_rewards"
+  add_foreign_key "gamification_requested_rewards", "users"
+  add_foreign_key "gamification_requested_rewards", "users", column: "administrator_id"
   add_foreign_key "gamification_rewards", "gamifications"
+  add_foreign_key "gamification_user_actions", "gamification_actions"
+  add_foreign_key "gamification_user_actions", "users"
   add_foreign_key "geozones_polls", "geozones"
   add_foreign_key "geozones_polls", "polls"
   add_foreign_key "identities", "users"

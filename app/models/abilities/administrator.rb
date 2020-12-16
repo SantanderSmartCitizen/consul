@@ -120,6 +120,7 @@ module Abilities
       can :destroy, Gamification::Action
       can [:read, :create, :update], Gamification::Reward
       can :destroy, Gamification::Reward
+      can [:read, :update], Gamification::RequestedReward
     end
   end
 end

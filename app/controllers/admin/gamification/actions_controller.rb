@@ -55,7 +55,7 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   private
 
     def action_params
-      attributes = [:gamification_id, :key, :score]
+      attributes = [:gamification_id, :key, :process_type, :operation, :score]
       params.require(:gamification_action).permit(
         *attributes, translation_params(Gamification::Action)
       )

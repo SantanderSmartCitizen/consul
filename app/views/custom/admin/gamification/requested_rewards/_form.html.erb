@@ -1,0 +1,42 @@
+<div class="small-12 column">
+  <table>
+    <thead>
+      <tr>
+        <th class="text-center"><%= t("admin.gamification.requested_rewards.form.request_date") %></th>
+        <th><%= t("admin.gamification.requested_rewards.form.user") %></th>
+        <th><%= t("admin.gamification.requested_rewards.form.reward") %></th>
+        <th class="text-right"><%= t("admin.actions.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-center">
+          <%= I18n.l requested_reward.created_at, :format => :datetime %>
+        </td>
+        <td>
+          <%= link_to requested_reward.user.name,
+                      user_path(requested_reward.user.id), 
+                      target: "_blank" %>
+        </td>
+        <td>
+          <%= link_to requested_reward.gamification_reward.title, 
+                      admin_gamification_reward_path(requested_reward.gamification_reward.id),
+                      target: "_blank"%>
+        </td>
+        <td class="text-right">
+
+          <% if (requested_reward.user != current_user) && requested_reward.user.email_on_direct_message? %>
+            <%= link_to t("users.show.send_private_message"),
+                        new_user_direct_message_path(requested_reward.user),
+                        class: "button hollow mb-2" %>
+          <% end %>
+
+          <%= form_for requested_reward, url: { action: "update" } do |f| %>
+            <%= f.submit(value: t("admin.gamification.requested_rewards.form.solve"),
+                         class: "button") %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

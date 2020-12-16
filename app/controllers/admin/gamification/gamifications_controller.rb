@@ -31,7 +31,8 @@ class Admin::Gamification::GamificationsController < Admin::Gamification::BaseCo
 
   def update 	
     if @gamification.update(gamification_params)
-      redirect_to [:admin, @gamification], notice: t("flash.actions.update.gamification")
+      notice = t("flash.actions.update.gamification")
+      redirect_to [:admin, @gamification], notice: notice
     else
       render :edit
     end

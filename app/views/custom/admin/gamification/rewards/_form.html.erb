@@ -42,18 +42,18 @@
     <div class="small-12 medium-6 column">
 
       <%= f.number_field :minimum_score, step: 1, min: 1, 
-        label: t("admin.gamification.rewards.index.minimum_score") %>
+        label: t("admin.gamification.rewards.form.minimum_score") %>
     </div>
   </div>
 
   <div class="small-12 column margin-top">
     <%= f.check_box :active,
-      label: t("admin.gamification.rewards.index.active") %>
+      label: t("admin.gamification.rewards.form.active") %>
   </div>
 
   <div class="small-12 column">
     <%= f.check_box :request_to_administrators,
-      label: t("admin.gamification.rewards.index.request_to_administrators") %>
+      label: t("admin.gamification.rewards.form.request_to_administrators") %>
   </div>
 
   <% if feature?(:allow_attached_documents) %>

@@ -2,7 +2,7 @@ class CreateGamificationRewards < ActiveRecord::Migration[5.0]
   def change
     create_table :gamification_rewards do |t|
       t.integer :minimum_score
-      t.references :gamification, foreign_key: true
+      t.references :gamification, foreign_key: true, null: false, index: true
       t.boolean :active
       t.boolean :request_to_administrators
 

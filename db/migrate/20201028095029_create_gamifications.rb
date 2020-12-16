@@ -1,7 +1,7 @@
 class CreateGamifications < ActiveRecord::Migration[5.0]
   def change
     create_table :gamifications do |t|
-   	  t.string :key
+   	  t.string :key, null: false
       t.boolean :locked, default: false
       t.timestamps
     end

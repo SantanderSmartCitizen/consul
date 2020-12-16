@@ -247,7 +247,10 @@
           <%= link_to t("admin.menu.gamification.rewards"), admin_gamification_rewards_path %>
         </li>
 
-        <!-- Añadir requested_rewards -->
+        <li <%= "class=is-active" if params[:controller] == "admin/gamification/requested_rewards" %>>
+          <%= link_to t("admin.menu.gamification.requested_rewards"), admin_gamification_requested_rewards_path %>
+        </li>
+        
         <!-- Añadir ranking -->
 
       </ul>

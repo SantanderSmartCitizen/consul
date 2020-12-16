@@ -30,8 +30,21 @@
     <div class="clear">
       <div class="small-12 medium-6 column">
         <%= f.text_field :key,
-                          label: t("admin.gamification.actions.index.key") %>
+                          label: t("admin.gamification.actions.form.key") %>
       </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 column">
+      <%= f.select :process_type,
+                    gamification_action_process_types,
+                    label: t("admin.gamification.actions.form.process_type"),
+                    include_blank: t("admin.gamification.actions.form.select_process_type") %>
+    </div>
+    <div class="small-12 medium-6 column">
+        <%= f.text_field :operation,
+                          label: t("admin.gamification.actions.form.operation") %>
     </div>
   </div>
 
@@ -51,7 +64,7 @@
     <div class="small-12 medium-6 column">
 
       <%= f.number_field :score, step: 1, min: 1,
-                        label: t("admin.gamification.actions.index.score") %>
+                        label: t("admin.gamification.actions.form.score") %>
     </div>
   </div>
 
