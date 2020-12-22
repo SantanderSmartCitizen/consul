@@ -11,13 +11,13 @@
 
 <% else %>
   
-  <table class="fixed margin">
+  <table class="margin">
     <thead>
       <tr>
 	      <th><%= t("admin.gamification.actions.form.key") %></th>
 	      <th><%= t("admin.gamification.actions.form.title") %></th>
 	      <!-- <th><%= t("admin.gamification.actions.form.description") %></th> -->
-	      <th class="text-center"><%= t("admin.gamification.actions.form.score") %></th>
+	      <th class="text-right"><%= t("admin.gamification.actions.form.score") %></th>
 	      <th><%= t("admin.actions.actions") %></th>
       </tr>
     </thead>
@@ -28,22 +28,25 @@
             <%= action.key %>
           </strong>
         </td>
-		<td>
-			<%= action.title %>
-		</td>
-<!-- 		<td>
-			<%= action.description %>
-		</td> -->
-		<td class="text-center">
-			<%= action.score %>
-		</td>
+    		<td>
+    			<%= action.title %>
+    		</td>
+<!-- 		
         <td>
-	        <%= link_to t("shared.edit"), edit_admin_gamification_action_path(action, :return_to => "gamification"),
-	                                      class: "button hollow" %>
+          <%= action.description %>
+        </td>
+-->
+    		<td class="text-right">
+    			<%= action.score %>
+    		</td>
+        <td>
+	        <%= link_to t("shared.edit"), edit_admin_gamification_action_path(action, :return_to => "gamification"), class: "button hollow" %>
 
-	        <%= link_to t("shared.delete"), admin_gamification_action_path(action),
-	                                        class: "button hollow alert",
-	                                        method: :delete %>
+	        <%= link_to t("shared.delete"), admin_gamification_action_path(action), 
+            class: "button hollow alert", method: :delete %>
+
+          <%= link_to t("admin.actions.configure"), admin_gamification_action_path(action),
+            class: "button hollow " %>
         </td>
       </tr>
 

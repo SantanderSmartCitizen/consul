@@ -11,13 +11,13 @@
 
 <% else %>
   
-  <table class="fixed margin">
+  <table>
     <thead>
       <tr>
 	      <th><%= t("admin.gamification.rewards.form.title") %></th>
 	      <th><%= t("admin.gamification.rewards.form.gamification") %></th>
-	      <th class="text-center"><%= t("admin.gamification.rewards.form.minimum_score") %></th>
-          <th class="text-center"><%= t("admin.gamification.rewards.form.active") %></th>
+        <th class="text-center"><%= t("admin.gamification.rewards.form.active") %></th>
+        <th class="text-right"><%= t("admin.gamification.rewards.form.minimum_score") %></th>
 	      <th><%= t("admin.actions.actions") %></th>
       </tr>
     </thead>
@@ -28,14 +28,14 @@
             <%= reward.title %>
           </strong>
         </td>
-		<td>
-			<%= reward.gamification.key %>
-		</td>
-		<td class="text-center">
-			<%= reward.minimum_score %>
-		</td>
+    		<td>
+    			<%= reward.gamification.key %>
+    		</td>
         <td class="text-center">
           <%= active_human_readable(reward.active) %>
+        </td>
+        <td class="text-right">
+          <%= reward.minimum_score %>
         </td>
         <td>
 	        <%= link_to t("shared.edit"), edit_admin_gamification_reward_path(reward),

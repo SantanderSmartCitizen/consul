@@ -1,0 +1,33 @@
+<h3 class="inline-block"><%= t("admin.gamification.actions.show.debates_title") %></h3>
+
+<!-- new_admin_gamification_action_debate_path(action_id: @action.id) -->
+<%= link_to t("admin.gamification.actions.show.debate_create"), class: "button float-right" %>
+
+<% if @additional_scores.any? %>
+
+  <table>
+    <thead>
+      <th class="text-center"><%= t("admin.gamification.actions.show.id") %></th>
+      <!-- <th><%= t("admin.gamification.actions.show.title") %></th> -->
+      <!-- <th><%= t("admin.gamification.actions.show.author") %></th> -->
+      <th><%= t("admin.gamification.actions.show.additional_score") %></th>
+    </thead>
+    <tbody>
+      <% @additional_scores.each do |debate| %>
+        <tr id="<%= dom_id(debate) %>" class="debates">
+          <td class="text-center"><%= debate.process_id %></td>
+          <!-- <td><%= link_to debate.title, admin_debate_path(debate.id) %></td> -->
+          <!-- <td><%= debate.author.username %></td> -->
+          <td><%= debate.additional_score %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @additional_scores %>
+
+<% else %>
+  <div class="callout primary margin">
+    <%= t("admin.gamification.actions.show.no_debates") %>
+  </div>
+<% end %>

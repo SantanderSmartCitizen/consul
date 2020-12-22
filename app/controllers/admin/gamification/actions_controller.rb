@@ -31,6 +31,9 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   end
 
   def show
+
+    @additional_scores = ::Gamification::AdditionalScore.find_by(gamification_action: @action)
+
   end
 
   def edit
