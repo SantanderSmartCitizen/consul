@@ -15,7 +15,7 @@
       <% elsif @reward.gamification.present? %>
         <%= f.hidden_field :gamification_id, value: @reward.gamification.id %>
       <% else %>
-        <div class="small-12 medium-6 large-4 column">
+        <div class="small-12 medium-6 large-4 column required">
           <% select_options = Gamification.all.map { |p| [p.key, p.id] } %>
           <%= f.select :gamification_id,
                         options_for_select(select_options),
@@ -28,7 +28,7 @@
 
   <div class="row">
     <%= f.translatable_fields do |translations_form| %>
-      <div class="small-12 medium-6 column">
+      <div class="small-12 medium-6 column required">
         <%= translations_form.text_field :title %>
       </div>
 
@@ -39,8 +39,7 @@
   </div>
 
   <div class="row">
-    <div class="small-12 medium-6 column">
-
+    <div class="small-12 medium-6 column required">
       <%= f.number_field :minimum_score, step: 1, min: 1, 
         label: t("admin.gamification.rewards.form.minimum_score") %>
     </div>

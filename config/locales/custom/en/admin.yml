@@ -141,6 +141,7 @@ en:
           operation: Operation
           select_gamification: Select game
           select_process_type: ...
+          select_operation: ...
         new:
           title: "Create action to game '%{gamification}'"
           general_title: "Create action"
@@ -156,6 +157,15 @@ en:
           budget_investment: Budget investment
           process: Process
           forum: Forum
+        operations:
+          answer_question: Answer question
+          create: Create
+          create_comment: Comment
+          create_debate_comment: Comment on debate
+          create_proposal: Create proposal
+          create_proposal_comment: Comment on proposal
+          vote: Vote
+          vote_proposal: Vote
       rewards:
         index:
           title: Rewards

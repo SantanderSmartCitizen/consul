@@ -2,7 +2,14 @@ class Gamification::Action < ApplicationRecord
   belongs_to :gamification
   has_many :gamification_additional_scores, inverse_of: :gamification_action, dependent: :destroy, class_name: "Gamification::AdditionalScore"
 
-  PROCESS_TYPES = %w[debate proposal poll budget_investment process forum].freeze
+  PROCESS_TYPES = {
+    'debate' => [ "create", "create_comment", "vote" ],
+    'proposal' => [ "create", "create_comment", "vote_proposal" ],
+    'poll' => [ "answer_question", "create_comment" ],
+    'budget_investment' => [ "create" ],
+    'process' => [ "create_comment", "create_debate_comment", "create_proposal", "create_proposal_comment", "vote_proposal" ],
+    'forum' => [ "create", "create_comment" ]
+  }.freeze
 
   include Measurable
 

@@ -11,7 +11,6 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   end
 
   def new
-    @gamifications = Gamification.all
   end
 
   def create
@@ -53,6 +52,22 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   end
 
   def destroy
+  end
+
+  def update_operations
+    process_type = params[:process_type]
+    if process_type.present?
+        @operations = helpers.get_operation_select_options(process_type)
+    else
+        @operations = Array(nil)
+    end
+    if request.xhr?
+        respond_to do |format|
+            format.json {
+                render json: {operations: @operations}
+            }
+        end
+    end
   end
 
   private

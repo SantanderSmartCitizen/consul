@@ -666,11 +666,14 @@ ActiveRecord::Schema.define(version: 20201214125314) do
 
   create_table "gamification_additional_scores", force: :cascade do |t|
     t.integer  "gamification_action_id", null: false
+    t.string   "process_type",           null: false
     t.integer  "process_id",             null: false
     t.integer  "additional_score",       null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["gamification_action_id", "process_type", "process_id"], name: "idx_gamification_additional_scores_on_action_and_process", unique: true, using: :btree
     t.index ["gamification_action_id"], name: "index_gamification_additional_scores_on_gamification_action_id", using: :btree
+    t.index ["process_type", "process_id"], name: "idx_gamification_additional_scores_on_process_type_process_id", using: :btree
   end
 
   create_table "gamification_requested_rewards", force: :cascade do |t|
@@ -720,12 +723,12 @@ ActiveRecord::Schema.define(version: 20201214125314) do
   create_table "gamification_user_actions", force: :cascade do |t|
     t.integer  "user_id",                null: false
     t.integer  "gamification_action_id", null: false
-    t.integer  "action_score",           null: false
+    t.string   "process_type"
     t.integer  "process_id"
-    t.integer  "additional_score"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["gamification_action_id"], name: "index_gamification_user_actions_on_gamification_action_id", using: :btree
+    t.index ["process_type", "process_id"], name: "idx_gamification_user_actions_on_process_type_process_id", using: :btree
     t.index ["user_id"], name: "index_gamification_user_actions_on_user_id", using: :btree
   end
 

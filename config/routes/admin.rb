@@ -211,15 +211,6 @@ namespace :admin do
     get :polls, on: :collection
   end
 
-=begin
-  scope module: :gamification do
-    resources :gamifications do
-      resources :actions
-      resources :rewards
-    end
-  end
-=end
-
   scope module: :gamification do
     resources :gamifications
   end
@@ -228,6 +219,7 @@ namespace :admin do
     resources :actions
     resources :rewards
     resources :requested_rewards
+    get "update_operations", to: "actions#update_operations", as: "update_operations"
   end
 
   namespace :legislation do
