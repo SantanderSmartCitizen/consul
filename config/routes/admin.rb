@@ -216,10 +216,13 @@ namespace :admin do
   end
 
   namespace :gamification do
-    resources :actions
+    resources :actions, shallow: true do
+      get :search
+      resources :additional_scores, except: [:index, :show], controller: "actions/additional_scores"
+    end
+    get "update_operations", to: "actions#update_operations", as: "update_operations"
     resources :rewards
     resources :requested_rewards
-    get "update_operations", to: "actions#update_operations", as: "update_operations"
   end
 
   namespace :legislation do

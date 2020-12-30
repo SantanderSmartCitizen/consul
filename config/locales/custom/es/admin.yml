@@ -20,7 +20,7 @@ es:
       index:
         id: ID
         author: Autor
-        title: Foro
+        title: Foros
         no_forums: No hay entradas en el foro.
     hidden_forums:
       index:
@@ -37,9 +37,14 @@ es:
           title: Procesos
         new:
           title: Crear nuevo proceso
+    shared:
+      forum_search:
+        button: Buscar
+        placeholder: Buscar temas de foro por título o descripción
     menu:
       budgets: Presupuestos
       polls: Encuestas/Consultas
+      forums: Foros
       site_customization:
         information_texts_menu:
           polls: "Encuestas/Consultas"
@@ -163,6 +168,7 @@ es:
         title: Clasificación
     gamification:
       actions:
+        back: Volver
         index:
           table_title: Acciones
           create: Crear acción
@@ -176,8 +182,6 @@ es:
           process_type: Tipo de proceso participativo
           operation: Operación
           select_gamification: Selecciona un juego
-          select_process_type: ...
-          select_operation: ...
         new:
           title: "Crear acción para el juego '%{gamification}'"
           general_title: "Crear acción"
@@ -188,6 +192,35 @@ es:
           submit_button: Actualizar acción
         show:
           edit_action: Editar acción
+          select: Seleccionar
+          cannot_be_configured: Esta acción no puede configurarse.
+          debates:
+            title: Debates con puntuación adicional
+            add: Añadir debate
+            no_data: No hay debates asociados a esta acción.
+          proposals:
+            title: Propuestas con puntuación adicional
+            add: Añadir propuesta
+            no_data: No hay propuestas asociadas a esta acción.
+          polls:
+            title: Encuestas/Consultas con puntuación adicional
+            add: Añadir encuesta/consulta
+            no_data: No hay encuestas/consultas asociadas a esta acción.
+          processes:
+            title: Procesos con puntuación adicional
+            add: Añadir proceso
+            no_data: No hay procesos asociados a esta acción.
+          forums:
+            title: Temas de foro con puntuación adicional
+            add: Añadir tema
+            no_data: No hay temas de foro asociados a esta acción.
+          columns:
+            id: ID
+            title: Título
+            author: Autor
+            start_date: Fecha de apertura
+            closing_date: Fecha de cierre
+            additional_score: Puntuación adicional
         process_types:
           debate: Debate
           proposal: Propuesta
@@ -198,12 +231,25 @@ es:
         operations:
           answer_question: Responder pregunta
           create: Crear
-          create_comment: Comentar
-          create_debate_comment: Comentar en debate
+          comment: Comentar
+          comment_debate: Comentar en debate
           create_proposal: Crear propuesta
-          create_proposal_comment: Comentar en propuesta
+          comment_proposal: Comentar en propuesta
           vote: Votar
           vote_proposal: Apoyar
+        additional_score:
+          new:
+            title: Nueva puntuación adicional
+            cannot_be_configured: Este proceso ya tiene puntuación adicional.
+          edit:
+            title: Editar puntuación adicional
+          destroy:
+            alert: "Esta acción eliminará la puntuación adicional."
+            success_notice: "Puntuación adicional eliminada correctamente"
+          submit_button: Guardar
+          flash: 
+            created: Puntuación adicional creada correctamente
+            updated: Puntuación adicional actualizada correctamente
       rewards:
         index:
           table_title: Recompensas

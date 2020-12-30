@@ -1,74 +1,31 @@
 <%= back_link_to admin_gamification_path(@action.gamification), t("admin.gamification.actions.index.back") %>
 
-<%= link_to t("admin.gamification.actions.show.edit_action"), edit_admin_gamification_action_path(@action),
+<%= link_to t("admin.gamification.actions.show.edit_action"),
+            edit_admin_gamification_action_path(@action),
             class: "button hollow float-right" %>
 
-<div class="clear"></div>
+<%= render "admin/gamification/actions/show" %>
 
-<div class="row callout highlight">
-  <div class="small-12 medium-12 large-6 column">
-    <p>
-      <strong><%= t("admin.gamification.actions.form.gamification") %></strong>
-      <br>
-      <%= @action.gamification.key %>
-    </p>
-    <p>
-      <strong><%= t("admin.gamification.actions.form.key") %></strong>
-      <br>
-      <%= @action.key %>
-    </p>
-    <% if @action.process_type.present? %>
-      <p>
-        <strong><%= t("admin.gamification.actions.form.process_type") %></strong>
-        <br>
-        <%= t("admin.gamification.actions.process_types.#{@action.process_type}") %>
-      </p>
-    <% end %>
-    <% if @action.operation.present? %>
-      <p>
-        <strong><%= t("admin.gamification.actions.form.operation") %></strong>
-        <br>
-        <%= @action.operation %>
-      </p>
-    <% end %>
-  </div>
+<% if @action.process_type.present? && 
+  @action.operation.present? && 
+  ["create", "create_proposal"].exclude?(@action.operation) %>
 
-  <div class="small-12 medium-12 large-6 column">
-    <p>
-      <strong><%= t("admin.gamification.actions.form.title") %></strong>
-      <br>
-      <%= @action.title %>
-    </p>
-    <% if @action.description.present? %>
-      <p>
-        <strong><%= t("admin.gamification.actions.form.description") %></strong>
-        <br>
-        <%= @action.description %>
-      </p>
-    <% end %>
-    <p>
-      <strong><%= t("admin.gamification.actions.form.score") %></strong>
-      <br>
-      <%= @action.score %>
-    </p>
-  </div>
-</div>
-
-<% if @action.process_type.present? %>
   <div class="gamification-action-processes-form">
     <% case @action.process_type 
        when "debate" %>
-        <%= render "admin/gamification/actions/processes/debates" %>
+        <%= render "admin/gamification/actions/processes/debates/additional_scores" %>
     <% when "proposal" %>
-        <%= render "admin/gamification/actions/processes/proposals" %>
+        <%= render "admin/gamification/actions/processes/proposals/additional_scores" %>
     <% when "poll" %>
-        <%= render "admin/gamification/actions/processes/polls" %>
-    <% when "budget_investment" %>
-        <%= render "admin/gamification/actions/processes/budget_investments" %>
+        <%= render "admin/gamification/actions/processes/polls/additional_scores" %>
     <% when "process" %>
-        <%= render "admin/gamification/actions/processes/processes" %>
+        <%= render "admin/gamification/actions/processes/processes/additional_scores" %>
     <% when "forum" %>
-        <%= render "admin/gamification/actions/processes/forums" %>
+        <%= render "admin/gamification/actions/processes/forums/additional_scores" %>
     <% end %>
+  </div>
+<% else %>
+  <div class="callout primary margin">
+    <%= t("admin.gamification.actions.show.cannot_be_configured") %>
   </div>
 <% end %>

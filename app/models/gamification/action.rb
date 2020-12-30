@@ -1,14 +1,14 @@
 class Gamification::Action < ApplicationRecord
   belongs_to :gamification
-  has_many :gamification_additional_scores, inverse_of: :gamification_action, dependent: :destroy, class_name: "Gamification::AdditionalScore"
+  has_many :gamification_action_additional_scores, inverse_of: :gamification_action, dependent: :destroy, class_name: "Gamification::Action::AdditionalScore", foreign_key: "gamification_action_id"
 
   PROCESS_TYPES = {
-    'debate' => [ "create", "create_comment", "vote" ],
-    'proposal' => [ "create", "create_comment", "vote_proposal" ],
-    'poll' => [ "answer_question", "create_comment" ],
+    'debate' => [ "create", "comment", "vote" ],
+    'proposal' => [ "create", "comment", "vote_proposal" ],
+    'poll' => [ "answer_question", "comment" ],
     'budget_investment' => [ "create" ],
-    'process' => [ "create_comment", "create_debate_comment", "create_proposal", "create_proposal_comment", "vote_proposal" ],
-    'forum' => [ "create", "create_comment" ]
+    'process' => [ "comment", "comment_debate", "create_proposal", "comment_proposal", "vote_proposal" ],
+    'forum' => [ "create", "comment" ]
   }.freeze
 
   include Measurable

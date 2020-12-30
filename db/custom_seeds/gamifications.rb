@@ -16,7 +16,7 @@ gamifications = [
 				title_en: "Vote debate", description_en: "Action to vote debate"
 			},
 			{
-				key: "COMENTAR_DEBATE", score: 1, process_type: "debate", operation: "create_comment",
+				key: "COMENTAR_DEBATE", score: 1, process_type: "debate", operation: "comment",
 				title_es: "Comentar debate", description_es: "Acción para comentar debate",
 				title_en: "Comment debate", description_en: "Action to comment debate"
 			},
@@ -31,7 +31,7 @@ gamifications = [
 				title_en: "Vote proposal", description_en: "Action to vote proposal"
 			},
 			{
-				key: "COMENTAR_PROPUESTA", score: 1, process_type: "proposal", operation: "create_comment", 
+				key: "COMENTAR_PROPUESTA", score: 1, process_type: "proposal", operation: "comment", 
 				title_es: "Comentar propuesta", description_es: "Acción para comentar propuesta",
 				title_en: "Comment proposal", description_en: "Action to comment proposal"
 			},
@@ -41,7 +41,7 @@ gamifications = [
 				title_en: "Answer poll\/question", description_en: "Action to answer poll\/question"
 			},
 			{
-				key: "COMENTAR_ENCUESTA", score: 1, process_type: "poll", operation: "create_comment", 
+				key: "COMENTAR_ENCUESTA", score: 1, process_type: "poll", operation: "comment", 
 				title_es: "Comentar encuesta\/consulta", description_es: "Acción para comentar encuesta\/consulta",
 				title_en: "Comment poll\/question", description_en: "Action to comment poll\/question"
 			},
@@ -51,7 +51,7 @@ gamifications = [
 				title_en: "Create budget investment", description_en: "Action to create budget investment"
 			},
 			{
-				key: "PROC_COMENTAR_DEBATE", score: 10, process_type: "process", operation: "create_debate_comment", 
+				key: "PROC_COMENTAR_DEBATE", score: 10, process_type: "process", operation: "comment_debate", 
 				title_es: "Comentar debate en proceso", description_es: "Acción para comentar debate en proceso",
 				title_en: "Comment debate in process", description_en: "Action to comment debate in process"
 			},
@@ -66,12 +66,12 @@ gamifications = [
 				title_en: "Vote proposal in process", description_en: "Action to vote proposal in process"
 			},
 			{
-				key: "PROC_COMENTAR_PROPUESTA", score: 1, process_type: "process", operation: "create_proposal_comment", 
+				key: "PROC_COMENTAR_PROPUESTA", score: 1, process_type: "process", operation: "comment_proposal", 
 				title_es: "Comentar propuesta en proceso", description_es: "Acción para comentar propuesta en proceso",
 				title_en: "Comment proposal in process", description_en: "Action to comment proposal in process"
 			},
 			{
-				key: "PROC_COMENTAR_TEXTO", score: 10, process_type: "process", operation: "create_comment", 
+				key: "PROC_COMENTAR_TEXTO", score: 10, process_type: "process", operation: "comment", 
 				title_es: "Comentar texto en proceso", description_es: "Acción para comentar texto en proceso",
 				title_en: "Comment text in process", description_en: "Action to comment text in process"
 			},
@@ -81,7 +81,7 @@ gamifications = [
 				title_en: "Create topic in forum", description_en: "Action to create topic in forum"
 			},
 			{
-				key: "COMENTAR_TEMA_FORO", score: 1, process_type: "forum", operation: "create_comment", 
+				key: "COMENTAR_TEMA_FORO", score: 1, process_type: "forum", operation: "comment", 
 				title_es: "Comentar tema en el foro", description_es: "Acción para comentar tema en el foro",
 				title_en: "Comment topic in forum", description_en: "Action to comment topic in forum"
 			}

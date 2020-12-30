@@ -1,0 +1,34 @@
+<h3 class="inline-block"><%= t("admin.gamification.actions.show.processes.title") %></h3>
+
+<%= link_to t("admin.gamification.actions.show.processes.add"),
+            admin_gamification_action_path(@action),
+            class: "button float-right" %>
+
+<% if @gamification_additional_scores.any? %>
+
+  <table>
+    <thead>
+      <th class="text-center"><%= t("admin.gamification.actions.show.columns.id") %></th>
+      <th><%= t("admin.gamification.actions.show.columns.title") %></th>
+      <th><%= t("admin.gamification.actions.show.columns.author") %></th>
+      <th><%= t("admin.gamification.actions.show.columns.additional_score") %></th>
+    </thead>
+    <tbody>
+      <% @gamification_additional_scores.each do |gamification_additional_score| %>
+        <tr id="<%= dom_id(gamification_additional_score) %>" class="gamification_additional_scores">
+          <td class="text-center"><%= gamification_additional_score.process_id %></td>
+          <td>xxxxxxxxxxxxx</td>
+          <td></td>
+          <td><%= gamification_additional_score.additional_score %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @gamification_additional_scores %>
+
+<% else %>
+  <div class="callout primary margin">
+    <%= t("admin.gamification.actions.show.processes.no_data") %>
+  </div>
+<% end %>

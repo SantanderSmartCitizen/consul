@@ -129,6 +129,9 @@ es:
       local_census_record:
         one: Registro del censo local
         other: Registros del censo local
+      forum:
+        one: "Tema de foro"
+        other: "Temas de foro"
     attributes:
       administrator:
         description: Descripción

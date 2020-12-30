@@ -23,7 +23,7 @@ module GamificationsHelper
 
   def get_operation_select_options(process_type)
     if process_type.present?
-      Gamification::Action::PROCESS_TYPES[process_type].map { |operation| [t("admin.gamification.actions.operations.#{operation}"), operation] }
+      Gamification::Action::PROCESS_TYPES[process_type]&.map { |operation| [t("admin.gamification.actions.operations.#{operation}"), operation] }
     else
       Array(nil)
     end

@@ -1,0 +1,9 @@
+<%= back_link_to %>
+
+<h2><%= t("admin.gamification.actions.additional_score.edit.title") %></h2>
+
+<%= render "shared/errors", resource: @additional_score %>
+<%= render "admin/gamification/actions/show" %>
+<%= render "admin/gamification/actions/processes/#{@action.process_type.pluralize}/show" %>
+
+<%= render "form", form_url: admin_gamification_additional_score_path(@additional_score) %>

@@ -7,7 +7,7 @@ en:
       index:
         id: ID
         author: Author
-        title: Forum
+        title: Forums
         no_forums: There are no posts in the forum.
     hidden_forums:
       index:
@@ -24,8 +24,13 @@ en:
         new:
           title: Create new process
           submit_button: Create process
+    shared:
+      forum_search:
+        button: Search
+        placeholder: Search forum posts by title or description
     menu:
       polls: Polls/Questions
+      forums: Forums
       site_customization:
         information_texts_menu:
           polls: "Polls/Questions"
@@ -127,6 +132,7 @@ en:
         title: Ranking
     gamification:
       actions:
+        back: Go back
         index:
           title: Actions
           create: Create action
@@ -140,8 +146,6 @@ en:
           process_type: Process type
           operation: Operation
           select_gamification: Select game
-          select_process_type: ...
-          select_operation: ...
         new:
           title: "Create action to game '%{gamification}'"
           general_title: "Create action"
@@ -150,6 +154,35 @@ en:
           general_title: "Edit action"
         show:
           edit_action: Edit action
+          select: Select
+          cannot_be_configured: This action cannot be configured.
+          debates:
+            title: Debates with additional score
+            add: Add debate
+            no_data: There are no debates associated to this action.
+          proposals:
+            title: Proposals with additional score
+            add: Add proposal
+            no_data: There are no proposals associated to this action.
+          polls:
+            title: Polls/Questions with additional score
+            add: Add poll/question
+            no_data: There are no polls/questions associated to this action.
+          processes:
+            title: Processes with additional score
+            add: Add process
+            no_data: There are no processes associated to this action.
+          forums:
+            title: Forum posts with additional score
+            add: Add forum post
+            no_data: There are no forum posts associated to this action.
+          columns:
+            id: ID
+            title: Title
+            author: Author
+            start_date: Start Date
+            closing_date: Closing Date
+            additional_score: Additional score
         process_types:
           debate: Debate
           proposal: Proposal
@@ -160,12 +193,25 @@ en:
         operations:
           answer_question: Answer question
           create: Create
-          create_comment: Comment
-          create_debate_comment: Comment on debate
+          comment: Comment
+          comment_debate: Comment on debate
           create_proposal: Create proposal
-          create_proposal_comment: Comment on proposal
+          comment_proposal: Comment on proposal
           vote: Vote
           vote_proposal: Vote
+        additional_score:
+          new:
+            title: New additional score
+            cannot_be_configured: This process already has additional score.
+          edit:
+            title: Edit additional score
+          destroy:
+            alert: "This action will remove the additional score."
+            success_notice: "Additional score deleted successfully"
+          submit_button: Save
+          flash: 
+            created: Additional score created successfully
+            updated: Additional score updated successfully
       rewards:
         index:
           title: Rewards

@@ -1,0 +1,34 @@
+<% provide(:title) do %>
+  <%= t("admin.header.title") %> - <%= t("admin.forums.index.title") %>
+<% end %>
+
+<h2><%= t("admin.forums.index.title") %></h2>
+
+<% if @forums.any? %>
+  <%= render "/admin/shared/forum_search", url: admin_forums_path %>
+
+  <h3 class="inline-block"><%= page_entries_info @forums %></h3>
+
+  <table>
+    <thead>
+      <th class="text-center"><%= t("admin.forums.index.id") %></th>
+      <th><%= t("admin.forums.index.title") %></th>
+      <th><%= t("admin.forums.index.author") %></th>
+    </thead>
+    <tbody>
+      <% @forums.each do |forum| %>
+        <tr id="<%= dom_id(forum) %>" class="forums">
+          <td class="text-center"><%= forum.id %></td>
+          <td><%= link_to forum.title, admin_forum_path(forum) %></td>
+          <td><%= forum.author.username %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @forums %>
+<% else %>
+  <div class="callout primary margin">
+    <%= t("admin.forums.index.no_forums") %>
+  </div>
+<% end %>

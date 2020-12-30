@@ -640,6 +640,18 @@ ActiveRecord::Schema.define(version: 20201214125314) do
     t.index ["tsv"], name: "index_forums_on_tsv", using: :gin
   end
 
+  create_table "gamification_action_additional_scores", force: :cascade do |t|
+    t.integer  "gamification_action_id", null: false
+    t.string   "process_type",           null: false
+    t.integer  "process_id",             null: false
+    t.integer  "additional_score",       null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_action_id", "process_type", "process_id"], name: "idx_gamification_additional_scores_on_action_and_process", unique: true, using: :btree
+    t.index ["gamification_action_id"], name: "idx_gamification_additional_scores_on_gamification_action_id", using: :btree
+    t.index ["process_type", "process_id"], name: "idx_gamification_additional_scores_on_process_type_process_id", using: :btree
+  end
+
   create_table "gamification_action_translations", force: :cascade do |t|
     t.integer  "gamification_action_id"
     t.string   "locale"
@@ -662,18 +674,6 @@ ActiveRecord::Schema.define(version: 20201214125314) do
     t.index ["gamification_id", "process_type", "operation"], name: "idx_gamification_internal_actions", unique: true, where: "((process_type IS NOT NULL) AND ((process_type)::text <> ''::text) AND (operation IS NOT NULL) AND ((operation)::text <> ''::text))", using: :btree
     t.index ["gamification_id"], name: "index_gamification_actions_on_gamification_id", using: :btree
     t.index ["key", "gamification_id"], name: "index_gamification_actions_on_key_and_gamification_id", unique: true, using: :btree
-  end
-
-  create_table "gamification_additional_scores", force: :cascade do |t|
-    t.integer  "gamification_action_id", null: false
-    t.string   "process_type",           null: false
-    t.integer  "process_id",             null: false
-    t.integer  "additional_score",       null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index ["gamification_action_id", "process_type", "process_id"], name: "idx_gamification_additional_scores_on_action_and_process", unique: true, using: :btree
-    t.index ["gamification_action_id"], name: "index_gamification_additional_scores_on_gamification_action_id", using: :btree
-    t.index ["process_type", "process_id"], name: "idx_gamification_additional_scores_on_process_type_process_id", using: :btree
   end
 
   create_table "gamification_requested_rewards", force: :cascade do |t|
@@ -1768,8 +1768,8 @@ ActiveRecord::Schema.define(version: 20201214125314) do
   add_foreign_key "failed_census_calls", "users"
   add_foreign_key "flags", "users"
   add_foreign_key "follows", "users"
+  add_foreign_key "gamification_action_additional_scores", "gamification_actions"
   add_foreign_key "gamification_actions", "gamifications"
-  add_foreign_key "gamification_additional_scores", "gamification_actions"
   add_foreign_key "gamification_requested_rewards", "gamification_rewards"
   add_foreign_key "gamification_requested_rewards", "users"
   add_foreign_key "gamification_requested_rewards", "users", column: "administrator_id"

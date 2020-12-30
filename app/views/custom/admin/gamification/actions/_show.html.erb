@@ -1,0 +1,50 @@
+<div class="clear"></div>
+
+<div class="row callout highlight">
+  <div class="small-12 medium-12 large-6 column">
+    <p>
+      <strong><%= t("admin.gamification.actions.form.gamification") %></strong>
+      <br>
+      <%= @action.gamification.key %>
+    </p>
+    <p>
+      <strong><%= t("admin.gamification.actions.form.key") %></strong>
+      <br>
+      <%= @action.key %>
+    </p>
+    <% if @action.process_type.present? %>
+      <p>
+        <strong><%= t("admin.gamification.actions.form.process_type") %></strong>
+        <br>
+        <%= t("admin.gamification.actions.process_types.#{@action.process_type}") %>
+      </p>
+    <% end %>
+    <% if @action.operation.present? %>
+      <p>
+        <strong><%= t("admin.gamification.actions.form.operation") %></strong>
+        <br>
+        <%= t("admin.gamification.actions.operations.#{@action.operation}") %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="small-12 medium-12 large-6 column">
+    <p>
+      <strong><%= t("admin.gamification.actions.form.title") %></strong>
+      <br>
+      <%= @action.title %>
+    </p>
+    <% if @action.description.present? %>
+      <p>
+        <strong><%= t("admin.gamification.actions.form.description") %></strong>
+        <br>
+        <%= @action.description %>
+      </p>
+    <% end %>
+    <p>
+      <strong><%= t("admin.gamification.actions.form.score") %></strong>
+      <br>
+      <%= @action.score %>
+    </p>
+  </div>
+</div>

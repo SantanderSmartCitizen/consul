@@ -1,7 +1,8 @@
 class Admin::Gamification::ActionsController < Admin::Gamification::BaseController
   include Translatable
 
-  before_action :load_action, only: [:show, :edit, :update]
+  before_action :load_action, only: [:show, :edit, :update, :search]
+  before_action :load_search, only: [:search]
 
   load_and_authorize_resource :gamification
   load_and_authorize_resource :action, class: "Gamification::Action"
@@ -15,11 +16,10 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
 
   def create
     @action = ::Gamification::Action.new(action_params)
-    @gamification = @action.gamification
 
     if @action.save
       if params[:gamification_action][:return_to] == "gamification"
-        return_path = admin_gamification_path(@gamification)
+        return_path = admin_gamification_path(@action.gamification)
       else
         return_path = admin_gamification_actions_path()
       end
@@ -30,9 +30,7 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   end
 
   def show
-
-    @additional_scores = ::Gamification::AdditionalScore.find_by(gamification_action: @action)
-
+    @gamification_action_additional_scores = Kaminari.paginate_array(@action.gamification_action_additional_scores).page(params[:page]).per(5)
   end
 
   def edit
@@ -70,6 +68,15 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
     end
   end
 
+  def search
+    if @search.blank?
+      @processes = Debate.all
+    else
+      @processes = Debate.search(@search)
+    end
+    @processes = @processes.order(created_at: :desc).page(params[:page])
+  end
+
   private
 
     def action_params
@@ -86,6 +93,10 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
     def resource
       load_action unless @action
       @action
+    end
+
+    def load_search
+      @search = params.permit(:search)[:search]
     end
 
 end

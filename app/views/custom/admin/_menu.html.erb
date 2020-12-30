@@ -34,6 +34,15 @@
       </li>
     <% end %>
 
+    <% if feature?(:budgets) %>
+      <li class="section-title <%= "is-active" if menu_budgets? %>">
+        <%= link_to admin_budgets_path do %>
+          <span class="icon-budget"></span>
+          <strong><%= t("admin.menu.budgets") %></strong>
+        <% end %>
+      </li>
+    <% end %>
+
     <% if feature?(:legislation) %>
       <li class="section-title <%= "is-active" if controller.class.parent == Admin::Legislation %>">
         <%= link_to admin_legislation_processes_path do %>
@@ -43,11 +52,11 @@
       </li>
     <% end %>
 
-    <% if feature?(:budgets) %>
-      <li class="section-title <%= "is-active" if menu_budgets? %>">
-        <%= link_to admin_budgets_path do %>
-          <span class="icon-budget"></span>
-          <strong><%= t("admin.menu.budgets") %></strong>
+    <% if feature?(:forums) %>
+      <li class="section-title <%= "is-active" if controller_name == "forums" %>">
+        <%= link_to admin_forums_path do %>
+          <span class="icon-forums"></span>
+          <strong><%= t("admin.menu.forums") %></strong>
         <% end %>
       </li>
     <% end %>

@@ -1,0 +1,25 @@
+<%= back_link_to admin_gamification_action_search_path(@action), t("admin.gamification.actions.back") %>
+
+<h2><%= t("admin.gamification.actions.additional_score.new.title") %></h2>
+
+<% if @action.process_type.present? && 
+  @action.operation.present? && 
+  ["create", "create_proposal"].exclude?(@action.operation) %>
+
+  <%= render "shared/errors", resource: @additional_score %>
+  <%= render "admin/gamification/actions/show" %>
+  <%= render "admin/gamification/actions/processes/#{@action.process_type.pluralize}/show" %>
+
+  <% if @action.gamification_action_additional_scores.pluck(:process_id).exclude?(@process.id) %>
+    <%= render "form", form_url: admin_gamification_action_additional_scores_path %>
+  <% else %>
+    <div class="callout primary margin">
+      <%= t("admin.gamification.actions.additional_score.new.cannot_be_configured") %>
+    </div>
+  <% end %>
+ 
+<% else %>
+  <div class="callout primary margin">
+    <%= t("admin.gamification.actions.show.cannot_be_configured") %>
+  </div>
+<% end %>
