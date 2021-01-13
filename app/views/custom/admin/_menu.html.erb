@@ -248,7 +248,7 @@
           <%= link_to t("admin.menu.gamification.gamifications"), admin_gamifications_path %>
         </li>
 
-        <li <%= "class=is-active" if params[:controller] == "admin/gamification/actions" %>>
+        <li <%= "class=is-active" if ["admin/gamification/actions", "admin/gamification/actions/additional_scores"].include?(params[:controller]) %>>
           <%= link_to t("admin.menu.gamification.actions"), admin_gamification_actions_path %>
         </li>
 

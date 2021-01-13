@@ -40,7 +40,7 @@ module AdminHelper
 
   def menu_gamifications?
     controllers_names = ["gamifications"]
-    controller_params = ["admin/gamification/actions", "admin/gamification/rewards", "admin/gamification/requested_rewards"]
+    controller_params = ["admin/gamification/actions", "admin/gamification/actions/additional_scores", "admin/gamification/rewards", "admin/gamification/requested_rewards"]
     controllers_names.include?(controller_name) || controller_params.include?(params[:controller])
   end
 

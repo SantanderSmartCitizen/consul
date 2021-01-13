@@ -4,7 +4,7 @@
 
 <% if @action.process_type.present? && 
   @action.operation.present? && 
-  ["create", "create_proposal"].exclude?(@action.operation) %>
+  ["create"].exclude?(@action.operation) %>
 
   <%= render "shared/errors", resource: @additional_score %>
   <%= render "admin/gamification/actions/show" %>

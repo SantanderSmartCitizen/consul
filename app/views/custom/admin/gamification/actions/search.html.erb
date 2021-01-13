@@ -1,6 +1,6 @@
 <% if @action.process_type.present? && 
   @action.operation.present? && 
-  ["create", "create_proposal"].exclude?(@action.operation) %>
+  ["create"].exclude?(@action.operation) %>
 
   <div class="gamification-action-processes-form">
     <% case @action.process_type 

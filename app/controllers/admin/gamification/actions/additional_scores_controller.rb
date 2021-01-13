@@ -58,7 +58,7 @@ class Admin::Gamification::Actions::AdditionalScoresController < Admin::Gamifica
         @process = @additional_score.process
       elsif @action.process_type.present? && 
         @action.operation.present? && 
-        ["create", "create_proposal"].exclude?(@action.operation) 
+        ["create"].exclude?(@action.operation) 
 
         process_id = params[:process_id] || params[:gamification_action_additional_score][:process_id]
         case @action.process_type
