@@ -20,7 +20,7 @@ es:
       index:
         id: ID
         author: Autor
-        title: Foros
+        title: Foro
         no_forums: No hay entradas en el foro.
     hidden_forums:
       index:

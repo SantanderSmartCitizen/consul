@@ -69,11 +69,19 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   end
 
   def search
-    if @search.blank?
-      @processes = Debate.all
-    else
-      @processes = Debate.search(@search)
+    case @action.process_type
+      when "debate"
+        model = Debate
+      when "proposal"
+        model = Proposal
+      when "poll"
+        model = Poll
+      when "process"
+        model = ::Legislation::Process
+      when "forum"
+        model = Forum
     end
+    @processes = @search.present? ? model.search(@search) : model.all
     @processes = @processes.order(created_at: :desc).page(params[:page])
   end
 
