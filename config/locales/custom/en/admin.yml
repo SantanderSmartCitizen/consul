@@ -121,6 +121,11 @@ en:
         actions_title: "List of actions"
         no_rewards: "There are no rewards assigned to this game."
         rewards_title: "List of rewards"
+        ranking_title: Ranking
+        no_user_rankings: "There are no scores in this game."
+        ranking_table:
+          user: User
+          score: Score
       flash:
         action_added: "Action added to this game"
         error_on_action_added: "Action could not be added to this game"

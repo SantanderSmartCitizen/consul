@@ -157,6 +157,11 @@ es:
         actions_title: "Listado de acciones asignadas"
         no_rewards: "No hay recompensas asignadas a este juego."
         rewards_title: "Listado de recompensas asignadas"
+        ranking_title: Clasificación
+        no_user_rankings: "No hay puntuaciones en este juego."
+        ranking_table:
+          user: Usuario
+          score: Puntuación
       flash:
         action_added: "Acción añadida a este juego"
         error_on_action_added: "No pudo añadirse la acción"

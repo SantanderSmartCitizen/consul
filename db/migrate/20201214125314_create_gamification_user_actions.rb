@@ -4,7 +4,8 @@ class CreateGamificationUserActions < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true, index: true, null: false
       t.references :gamification_action, foreign_key: true, index: true, null: false
       t.references :process, polymorphic: true, index: { name: "idx_gamification_user_actions_on_process_type_process_id" }
-
+      t.integer :score
+      t.integer :additional_score
       t.timestamps
     end
   end

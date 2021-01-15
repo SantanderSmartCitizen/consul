@@ -1,6 +1,7 @@
 class Gamification < ApplicationRecord
   has_many :actions, inverse_of: :gamification, dependent: :destroy
   has_many :rewards, inverse_of: :gamification, dependent: :destroy
+  has_many :user_rankings, inverse_of: :gamification, dependent: :destroy
   accepts_nested_attributes_for :actions, :rewards
 
   include Measurable

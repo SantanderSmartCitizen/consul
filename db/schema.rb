@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201214125314) do
+ActiveRecord::Schema.define(version: 20210114124002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -725,11 +725,24 @@ ActiveRecord::Schema.define(version: 20201214125314) do
     t.integer  "gamification_action_id", null: false
     t.string   "process_type"
     t.integer  "process_id"
+    t.integer  "score"
+    t.integer  "additional_score"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["gamification_action_id"], name: "index_gamification_user_actions_on_gamification_action_id", using: :btree
     t.index ["process_type", "process_id"], name: "idx_gamification_user_actions_on_process_type_process_id", using: :btree
     t.index ["user_id"], name: "index_gamification_user_actions_on_user_id", using: :btree
+  end
+
+  create_table "gamification_user_rankings", force: :cascade do |t|
+    t.integer  "user_id",         null: false
+    t.integer  "gamification_id", null: false
+    t.integer  "score"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["gamification_id"], name: "index_gamification_user_rankings_on_gamification_id", using: :btree
+    t.index ["user_id", "gamification_id"], name: "index_gamification_user_rankings_on_user_id_and_gamification_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_gamification_user_rankings_on_user_id", using: :btree
   end
 
   create_table "gamifications", force: :cascade do |t|
@@ -1776,6 +1789,8 @@ ActiveRecord::Schema.define(version: 20201214125314) do
   add_foreign_key "gamification_rewards", "gamifications"
   add_foreign_key "gamification_user_actions", "gamification_actions"
   add_foreign_key "gamification_user_actions", "users"
+  add_foreign_key "gamification_user_rankings", "gamifications"
+  add_foreign_key "gamification_user_rankings", "users"
   add_foreign_key "geozones_polls", "geozones"
   add_foreign_key "geozones_polls", "polls"
   add_foreign_key "identities", "users"
