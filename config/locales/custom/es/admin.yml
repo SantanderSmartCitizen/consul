@@ -226,13 +226,6 @@ es:
             start_date: Fecha de apertura
             closing_date: Fecha de cierre
             additional_score: Puntuación adicional
-        process_types:
-          debate: Debate
-          proposal: Propuesta
-          poll: Encuesta/Consulta
-          budget_investment: Proyecto de Gasto
-          process: Proceso
-          forum: Foro
         operations:
           answer_question: Responder pregunta
           create: Crear
@@ -241,7 +234,8 @@ es:
           create_proposal: Crear propuesta
           comment_proposal: Comentar en propuesta
           vote: Votar
-          vote_proposal: Apoyar
+          support: Apoyar
+          support_proposal: Apoyar propuesta
         additional_score:
           new:
             title: Nueva puntuación adicional

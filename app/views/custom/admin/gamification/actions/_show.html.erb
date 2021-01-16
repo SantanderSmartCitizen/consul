@@ -16,7 +16,7 @@
       <p>
         <strong><%= t("admin.gamification.actions.form.process_type") %></strong>
         <br>
-        <%= t("admin.gamification.actions.process_types.#{@action.process_type}") %>
+        <%= @action.process_type.constantize.model_name.human %>
       </p>
     <% end %>
     <% if @action.operation.present? %>

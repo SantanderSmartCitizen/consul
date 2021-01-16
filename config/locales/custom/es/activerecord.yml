@@ -7,6 +7,15 @@ es:
       poll:
         one: "Encuesta/Consulta"
         other: "Encuestas/Consultas"
+      legislation/question:
+        one: "Proceso/Debate previo"
+        other: "Proceso/Debates previos"
+      legislation/proposal:
+        one: "Proceso/Propuesta"
+        other: "Proceso/Propuestas"
+      legislation/annotation:
+        one: "Proceso/Anotación"
+        other: "Proceso/Anotaciones"
     attributes:
       user:
         login: "Email o nombre de usuario/alias"

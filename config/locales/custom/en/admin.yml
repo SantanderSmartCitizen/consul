@@ -188,13 +188,6 @@ en:
             start_date: Start Date
             closing_date: Closing Date
             additional_score: Additional score
-        process_types:
-          debate: Debate
-          proposal: Proposal
-          poll: Poll/Question
-          budget_investment: Budget investment
-          process: Process
-          forum: Forum
         operations:
           answer_question: Answer question
           create: Create
@@ -203,7 +196,8 @@ en:
           create_proposal: Create proposal
           comment_proposal: Comment on proposal
           vote: Vote
-          vote_proposal: Vote
+          support: Support
+          support_proposal: Support proposal
         additional_score:
           new:
             title: New additional score
