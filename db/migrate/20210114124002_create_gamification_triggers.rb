@@ -14,7 +14,6 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 					_action_operation 		ALIAS FOR $3;
 					_user_id 				ALIAS FOR $4;
 					_process_id 			ALIAS FOR $5;
-					_skip_additional_score	ALIAS FOR $6;
 
 				    -- Declare variables
 				    _gamification_id 	integer;
@@ -42,7 +41,7 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 						RETURN 'ACTION_NOT_FOUND';
 					end if;
 
-					if _skip_additional_score = 0 then
+					if _action_operation <> 'create' then
 						select additional_score
 						into _additional_score
 						from gamification_action_additional_scores
@@ -50,12 +49,6 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 						and process_type = _action_process_type
 						and process_id = _process_id;
 					end if;
-
-					INSERT INTO gamification_user_rankings (user_id, gamification_id, score, created_at, updated_at)
-					VALUES(_user_id, _gamification_id, COALESCE(_action_score, 0) + COALESCE(_additional_score, 0), CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) 
-					ON CONFLICT (user_id, gamification_id) 
-					DO 
-					   UPDATE SET score = COALESCE(gamification_user_rankings.score, 0) + COALESCE(_action_score, 0) + COALESCE(_additional_score, 0), updated_at = CURRENT_TIMESTAMP;
 
 					INSERT into gamification_user_actions (user_id, gamification_action_id, score, additional_score, process_type, process_id, created_at, updated_at)
 					values (_user_id, _action_id, _action_score, _additional_score, _action_process_type, _process_id, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
@@ -78,6 +71,7 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 				    _gamification_id 	integer;
 					_action_id 			integer;
 					_action_score 		integer;
+					_additional_score 	integer;
 				BEGIN
 					select id 
 					into _gamification_id
@@ -98,17 +92,105 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 						RETURN 'ACTION_NOT_FOUND';
 					end if;
 
-					INSERT INTO gamification_user_rankings (user_id, gamification_id, score, created_at, updated_at)
-					VALUES(_user_id, _gamification_id, COALESCE(_action_score, 0), CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) 
-					ON CONFLICT (user_id, gamification_id) 
-					DO 
-					   UPDATE SET score = COALESCE(gamification_user_rankings.score, 0) + COALESCE(_action_score, 0), updated_at = CURRENT_TIMESTAMP;
+					if _process_type IS NOT NULL AND _process_id IS NOT NULL then
+						select additional_score
+						into _additional_score
+						from gamification_action_additional_scores
+						where gamification_action_id = _action_id
+						and process_type = _process_type
+						and process_id = _process_id;
+					end if;
 
-					INSERT into gamification_user_actions (user_id, gamification_action_id, score, process_type, process_id, created_at, updated_at)
-					values (_user_id, _action_id, _action_score, _process_type, _process_id, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+					INSERT into gamification_user_actions (user_id, gamification_action_id, score, additional_score, process_type, process_id, created_at, updated_at)
+					values (_user_id, _action_id, _action_score, _additional_score, _process_type, _process_id, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 					
 					RETURN 'OK';
 					
+				END;$$;
+
+				
+				CREATE OR REPLACE FUNCTION gamification_add_user_action_in_ranking() RETURNS trigger
+				LANGUAGE plpgsql AS 
+				$$DECLARE
+					_gamification_id 	integer;
+					_action_score 		integer;
+				BEGIN
+					
+					select gamification_id
+					into _gamification_id
+					from gamification_actions 
+					where id = NEW.gamification_action_id;
+
+					_action_score = COALESCE(NEW.score, 0) + COALESCE(NEW.additional_score, 0);
+
+					INSERT INTO gamification_user_rankings (user_id, gamification_id, score, created_at, updated_at)
+					VALUES(NEW.user_id, _gamification_id, _action_score, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) 
+					ON CONFLICT (user_id, gamification_id) 
+					DO 
+					   UPDATE SET score = COALESCE(gamification_user_rankings.score, 0) + _action_score, updated_at = CURRENT_TIMESTAMP;
+
+					RETURN NEW;
+				END;$$;
+
+				CREATE OR REPLACE FUNCTION gamification_modify_user_action_in_ranking() RETURNS trigger
+				LANGUAGE plpgsql AS 
+				$$DECLARE
+					_new_gamification_id 	integer;
+					_old_gamification_id 	integer;
+					_new_action_score 		integer;
+					_old_action_score 		integer;
+				BEGIN
+					
+					-- NEW
+					select gamification_id
+					into _new_gamification_id
+					from gamification_actions 
+					where id = NEW.gamification_action_id;
+
+					_new_action_score = COALESCE(NEW.score, 0) + COALESCE(NEW.additional_score, 0);
+
+					INSERT INTO gamification_user_rankings (user_id, gamification_id, score, created_at, updated_at)
+					VALUES(NEW.user_id, _new_gamification_id, _new_action_score, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) 
+					ON CONFLICT (user_id, gamification_id) 
+					DO 
+					   UPDATE SET score = COALESCE(gamification_user_rankings.score, 0) + _new_action_score, updated_at = CURRENT_TIMESTAMP;
+
+					-- OLD
+					select gamification_id
+					into _old_gamification_id
+					from gamification_actions 
+					where id = OLD.gamification_action_id;
+
+					_old_action_score = COALESCE(OLD.score, 0) + COALESCE(OLD.additional_score, 0);
+
+					UPDATE gamification_user_rankings 
+					SET score = case when (COALESCE(score, 0) - _old_action_score) > 0 then (COALESCE(score, 0) - _old_action_score) else 0 end, updated_at = CURRENT_TIMESTAMP
+					WHERE user_id = OLD.user_id
+					AND gamification_id = _old_gamification_id;
+
+					RETURN NEW;
+				END;$$;
+
+				CREATE OR REPLACE FUNCTION gamification_remove_user_action_in_ranking() RETURNS trigger
+				LANGUAGE plpgsql AS 
+				$$DECLARE
+					_old_gamification_id 	integer;
+					_old_action_score 		integer;
+				BEGIN
+
+					select gamification_id
+					into _old_gamification_id
+					from gamification_actions 
+					where id = OLD.gamification_action_id;
+
+					_old_action_score = COALESCE(OLD.score, 0) + COALESCE(OLD.additional_score, 0);
+
+					UPDATE gamification_user_rankings 
+					SET score = case when (COALESCE(score, 0) - _old_action_score) > 0 then (COALESCE(score, 0) - _old_action_score) else 0 end, updated_at = CURRENT_TIMESTAMP
+					WHERE user_id = OLD.user_id
+					AND gamification_id = _old_gamification_id;
+
+					RETURN OLD;
 				END;$$;
 
 				CREATE OR REPLACE FUNCTION gamification_create_debate() RETURNS trigger
@@ -117,10 +199,9 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 					_GAMIFICATION_KEY 		constant varchar := 'PARTICIPA';
 					_PROCESS_TYPE 			constant varchar := 'Debate';
 					_OPERATION 				constant varchar := 'create';
-					_SKIP_ADDITIONAL_SCORE 	constant integer := 1;
 				BEGIN
 					
-					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, NEW.id, _SKIP_ADDITIONAL_SCORE);
+					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, NEW.id);
 
 					RETURN NEW;
 				END;$$;
@@ -131,10 +212,9 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 					_GAMIFICATION_KEY 		constant varchar := 'PARTICIPA';
 					_PROCESS_TYPE 			constant varchar := 'Proposal';
 					_OPERATION 				constant varchar := 'create';
-					_SKIP_ADDITIONAL_SCORE 	constant integer := 1;
 				BEGIN
 					
-					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, NEW.id, _SKIP_ADDITIONAL_SCORE);
+					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, NEW.id);
 
 					RETURN NEW;
 				END;$$;
@@ -145,10 +225,9 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 					_GAMIFICATION_KEY 		constant varchar := 'PARTICIPA';
 					_PROCESS_TYPE 			constant varchar := 'Legislation::Process';
 					_OPERATION 				constant varchar := 'create_proposal';
-					_SKIP_ADDITIONAL_SCORE 	constant integer := 1;
 				BEGIN
 					
-					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, NEW.legislation_process_id, _SKIP_ADDITIONAL_SCORE);
+					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, NEW.legislation_process_id);
 
 					RETURN NEW;
 				END;$$;
@@ -159,10 +238,9 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 					_GAMIFICATION_KEY 		constant varchar := 'PARTICIPA';
 					_PROCESS_TYPE 			constant varchar := 'Forum';
 					_OPERATION 				constant varchar := 'create';
-					_SKIP_ADDITIONAL_SCORE 	constant integer := 1;
 				BEGIN
 					
-					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, NEW.id, _SKIP_ADDITIONAL_SCORE);
+					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, NEW.id);
 
 					RETURN NEW;
 				END;$$;
@@ -173,10 +251,9 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 					_GAMIFICATION_KEY 		constant varchar := 'PARTICIPA';
 					_PROCESS_TYPE 			constant varchar := 'Budget::Investment';
 					_OPERATION 				constant varchar := 'create';
-					_SKIP_ADDITIONAL_SCORE 	constant integer := 1;
 				BEGIN
 					
-					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, NEW.id, _SKIP_ADDITIONAL_SCORE);
+					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, NEW.id);
 
 					RETURN NEW;
 				END;$$;
@@ -187,7 +264,6 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 					_GAMIFICATION_KEY 		constant varchar := 'PARTICIPA';
 					_PROCESS_TYPE 			constant varchar := 'Poll';
 					_OPERATION 				constant varchar := 'answer_question';
-					_SKIP_ADDITIONAL_SCORE 	constant integer := 0;
 					_process_id 			integer;
 				BEGIN
 					
@@ -200,7 +276,7 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 						where pa.id = NEW.id
 					);
 
-					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, _process_id, _SKIP_ADDITIONAL_SCORE);
+					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, _process_id);
 
 					RETURN NEW;
 				END;$$;
@@ -215,7 +291,6 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 					_OPERATION 						constant varchar := 'vote';
 					_OPERATION_PROPOSAL				constant varchar := 'support';
 					_OPERATION_LEGISLATION_PROPOSAL constant varchar := 'support_proposal';
-					_SKIP_ADDITIONAL_SCORE 			constant integer := 0;
 					_action_process_type 			varchar;
 					_action_operation 				varchar;
 					_process_id 					integer;
@@ -241,7 +316,7 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 								_process_id = NEW.votable_id;
 						end case;
 
-						PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _action_process_type, _action_operation, NEW.voter_id, _process_id, _SKIP_ADDITIONAL_SCORE);
+						PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _action_process_type, _action_operation, NEW.voter_id, _process_id);
 
 					end if;
 
@@ -259,7 +334,6 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 					_OPERATION 						constant varchar := 'comment';
 					_OPERATION_LEGISLATION_QUESTION	constant varchar := 'comment_debate';
 					_OPERATION_LEGISLATION_PROPOSAL	constant varchar := 'comment_proposal';
-					_SKIP_ADDITIONAL_SCORE 			constant integer := 0;
 					_action_process_type 			varchar;
 					_action_operation 				varchar;
 					_process_id 					integer;
@@ -297,7 +371,7 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 							_process_id = NEW.commentable_id;
 					end case;
 
-					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _action_process_type, _action_operation, NEW.user_id, _process_id, _SKIP_ADDITIONAL_SCORE);
+					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _action_process_type, _action_operation, NEW.user_id, _process_id);
 
 					RETURN NEW;
 				END;$$;
@@ -333,6 +407,18 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 				CREATE TRIGGER insert_comment
 					AFTER INSERT ON comments
 					FOR EACH ROW EXECUTE PROCEDURE gamification_create_comment();
+				
+				CREATE TRIGGER insert_gamification_user_action
+					AFTER INSERT ON gamification_user_actions
+					FOR EACH ROW EXECUTE PROCEDURE gamification_add_user_action_in_ranking();
+
+				CREATE TRIGGER update_gamification_user_action
+					AFTER UPDATE ON gamification_user_actions
+					FOR EACH ROW EXECUTE PROCEDURE gamification_modify_user_action_in_ranking();
+
+				CREATE TRIGGER delete_gamification_user_action
+					AFTER DELETE ON gamification_user_actions
+					FOR EACH ROW EXECUTE PROCEDURE gamification_remove_user_action_in_ranking();
 			SQL
 	   	end
 
@@ -346,6 +432,9 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 				DROP TRIGGER insert_poll_answer ON poll_answers;
 				DROP TRIGGER insert_vote ON votes;
 				DROP TRIGGER insert_comment ON comments;
+				DROP TRIGGER insert_gamification_user_action ON gamification_user_actions;
+				DROP TRIGGER update_gamification_user_action ON gamification_user_actions;
+				DROP TRIGGER delete_gamification_user_action ON gamification_user_actions;
 			SQL
 		end
 	end
