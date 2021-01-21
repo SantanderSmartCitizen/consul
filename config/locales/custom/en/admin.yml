@@ -258,13 +258,3 @@ en:
           reward: Requested reward
         update:
           success: The request has been marked as solved.
-
-      show:
-        gamification_title: Gamification
-        ranking: Ranking
-        ranking_table:
-          user: User
-          total_score: Total score
-          score_1: Citizen participation score
-          score_2: Gamification score 1
-          score_3: Gamification score 2

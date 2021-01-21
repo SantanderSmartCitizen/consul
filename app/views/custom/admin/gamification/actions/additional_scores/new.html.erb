@@ -8,7 +8,7 @@
 
   <%= render "shared/errors", resource: @additional_score %>
   <%= render "admin/gamification/actions/show" %>
-  <%= render "admin/gamification/actions/processes/#{@action.process_type.pluralize}/show" %>
+  <%= render "admin/gamification/actions/processes/#{@action.process_type.gsub("::", "_").downcase.pluralize}/show" %>
 
   <% if @action.gamification_action_additional_scores.pluck(:process_id).exclude?(@process.id) %>
     <%= render "form", form_url: admin_gamification_action_additional_scores_path %>

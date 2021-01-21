@@ -3,18 +3,7 @@
   ["create"].exclude?(@action.operation) %>
 
   <div class="gamification-action-processes-form">
-    <% case @action.process_type 
-       when "debate" %>
-        <%= render "admin/gamification/actions/processes/debates/search" %>
-    <% when "proposal" %>
-        <%= render "admin/gamification/actions/processes/proposals/search" %>
-    <% when "poll" %>
-        <%= render "admin/gamification/actions/processes/polls/search" %>
-    <% when "process" %>
-        <%= render "admin/gamification/actions/processes/processes/search" %>
-    <% when "forum" %>
-        <%= render "admin/gamification/actions/processes/forums/search" %>
-    <% end %>
+      <%= render "admin/gamification/actions/processes/#{@action.process_type.gsub("::", "_").downcase.pluralize}/search" %>
   </div>
 <% else %>
   <div class="callout primary margin">

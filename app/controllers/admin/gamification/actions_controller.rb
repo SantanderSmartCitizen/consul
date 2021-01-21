@@ -70,15 +70,15 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
 
   def search
     case @action.process_type
-      when "debate"
+      when "Debate"
         model = Debate
-      when "proposal"
+      when "Proposal"
         model = Proposal
-      when "poll"
+      when "Poll"
         model = Poll
-      when "process"
+      when "Legislation::Process"
         model = ::Legislation::Process
-      when "forum"
+      when "Forum"
         model = Forum
     end
     @processes = @search.present? ? model.search(@search) : model.all
