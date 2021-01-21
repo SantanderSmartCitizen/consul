@@ -1,0 +1,41 @@
+<table class="margin-top">
+  <thead>
+    <tr>
+	  <th scope="col"><%= t("users.show.date") %></th>
+      <th scope="col"><%= t("users.show.gamification_action") %></th>
+      <th scope="col"><%= t("users.show.process") %></th>
+      <th scope="col" class="text-right"><%= t("users.show.score") %></th>
+      <th scope="col" class="text-right"><%= t("users.show.additional_score") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @gamification_user_actions.each do |gamification_user_action| %>
+      <tr id="gamification_user_action_<%= gamification_user_action.id %>">
+      	<td><%= I18n.l gamification_user_action.created_at, :format => :datetime %></td>
+        <td>
+        	<%= gamification_user_action.gamification_action.title %>
+        	<br>
+        	(<%= gamification_user_action.gamification_action.gamification.title %>)
+		</td>
+		<td>
+			<% if gamification_user_action.process_type.present? %>
+				<% case gamification_user_action.process_type %>
+	            <% when "Debate", "Forum", "Legislation::Process" %>
+					<%= link_to gamification_user_action.process.title, gamification_user_action.process %>
+	            <% when "Proposal" %>
+					<%= link_to gamification_user_action.process.title, gamification_user_action.process, gamification_user_action.process.retired? ? { class: "retired" } : {} %>
+	            <% when "Poll" %>
+					<%= link_to_poll gamification_user_action.process.name, gamification_user_action.process %>
+	            <% when "Budget::Investment" %>
+					<%= link_to gamification_user_action.process.title, budget_investment_path(gamification_user_action.process.budget, gamification_user_action.process) %>
+	            <% end %>
+            <% end %>
+		</td>
+        <td class="text-right"><%= gamification_user_action.score %></td>
+        <td class="text-right"><%= gamification_user_action.additional_score %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @gamification_user_actions %>

@@ -1,0 +1,51 @@
+<ul class="menu simple clear" id="assigned-resources-tabs">
+
+  <% if !params['tab'] %>
+    <li class="is-active">
+      <h2>
+        <%= t("admin.gamifications.show.actions_tab") %>
+        (<%= @gamification.actions.count %>)
+      </h2>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to admin_gamification_path(@gamification) do %>
+        <%= t("admin.gamifications.show.actions_tab") %>
+        (<%= @gamification.actions.count %>)
+      <% end %>
+    </li>
+  <% end %>
+
+  <% if params['tab'] == "rewards" %>
+    <li class="is-active">
+      <h2>
+        <%= t("admin.gamifications.show.rewards_tab") %>
+        (<%= @gamification.rewards.count %>)
+      </h2>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to admin_gamification_path(@gamification, :tab => "rewards") do %>
+        <%= t("admin.gamifications.show.rewards_tab") %>
+        (<%= @gamification.rewards.count %>)
+      <% end %>
+    </li>
+  <% end %>
+
+  <% if params['tab'] == "ranking" %>
+    <li class="is-active">
+      <h2>
+        <%= t("admin.gamifications.show.ranking_tab") %>
+        (<%= @gamification.user_rankings.count %>)
+      </h2>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to admin_gamification_path(@gamification, :tab => "ranking") do %>
+        <%= t("admin.gamifications.show.ranking_tab") %>
+        (<%= @gamification.user_rankings.count %>)
+      <% end %>
+    </li>
+  <% end %>
+
+</ul>

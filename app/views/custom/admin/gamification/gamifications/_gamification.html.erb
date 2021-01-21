@@ -1,0 +1,28 @@
+<tr id="<%= dom_id(gamification) %>" class="gamification">
+  <td>
+    <strong>
+      <%= gamification.key %>
+    </strong>
+  </td>
+  <td>
+    <%= gamification.title %>
+  </td>
+  <td>
+    <%= gamification.description %>
+  </td>
+  <td>
+    <%= link_to t("admin.actions.edit"),
+                edit_admin_gamification_path(gamification),
+                class: "button hollow" %>
+
+    <%= link_to t("admin.actions.delete"),
+            admin_gamification_path(gamification),
+            method: :delete,
+            "data-confirm": t("admin.gamifications.destroy.alert"),
+            class: "button hollow alert" %>
+
+    <%= link_to t("admin.actions.configure"),
+                admin_gamification_path(gamification),
+                class: "button hollow " %>
+  </td>
+</tr>

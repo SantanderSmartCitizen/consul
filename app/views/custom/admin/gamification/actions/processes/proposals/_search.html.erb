@@ -1,0 +1,42 @@
+<%= back_link_to admin_gamification_action_path(@action), t("admin.gamification.actions.back") %>
+
+<% provide(:title) do %>
+  <%= t("admin.header.title") %> - <%= t("admin.proposals.index.title") %>
+<% end %>
+
+<h2><%= t("admin.proposals.index.title") %></h2>
+
+<% if @processes.any? %>
+  <%= render "/admin/shared/proposal_search", url: admin_gamification_action_search_path(@action) %>
+
+  <h3 class="inline-block"><%= page_entries_info @processes %></h3>
+
+  <table>
+    <thead>
+      <th class="text-center"><%= t("admin.proposals.index.id") %></th>
+      <th><%= t("admin.proposals.index.title") %></th>
+      <th><%= t("admin.proposals.index.author") %></th>
+      <th><%= t("admin.actions.actions") %></th>
+    </thead>
+    <tbody>
+      <% @processes.each do |proposal| %>
+        <tr id="<%= dom_id(proposal) %>" class="proposals">
+          <td class="text-center"><%= proposal.id %></td>
+          <td><%= link_to proposal.title, admin_proposal_path(proposal) %></td>
+          <td><%= proposal.author.username %></td>
+          <td>
+            <%= link_to t("admin.gamification.actions.show.select"),
+            new_admin_gamification_action_additional_score_path(@action, :process_id => proposal.id),
+              class: "button hollow" %>
+          </td> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @processes %>
+<% else %>
+  <div class="callout primary margin">
+    <%= t("admin.proposals.index.no_proposals") %>
+  </div>
+<% end %>

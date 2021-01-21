@@ -1,4 +1,3 @@
-set :branch, ENV["branch"] || :master
+set :branch, ENV["branch"] || :preproduction
 
-server deploysecret(:server1), user: deploysecret(:user), roles: %w[web app db importer cron background]
-server deploysecret(:server2), user: deploysecret(:user), roles: %w[web app db importer]
+server deploysecret(:server), user: deploysecret(:user), roles: %w[web app db importer cron]

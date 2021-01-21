@@ -1,0 +1,13 @@
+<%= back_link_to admin_gamifications_path, t("admin.gamifications.index.back") %>
+
+<div class="clear"></div>
+
+<%= link_to t("admin.gamifications.edit.title"),
+            edit_admin_gamification_path(@gamification),
+            class: "button hollow float-right" %>
+
+<h2 class="inline-block">
+  <%= t("admin.gamifications.show.header_title") %><%= @gamification.key %>
+</h2>
+
+<div class="clear"></div>

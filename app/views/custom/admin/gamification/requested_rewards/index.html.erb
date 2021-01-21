@@ -1,0 +1,63 @@
+<h2><%= t("admin.gamification.requested_rewards.index.title") %></h2>
+
+<p><%= t("admin.gamification.requested_rewards.index.description") %></p>
+
+<%= render "shared/filter_subnav", i18n_namespace: "admin.gamification.requested_rewards.index" %>
+
+<% if @requested_rewards.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th class="text-center"><%= t("admin.gamification.requested_rewards.index.request_date") %></th>
+        <th><%= t("admin.gamification.requested_rewards.index.user") %></th>
+        <th><%= t("admin.gamification.requested_rewards.index.reward") %></th>
+        <% if params['filter'] == 'done' %>
+          <th><%= t("admin.gamification.requested_rewards.index.administrator") %></th>
+          <th class="text-center"><%= t("admin.gamification.requested_rewards.index.solve_date") %></th>
+        <% else %>
+          <th class="text-right"><%= t("admin.actions.actions") %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @requested_rewards.each do |request| %>
+        <tr id="<%= dom_id(request) %>">
+          <td class="text-center">
+            <%= I18n.l request.created_at, :format => :datetime %>
+          </td>
+          <td>
+            <%= link_to request.user.name,
+                        user_path(request.user.id), 
+                        target: "_blank" %>
+          </td>
+          <td>
+            <%= link_to request.gamification_reward.title, 
+                        admin_gamification_reward_path(request.gamification_reward.id),
+                        target: "_blank"%>
+          </td>
+          <% if params['filter'] == 'done' %>
+            <td>
+              <%= request.administrator.name %>
+            </td>
+            <td class="text-center">
+              <%= I18n.l request.executed_at, :format => :datetime %>
+            </td>
+          <% else %>
+            <td class="text-right">
+              <% unless request.executed_at? %>
+                <%= link_to t("admin.gamification.requested_rewards.index.solve"),
+                            edit_admin_gamification_requested_reward_path(request),
+                            class: "button hollow" %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="callout primary">
+    <%= t("admin.gamification.requested_rewards.index.no_records") %>
+  </div>
+<% end %>
