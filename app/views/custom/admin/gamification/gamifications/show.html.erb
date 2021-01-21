@@ -1,0 +1,15 @@
+<%= render "gamification_header" %>
+
+<div id="gamification-resources">
+	<%= render "subnav" %>
+
+	<% if !params['tab'] %>
+		<%= render "actions" %>
+	<% elsif params['tab'] == "rewards" %>
+		<%= render "rewards" %>
+	<% elsif params['tab'] == "ranking" %>
+		<%= render "ranking" %>
+	<% end %>
+	
+</div>
+

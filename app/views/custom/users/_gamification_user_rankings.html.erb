@@ -1,0 +1,20 @@
+<table class="margin-top">
+  <thead>
+    <tr>
+      <th scope="col"><%= t("users.show.gamification") %></th>
+      <th scope="col" class="text-right"><%= t("users.show.ranking_position") %></th>
+      <th scope="col" class="text-right"><%= t("users.show.score") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @gamification_user_rankings.each do |gamification_user_ranking| %>
+      <tr id="gamification_user_ranking_<%= gamification_user_ranking.id %>">
+        <td><%= gamification_user_ranking.gamification.title %></td>
+        <td class="text-right"><%= gamification_user_ranking.ranking_position %>º</td>
+        <td class="text-right"><%= gamification_user_ranking.score %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @gamification_user_rankings %>

@@ -211,8 +211,18 @@ namespace :admin do
     get :polls, on: :collection
   end
 
-  resource :gamification, only: :show do
-    get :budgets, on: :collection
+  scope module: :gamification do
+    resources :gamifications
+  end
+
+  namespace :gamification do
+    resources :actions, shallow: true do
+      get :search
+      resources :additional_scores, except: [:index, :show], controller: "actions/additional_scores"
+    end
+    get "update_operations", to: "actions#update_operations", as: "update_operations"
+    resources :rewards
+    resources :requested_rewards
   end
 
   namespace :legislation do

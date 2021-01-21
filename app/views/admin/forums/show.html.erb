@@ -1,0 +1,32 @@
+<% provide :title do %>
+  <%= t("admin.header.title") %> - <%= t("admin.menu.forums") %> - <%= @forum.title %>
+<% end %>
+
+<div class="forum-show">
+  <h2><%= @forum.title %></h2>
+
+  <% if @forum.conflictive? %>
+    <div data-alert class="callout alert margin-top">
+      <strong><%= t("forums.show.flag") %></strong>
+    </div>
+  <% end %>
+
+  <div class="forum-info">
+    <%= render "/shared/author_info", resource: @forum %>
+
+    <span class="bullet">&nbsp;&bull;&nbsp;</span>
+    <%= l @forum.created_at.to_date %>
+    <span class="bullet">&nbsp;&bull;&nbsp;</span>
+    <span class="icon-comments"></span>&nbsp;
+    <%= link_to t("forums.show.comments", count: @forum.comments_count), "#comments" %>
+    <span class="bullet">&nbsp;&bull;&nbsp;</span>
+    <span class="js-flag-actions">
+      <%= render "forums/flag_actions", forum: @forum %>
+    </span>
+  </div>
+
+  <%= auto_link_already_sanitized_html wysiwyg(@forum.description) %>
+
+</div>
+
+<%= render "shared/tags", taggable: @forum %>

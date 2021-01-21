@@ -4,4 +4,6 @@
 <%= render "forums" if @forums.present? && feature?(:forums) %>
 <%= render "budget_investments" if @budget_investments.present? && feature?(:budgets) %>
 <%= render "comments" if @comments.present? %>
-<%= render "score"  if @score.present? %>
+<%= render "gamification_user_rankings"  if @gamification_user_rankings.present? %>
+<%= render "gamification_user_actions"  if @gamification_user_actions.present? %>
+<%= render "rewards"  if @rewards.present? %>

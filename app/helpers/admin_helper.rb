@@ -38,6 +38,12 @@ module AdminHelper
       action_name != "booth_assignments"
   end
 
+  def menu_gamifications?
+    controllers_names = ["gamifications"]
+    controller_params = ["admin/gamification/actions", "admin/gamification/actions/additional_scores", "admin/gamification/rewards", "admin/gamification/requested_rewards"]
+    controllers_names.include?(controller_name) || controller_params.include?(params[:controller])
+  end
+
   def menu_booths?
     %w[officers booths shifts booth_assignments officer_assignments].include?(controller_name) ||
       controller_name == "polls" && action_name == "booth_assignments"
@@ -68,7 +74,8 @@ module AdminHelper
   end
 
   def menu_dashboard?
-    ["actions", "administrator_tasks"].include?(controller_name)
+    ["administrator_tasks"].include?(controller_name) ||
+     ["admin/dashboard/actions"].include?(params[:controller])
   end
 
   def submenu_local_census_records?

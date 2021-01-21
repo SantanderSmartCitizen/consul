@@ -1,0 +1,43 @@
+<h3 class="inline-block"><%= t("admin.gamification.actions.show.debates.title") %></h3>
+
+<%= link_to t("admin.gamification.actions.show.debates.add"),
+            admin_gamification_action_search_path(@action),
+            class: "button float-right" %>
+
+<% if @gamification_action_additional_scores.any? %>
+
+  <table>
+    <thead>
+      <th class="text-center"><%= t("admin.gamification.actions.show.columns.id") %></th>
+      <th><%= t("admin.gamification.actions.show.columns.title") %></th>
+      <th><%= t("admin.gamification.actions.show.columns.author") %></th>
+      <th><%= t("admin.gamification.actions.show.columns.additional_score") %></th>
+      <th><%= t("admin.actions.actions") %></th>
+    </thead>
+    <tbody>
+      <% @gamification_action_additional_scores.each do |gamification_additional_score| %>
+        <tr id="<%= dom_id(gamification_additional_score) %>" class="gamification_action_additional_scores">
+          <td class="text-center"><%= gamification_additional_score.process_id %></td>
+          <td><%= link_to gamification_additional_score.process.title, admin_debate_path(gamification_additional_score.process) %></td>
+          <td><%= gamification_additional_score.process.author.username %></td>
+          <td><%= gamification_additional_score.additional_score %></td>
+          <td>
+            <%= link_to t("shared.edit"), edit_admin_gamification_additional_score_path(gamification_additional_score), class: "button hollow" %>
+            <%= link_to t("admin.actions.delete"),
+              admin_gamification_additional_score_path(gamification_additional_score),
+              method: :delete,
+              "data-confirm": t("admin.gamification.actions.additional_score.destroy.alert"),
+              class: "button hollow alert" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @gamification_action_additional_scores %>
+
+<% else %>
+  <div class="callout primary margin">
+    <%= t("admin.gamification.actions.show.debates.no_data") %>
+  </div>
+<% end %>

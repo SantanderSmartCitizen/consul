@@ -1,0 +1,56 @@
+<h3 class="inline-block"><%= t("admin.gamifications.show.actions_title") %></h3>
+
+<%= link_to t("admin.gamification.actions.index.create"), new_admin_gamification_action_path(:gamification_id => @gamification.id, :return_to => "gamification"),
+            class: "button float-right" %>
+
+<% if @gamification.actions.empty? %>
+  
+  <div class="callout primary margin-top">
+    <%= t("admin.gamifications.show.no_actions") %>
+  </div>
+
+<% else %>
+  
+  <table class="margin">
+    <thead>
+      <tr>
+	      <th><%= t("admin.gamification.actions.form.key") %></th>
+	      <th><%= t("admin.gamification.actions.form.title") %></th>
+	      <!-- <th><%= t("admin.gamification.actions.form.description") %></th> -->
+	      <th class="text-right"><%= t("admin.gamification.actions.form.score") %></th>
+	      <th><%= t("admin.actions.actions") %></th>
+      </tr>
+    </thead>
+    <% @gamification.actions.each do |action| %>
+      <tr id="<%= dom_id(action) %>">
+        <td>
+          <strong>
+            <%= action.key %>
+          </strong>
+        </td>
+    		<td>
+    			<%= action.title %>
+    		</td>
+<!-- 		
+        <td>
+          <%= action.description %>
+        </td>
+-->
+    		<td class="text-right">
+    			<%= action.score %>
+    		</td>
+        <td>
+	        <%= link_to t("shared.edit"), edit_admin_gamification_action_path(action, :return_to => "gamification"), class: "button hollow" %>
+
+	        <%= link_to t("shared.delete"), admin_gamification_action_path(action), 
+            class: "button hollow alert", method: :delete %>
+
+          <%= link_to t("admin.actions.configure"), admin_gamification_action_path(action),
+            class: "button hollow " %>
+        </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+<% end %>

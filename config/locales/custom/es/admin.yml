@@ -37,14 +37,25 @@ es:
           title: Procesos
         new:
           title: Crear nuevo proceso
+    shared:
+      forum_search:
+        button: Buscar
+        placeholder: Buscar temas de foro por título o descripción
     menu:
       budgets: Presupuestos
       polls: Encuestas/Consultas
+      forums: Foros
       site_customization:
         information_texts_menu:
           polls: "Encuestas/Consultas"
       legislation: Procesos
-      gamification: Gamificación
+      title_gamification: Gamificación
+      gamification: 
+        gamifications: Juegos
+        actions: Acciones
+        rewards: Recompensas
+        requested_rewards: Recompensas solicitadas
+        ranking: Clasificación
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -121,14 +132,169 @@ es:
       feeds:
         citizen_proposals: Propuestas ciudadanos
         city_hall_proposals: Propuestas Ayuntamiento
-    gamification:
+    gamifications:
+      index:
+        table_title: Juegos
+        create: Crear juego
+        ranking: Ver clasificación
+        key: Clave
+        title: Título
+        description: Descripción
+        no_gamifications: No hay juegos.
+        back: Volver a juegos
+      new:
+        title: Nuevo juego
+        submit_button: Crear juego
+      edit:
+        title: Editar juego
+        submit_button: Actualizar juego
       show:
-        gamification_title: Gamificación
-        ranking: Clasificación
+        header_title: "Juego: "
+        actions_tab: Acciones
+        rewards_tab: Recompensas
+        ranking_tab: Clasificación
+        no_actions: "No hay acciones asignadas a este juego."
+        actions_title: "Listado de acciones asignadas"
+        no_rewards: "No hay recompensas asignadas a este juego."
+        rewards_title: "Listado de recompensas asignadas"
+        ranking_title: Clasificación
+        no_user_rankings: "No hay puntuaciones en este juego."
         ranking_table:
-          ranking_position: Clasificación
           user: Usuario
-          total_score: Puntuación total
-          score_1: Puntuación participación ciudadana
-          score_2: Puntuación gamificación 1
-          score_3: Puntuación gamificación 2
+          score: Puntuación
+      flash:
+        action_added: "Acción añadida a este juego"
+        error_on_action_added: "No pudo añadirse la acción"
+      destroy:
+        alert: "Esta acción eliminará el juego y todas las acciones asociadas."
+        success_notice: "Juego eliminado correctamente"
+        unable_notice: "No se puede eliminar un juego que tenga recompensas"
+      ranking:
+        title: Clasificación
+    gamification:
+      actions:
+        back: Volver
+        index:
+          table_title: Acciones
+          create: Crear acción
+          back: Volver a juego
+        form:
+          gamification: Juego
+          key: Clave
+          title: Título
+          description: Descripción
+          score: Puntuación
+          process_type: Tipo de proceso participativo
+          operation: Operación
+          select_gamification: Selecciona un juego
+        new:
+          title: "Crear acción para el juego '%{gamification}'"
+          general_title: "Crear acción"
+          submit_button: Crear acción
+        edit:
+          title: "Editar acción del juego '%{gamification}'"
+          general_title: "Editar acción"
+          submit_button: Actualizar acción
+        show:
+          edit_action: Editar acción
+          select: Seleccionar
+          cannot_be_configured: Esta acción no puede configurarse.
+          debates:
+            title: Debates con puntuación adicional
+            add: Añadir debate
+            no_data: No hay debates asociados a esta acción.
+          proposals:
+            title: Propuestas con puntuación adicional
+            add: Añadir propuesta
+            no_data: No hay propuestas asociadas a esta acción.
+          polls:
+            title: Encuestas/Consultas con puntuación adicional
+            add: Añadir encuesta/consulta
+            no_data: No hay encuestas/consultas asociadas a esta acción.
+          processes:
+            title: Procesos con puntuación adicional
+            add: Añadir proceso
+            no_data: No hay procesos asociados a esta acción.
+          forums:
+            title: Temas de foro con puntuación adicional
+            add: Añadir tema
+            no_data: No hay temas de foro asociados a esta acción.
+          columns:
+            id: ID
+            title: Título
+            author: Autor
+            start_date: Fecha de apertura
+            closing_date: Fecha de cierre
+            additional_score: Puntuación adicional
+        operations:
+          answer_question: Responder pregunta
+          create: Crear
+          comment: Comentar
+          comment_debate: Comentar en debate
+          create_proposal: Crear propuesta
+          comment_proposal: Comentar en propuesta
+          vote: Votar
+          support: Apoyar
+          support_proposal: Apoyar propuesta
+        additional_score:
+          new:
+            title: Nueva puntuación adicional
+            cannot_be_configured: Este proceso ya tiene puntuación adicional.
+          edit:
+            title: Editar puntuación adicional
+          destroy:
+            alert: "Esta acción eliminará la puntuación adicional."
+            success_notice: "Puntuación adicional eliminada correctamente"
+          submit_button: Guardar
+          flash: 
+            created: Puntuación adicional creada correctamente
+            updated: Puntuación adicional actualizada correctamente
+      rewards:
+        index:
+          table_title: Recompensas
+          create: Crear recompensa
+          back: Volver a juego
+        form:
+          gamification: Juego
+          title: Título
+          description: Descripción
+          minimum_score: Puntuación mínima
+          active: Activa
+          request_to_administrators: Incluir en la recompensa un botón para solicitar la recompensa a los administradores
+          select_gamification: Selecciona un juego
+        new:
+          title: "Crear recompensa para el juego '%{gamification}'"
+          general_title: "Crear recompensa"
+          submit_button: Crear recompensa
+        edit:
+          title: "Editar recompensa del juego '%{gamification}'"
+          general_title: "Editar recompensa"
+          submit_button: Actualizar recompensa
+        show:
+          edit_reward: Editar recompensa
+      requested_rewards:
+        index:
+          description: "Las recompensas pueden incluir un botón para solicitarlas a los administradores. A continuación se muestran las solicitudes de los usuarios."
+          title: Recompensas solicitadas
+          solve: Resolver
+          no_records: No hay recompensas solicitadas
+          request_date: Fecha solicitud
+          user: Usuario
+          reward: Recompensa solicitada
+          administrator: Administrador
+          solve_date: Fecha de resolución
+          filter: Filtro
+          filters:
+            pending: Pendientes
+            done: Resueltas
+        edit:
+          back: Volver a la lista de solicitudes pendientes
+          solving: Resolver solicitud pendiente
+        form:
+          solve: Marcar como resuelta
+          send: Enviar
+          request_date: Fecha solicitud
+          user: Usuario
+          reward: Recompensa solicitada
+        update:
+          success: La solicitud ha sido marcada como resuelta

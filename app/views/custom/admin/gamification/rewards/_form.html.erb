@@ -1,0 +1,77 @@
+<%= render "shared/globalize_locales", resource: @reward %>
+
+<%= translatable_form_for(@reward, url: form_url) do |f| %>
+
+  <%= render "shared/errors", resource: @reward %>
+
+  <% if params['return_to'] %>
+    <%= f.hidden_field :return_to, value: params['return_to'] %>
+  <% end %>
+  
+  <div class="row">
+    <div class="small-12">
+      <% if @gamification.present? %>
+        <%= f.hidden_field :gamification_id, value: @gamification.id %>
+      <% elsif @reward.gamification.present? %>
+        <%= f.hidden_field :gamification_id, value: @reward.gamification.id %>
+      <% else %>
+        <div class="small-12 medium-6 large-4 column required">
+          <% select_options = Gamification.all.map { |p| [p.key, p.id] } %>
+          <%= f.select :gamification_id,
+                        options_for_select(select_options),
+                        prompt: t("admin.gamification.rewards.form.select_gamification"),
+                        label: t("admin.gamification.rewards.form.gamification") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.translatable_fields do |translations_form| %>
+      <div class="small-12 medium-6 column required">
+        <%= translations_form.text_field :title %>
+      </div>
+
+      <div class="small-12 column">
+        <%= translations_form.text_area :description, rows: 8 %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 column required">
+      <%= f.number_field :minimum_score, step: 1, min: 1, 
+        label: t("admin.gamification.rewards.form.minimum_score") %>
+    </div>
+  </div>
+
+  <div class="small-12 column margin-top">
+    <%= f.check_box :active,
+      label: t("admin.gamification.rewards.form.active") %>
+  </div>
+
+  <div class="small-12 column">
+    <%= f.check_box :request_to_administrators,
+      label: t("admin.gamification.rewards.form.request_to_administrators") %>
+  </div>
+
+  <% if feature?(:allow_attached_documents) %>
+    <div class="documents small-12 column">
+      <hr>
+      <%= render "documents/nested_documents", documentable: @reward, f: f %>
+      <hr>
+    </div>
+  <% end %>
+
+  <div class="links small-12 column">
+    <%= render "links/nested_links", linkable: @reward, f: f %>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-3 column clear end">
+      <%= f.submit t("admin.gamification.rewards.#{admin_submit_action(@reward)}.submit_button"), class: "button success expanded margin-top" %>
+    </div>
+  </div>
+
+<% end %>

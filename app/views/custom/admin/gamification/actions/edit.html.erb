@@ -1,0 +1,13 @@
+<%= back_link_to %>
+
+<h2 class="margin-top">
+  <% if @gamification.present? %>
+    <%= t("admin.gamification.actions.edit.title", gamification: @gamification.key) %>
+  <% else %>
+    <%= t("admin.gamification.actions.edit.general_title") %>
+  <% end %>
+</h2>
+
+<div class="gamification-action-form">
+  <%= render "form", form_url: admin_gamification_action_path(@action) %>
+</div>

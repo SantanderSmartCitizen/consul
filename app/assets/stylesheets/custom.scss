@@ -205,6 +205,10 @@ a:focus {
     overflow: auto;
 }
 
+select {
+  height: 3rem;
+}
+
 .pl-10p {
     padding-left: 10%;
 }
@@ -284,4 +288,8 @@ a:focus {
     color: #07708c;
     display:table-cell;
     vertical-align:middle;
+}
+.required label::after {
+    content: " *";
+    color: #f04124;
 }
