@@ -62,15 +62,15 @@ class Admin::Gamification::Actions::AdditionalScoresController < Admin::Gamifica
 
         process_id = params[:process_id] || params[:gamification_action_additional_score][:process_id]
         case @action.process_type
-          when "debate"
+          when "Debate"
             @process = Debate.find(process_id)
-          when "proposal"
+          when "Proposal"
             @process = Proposal.find(process_id)
-          when "poll"
+          when "Poll"
             @process = Poll.find(process_id)
-          when "process"
+          when "Legislation::Process"
             @process = ::Legislation::Process.find(process_id)
-          when "forum"
+          when "Forum"
             @process = Forum.find(process_id)
         end
       end

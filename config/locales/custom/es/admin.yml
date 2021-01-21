@@ -298,14 +298,3 @@ es:
           reward: Recompensa solicitada
         update:
           success: La solicitud ha sido marcada como resuelta
-
-      show:
-        gamification_title: Gamificación
-        ranking: Clasificación
-        ranking_table:
-          ranking_position: Clasificación
-          user: Usuario
-          total_score: Puntuación total
-          score_1: Puntuación participación ciudadana
-          score_2: Puntuación gamificación 1
-          score_3: Puntuación gamificación 2

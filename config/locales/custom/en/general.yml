@@ -126,13 +126,33 @@ en:
     show:
       deleted_forum: This thread has been deleted
       forums: Forum threads
+      gamification: Game
+      score: Score
+      additional_score: Additional score
+      ranking_position: Ranking position
+      date: Date
+      gamification_action: Action (Game)
+      process: Process
       filters:
         forums:
           one: 1 Thread in the forum
           other: "%{count} Threads in the forum"
-        score:
-          one: 1 Point obtained
-          other: "%{count} Points obtained"   
+        gamification_user_rankings:
+          one: 1 Score obtained
+          other: "%{count} Scores obtained"
+        gamification_user_actions:
+          one: 1 Scored action
+          other: "%{count} Scored actions"
+        gamification_rewards:
+          one: 1 Reward available
+          other: "%{count} Rewards available"
+      rewards:
+        points: "%{points} points"
+        required_score: "Required score: %{score}"
+        view_reward: See reward
+        reward_requested: Reward already requested
+        request_reward: Request reward
+        reward_locked: Reward locked
   welcome:
     feed:
       see_all_debates: SEE ALL DEBATES

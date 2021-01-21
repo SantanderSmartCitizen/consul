@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  has_filters %w[debates proposals budget_investments forums comments follows score], only: :show
+  has_filters %w[debates proposals budget_investments forums comments follows gamification_user_rankings gamification_user_actions gamification_rewards], only: :show
 
   load_and_authorize_resource
   helper_method :author?
@@ -19,7 +19,9 @@ class UsersController < ApplicationController
                           forums: (Setting["process.forums"] ? Forum.where(author_id: @user.id).count : 0),
                           comments: only_active_commentables.count,
                           follows: @user.follows.map(&:followable).compact.count,
-                          score: 220)
+                          gamification_user_rankings: Gamification::UserRanking.where(user_id: @user.id).sum(:score),
+                          gamification_user_actions: Gamification::UserAction.where(user_id: @user.id).count,
+                          gamification_rewards: Gamification::Reward.active_for(@user.id).count)
     end
 
     def load_filtered_activity
@@ -31,7 +33,9 @@ class UsersController < ApplicationController
       when "forums"     then load_forums
       when "comments" then load_comments
       when "follows" then load_follows
-      when "score" then load_score
+      when "gamification_user_rankings" then load_gamification_user_rankings
+      when "gamification_user_actions" then load_gamification_user_actions
+      when "gamification_rewards" then load_gamifications
       else load_available_activity
       end
     end
@@ -56,9 +60,15 @@ class UsersController < ApplicationController
       elsif  @activity_counts[:follows] > 0
         load_follows
         @current_filter = "follows"
-      elsif  @activity_counts[:score] > 0
-        load_score
-        @current_filter = "score"
+      elsif  @activity_counts[:gamification_user_rankings] > 0
+        load_gamification_user_rankings
+        @current_filter = "gamification_user_rankings"
+      elsif  @activity_counts[:gamification_user_actions] > 0
+        load_gamification_user_actions
+        @current_filter = "gamification_user_actions"
+      elsif  @activity_counts[:gamification_rewards] > 0
+        load_gamifications
+        @current_filter = "gamification_rewards"
       end
     end
 
@@ -86,8 +96,16 @@ class UsersController < ApplicationController
       @follows = @user.follows.group_by(&:followable_type)
     end
 
-    def load_score
-      @score = 220
+    def load_gamification_user_rankings
+      @gamification_user_rankings = ::Gamification::UserRanking.where(user_id: @user.id).page(params[:page])
+    end
+
+    def load_gamification_user_actions
+      @gamification_user_actions = ::Gamification::UserAction.where(user_id: @user.id).order(created_at: :desc).page(params[:page])
+    end
+
+    def load_gamifications
+      @gamifications = Gamification.all
     end
 
     def valid_access?

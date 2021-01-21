@@ -5,7 +5,7 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 		dir.up do
 			execute <<-SQL
 
-			CREATE OR REPLACE FUNCTION insert_into_gamification_user(varchar,varchar,varchar,integer,integer,integer) RETURNS varchar
+			CREATE OR REPLACE FUNCTION insert_into_gamification_user(varchar,varchar,varchar,integer,integer) RETURNS varchar
 				LANGUAGE plpgsql AS 
 				$$DECLARE
 					-- Declare function argument aliases.
