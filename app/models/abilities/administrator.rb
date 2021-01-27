@@ -114,6 +114,13 @@ module Abilities
 
       can :manage, LocalCensusRecord
       can [:create, :read], LocalCensusRecords::Import
+
+      can [:read, :create, :update, :destroy, :add_action], Gamification
+      can [:read, :create, :update, :update_operations, :search], Gamification::Action
+      can :destroy, Gamification::Action
+      can [:read, :create, :update], Gamification::Reward
+      can :destroy, Gamification::Reward
+      can [:read, :update], Gamification::RequestedReward
     end
   end
 end

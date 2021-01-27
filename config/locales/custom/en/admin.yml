@@ -7,7 +7,7 @@ en:
       index:
         id: ID
         author: Author
-        title: Forum
+        title: Forums
         no_forums: There are no posts in the forum.
     hidden_forums:
       index:
@@ -24,13 +24,24 @@ en:
         new:
           title: Create new process
           submit_button: Create process
+    shared:
+      forum_search:
+        button: Search
+        placeholder: Search forum posts by title or description
     menu:
       polls: Polls/Questions
+      forums: Forums
       site_customization:
         information_texts_menu:
           polls: "Polls/Questions"
       legislation: Processes
-      gamification: Gamification
+      title_gamification: Gamification
+      gamification: 
+        gamifications: Games
+        actions: Actions
+        rewards: Rewards
+        requested_rewards: Requested rewards
+        ranking: Ranking
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -85,13 +96,164 @@ en:
       feeds:
         citizen_proposals: Citizen Proposals
         city_hall_proposals: City Hall Proposals
-    gamification:
+    gamifications:
+      index:
+        table_title: Games
+        create: Create game
+        ranking: See ranking
+        key: Key
+        title: Title
+        description: Description
+        no_gamifications: There are no games.
+        back: Go back to games
+      new:
+        title: New game
+        submit_button: Create game
+      edit:
+        title: Edit game
+        submit_button: Update game
       show:
-        gamification_title: Gamification
-        ranking: Ranking
+        header_title: "Game: "
+        actions_tab: Actions
+        rewards_tab: Rewards
+        ranking_tab: Ranking
+        no_actions: "There are no actions assigned to this game."
+        actions_title: "List of actions"
+        no_rewards: "There are no rewards assigned to this game."
+        rewards_title: "List of rewards"
+        ranking_title: Ranking
+        no_user_rankings: "There are no scores in this game."
         ranking_table:
           user: User
-          total_score: Total score
-          score_1: Citizen participation score
-          score_2: Gamification score 1
-          score_3: Gamification score 2
+          score: Score
+      flash:
+        action_added: "Action added to this game"
+        error_on_action_added: "Action could not be added to this game"
+      destroy:
+        alert: "This action will remove the game."
+        success_notice: "Game deleted successfully"
+      ranking:
+        title: Ranking
+    gamification:
+      actions:
+        back: Go back
+        index:
+          title: Actions
+          create: Create action
+          back: Go back to game
+        form:
+          gamification: Game
+          key: Key
+          title: Title
+          description: Description
+          score: Score
+          process_type: Process type
+          operation: Operation
+          select_gamification: Select game
+        new:
+          title: "Create action to game '%{gamification}'"
+          general_title: "Create action"
+        edit:
+          title: "Edit action to game '%{gamification}'"
+          general_title: "Edit action"
+        show:
+          edit_action: Edit action
+          select: Select
+          cannot_be_configured: This action cannot be configured.
+          debates:
+            title: Debates with additional score
+            add: Add debate
+            no_data: There are no debates associated to this action.
+          proposals:
+            title: Proposals with additional score
+            add: Add proposal
+            no_data: There are no proposals associated to this action.
+          polls:
+            title: Polls/Questions with additional score
+            add: Add poll/question
+            no_data: There are no polls/questions associated to this action.
+          processes:
+            title: Processes with additional score
+            add: Add process
+            no_data: There are no processes associated to this action.
+          forums:
+            title: Forum posts with additional score
+            add: Add forum post
+            no_data: There are no forum posts associated to this action.
+          columns:
+            id: ID
+            title: Title
+            author: Author
+            start_date: Start Date
+            closing_date: Closing Date
+            additional_score: Additional score
+        operations:
+          answer_question: Answer question
+          create: Create
+          comment: Comment
+          comment_debate: Comment on debate
+          create_proposal: Create proposal
+          comment_proposal: Comment on proposal
+          vote: Vote
+          support: Support
+          support_proposal: Support proposal
+        additional_score:
+          new:
+            title: New additional score
+            cannot_be_configured: This process already has additional score.
+          edit:
+            title: Edit additional score
+          destroy:
+            alert: "This action will remove the additional score."
+            success_notice: "Additional score deleted successfully"
+          submit_button: Save
+          flash: 
+            created: Additional score created successfully
+            updated: Additional score updated successfully
+      rewards:
+        index:
+          title: Rewards
+          create: Create reward
+          back: Go back to game
+        form:
+          gamification: Game
+          title: Title
+          description: Description
+          minimum_score: Minimum score
+          active: Active
+          request_to_administrators: Include in the reward a button to request the reward from administrators
+          select_gamification: Select game
+        new:
+          title: "Create reward to game '%{gamification}'"
+          general_title: "Create reward"
+        edit:
+          title: "Edit reward to game '%{gamification}'"
+          general_title: "Edit reward"
+        show:
+          edit_reward: Edit reward
+      requested_rewards:
+        index:
+          description: "Rewards may include a button to be requested to administrators. User requests are shown below."
+          title: Requested rewards
+          solve: Solve
+          no_records: There are no requested rewards
+          request_date: Request date
+          user: User
+          reward: Requested rewards
+          administrator: Administrator
+          solve_date: Date of resolution
+          filter: Filter
+          filters:
+            pending: Pending
+            done: Solved
+        edit:
+          back: Back to the list of pending requests
+          solving: Solve pending requests
+        form:
+          solve: Mark as solved
+          send: Send
+          request_date: Request date
+          user: User
+          reward: Requested reward
+        update:
+          success: The request has been marked as solved.

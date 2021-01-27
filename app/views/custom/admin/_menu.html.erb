@@ -34,6 +34,15 @@
       </li>
     <% end %>
 
+    <% if feature?(:budgets) %>
+      <li class="section-title <%= "is-active" if menu_budgets? %>">
+        <%= link_to admin_budgets_path do %>
+          <span class="icon-budget"></span>
+          <strong><%= t("admin.menu.budgets") %></strong>
+        <% end %>
+      </li>
+    <% end %>
+
     <% if feature?(:legislation) %>
       <li class="section-title <%= "is-active" if controller.class.parent == Admin::Legislation %>">
         <%= link_to admin_legislation_processes_path do %>
@@ -43,11 +52,11 @@
       </li>
     <% end %>
 
-    <% if feature?(:budgets) %>
-      <li class="section-title <%= "is-active" if menu_budgets? %>">
-        <%= link_to admin_budgets_path do %>
-          <span class="icon-budget"></span>
-          <strong><%= t("admin.menu.budgets") %></strong>
+    <% if feature?(:forums) %>
+      <li class="section-title <%= "is-active" if controller_name == "forums" %>">
+        <%= link_to admin_forums_path do %>
+          <span class="icon-forums"></span>
+          <strong><%= t("admin.menu.forums") %></strong>
         <% end %>
       </li>
     <% end %>
@@ -228,10 +237,32 @@
       <% end %>
     </li>
 
-    <li class="section-title <%= "is-active" if controller_name == "gamifications" %>">
-      <%= link_to admin_gamification_path do %>
-        <span class="icon-gamification"></span><%= t("admin.menu.gamification") %>
-      <% end %>
+    <li class="section-title">
+      <a href="#">
+        <span class="icon-gamification"></span>
+        <strong><%= t("admin.menu.title_gamification") %></strong>
+      </a>
+      <ul <%= "class=is-active" if menu_gamifications? %>>
+
+        <li <%= "class=is-active" if controller_name == "gamifications"  %>>
+          <%= link_to t("admin.menu.gamification.gamifications"), admin_gamifications_path %>
+        </li>
+
+        <li <%= "class=is-active" if ["admin/gamification/actions", "admin/gamification/actions/additional_scores"].include?(params[:controller]) %>>
+          <%= link_to t("admin.menu.gamification.actions"), admin_gamification_actions_path %>
+        </li>
+
+        <li <%= "class=is-active" if params[:controller] == "admin/gamification/rewards" %>>
+          <%= link_to t("admin.menu.gamification.rewards"), admin_gamification_rewards_path %>
+        </li>
+
+        <li <%= "class=is-active" if params[:controller] == "admin/gamification/requested_rewards" %>>
+          <%= link_to t("admin.menu.gamification.requested_rewards"), admin_gamification_requested_rewards_path %>
+        </li>
+        
+        <!-- Añadir ranking -->
+
+      </ul>
     </li>
 
     <li class="section-title">
@@ -272,7 +303,7 @@
         <strong><%= t("admin.menu.dashboard") %></strong>
       </a>
       <ul <%= "class=is-active" if menu_dashboard? %>>
-        <li <%= "class=is-active" if controller_name == "actions" %>>
+        <li <%= "class=is-active" if params[:controller] == "admin/dashboard/actions" %>>
           <%= link_to t("admin.menu.dashboard_actions"), admin_dashboard_actions_path %>
         </li>
 

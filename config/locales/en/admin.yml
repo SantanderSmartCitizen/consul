@@ -414,7 +414,7 @@ en:
       index:
         id: ID
         author: Author
-        title: Debates
+        title: Debate
         no_debates: There are no debates.
     hidden_debates:
       index:

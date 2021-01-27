@@ -1,0 +1,29 @@
+<div class="clear"></div>
+
+<div class="row callout highlight">
+  <div class="small-12 medium-12 large-6 column">
+    <p>
+      <strong><%= t("admin.legislation.processes.process.title") %></strong>
+      <br>
+      <%= @process.title %>
+    </p>
+    <p>
+      <strong><%= t("admin.legislation.processes.process.status") %></strong>
+      <br>
+      <%= t("admin.legislation.processes.process.status_#{@process.status}") %>
+    </p>
+  </div>
+
+  <div class="small-12 medium-12 large-6 column">
+    <p>
+      <strong><%= t("admin.legislation.processes.process.start_date") %></strong>
+      <br>
+      <%= l @process.start_date.to_date  %>
+    </p>
+    <p>
+      <strong><%= t("admin.legislation.processes.process.end_date") %></strong>
+      <br>
+      <%= l @process.end_date.to_date  %>
+    </p>
+  </div>
+</div>

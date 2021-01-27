@@ -13,3 +13,29 @@ en:
         username: "Username/alias"
       poll:
         only_terminals: Show only in Terminals
+      gamification:
+        key: Key
+        actions: Actions
+        rewards: Rewards
+        user_rankings: Scores
+      gamification/translation:
+        title: Title
+        description: Description
+      gamification/action:
+        key: Key
+        score: Score
+        gamification: Game
+        gamification_action_additional_scores:  Additional scores
+        gamification_user_actions: User actions
+      gamification/action/translation:
+        title: Title
+        description: Description
+      gamification/reward:
+        gamification: Game
+        minimum_score: Minimum score
+        active: Active
+        gamification_requested_rewards: Requested rewards
+      gamification/reward/translation:
+        title: Title
+        description: Description
+        reward: Reward

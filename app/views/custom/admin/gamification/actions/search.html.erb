@@ -1,0 +1,12 @@
+<% if @action.process_type.present? && 
+  @action.operation.present? && 
+  ["create"].exclude?(@action.operation) %>
+
+  <div class="gamification-action-processes-form">
+      <%= render "admin/gamification/actions/processes/#{@action.process_type.gsub("::", "_").downcase.pluralize}/search" %>
+  </div>
+<% else %>
+  <div class="callout primary margin">
+    <%= t("admin.gamification.actions.show.cannot_be_configured") %>
+  </div>
+<% end %>
