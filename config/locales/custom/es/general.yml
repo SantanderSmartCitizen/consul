@@ -162,6 +162,13 @@ es:
         budget_investments:
           one: 1 Proyecto de presupuestos
           other: "%{count} Proyectos de presupuestos"
+      rewards:
+        points: "%{points} puntos"
+        required_score: "%{score} puntos necesarios"
+        view_reward: Ver recompensa
+        reward_requested: Recompensa solicitada
+        request_reward: Solicitar recompensa
+        reward_locked: Recompensa bloqueada
   welcome:
     feed:
       see_all_debates: VER TODOS LOS DEBATES

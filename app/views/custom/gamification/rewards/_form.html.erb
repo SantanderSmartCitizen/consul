@@ -1,0 +1,10 @@
+<% if gamification_reward.requested_for?(current_user) %>
+  <div class="callout success">
+    <strong><%= t("dashboard.create_request.success") %></strong>
+  </div>
+<% elsif gamification_reward.request_to_administrators %>
+  <%= form_for @gamification_requested_reward,
+               url: create_request_gamification_reward_path(gamification_reward) do |f| %>
+    <%= f.submit(class: "button", value: t("dashboard.form.request")) %>
+  <% end %>
+<% end %>

@@ -130,6 +130,11 @@ module Abilities
       can [:update, :destroy], Topic, author_id: user.id
 
       can :disable_recommendations, [Debate, Forum, Proposal]
+
+      can :request_reward, Gamification::Reward do |reward|
+        reward.active_for?(user)
+      end
+      
     end
   end
 end

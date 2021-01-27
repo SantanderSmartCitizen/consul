@@ -130,9 +130,8 @@ en:
         action_added: "Action added to this game"
         error_on_action_added: "Action could not be added to this game"
       destroy:
-        alert: "This action will remove the game and all its associated actions."
+        alert: "This action will remove the game."
         success_notice: "Game deleted successfully"
-        unable_notice: "You cannot delete a game that has rewards"
       ranking:
         title: Ranking
     gamification:

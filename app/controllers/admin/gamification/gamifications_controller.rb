@@ -39,15 +39,13 @@ class Admin::Gamification::GamificationsController < Admin::Gamification::BaseCo
   end
 
   def destroy
-=begin
-    if ::Poll::Voter.where(poll: @poll).any?
-      redirect_to admin_poll_path(@poll), alert: t("admin.polls.destroy.unable_notice")
+    if @gamification.destroy
+      flash[:notice] = t("flash.actions.destroy.gamification")
     else
-      @poll.destroy!
-
-      redirect_to admin_polls_path, notice: t("admin.polls.destroy.success_notice")
+      flash[:error] = @gamification.errors.full_messages.join(",")
     end
-=end
+
+    redirect_to admin_gamifications_path
   end
 
   def results

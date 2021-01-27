@@ -13,7 +13,7 @@ module GamificationsHelper
   # end
 
   def gamification_select_options
-    select_options = Gamification.all.map { |p| [p.key, p.id] }
+    select_options = Gamification.no_locked.map { |p| [p.key, p.id] }
     options_for_select(select_options)
   end
 

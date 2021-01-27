@@ -18,12 +18,8 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
     @action = ::Gamification::Action.new(action_params)
 
     if @action.save
-      if params[:gamification_action][:return_to] == "gamification"
-        return_path = admin_gamification_path(@action.gamification)
-      else
-        return_path = admin_gamification_actions_path()
-      end
-      redirect_to return_path, notice: t("flash.actions.create.gamification_action")
+      redirect_to return_path(params[:gamification_action][:return_to]), 
+                  notice: t("flash.actions.create.gamification_action")
     else
       render :new
     end
@@ -38,18 +34,21 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
 
   def update
     if @action.update(action_params)
-      if params[:gamification_action][:return_to] == "gamification"
-        return_path = admin_gamification_path(@action.gamification)
-      else
-        return_path = admin_gamification_actions_path()
-      end
-      redirect_to return_path, notice: t("flash.actions.update.gamification_action")
+      redirect_to return_path(params[:gamification_action][:return_to]), 
+                  notice: t("flash.actions.update.gamification_action")
     else
       render :edit
     end
   end
 
   def destroy
+    if @action.destroy
+      flash[:notice] = t("flash.actions.destroy.gamification_action")
+    else
+      flash[:error] = @action.errors.full_messages.join(",")
+    end
+
+    redirect_to return_path(params[:return_to])
   end
 
   def update_operations
@@ -105,6 +104,14 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
 
     def load_search
       @search = params.permit(:search)[:search]
+    end
+
+    def return_path (return_to)
+      if return_to == "gamification"
+        admin_gamification_path(@action.gamification)
+      else
+        admin_gamification_actions_path()
+      end
     end
 
 end

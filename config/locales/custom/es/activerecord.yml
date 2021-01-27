@@ -22,12 +22,28 @@ es:
         username: "Nombre de usuario/alias"
       poll:
         only_terminals: Mostrar solo en Terminales
+      gamification:
+        key: Clave
+        actions: Acciones
+        rewards: Recompensas
+        user_rankings: Puntuaciones
       gamification/translation:
         title: Título
         description: Descripción
+      gamification/action:
+        key: Clave
+        score: Puntuación
+        gamification: Juego
+        gamification_action_additional_scores: Puntuación adicional
+        gamification_user_actions: Acciones de usuario
       gamification/action/translation:
         title: Título
         description: Descripción
+      gamification/reward:
+        gamification: Juego
+        minimum_score: Puntuación mínima
+        active: Activa
+        gamification_requested_rewards: Recompensas solicitadas
       gamification/reward/translation:
         title: Título
         description: Descripción
