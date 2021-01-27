@@ -29,7 +29,8 @@
     <div class="clear">
       <div class="small-12 medium-6 column required">
         <%= f.text_field :key,
-                          label: t("admin.gamification.actions.form.key") %>
+                          label: t("admin.gamification.actions.form.key"),
+                          disabled: @action.gamification&.locked %>
       </div>
     </div>
   </div>
@@ -38,14 +39,14 @@
     <div class="small-12 medium-6 column">
       <%= f.select :process_type,
                     get_process_type_select_options,
-                    label: t("admin.gamification.actions.form.process_type"),
-                    include_blank: "..." %>
+                    {label: t("admin.gamification.actions.form.process_type"), include_blank: "..."},
+                    {disabled: @action.gamification&.locked} %>
     </div>
     <div class="small-12 medium-6 column">
       <%= f.select :operation,
                     get_operation_select_options(@action.process_type),
-                    label: t("admin.gamification.actions.form.operation"),
-                    include_blank: "..." %>
+                    {label: t("admin.gamification.actions.form.operation"), include_blank: "..."},
+                    {disabled: @action.gamification&.locked} %>
     </div>
   </div>
 

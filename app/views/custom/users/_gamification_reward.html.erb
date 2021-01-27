@@ -10,16 +10,14 @@
     <div class="small-12 column small-centered margin-top">
       <% if gamification_reward.executed_for?(@user) || (!gamification_reward.request_to_administrators && gamification_reward.active_for?(@user)) %>
         <%= link_to t("users.show.rewards.view_reward"),
-                    "/",
+                    gamification_reward_path(gamification_reward),
                     class: "button expanded" %>
-      <!-- new_request_user_gamification_reward_path(@user, gamification_reward) -->
       <% elsif gamification_reward.requested_for?(@user) %>
         <strong><%= t("users.show.rewards.reward_requested") %></strong>
       <% elsif gamification_reward.active_for?(@user) %>
         <%= link_to t("users.show.rewards.request_reward"),
-                    "/",
+                    gamification_reward_path(gamification_reward),
                     class: "button expanded" %>
-      <!-- new_request_user_gamification_reward_path(@user, gamification_reward) -->
       <% else %>
         <strong>
           <%= gamification_reward_availability_label(gamification_reward) %>

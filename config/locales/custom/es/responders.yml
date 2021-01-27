@@ -11,3 +11,7 @@ es:
         gamification: "Juego actualizado correctamente."
         gamification_action: "Acción actualizada correctamente."
         gamification_reward: "Recompensa actualizada correctamente."
+      destroy:
+        gamification: "Juego eliminado correctamente."
+        gamification_action: "Acción eliminada correctamente."
+        gamification_reward: "Recompensa eliminada correctamente."

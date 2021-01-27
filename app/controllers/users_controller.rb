@@ -21,7 +21,7 @@ class UsersController < ApplicationController
                           follows: @user.follows.map(&:followable).compact.count,
                           gamification_user_rankings: Gamification::UserRanking.where(user_id: @user.id).sum(:score),
                           gamification_user_actions: Gamification::UserAction.where(user_id: @user.id).count,
-                          gamification_rewards: Gamification::Reward.active_for(@user.id).count)
+                          gamification_rewards: Gamification::Reward.active_for(@user).count)
     end
 
     def load_filtered_activity

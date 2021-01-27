@@ -166,9 +166,8 @@ es:
         action_added: "Acción añadida a este juego"
         error_on_action_added: "No pudo añadirse la acción"
       destroy:
-        alert: "Esta acción eliminará el juego y todas las acciones asociadas."
+        alert: "Esta acción eliminará el juego."
         success_notice: "Juego eliminado correctamente"
-        unable_notice: "No se puede eliminar un juego que tenga recompensas"
       ranking:
         title: Clasificación
     gamification:

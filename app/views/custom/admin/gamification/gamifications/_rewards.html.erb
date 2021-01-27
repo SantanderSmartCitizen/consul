@@ -41,9 +41,11 @@
 	        <%= link_to t("shared.edit"), edit_admin_gamification_reward_path(reward, :return_to => "gamification"),
 	                                      class: "button hollow" %>
 
-	        <%= link_to t("shared.delete"), admin_gamification_reward_path(reward),
-	                                        class: "button hollow alert",
-	                                        method: :delete %>
+	        <%= link_to t("shared.delete"), 
+                      admin_gamification_reward_path(reward, :return_to => "gamification"),
+                      method: :delete,
+	                    class: "button hollow alert",
+	                    data: { confirm: t("admin.actions.confirm") } %>
         </td>
       </tr>
 

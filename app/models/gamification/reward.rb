@@ -10,7 +10,7 @@ class Gamification::Reward < ApplicationRecord
   translates :description, touch: true
   include Globalizable
 
-  # validates :gamification_id, presence: true
+  validates :gamification_id, presence: true
   validates_translation :title, presence: true, length: { in: 3..Gamification::Reward.title_max_length }
   # validates_translation :description, presence: true, length: { in: 10..Gamification::Reward.description_max_length }
   validates :minimum_score, presence: true, length: { in: 1..10 }
@@ -18,9 +18,9 @@ class Gamification::Reward < ApplicationRecord
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
 
-  def self.active_for(user_id)
+  def self.active_for(user)
     active.joins("INNER JOIN gamification_user_rankings ON gamification_rewards.gamification_id = gamification_user_rankings.gamification_id and gamification_rewards.minimum_score <= gamification_user_rankings.score")
-    .where(gamification_user_rankings: { user_id: user_id })
+    .where(gamification_user_rankings: { user_id: user.id })
   end
 
   def active_for?(user)

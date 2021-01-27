@@ -1,7 +1,8 @@
 <h3 class="inline-block"><%= t("admin.gamifications.show.actions_title") %></h3>
 
-<%= link_to t("admin.gamification.actions.index.create"), new_admin_gamification_action_path(:gamification_id => @gamification.id, :return_to => "gamification"),
-            class: "button float-right" %>
+<% unless @gamification.locked %>
+  <%= link_to t("admin.gamification.actions.index.create"), new_admin_gamification_action_path(:gamification_id => @gamification.id, :return_to=> "gamification"), class: "button float-right" %>
+<% end %>
 
 <% if @gamification.actions.empty? %>
   
@@ -42,8 +43,13 @@
         <td>
 	        <%= link_to t("shared.edit"), edit_admin_gamification_action_path(action, :return_to => "gamification"), class: "button hollow" %>
 
-	        <%= link_to t("shared.delete"), admin_gamification_action_path(action), 
-            class: "button hollow alert", method: :delete %>
+          <% unless @gamification.locked %>
+            <%= link_to t("shared.delete"), 
+              admin_gamification_action_path(action, :return_to => "gamification"),
+              method: :delete,
+              class: "button hollow alert",
+              data: { confirm: t("admin.actions.confirm") } %>
+          <% end %>
 
           <%= link_to t("admin.actions.configure"), admin_gamification_action_path(action),
             class: "button hollow " %>

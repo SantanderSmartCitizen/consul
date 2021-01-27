@@ -11,3 +11,7 @@ en:
         gamification: "Game updated successfully."
         gamification_action: "Action updated successfully."
         gamification_reward: "Reward updated successfully."
+      destroy:
+        gamification: "Game deleted successfully."
+        gamification_action: "Action deleted successfully."
+        gamification_reward: "Reward deleted successfully."
