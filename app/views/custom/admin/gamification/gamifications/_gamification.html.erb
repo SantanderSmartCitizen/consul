@@ -15,11 +15,13 @@
                 edit_admin_gamification_path(gamification),
                 class: "button hollow" %>
 
-    <%= link_to t("admin.actions.delete"),
+    <% unless gamification.locked %>
+      <%= link_to t("admin.actions.delete"),
             admin_gamification_path(gamification),
             method: :delete,
             "data-confirm": t("admin.gamifications.destroy.alert"),
             class: "button hollow alert" %>
+    <% end %>
 
     <%= link_to t("admin.actions.configure"),
                 admin_gamification_path(gamification),

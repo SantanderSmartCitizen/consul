@@ -23,12 +23,8 @@ class Admin::Gamification::RewardsController < Admin::Gamification::BaseControll
     @gamification = @reward.gamification
 
     if @reward.save
-      if params[:gamification_reward][:return_to] == "gamification"
-        return_path = admin_gamification_path(@gamification, :tab => "rewards")
-      else
-        return_path = admin_gamification_rewards_path()
-      end
-      redirect_to return_path, notice: t("flash.actions.create.gamification_reward")
+      redirect_to return_path(params[:gamification_reward][:return_to]), 
+                  notice: t("flash.actions.create.gamification_reward")
     else
       render :new
     end
@@ -42,18 +38,21 @@ class Admin::Gamification::RewardsController < Admin::Gamification::BaseControll
 
   def update
     if @reward.update(reward_params)
-      if params[:gamification_reward][:return_to] == "gamification"
-        return_path = admin_gamification_path(@reward.gamification, :tab => "rewards")
-      else
-        return_path = admin_gamification_rewards_path()
-      end
-      redirect_to return_path, notice: t("flash.actions.update.gamification_reward")
+      redirect_to return_path(params[:gamification_reward][:return_to]), 
+                  notice: t("flash.actions.update.gamification_reward")
     else
       render :edit
     end
   end
 
   def destroy
+    if @reward.destroy
+      flash[:notice] = t("flash.actions.destroy.gamification_reward")
+    else
+      flash[:error] = @reward.errors.full_messages.join(",")
+    end
+
+    redirect_to return_path(params[:return_to])
   end
 
   private
@@ -74,6 +73,14 @@ class Admin::Gamification::RewardsController < Admin::Gamification::BaseControll
     def resource
       load_reward unless @reward
       @reward
+    end
+
+    def return_path (return_to)
+      if return_to == "gamification"
+        admin_gamification_path(@reward.gamification, :tab => "rewards")
+      else
+        admin_gamification_rewards_path()
+      end
     end
 
 end

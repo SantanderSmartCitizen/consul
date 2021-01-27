@@ -21,7 +21,7 @@ class UsersController < ApplicationController
                           follows: @user.follows.map(&:followable).compact.count,
                           gamification_user_rankings: Gamification::UserRanking.where(user_id: @user.id).sum(:score),
                           gamification_user_actions: Gamification::UserAction.where(user_id: @user.id).count,
-                          gamification_rewards: 5)
+                          gamification_rewards: Gamification::Reward.active_for(@user).count)
     end
 
     def load_filtered_activity
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       when "follows" then load_follows
       when "gamification_user_rankings" then load_gamification_user_rankings
       when "gamification_user_actions" then load_gamification_user_actions
-      when "gamification_rewards" then load_gamification_rewards
+      when "gamification_rewards" then load_gamifications
       else load_available_activity
       end
     end
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
         load_gamification_user_actions
         @current_filter = "gamification_user_actions"
       elsif  @activity_counts[:gamification_rewards] > 0
-        load_gamification_rewards
+        load_gamifications
         @current_filter = "gamification_rewards"
       end
     end
@@ -104,8 +104,8 @@ class UsersController < ApplicationController
       @gamification_user_actions = ::Gamification::UserAction.where(user_id: @user.id).order(created_at: :desc).page(params[:page])
     end
 
-    def load_gamification_rewards
-      @gamification_rewards = 5
+    def load_gamifications
+      @gamifications = Gamification.all
     end
 
     def valid_access?

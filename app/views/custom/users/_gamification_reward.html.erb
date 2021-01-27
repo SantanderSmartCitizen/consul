@@ -1,0 +1,28 @@
+<div id="<%= dom_id(gamification_reward) %>" class="small-12 medium-6 large-3 column end">
+  <div class="resource-card <%= gamification_reward_card_class(gamification_reward, @user) %>"
+       data-equalizer-watch="gamification_rewards"
+       title="<%= gamification_reward_tooltip(gamification_reward, @user) %>">
+    <h4><%= gamification_reward.title %></h4>
+    <p class="gamification_reward-description">
+      <%= gamification_reward.description %>
+    </p>
+
+    <div class="small-12 column small-centered margin-top">
+      <% if gamification_reward.executed_for?(@user) || (!gamification_reward.request_to_administrators && gamification_reward.active_for?(@user)) %>
+        <%= link_to t("users.show.rewards.view_reward"),
+                    gamification_reward_path(gamification_reward),
+                    class: "button expanded" %>
+      <% elsif gamification_reward.requested_for?(@user) %>
+        <strong><%= t("users.show.rewards.reward_requested") %></strong>
+      <% elsif gamification_reward.active_for?(@user) %>
+        <%= link_to t("users.show.rewards.request_reward"),
+                    gamification_reward_path(gamification_reward),
+                    class: "button expanded" %>
+      <% else %>
+        <strong>
+          <%= gamification_reward_availability_label(gamification_reward) %>
+        </strong>
+      <% end %>
+    </div>
+  </div>
+</div>

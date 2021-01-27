@@ -145,7 +145,14 @@ en:
           other: "%{count} Scored actions"
         gamification_rewards:
           one: 1 Reward available
-          other: "%{count} Rewards available"   
+          other: "%{count} Rewards available"
+      rewards:
+        points: "%{points} points"
+        required_score: "Required score: %{score}"
+        view_reward: See reward
+        reward_requested: Reward already requested
+        request_reward: Request reward
+        reward_locked: Reward locked
   welcome:
     feed:
       see_all_debates: SEE ALL DEBATES

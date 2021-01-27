@@ -9,7 +9,8 @@
       <div class="small-12 medium-6 column required">
         <%= f.text_field :key,
                           value: @gamification.key,
-                          label: t("admin.gamifications.index.key") %>
+                          label: t("admin.gamifications.index.key"),
+                          disabled: @gamification.locked %>
       </div>
     </div>
   </div>
