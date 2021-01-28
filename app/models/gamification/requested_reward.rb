@@ -1,7 +1,7 @@
 class Gamification::RequestedReward < ApplicationRecord
   belongs_to :gamification_reward, class_name: "Gamification::Reward"
   belongs_to :user
-  belongs_to :administrator
+  belongs_to :administrator, class_name: "User"
 
   validates :gamification_reward, presence: true
   validates :user, presence: true
