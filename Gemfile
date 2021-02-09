@@ -61,7 +61,6 @@ gem "wicked_pdf", "~> 1.1.0"
 gem "wkhtmltopdf-binary", "~> 0.12.4"
 
 source "https://rails-assets.org" do
-  gem "rails-assets-leaflet"
   gem "rails-assets-markdown-it", "~> 8.2.1"
 end
 
