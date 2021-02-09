@@ -164,3 +164,6 @@ en:
     regular: Regular
     good: Good
     gorgeous: Gorgeous
+  proposals:
+    index:
+      map: Proposals located geographically

@@ -132,6 +132,9 @@ es:
       feeds:
         citizen_proposals: Propuestas ciudadanos
         city_hall_proposals: Propuestas Ayuntamiento
+    geozones:
+      geozone:
+        external_code_help: Código de respuesta para esta zona en la API del GIS
     gamifications:
       index:
         table_title: Juegos

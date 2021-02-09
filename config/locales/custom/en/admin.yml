@@ -96,6 +96,9 @@ en:
       feeds:
         citizen_proposals: Citizen Proposals
         city_hall_proposals: City Hall Proposals
+    geozones:
+      geozone:
+        external_code_help: Response code for this geozone on the GIS API
     gamifications:
       index:
         table_title: Games
