@@ -9,3 +9,8 @@ en:
           username_is_available: Username/alias available
           username_is_not_available: Username/alias already in use
           username_label: Username/alias
+    menu:
+      login_items:
+        login_as_admin: Login as administrator
+        login_as_citizen: Login as citizen
+
