@@ -4,6 +4,15 @@
 identity_providers:
     city_hall_issuer: saml2.ssc.c4.empleados
     citizen_issuer: saml2.ssc.c4
+    attribute:
+        document_type: http://wso2.org/claims/doctype
+        document_number: http://wso2.org/claims/documento
+        date_of_birth: http://wso2.org/claims/dobNew
+        gender: http://wso2.org/claims/genero
+        email: http://wso2.org/claims/emailaddress
+        geozone_code: http://wso2.org/claims/distrito
+        #http://wso2.org/claims/lastname
+        #http://wso2.org/claims/givenname
     onelogin:
         #Mandatory Settings
         #Page of IDP where user accesses all his/her apps authenticated by the IDP

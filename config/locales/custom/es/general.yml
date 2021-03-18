@@ -135,6 +135,8 @@ es:
       city_hall: Ayuntamiento
       citizen: Ciudadano
   users:
+    login_to_comment: "Necesitas %{signin} para comentar."
+    login_to_continue: "Necesitas %{signin} para continuar."
     show:
       deleted_forum: Este tema ha sido eliminado
       budget_investments: Proyectos de presupuestos
