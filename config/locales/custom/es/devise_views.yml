@@ -9,3 +9,7 @@ es:
           username_is_available: Nombre de usuario/alias disponible
           username_is_not_available: Nombre de usuario/alias ya existente
           username_label: Nombre de usuario/alias
+    menu:
+      login_items:
+        login_as_admin: Iniciar sesión como administrador
+        login_as_citizen: Iniciar sesión como ciudadano
