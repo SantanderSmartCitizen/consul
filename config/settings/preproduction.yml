@@ -26,7 +26,7 @@ identity_providers:
         idp_sso_target_url: https://sso-pre.int.ayto-santander.es:9443/samlsso
         #issuer: saml2.ssc.c4.empleados
         #Assertion consumer service URL
-        assertion_consumer_service_url: http://192.168.0.34.40/users/saml/auth
+        assertion_consumer_service_url: http://192.168.0.34.140/users/saml/auth
         name_identifier_format: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
         assertion_consumer_service_binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
 
