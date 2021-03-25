@@ -4,13 +4,16 @@
 identity_providers:
     city_hall_issuer: saml2.ssc.c4.empleados
     citizen_issuer: saml2.ssc.c4
-    attribute:
+    attributes:
         document_type: http://wso2.org/claims/doctype
         document_number: http://wso2.org/claims/documento
         date_of_birth: http://wso2.org/claims/dobNew
         gender: http://wso2.org/claims/genero
         email: http://wso2.org/claims/emailaddress
         geozone_code: http://wso2.org/claims/distrito
+        user_type: http://wso2.org/claims/user_type
+        organization_name: http://wso2.org/claims/business_name
+        organization_responsible_name: http://wso2.org/claims/responsable
         #http://wso2.org/claims/lastname
         #http://wso2.org/claims/givenname
     onelogin:
