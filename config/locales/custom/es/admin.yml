@@ -16,6 +16,9 @@ es:
         title: Editar presupuestos
       destroy:
         unable_notice_polls: No se puede eliminar un presupuesto con una encuesta/consulta asociada
+    budget_investments:
+      edit:
+        estimated_price: Coste estimado (%{currency})
     forums:
       index:
         id: ID
