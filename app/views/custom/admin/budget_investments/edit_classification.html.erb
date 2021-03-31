@@ -1,0 +1,45 @@
+<%= back_link_to admin_budget_budget_investments_path(@budget, Budget::Investment.filter_params(params).to_h), t("shared.back") %>
+
+<div class="row">
+  <%= form_for @investment, url: url_for(controller: "admin/budget_investments", action: "update_classification", params: Budget::Investment.filter_params(params).to_h) do |f| %>
+
+    <%= render "shared/errors", resource: @investment %>
+
+    <div class="row expanded margin-top">
+
+      <div id="administrator" class="small-12 column">
+        <h2 id="classification"><%= t("admin.budget_investments.edit.classification") %></h2>
+
+        <div class="small-12 medium-6">
+          <%= f.select(:administrator_id,
+                         @admins.collect { |a| [a.description_or_name_and_email, a.id] },
+                         { include_blank: t("admin.budget_investments.edit.undefined") }) %>
+        </div>
+      </div>
+
+      <div class="small-12 column margin-top">
+        <%= f.label :valuator_ids %>
+        <ul>
+        <%= f.collection_check_boxes :valuator_group_ids, @valuator_groups, :id, :name do |group| %>
+          <li><%= group.label(title: group.object.name) { group.check_box + truncate(group.object.name, length: 60) } %></li>
+        <% end %>
+        </ul>
+      </div>
+
+      <div class="small-12 column">
+        <hr>
+        <%= f.label :valuator_ids, t("admin.budget_investments.edit.assigned_valuators") %>
+        <ul>
+          <%= f.collection_check_boxes :valuator_ids, @valuators, :id, :email do |b| %>
+              <li><%= b.label(title: valuator_label(b.object)) { b.check_box + truncate(b.object.description_or_email, length: 60) } %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="small-12 column margin-top">
+      <%= f.submit(class: "button", value: t("admin.budget_investments.edit.submit_button")) %>
+    </div>
+  <% end %>
+
+</div>
