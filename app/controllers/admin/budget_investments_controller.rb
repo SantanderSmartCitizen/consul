@@ -9,7 +9,7 @@ class Admin::BudgetInvestmentsController < Admin::BaseController
   has_filters %w[all], only: [:index, :toggle_selection]
 
   before_action :load_budget
-  before_action :load_investment, only: [:show, :edit, :update, :toggle_selection]
+  before_action :load_investment, only: [:show, :edit, :update, :toggle_selection, :edit_classification, :update_classification]
   before_action :load_ballot, only: [:show, :index]
   before_action :parse_valuation_filters
   before_action :load_investments, only: [:index, :toggle_selection]
@@ -37,6 +37,12 @@ class Admin::BudgetInvestmentsController < Admin::BaseController
     load_tags
   end
 
+  def edit_classification
+    authorize! :admin_update, @investment
+    load_staff
+    load_valuator_groups
+  end
+
   def update
     authorize! :admin_update, @investment
     if @investment.update(budget_investment_params)
@@ -49,6 +55,20 @@ class Admin::BudgetInvestmentsController < Admin::BaseController
       load_valuator_groups
       load_tags
       render :edit
+    end
+  end
+
+  def update_classification
+
+    authorize! :admin_update, @investment
+    if @investment.update(budget_investment_classification_params)
+      redirect_to admin_budget_budget_investments_path(@budget, 
+                                                       Budget::Investment.filter_params(params).to_h), 
+                  notice: t("flash.actions.update.budget_investment")
+    else
+      load_staff
+      load_valuator_groups
+      render :edit_classification
     end
   end
 
@@ -86,6 +106,11 @@ class Admin::BudgetInvestmentsController < Admin::BaseController
                     :estimated_price, :valuation_tag_list, :incompatible, :visible_to_valuators, 
                     :selected, :milestone_tag_list, valuator_ids: [], valuator_group_ids: []]
       params.require(:budget_investment).permit(attributes, translation_params(Budget::Investment))
+    end
+
+    def budget_investment_classification_params
+      attributes = [:administrator_id, valuator_ids: [], valuator_group_ids: []]
+      params.require(:budget_investment).permit(attributes)
     end
 
     def load_budget
