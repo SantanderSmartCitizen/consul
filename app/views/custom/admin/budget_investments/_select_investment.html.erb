@@ -17,9 +17,9 @@
 <td class="small" data-field="admin">
   <% no_administrators_assigned = t("admin.budget_investments.index.no_admin_assigned") %>
   <%= link_to investment.administrator.present? ? investment.administrator.description_or_name : no_administrators_assigned,
-              admin_budget_budget_investment_edit_classification_path(budget_id: @budget.id,
+              admin_budget_budget_investment_edit_administrator_path( budget_id: @budget.id,
                                                                       id: investment.id,
-                                                                      params: Budget::Investment.filter_params(params).to_h) %>
+                                                                      params: Budget::Investment.filter_params(params).to_h ) %>
   </td>
 
 <td class="small" data-field="author">
@@ -30,9 +30,9 @@
   <% valuators = [investment.assigned_valuation_groups, investment.assigned_valuators].compact %>
   <% no_valuators_assigned = t("admin.budget_investments.index.no_valuators_assigned") %>
   <%= link_to valuators.present? ? valuators.join(", ") : no_valuators_assigned,
-              admin_budget_budget_investment_edit_classification_path(budget_id: @budget.id,
-                                                                      id: investment.id,
-                                                                      params: Budget::Investment.filter_params(params).to_h) %>
+              admin_budget_budget_investment_edit_valuators_path( budget_id: @budget.id,
+                                                                  id: investment.id,
+                                                                  params: Budget::Investment.filter_params(params).to_h ) %>
 </td>
 
 <td class="small" data-field="geozone">

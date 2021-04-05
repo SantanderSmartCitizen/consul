@@ -69,8 +69,10 @@ namespace :admin do
       resources :headings, except: [:show], controller: "budget_headings"
     end
 
-    get "budget_investments/:id/edit_classification", to: "budget_investments#edit_classification", as: "budget_investment_edit_classification"
-    patch "budget_investments/:id/update_classification", to: "budget_investments#update_classification"
+    get "budget_investments/:id/edit_administrator", to: "budget_investments#edit_administrator", as: "budget_investment_edit_administrator"
+    patch "budget_investments/:id/update_administrator", to: "budget_investments#update_administrator"
+    get "budget_investments/:id/edit_valuators", to: "budget_investments#edit_valuators", as: "budget_investment_edit_valuators"
+    patch "budget_investments/:id/update_valuators", to: "budget_investments#update_valuators"
 
     resources :budget_investments, only: [:index, :show, :edit, :update] do
       member { patch :toggle_selection }
