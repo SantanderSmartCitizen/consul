@@ -1,0 +1,25 @@
+<%= back_link_to admin_budget_budget_investments_path(@budget, Budget::Investment.filter_params(params).to_h), t("shared.back") %>
+
+<div class="row">
+  <%= form_for @investment, url: url_for(controller: "admin/budget_investments", action: "update_administrator", params: Budget::Investment.filter_params(params).to_h) do |f| %>
+
+    <%= render "shared/errors", resource: @investment %>
+
+    <div class="row expanded margin-top">
+
+      <div id="administrator" class="small-12 column">
+        <div class="small-12 medium-6">
+          <%= f.select(:administrator_id,
+                         @admins.collect { |a| [a.description_or_name_and_email, a.id] },
+                         { include_blank: t("admin.budget_investments.edit.undefined") }) %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="small-12 column margin-top">
+      <%= f.submit(class: "button", value: t("admin.budget_investments.edit.submit_button")) %>
+    </div>
+  <% end %>
+
+</div>
