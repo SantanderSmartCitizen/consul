@@ -48,3 +48,5 @@ es:
         title: Título
         description: Descripción
         reward: Recompensa
+      milestone:
+        video_url: "Enlace a vídeo externo"

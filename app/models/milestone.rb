@@ -1,6 +1,7 @@
 class Milestone < ApplicationRecord
   include Imageable
   include Documentable
+  include EmbedVideosHelper
 
   translates :title, :description, touch: true
   include Globalizable
@@ -12,6 +13,8 @@ class Milestone < ApplicationRecord
   validates :milestoneable, presence: true
   validates :publication_date, presence: true
   validates_translation :description, presence: true, unless: -> { status_id.present? }
+
+  validate :valid_video_url?
 
   scope :order_by_publication_date, -> { order(publication_date: :asc, created_at: :asc) }
   scope :published,                 -> { where("publication_date <= ?", Date.current.end_of_day) }
