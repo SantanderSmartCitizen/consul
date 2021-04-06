@@ -303,3 +303,20 @@ es:
           reward: Recompensa solicitada
         update:
           success: La solicitud ha sido marcada como resuelta
+    milestones:
+      index:
+        delete: "Eliminar"
+        no_milestones: "No hay acciones desarrolladas"
+        new_milestone: "Crear nueva acción desarrollada"
+      new:
+        title: Nueva acción desarrollada
+        submit_button: Crear acción desarrollada
+      edit:
+        title: Editar acción desarrollada
+        submit_button: Actualizar acción desarrollada
+      create:
+        notice: "¡Nueva acción creada con éxito!"
+      update:
+        notice: Acción actualizada
+      delete:
+        notice: Acción borrada correctamente

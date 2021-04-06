@@ -263,3 +263,18 @@ en:
           reward: Requested reward
         update:
           success: The request has been marked as solved.
+    milestones:
+      index:
+        delete: "Delete"
+        no_actions: "There are no developed actions"
+        new_action: "Create new developed action"
+      new:
+        creating: Create developed action
+      edit:
+        title: Edit developed action
+      create:
+        notice: New action created successfully!
+      update:
+        notice: Action updated successfully
+      delete:
+        notice: Action successfully deleted
