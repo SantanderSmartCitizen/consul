@@ -37,6 +37,11 @@
         <%= render "documents/nested_documents", documentable: @milestone, f: f %>
       </div>
 
+      <div class="margin">
+        <%= f.check_box :allow_votes %>
+        <%= f.check_box :allow_comments %>
+      </div>
+
       <%= f.submit nil, class: "button success" %>
     </div>
   </div>

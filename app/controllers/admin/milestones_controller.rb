@@ -43,7 +43,7 @@ class Admin::MilestonesController < Admin::BaseController
 
     def milestone_params
       documents_attributes = [:id, :title, :attachment, :cached_attachment, :user_id, :_destroy]
-      attributes = [:publication_date, :status_id, :video_url,
+      attributes = [:publication_date, :status_id, :video_url, :allow_votes, :allow_comments,
                     translation_params(Milestone),
                     image_attributes: image_attributes, documents_attributes: documents_attributes]
 
