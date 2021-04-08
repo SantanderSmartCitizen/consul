@@ -150,6 +150,11 @@ class User < ApplicationRecord
     voted.each_with_object({}) { |v, h| h[v.votable_id] = v.value }
   end
 
+  def milestone_votes(milestones)
+    voted = votes.for_milestones(Array(milestones).map(&:id))
+    voted.each_with_object({}) { |v, h| h[v.votable_id] = v.value }
+  end
+
   def forum_votes(forums)
     voted = votes.for_forums(Array(forums).map(&:id))
     voted.each_with_object({}) { |v, h| h[v.votable_id] = v.value }

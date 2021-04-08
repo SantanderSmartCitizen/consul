@@ -72,6 +72,10 @@ class ApplicationController < ActionController::Base
       @debate_votes = current_user ? current_user.debate_votes(debates) : {}
     end
 
+    def set_milestone_votes(milestones)
+      @milestone_votes = current_user ? current_user.milestone_votes(milestones) : {}
+    end
+
     def set_forum_votes(forums)
       @forum_votes = current_user ? current_user.forum_votes(forums) : {}
     end

@@ -7,8 +7,12 @@ class Milestone < ApplicationRecord
   include Globalizable
   translation_class_delegate :status_id
 
+  acts_as_votable
+
   belongs_to :milestoneable, polymorphic: true
   belongs_to :status
+
+  has_many :comments, as: :commentable, inverse_of: :commentable
 
   validates :milestoneable, presence: true
   validates :publication_date, presence: true
@@ -23,4 +27,34 @@ class Milestone < ApplicationRecord
   def self.title_max_length
     80
   end
+
+  def likes
+    cached_votes_up
+  end
+
+  def dislikes
+    cached_votes_down
+  end
+
+  def total_votes
+    cached_votes_total
+  end
+
+  def register_vote(user, vote_value)
+    if votable_by?(user)
+      Milestone.increment_counter(:cached_anonymous_votes_total, id) if user.unverified? && !user.voted_for?(self)
+      vote_by(voter: user, vote: vote_value)
+    end
+  end
+
+  def votable_by?(user)
+    return false unless user
+
+    total_votes <= 100 ||
+      !user.unverified? ||
+      Setting["max_ratio_anon_votes_on_milestones"].to_i == 100 ||
+      anonymous_votes_ratio < Setting["max_ratio_anon_votes_on_milestones"].to_i ||
+      user.voted_for?(self)
+  end
+
 end

@@ -23,7 +23,7 @@
     <% end %>
 
     <p>
-      <%= sanitize_and_auto_link milestone.description %>
+      <%= link_to (sanitize_and_auto_link milestone.description), milestone %>
     </p>
 
     <%= image_tag(milestone.image_url(:large), { id: "image_#{milestone.id}", alt: milestone.image.title }) if milestone.image.present? %>

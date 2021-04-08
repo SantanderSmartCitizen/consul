@@ -1,0 +1,88 @@
+<% provide :title do %><%= @milestone.title %><% end %>
+<% content_for :canonical do %>
+  <%= render "shared/canonical", href: milestone_url(@milestone) %>
+<% end %>
+
+<% cache [locale_and_user_status, @milestone, @milestone_votes] do %>
+  <div class="milestone-show">
+    <div id="<%= dom_id(@milestone) %>" class="row">
+      <div class="small-12 medium-9 column">
+        <%= back_link_to %>
+
+        <h1>Acción desarrollada</h1>
+
+        <div class="milestone-info">
+          <% if @milestone.publication_date.present? %>
+            <span class="milestone-date">
+              <strong>
+                <%= t("milestones.show.publication_date",
+                      publication_date: l(@milestone.publication_date.to_date)) %>
+              </strong>
+            </span>
+          <% end %>
+          <span class="bullet">&nbsp;&bull;&nbsp;</span>
+          <span class="icon-comments"></span>&nbsp;
+          <%= link_to t("milestones.show.comments", count: @milestone.comments_count), "#comments" %>
+        </div>
+
+        <% if @milestone.status.present? %>
+          <p>
+            <span class="milestone-status">
+              <%= @milestone.status.name %>
+            </span>
+          </p>
+        <% end %>
+
+        <p><%= auto_link_already_sanitized_html wysiwyg(@milestone.description) %></p>
+
+        <%= image_tag(@milestone.image_url(:large), { id: "image_#{@milestone.id}", alt: @milestone.image.title }) if @milestone.image.present? %>
+
+        <% if @milestone.video_url.present? %>
+          <div class="flex-video margin">
+            <div class="js-embedded-video" data-video-code="<%= embedded_video_code(@milestone) %>"></div>
+          </div>
+        <% end %>
+
+        <% if @milestone.documents.present? %>
+          <div class="documents">
+            <div class="document-link text-left small">
+              <p>
+                <strong><%= t("shared.documentation") %></strong>
+              </p>
+
+              <% @milestone.documents.each do |document| %>
+                  <%= link_to document.title,
+                          document.attachment.url,
+                          target: "_blank",
+                          rel: "nofollow" %><br>
+                  <small>
+                    <%= document.humanized_content_type %>&nbsp;|&nbsp;
+                    <%= number_to_human_size(document.attachment_file_size, precision: 2) %>
+                  </small>
+                  <br>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+
+      <aside class="small-12 medium-3 column">
+        <div class="sidebar-divider"></div>
+        <h2><%= t("votes.supports") %></h2>
+        <div id="<%= dom_id(@milestone) %>_votes">
+          <!-- ender "votes", milestone: @milestone -->
+        </div>
+        <%= render "shared/social_share",
+          share_title: t("milestones.show.share"),
+          title: @milestone.milestoneable.title,
+          url: milestone_url(@milestone),
+          description: @milestone.description,
+          mobile: @milestone.description
+        %>
+      </aside>
+    </div>
+  </div>
+<% end %>
+
+<%= render "comments" %>
