@@ -216,6 +216,8 @@ en:
           flash: 
             created: Additional score created successfully
             updated: Additional score updated successfully
+          form:
+            additional_score: Additional score
       rewards:
         index:
           title: Rewards

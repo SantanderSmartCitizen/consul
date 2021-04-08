@@ -192,6 +192,7 @@ es:
           process_type: Tipo de proceso participativo
           operation: Operación
           select_gamification: Selecciona un juego
+          process_type_title: "Rellene estos campos si la acción está vinculada a un proceso participativo:"
         new:
           title: "Crear acción para el juego '%{gamification}'"
           general_title: "Crear acción"
@@ -254,6 +255,8 @@ es:
           flash: 
             created: Puntuación adicional creada correctamente
             updated: Puntuación adicional actualizada correctamente
+          form:
+            additional_score: Puntuación adicional
       rewards:
         index:
           table_title: Recompensas
