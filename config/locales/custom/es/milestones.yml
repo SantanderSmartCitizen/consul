@@ -1,0 +1,18 @@
+es:
+  milestones:
+    show:
+      comments_title: Comentarios
+      share: Compartir
+      comments:
+        zero: Sin comentarios
+        one: 1 Comentario
+        other: "%{count} Comentarios"
+    milestone:
+      comments:
+        zero: Sin comentarios
+        one: 1 Comentario
+        other: "%{count} Comentarios"
+      votes:
+        zero: Sin votos
+        one: 1 voto
+        other: "%{count} votos"

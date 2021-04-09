@@ -1,0 +1,18 @@
+en:
+  milestones:
+    show:
+      comments_title: Comments
+      share: Share
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comments
+    milestone:
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comments
+      votes:
+        one: 1 vote
+        other: "%{count} votes"
+        zero: No votes

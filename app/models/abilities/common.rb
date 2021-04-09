@@ -93,6 +93,7 @@ module Abilities
         can :vote, Debate
         can :vote, Forum
         can :vote, Comment
+        can :vote, Milestone
       end
 
       if user.level_two_or_three_verified?
