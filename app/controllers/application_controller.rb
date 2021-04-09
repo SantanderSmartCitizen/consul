@@ -1,4 +1,5 @@
 require "application_responder"
+require 'idp_settings_adapter'
 
 class ApplicationController < ActionController::Base
   include GlobalizeFallbacks
@@ -24,8 +25,13 @@ class ApplicationController < ActionController::Base
   layout :set_layout
   respond_to :html
   helper_method :current_budget
+  helper_method :saml_session?
 
   private
+
+    def saml_session?
+      @saml_session_check ||= session[:saml_issuer]
+    end
 
     def authenticate_http_basic
       authenticate_or_request_with_http_basic do |username, password|

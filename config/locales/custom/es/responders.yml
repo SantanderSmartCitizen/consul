@@ -15,3 +15,5 @@ es:
         gamification: "Juego eliminado correctamente."
         gamification_action: "Acción eliminada correctamente."
         gamification_reward: "Recompensa eliminada correctamente."
+      error:
+        login: "No ha podido acceder correctamente, contacte con el administrador."

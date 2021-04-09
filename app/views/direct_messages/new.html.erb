@@ -10,7 +10,7 @@
       <div class="callout primary">
         <p>
           <%= sanitize(t("users.login_to_continue",
-            signin: link_to_signin, signup: link_to_signup)) %>
+            signin: link_to_signin)) %>
         </p>
       </div>
     <% elsif not @receiver.email_on_direct_message? %>

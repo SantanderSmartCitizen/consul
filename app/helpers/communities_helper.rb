@@ -32,6 +32,7 @@ module CommunitiesHelper
   end
 
   def create_topic_link(community)
-    current_user.present? ? new_community_topic_path(community.id) : new_user_session_path
+    #current_user.present? ? new_community_topic_path(community.id) : new_user_session_path
+    current_user.present? ? new_community_topic_path(community.id) : new_saml_user_session_path(issuer: Settings.identity_providers.citizen_issuer)
   end
 end
