@@ -16,3 +16,8 @@ es:
         title: Presupuestos
     results:
       heading: "Resultados presupuestos"
+    investments:
+      form:
+        estimated_price: Coste estimado (%{currency})
+      show:
+        estimated_price: "Coste estimado: <strong>%{estimated_price} %{currency}</strong>"

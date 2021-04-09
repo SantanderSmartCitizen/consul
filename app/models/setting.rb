@@ -113,6 +113,8 @@ class Setting < ApplicationRecord
         "map.latitude": 51.48,
         "map.longitude": 0.0,
         "map.zoom": 10,
+        "map.arcgis.feature_layer_url": "",
+        "map.arcgis.district_code_field": "CODDC",
         "process.debates": true,
         "process.forums": true,
         "process.proposals": true,

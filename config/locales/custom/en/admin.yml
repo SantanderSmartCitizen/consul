@@ -3,6 +3,9 @@ en:
     budgets:
       destroy:
         unable_notice_polls: You cannot delete a budget that has an associated poll/question
+    budget_investments:
+      edit:
+        estimated_price: Estimated price (%{currency})
     forums:
       index:
         id: ID
@@ -96,6 +99,9 @@ en:
       feeds:
         citizen_proposals: Citizen Proposals
         city_hall_proposals: City Hall Proposals
+    geozones:
+      geozone:
+        external_code_help: Response code for this geozone on the GIS API
     gamifications:
       index:
         table_title: Games
@@ -210,6 +216,8 @@ en:
           flash: 
             created: Additional score created successfully
             updated: Additional score updated successfully
+          form:
+            additional_score: Additional score
       rewards:
         index:
           title: Rewards
@@ -257,3 +265,18 @@ en:
           reward: Requested reward
         update:
           success: The request has been marked as solved.
+    milestones:
+      index:
+        delete: "Delete"
+        no_actions: "There are no developed actions"
+        new_action: "Create new developed action"
+      new:
+        creating: Create developed action
+      edit:
+        title: Edit developed action
+      create:
+        notice: New action created successfully!
+      update:
+        notice: Action updated successfully
+      delete:
+        notice: Action successfully deleted

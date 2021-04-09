@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :flags
   has_many :identities, dependent: :destroy
   has_many :debates, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
+  has_many :milestones, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :forums, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :proposals, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :activities
@@ -147,6 +148,11 @@ class User < ApplicationRecord
 
   def debate_votes(debates)
     voted = votes.for_debates(Array(debates).map(&:id))
+    voted.each_with_object({}) { |v, h| h[v.votable_id] = v.value }
+  end
+
+  def milestone_votes(milestones)
+    voted = votes.for_milestones(Array(milestones).map(&:id))
     voted.each_with_object({}) { |v, h| h[v.votable_id] = v.value }
   end
 

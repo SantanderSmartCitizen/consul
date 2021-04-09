@@ -13,6 +13,7 @@ class StatsController < ApplicationController
     @comments = daily_cache("comments") { Comment.not_valuations.with_hidden.count }
 
     @debate_votes = daily_cache("debate_votes") { Vote.where(votable_type: "Debate").count }
+    @milestone_votes = daily_cache("Milestone_votes") { Vote.where(votable_type: "Milestone").count }
     @forum_votes = daily_cache("forum_votes") { Vote.where(votable_type: "Forum").count }
     @proposal_votes = daily_cache("proposal_votes") { Vote.where(votable_type: "Proposal").count }
     @comment_votes = daily_cache("comment_votes") { Vote.where(votable_type: "Comment").count }
