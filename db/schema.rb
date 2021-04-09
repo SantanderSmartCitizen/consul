@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210408153621) do
+ActiveRecord::Schema.define(version: 20210409071000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1083,9 +1083,13 @@ ActiveRecord::Schema.define(version: 20210408153621) do
     t.integer  "cached_votes_up",    default: 0
     t.integer  "cached_votes_down",  default: 0
     t.integer  "author_id"
+    t.datetime "hidden_at"
+    t.integer  "cached_votes_score", default: 0
     t.index ["cached_votes_down"], name: "index_milestones_on_cached_votes_down", using: :btree
+    t.index ["cached_votes_score"], name: "index_milestones_on_cached_votes_score", using: :btree
     t.index ["cached_votes_total"], name: "index_milestones_on_cached_votes_total", using: :btree
     t.index ["cached_votes_up"], name: "index_milestones_on_cached_votes_up", using: :btree
+    t.index ["hidden_at"], name: "index_milestones_on_hidden_at", using: :btree
     t.index ["status_id"], name: "index_milestones_on_status_id", using: :btree
   end
 

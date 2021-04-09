@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :flags
   has_many :identities, dependent: :destroy
   has_many :debates, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
+  has_many :milestones, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :forums, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :proposals, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :activities

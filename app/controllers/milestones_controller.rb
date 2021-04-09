@@ -10,10 +10,11 @@ class MilestonesController < ApplicationController
   respond_to :html, :js
 
   def show
-    @commentable = @milestone
-    @comment_tree = CommentTree.new(@commentable, params[:page], @current_order)
-    set_comment_flags(@comment_tree.comments)
-    # @milestone_votes = daily_cache("milestone_votes") { Vote.where(votable_type: "Milestone").count }
+    super
+    #@commentable = @milestone
+    #@comment_tree = CommentTree.new(@commentable, params[:page], @current_order)
+    #set_comment_flags(@comment_tree.comments)
+    #@milestone_votes = daily_cache("milestone_votes") { Vote.where(votable_type: "Milestone").count }
   end
 
   def vote

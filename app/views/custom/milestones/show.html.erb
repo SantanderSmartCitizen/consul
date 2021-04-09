@@ -4,7 +4,7 @@
 <% end %>
 
 <% cache [locale_and_user_status, @milestone, @milestone_votes] do %>
-  <div class="milestone-show">
+  <div class="debate-show">
     <div id="<%= dom_id(@milestone) %>" class="row">
       <div class="small-12 medium-9 column">
         <%= back_link_to %>
@@ -71,7 +71,7 @@
         <div class="sidebar-divider"></div>
         <h2><%= t("votes.supports") %></h2>
         <div id="<%= dom_id(@milestone) %>_votes">
-          <!-- ender "votes", milestone: @milestone -->
+          <%= render "votes", milestone: @milestone %>
         </div>
         <%= render "shared/social_share",
           share_title: t("milestones.show.share"),

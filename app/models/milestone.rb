@@ -8,9 +8,12 @@ class Milestone < ApplicationRecord
   translation_class_delegate :status_id
 
   acts_as_votable
+  acts_as_paranoid column: :hidden_at
+  include ActsAsParanoidAliases
 
   belongs_to :milestoneable, polymorphic: true
   belongs_to :status
+  belongs_to :author, class_name: "User", inverse_of: :milestones
 
   has_many :comments, as: :commentable, inverse_of: :commentable
 
@@ -38,6 +41,10 @@ class Milestone < ApplicationRecord
 
   def total_votes
     cached_votes_total
+  end
+
+  def votes_score
+    cached_votes_score
   end
 
   def register_vote(user, vote_value)
