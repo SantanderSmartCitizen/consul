@@ -182,3 +182,6 @@ es:
     regular: Regular
     good: Buena
     gorgeous: Maravillosa
+  proposals:
+    index:
+      map: Propuestas localizables geográficamente

@@ -16,6 +16,9 @@ es:
         title: Editar presupuestos
       destroy:
         unable_notice_polls: No se puede eliminar un presupuesto con una encuesta/consulta asociada
+    budget_investments:
+      edit:
+        estimated_price: Coste estimado (%{currency})
     forums:
       index:
         id: ID
@@ -132,6 +135,9 @@ es:
       feeds:
         citizen_proposals: Propuestas ciudadanos
         city_hall_proposals: Propuestas Ayuntamiento
+    geozones:
+      geozone:
+        external_code_help: Código de respuesta para esta zona en la API del GIS
     gamifications:
       index:
         table_title: Juegos
@@ -186,6 +192,7 @@ es:
           process_type: Tipo de proceso participativo
           operation: Operación
           select_gamification: Selecciona un juego
+          process_type_title: "Rellene estos campos si la acción está vinculada a un proceso participativo:"
         new:
           title: "Crear acción para el juego '%{gamification}'"
           general_title: "Crear acción"
@@ -248,6 +255,8 @@ es:
           flash: 
             created: Puntuación adicional creada correctamente
             updated: Puntuación adicional actualizada correctamente
+          form:
+            additional_score: Puntuación adicional
       rewards:
         index:
           table_title: Recompensas
@@ -297,3 +306,20 @@ es:
           reward: Recompensa solicitada
         update:
           success: La solicitud ha sido marcada como resuelta
+    milestones:
+      index:
+        delete: "Eliminar"
+        no_milestones: "No hay acciones desarrolladas"
+        new_milestone: "Crear nueva acción desarrollada"
+      new:
+        title: Nueva acción desarrollada
+        submit_button: Crear acción desarrollada
+      edit:
+        title: Editar acción desarrollada
+        submit_button: Actualizar acción desarrollada
+      create:
+        notice: "¡Nueva acción creada con éxito!"
+      update:
+        notice: Acción actualizada
+      delete:
+        notice: Acción borrada correctamente

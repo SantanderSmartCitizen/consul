@@ -48,3 +48,7 @@ es:
         title: Título
         description: Descripción
         reward: Recompensa
+      milestone:
+        video_url: "Enlace a vídeo externo"
+        allow_votes: "Permitir votos"
+        allow_comments: "Permitir comentarios"

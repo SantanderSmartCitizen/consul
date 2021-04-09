@@ -1,0 +1,7 @@
+es:
+  budgets:
+    investments:
+      form:
+        estimated_price: Estimated price (%{currency})
+      show:
+        estimated_price: "Estimated price: <strong>%{estimated_price} %{currency}</strong>"

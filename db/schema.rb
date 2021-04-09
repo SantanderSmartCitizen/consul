@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210114124002) do
+ActiveRecord::Schema.define(version: 20210409071000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -273,6 +273,7 @@ ActiveRecord::Schema.define(version: 20210114124002) do
     t.datetime "ignored_flag_at"
     t.integer  "flags_count",                                 default: 0
     t.integer  "original_heading_id"
+    t.bigint   "estimated_price"
     t.index ["administrator_id"], name: "index_budget_investments_on_administrator_id", using: :btree
     t.index ["author_id"], name: "index_budget_investments_on_author_id", using: :btree
     t.index ["community_id"], name: "index_budget_investments_on_community_id", using: :btree
@@ -1072,8 +1073,23 @@ ActiveRecord::Schema.define(version: 20210114124002) do
     t.integer  "milestoneable_id"
     t.datetime "publication_date"
     t.integer  "status_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "video_url"
+    t.boolean  "allow_votes",        default: false
+    t.boolean  "allow_comments",     default: false
+    t.integer  "comments_count",     default: 0
+    t.integer  "cached_votes_total", default: 0
+    t.integer  "cached_votes_up",    default: 0
+    t.integer  "cached_votes_down",  default: 0
+    t.integer  "author_id"
+    t.datetime "hidden_at"
+    t.integer  "cached_votes_score", default: 0
+    t.index ["cached_votes_down"], name: "index_milestones_on_cached_votes_down", using: :btree
+    t.index ["cached_votes_score"], name: "index_milestones_on_cached_votes_score", using: :btree
+    t.index ["cached_votes_total"], name: "index_milestones_on_cached_votes_total", using: :btree
+    t.index ["cached_votes_up"], name: "index_milestones_on_cached_votes_up", using: :btree
+    t.index ["hidden_at"], name: "index_milestones_on_hidden_at", using: :btree
     t.index ["status_id"], name: "index_milestones_on_status_id", using: :btree
   end
 
@@ -1649,6 +1665,7 @@ ActiveRecord::Schema.define(version: 20210114124002) do
     t.boolean  "public_interests",                          default: false
     t.boolean  "recommended_debates",                       default: true
     t.boolean  "recommended_proposals",                     default: true
+    t.string   "citizen_type"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["geozone_id"], name: "index_users_on_geozone_id", using: :btree

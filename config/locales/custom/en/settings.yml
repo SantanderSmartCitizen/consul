@@ -4,3 +4,10 @@ en:
     process:
       polls: "Polls/Questions"
       polls_description:  "Citizens' polls/questions are a participatory mechanism by which citizens with voting rights can make direct decisions"
+    map:
+      arcgis:
+        feature_layer_url: "ArcGIS URL"
+        feature_layer_url_description: "ArcGIS feature layer url"
+        district_code_field: "ArcGIS district code"
+        district_code_field_description: "Name of the 'district code' field in ArcGIS"
+      

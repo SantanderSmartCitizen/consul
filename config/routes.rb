@@ -38,6 +38,11 @@ Rails.application.routes.draw do
   resources :documents, only: [:destroy]
   resources :follows, only: [:create, :destroy]
   resources :remote_translations, only: [:create]
+  resources :milestones, only: [:show] do
+    member do
+      post :vote
+    end
+  end
 
   # More info pages
   get "help",             to: "pages#show", id: "help/index",             as: "help"
