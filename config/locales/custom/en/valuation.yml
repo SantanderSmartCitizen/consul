@@ -1,0 +1,8 @@
+en:
+  valuation:
+    budget_investments:
+      show:
+        maintenance_cost: Maintenance cost
+        undecided: Undefined
+      edit:
+        maintenance_cost: "Maintenance cost (%{currency}) <small>(optional, data not public)</small>"

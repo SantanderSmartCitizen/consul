@@ -5,3 +5,9 @@ es:
     budgets:
       index:
         title: Presupuestos
+    budget_investments:
+      show:
+        maintenance_cost: Coste de mantenimiento
+        undecided: Sin decidir
+      edit:
+        maintenance_cost: "Coste de mantenimiento (%{currency}) <small>(opcional, dato no público)</small>"

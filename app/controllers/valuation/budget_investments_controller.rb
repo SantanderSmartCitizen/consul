@@ -98,9 +98,10 @@ class Valuation::BudgetInvestmentsController < Valuation::BaseController
     end
 
     def valuation_params
-      params.require(:budget_investment).permit(:price, :price_first_year, :price_explanation,
-                                                :feasibility, :unfeasibility_explanation,
-                                                :duration, :valuation_finished)
+      params.require(:budget_investment).permit(:price, :price_first_year, :maintenance_cost,
+                                                :price_explanation, :feasibility, 
+                                                :unfeasibility_explanation, :duration, 
+                                                :valuation_finished)
     end
 
     def restrict_access
@@ -124,6 +125,10 @@ class Valuation::BudgetInvestmentsController < Valuation::BaseController
 
       if /\D/.match params[:budget_investment][:price_first_year]
         @investment.errors.add(:price_first_year, I18n.t("budgets.investments.wrong_price_format"))
+      end
+
+      if /\D/.match params[:budget_investment][:maintenance_cost]
+        @investment.errors.add(:maintenance_cost, I18n.t("budgets.investments.wrong_price_format"))
       end
 
       @investment.errors.empty?
