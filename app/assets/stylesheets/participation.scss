@@ -27,7 +27,9 @@
   }
 
   .icon-like,
-  .icon-unlike {
+  .icon-unlike,
+  .icon-plus,
+  .icon-minus {
     background: #fff;
     border: 2px solid $text-light;
     border-radius: rem-calc(3);
@@ -46,7 +48,8 @@
     }
   }
 
-  .icon-like {
+  .icon-like,
+  .icon-plus {
 
     &:hover,
     &:active {
@@ -55,7 +58,8 @@
     }
   }
 
-  .icon-unlike {
+  .icon-unlike,
+  .icon-minus {
 
     &:hover,
     &:active {
@@ -89,16 +93,20 @@
   .voted {
 
     .icon-like,
-    .icon-unlike {
+    .icon-unlike,
+    .icon-plus,
+    .icon-minus {
       color: #fff;
     }
 
-    .icon-like {
+    .icon-like,
+    .icon-plus {
       background: $like;
       border: 2px solid $like;
     }
 
-    .icon-unlike {
+    .icon-unlike,
+    .icon-minus {
       background: $unlike;
       border: 2px solid $unlike;
     }
@@ -107,7 +115,9 @@
   .no-voted {
 
     .icon-like,
-    .icon-unlike {
+    .icon-unlike,
+    .icon-plus,
+    .icon-minus {
       opacity: 0.3;
     }
   }
