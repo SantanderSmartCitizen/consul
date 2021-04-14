@@ -185,3 +185,14 @@ es:
   proposals:
     index:
       map: Propuestas localizables geográficamente
+    show:
+      publish: Publicar propuesta
+    created:
+      motivation: "Es importante preparar la campaña de lanzamiento para que tu propuesta tenga éxito. Los primeros días son decisivos."
+      motivation_2: "<strong>Puedes publicar tu propuesta ahora o en otro momento</strong>"
+      publish: Publicar ahora
+      draft: Publicar en otro momento y volver a propuestas
+    proposal:
+      created: "¡Has publicado una propuesta!"
+      share:
+        view_proposal: Acceder a propuesta
