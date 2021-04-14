@@ -9,7 +9,9 @@
       <div class="small-12 medium-9 column">
         <%= back_link_to %>
 
-        <h1>Acción desarrollada</h1>
+        <h1>
+          <%= t("milestones.show.title") %>
+        </h1>
 
         <div class="milestone-info">
           <% if @milestone.publication_date.present? %>
