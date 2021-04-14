@@ -1,5 +1,8 @@
 es:
   milestones:
+    sidebar:
+      title: Seguimiento
+      button_to_access: Acceder al seguimiento
     show:
       comments_title: Comentarios
       share: Compartir

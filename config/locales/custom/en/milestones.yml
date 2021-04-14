@@ -1,5 +1,8 @@
 en:
   milestones:
+    sidebar:
+      title: Milestones
+      button_to_access: Access to milestones
     show:
       comments_title: Comments
       share: Share
