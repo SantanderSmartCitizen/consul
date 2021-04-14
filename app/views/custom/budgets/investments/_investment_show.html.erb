@@ -120,15 +120,6 @@
                      title: investment.title,
                      handle: setting["twitter_handle"]) %>
 
-        <% if current_user %>
-          <div class="sidebar-divider"></div>
-          <p class="sidebar-title"><%= t("shared.follow") %></p>
-
-          <%= render "follows/follow_button", follow: find_or_build_follow(current_user, investment) %>
-        <% end %>
-
-        <%= render "communities/access_button", community: investment.community %>
-
        </aside>
     </div>
   </section>
