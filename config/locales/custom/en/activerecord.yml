@@ -43,3 +43,5 @@ en:
         video_url: "External video URL"
         allow_votes: "Allow votes"
         allow_comments: "Allow comments"
+      newsletter:
+        from: "E-mail address that will appear as sending"

@@ -59,6 +59,7 @@ es:
         rewards: Recompensas
         requested_rewards: Recompensas solicitadas
         ranking: Clasificación
+      newsletters: Notificaciones por email
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -323,3 +324,40 @@ es:
         notice: Acción actualizada
       delete:
         notice: Acción borrada correctamente
+    newsletters:
+      create_success: Notificación por email creada correctamente
+      update_success: Notificación por email actualizada correctamente
+      send_success: Notificación por email enviada correctamente
+      delete_success: Notificación por email borrada correctamente
+      index:
+        title: Envío de notificaciones por email
+        new_newsletter: Crear notificación por email
+        subject: Asunto
+        segment_recipient: Destinatarios
+        sent: Enviado
+        actions: Acciones
+        draft: Borrador
+        edit: Editar
+        delete: Borrar
+        preview: Previsualizar
+        empty_newsletters: No hay notificaciones por email para mostrar
+      new:
+        title: Nueva notificación por email
+        header_footer_help_text: "El encabezado y pie son los mismos en todos los emails, puedes modificarlos en <code>app/views/layouts/mailer_header</code> y <code>app/views/layouts/mailer_footer</code>.<br>Puedes reemplazar la imagen del encabezado en %{link}."
+        image_link: "personalizar imágenes"
+      edit:
+        title: Editar notificación por email
+      show:
+        title: Vista previa de notificación por email
+        send: Enviar
+        affected_users: (%{n} usuarios afectados)
+        sent_emails:
+          one: 1 correo enviado
+          other: "%{count} correos enviados"
+        sent_at: Enviado
+        subject: Asunto
+        segment_recipient: Destinatarios
+        from: Dirección de correo electrónico que aparecerá como remitente
+        body: Contenido del email
+        body_help_text: Así es como verán el email los usuarios
+        send_alert: '¿Estás seguro/a de que quieres enviar esta notificación por email a %{n} usuarios?'

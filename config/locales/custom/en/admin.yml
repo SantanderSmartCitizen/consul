@@ -45,6 +45,7 @@ en:
         rewards: Rewards
         requested_rewards: Requested rewards
         ranking: Ranking
+      newsletters: Email notifications
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -280,3 +281,40 @@ en:
         notice: Action updated successfully
       delete:
         notice: Action successfully deleted
+    newsletters:
+      create_success: Email notification created successfully
+      update_success: Email notification updated successfully
+      send_success: Email notification sent successfully
+      delete_success: Email notification deleted successfully
+      index:
+        title: Email notifications
+        new_newsletter: New email notification
+        subject: Subject
+        segment_recipient: Recipients
+        sent: Sent
+        actions: Actions
+        draft: Draft
+        edit: Edit
+        delete: Delete
+        preview: Preview
+        empty_newsletters: There are no email notifications to show
+      new:
+        title: New email notification
+        header_footer_help_text: "The heading and footer are the same for all emails, you can modify them on <code>app/views/layouts/mailer_header</code> and <code>app/views/layouts/mailer_footer</code>.<br>You can replace header image on %{link}."
+        image_link: "custom images"
+      edit:
+        title: Edit email notification
+      show:
+        title: Email notification preview
+        send: Send
+        affected_users: (%{n} affected users)
+        sent_emails:
+          one: 1 email sent
+          other: "%{count} emails sent"
+        sent_at: Sent at
+        subject: Subject
+        segment_recipient: Recipients
+        from: E-mail address that will appear as sending
+        body: Email content
+        body_help_text: This is how the users will see the email.
+        send_alert: Are you sure you want to send this email notification to %{n} users?
