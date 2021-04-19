@@ -22,9 +22,9 @@ en:
       description_3: Some quick example text to build on the card title and make up the bulk of the card's content.
     complaints_and_suggestions:
       initiative:
-        title: The city you want will be
-        bold_title: the city you want.
-        description: There are cities governed directly by their inhabitants, who discuss issues that concern them, propose ideas to improve their lives and decide between all and all those that are carried out.
+        title: Lorem ipsum dolor sit amet, 
+        bold_title: consectetur adipiscing elit.
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum at magna ut eleifend. Vivamus semper volutpat leo, ac lacinia justo feugiat eget. Aliquam nec.
         button: THE INITIATIVE
       debates:
         title: Discussions
