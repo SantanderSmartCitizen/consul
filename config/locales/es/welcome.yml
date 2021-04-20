@@ -3,16 +3,16 @@ es:
     featured:
       city_hall_proposals:
         title: Propuestas Ayuntamiento
-        see_button: VER PROPUESTA
-        see_all_button: VER TODAS LAS PROPUESTAS DEL AYUNTAMIENTO
+        see_button: Ver propuesta
+        see_all_button: Ver todas las propuestas del ayuntamiento
       citizen_proposals:
         title: Propuestas ciudadanos
-        see_button: VER PROPUESTA
-        see_all_button: VER TODAS LAS PROPUESTAS DE LOS CIUDADANOS
+        see_button: Ver propuesta
+        see_all_button: Ver todas las propuestas de los ciudadanos
       open_processes:
         title: Procesos abiertos
-        see_button: VER PROCESO
-        see_all_button: VER TODOS LOS PROCESOS
+        see_button: Ver proceso
+        see_all_button: Ver todos los procesos
     indicators:
       title: INDICADORES
       subtitle: Lorem ipsum dolor

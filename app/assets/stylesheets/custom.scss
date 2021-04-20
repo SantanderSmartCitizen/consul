@@ -250,8 +250,10 @@ select {
 }
 
 .main-button {
-    background: #004a83;
-    color: #fefefe;
+    background: rgba(38,89,118,0.7);
+    color: white;
+    border: none;
+    border-radius: 20px;
 }
 
 .main-button:hover {
@@ -281,13 +283,14 @@ select {
     text-align:center; 
     display:table;
     width:100%;
-    min-height: 8em;
+    min-height: 6em;
 }
 
 .feature-title h2 {
-    color: #07708c;
     display:table-cell;
     vertical-align:middle;
+    color: rgba(38, 89, 118, 0.7);
+    font-size: 22pt;
 }
 .required label::after {
     content: " *";
