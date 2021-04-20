@@ -18,13 +18,6 @@
       </li>
     <% end %>
 
-    <li class="section-title <%= "is-active" if controller_name == "comments" %>">
-      <%= link_to admin_comments_path do %>
-        <span class="icon-comments"></span>
-        <strong><%= t("admin.menu.comments") %></strong>
-      <% end %>
-    </li>
-
     <% if feature?(:polls) %>
       <li class="section-title <%= "is-active" if menu_polls? %>">
         <%= link_to admin_polls_path do %>
@@ -61,43 +54,12 @@
       </li>
     <% end %>
 
-    <li class="section-title">
-      <a href="#">
-        <span class="icon-box"></span>
-        <strong><%= t("admin.menu.title_booths") %></strong>
-      </a>
-      <ul id="booths_menu" <%= "class=is-active" if menu_booths? %>>
-        <li <%= "class=is-active" if %w[officers officer_assignments].include?(controller_name) %>>
-          <%= link_to t("admin.menu.poll_officers"), admin_officers_path %>
-        </li>
-
-        <li <%= "class=is-active" if controller_name == "booths" &&
-                                  action_name != "available" %>>
-          <%= link_to t("admin.menu.poll_booths"), admin_booths_path %>
-        </li>
-
-        <li <%= "class=is-active" if (controller_name == "polls" &&
-                                      action_name == "booth_assignments") ||
-                                      controller_name == "booth_assignments" &&
-                                      action_name == "manage" %>>
-          <%= link_to t("admin.menu.poll_booth_assignments"), booth_assignments_admin_polls_path %>
-        </li>
-
-        <li <%= "class=is-active" if %w[shifts booths].include?(controller_name) &&
-                                  %w[available new].include?(action_name) %>>
-          <%= link_to t("admin.menu.poll_shifts"), available_admin_booths_path %>
-        </li>
-      </ul>
+    <li class="section-title <%= "is-active" if controller_name == "comments" %>">
+      <%= link_to admin_comments_path do %>
+        <span class="icon-comments"></span>
+        <strong><%= t("admin.menu.comments") %></strong>
+      <% end %>
     </li>
-
-    <% if feature?(:signature_sheets) %>
-      <li class="section-title <%= "is-active" if controller_name == "signature_sheets" %>">
-        <%= link_to admin_signature_sheets_path do %>
-          <span class="icon-file-text-o"></span>
-          <strong><%= t("admin.menu.signature_sheets") %></strong>
-        <% end %>
-      </li>
-    <% end %>
 
     <% messages_sections = %w[newsletters emails_download admin_notifications system_emails] %>
     <% messages_menu_active = messages_sections.include?(controller_name) %>
@@ -112,12 +74,6 @@
         </li>
         <li <%= "class=is-active" if controller_name == "admin_notifications" %>>
           <%= link_to t("admin.menu.admin_notifications"), admin_admin_notifications_path %>
-        </li>
-        <li <%= "class=is-active" if controller_name == "system_emails" %>>
-          <%= link_to t("admin.menu.system_emails"), admin_system_emails_path %>
-        </li>
-        <li <%= "class=is-active" if controller_name == "emails_download" %>>
-          <%= link_to t("admin.menu.emails_download"), admin_emails_download_index_path %>
         </li>
       </ul>
     </li>
@@ -138,18 +94,10 @@
           <%= link_to t("admin.menu.site_customization.pages"), admin_site_customization_pages_path %>
         </li>
 
-        <li <%= "class=is-active" if controller_name == "banners" %>>
-          <%= link_to t("admin.menu.banner"), admin_banners_path %>
-        </li>
-
         <li <%= "class=is-active" if controller_name == "information_texts" %>>
           <%= link_to t("admin.menu.site_customization.information_texts"), admin_site_customization_information_texts_path %>
         </li>
 
-        <li <%= "class=is-active" if controller_name == "documents" %>>
-          <%= link_to t("admin.menu.site_customization.documents"),
-                      admin_site_customization_documents_path %>
-        </li>
       </ul>
     </li>
 
@@ -259,8 +207,6 @@
         <li <%= "class=is-active" if params[:controller] == "admin/gamification/requested_rewards" %>>
           <%= link_to t("admin.menu.gamification.requested_rewards"), admin_gamification_requested_rewards_path %>
         </li>
-        
-        <!-- Añadir ranking -->
 
       </ul>
     </li>
@@ -288,30 +234,6 @@
           <%= link_to t("admin.menu.site_customization.images"), admin_site_customization_images_path %>
         </li>
 
-        <li <%= "class=is-active" if controller_name == "content_blocks" %>>
-          <%= link_to t("admin.menu.site_customization.content_blocks"), admin_site_customization_content_blocks_path %>
-        </li>
-
-        <li <%= "class=is-active" if submenu_local_census_records? %>>
-          <%= link_to t("admin.menu.local_census_records"), admin_local_census_records_path %>
-        </li>
-      </ul>
-    </li>
-    <li class="section-title">
-      <a href="#">
-        <span class="icon-check"></span>
-        <strong><%= t("admin.menu.dashboard") %></strong>
-      </a>
-      <ul <%= "class=is-active" if menu_dashboard? %>>
-        <li <%= "class=is-active" if params[:controller] == "admin/dashboard/actions" %>>
-          <%= link_to t("admin.menu.dashboard_actions"), admin_dashboard_actions_path %>
-        </li>
-
-        <li <%= "class=is-active" if controller_name == "administrator_tasks" %>>
-          <%= link_to admin_dashboard_administrator_tasks_path do %>
-            <%= t("admin.menu.administrator_tasks") %>
-          <% end %>
-        </li>
       </ul>
     </li>
   </ul>

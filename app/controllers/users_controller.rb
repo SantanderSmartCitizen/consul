@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  has_filters %w[debates proposals budget_investments forums comments follows gamification_user_rankings gamification_user_actions gamification_rewards], only: :show
+  has_filters %w[debates proposals budget_investments forums comments gamification_user_rankings gamification_user_actions gamification_rewards], only: :show
 
   load_and_authorize_resource
   helper_method :author?
@@ -18,7 +18,6 @@ class UsersController < ApplicationController
                           budget_investments: (Setting["process.budgets"] ? Budget::Investment.where(author_id: @user.id).count : 0),
                           forums: (Setting["process.forums"] ? Forum.where(author_id: @user.id).count : 0),
                           comments: only_active_commentables.count,
-                          follows: @user.follows.map(&:followable).compact.count,
                           gamification_user_rankings: Gamification::UserRanking.where(user_id: @user.id).sum(:score),
                           gamification_user_actions: Gamification::UserAction.where(user_id: @user.id).count,
                           gamification_rewards: Gamification::Reward.active_for(@user).count)
@@ -32,7 +31,6 @@ class UsersController < ApplicationController
       when "budget_investments" then load_budget_investments
       when "forums"     then load_forums
       when "comments" then load_comments
-      when "follows" then load_follows
       when "gamification_user_rankings" then load_gamification_user_rankings
       when "gamification_user_actions" then load_gamification_user_actions
       when "gamification_rewards" then load_gamifications
@@ -57,9 +55,6 @@ class UsersController < ApplicationController
       elsif  @activity_counts[:comments] > 0
         load_comments
         @current_filter = "comments"
-      elsif  @activity_counts[:follows] > 0
-        load_follows
-        @current_filter = "follows"
       elsif  @activity_counts[:gamification_user_rankings] > 0
         load_gamification_user_rankings
         @current_filter = "gamification_user_rankings"
@@ -90,10 +85,6 @@ class UsersController < ApplicationController
 
     def load_comments
       @comments = only_active_commentables.includes(:commentable).order(created_at: :desc).page(params[:page])
-    end
-
-    def load_follows
-      @follows = @user.follows.group_by(&:followable_type)
     end
 
     def load_gamification_user_rankings

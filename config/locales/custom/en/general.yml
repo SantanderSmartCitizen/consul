@@ -167,3 +167,14 @@ en:
   proposals:
     index:
       map: Proposals located geographically
+    show:
+      publish: Publish proposal
+    created:
+      motivation: "It is important to prepare the launch campaign for your proposal to be successful. The first few days are decisive."
+      motivation_2: "<strong>You can publish your proposal now or at another time</strong>"
+      publish: Publish now
+      draft: Publish at another time and go to proposals
+    proposal:
+      created: "You've published a proposal!"
+      share:
+        view_proposal: Go to proposal

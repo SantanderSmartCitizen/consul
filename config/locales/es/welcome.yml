@@ -3,16 +3,16 @@ es:
     featured:
       city_hall_proposals:
         title: Propuestas Ayuntamiento
-        see_button: VER PROPUESTA
-        see_all_button: VER TODAS LAS PROPUESTAS DEL AYUNTAMIENTO
+        see_button: Ver propuesta
+        see_all_button: Ver todas las propuestas del ayuntamiento
       citizen_proposals:
         title: Propuestas ciudadanos
-        see_button: VER PROPUESTA
-        see_all_button: VER TODAS LAS PROPUESTAS DE LOS CIUDADANOS
+        see_button: Ver propuesta
+        see_all_button: Ver todas las propuestas de los ciudadanos
       open_processes:
         title: Procesos abiertos
-        see_button: VER PROCESO
-        see_all_button: VER TODOS LOS PROCESOS
+        see_button: Ver proceso
+        see_all_button: Ver todos los procesos
     indicators:
       title: INDICADORES
       subtitle: Lorem ipsum dolor
@@ -22,9 +22,9 @@ es:
       description_3: Some quick example text to build on the card title and make up the bulk of the card's content.
     complaints_and_suggestions:
       initiative:
-        title: La ciudad que quieres será
-        bold_title: la ciudad que quieras.
-        description: Existen ciudades gobernadas directamente por sus habitantes, que debaten sobre temas que les preocupan, proponen ideas para mejorar sus vidas y deciden entre todas y todos las que se llevan a cabo.
+        title: Lorem ipsum dolor sit amet, 
+        bold_title: consectetur adipiscing elit.
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum at magna ut eleifend. Vivamus semper volutpat leo, ac lacinia justo feugiat eget. Aliquam nec.
         button: LA INICIATIVA
       debates:
         title: Debates

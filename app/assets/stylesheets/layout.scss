@@ -162,24 +162,24 @@ a {
 }
 
 .margin {
-  margin-bottom: $line-height;
-  margin-top: $line-height;
+  margin-bottom: $line-height !important;
+  margin-top: $line-height !important;
 }
 
 .margin-top {
-  margin-top: $line-height;
+  margin-top: $line-height !important;
 }
 
 .margin-bottom {
-  margin-bottom: $line-height;
+  margin-bottom: $line-height !important;
 }
 
 .margin-left {
-  margin-left: $line-height;
+  margin-left: $line-height !important;
 }
 
 .margin-right {
-  margin-right: $line-height;
+  margin-right: $line-height !important;
 }
 
 .float-right-medium {
@@ -2794,6 +2794,9 @@ table {
 
     a {
 
+      box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
+      border-radius: 11px;
+
       img {
         transition-duration: 0.3s;
         transition-property: transform;
@@ -2804,7 +2807,7 @@ table {
       text-decoration: none;
 
       &:not(.see-all) {
-        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.5);
       }
 
       img {
@@ -2814,6 +2817,27 @@ table {
 
     p {
       padding: 0 $line-height / 4;
+    }
+  }
+
+  .card-body {
+    .title {
+      border-bottom: 0;
+      margin: 0;
+      color: rgba(0, 0, 0, 0.7);
+      font-weight: bold;
+      font-size: 16pt;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .description {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 12pt;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 
@@ -2904,9 +2928,9 @@ table {
 
 .figure-card {
   display: flex;
-  margin: 0 0 $line-height;
   overflow: hidden;
   position: relative;
+  border-radius: 11px 11px 0 0;
 
   @include breakpoint(medium down) {
     min-height: $line-height * 4;
