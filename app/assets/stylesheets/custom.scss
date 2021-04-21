@@ -6,6 +6,7 @@
 
 body {
 	font-family: 'Lato' !important;
+  background: white;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -99,13 +100,11 @@ footer a:hover, footer a:active:hover, footer a:focus:hover {
 }
 
 .row {
-    display: block;
-	max-width: none;
-    width: 100%;
+	max-width: 1200px;
 }
 
 .locale-form {
-font-size: 14px;
+  font-size: 14px;
 }
 
 header .locale a {
@@ -181,6 +180,7 @@ a:focus {
 }
 
 .indicators-frame {
+    /*
     background: repeating-linear-gradient(
       0deg,
       #4d9dbe 20px,
@@ -189,6 +189,7 @@ a:focus {
       #6eaecb 60px
     );
     padding: 40px;
+    */
 }
 
 .indicators-content {
