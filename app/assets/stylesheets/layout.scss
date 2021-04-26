@@ -454,7 +454,8 @@ a {
 // ----------
 
 header {
-  background: $brand;
+  /*background: $brand;*/
+  background: white;
   border-bottom: 1px solid $border;
   /*margin-bottom: $line-height;*/
 
@@ -468,10 +469,9 @@ header {
   }
 
   .locale {
-    float: left;
-    height: $line-height * 1.5;
-    margin-left: $line-height / 2;
-    position: relative;
+    float: right;
+    display: inline-block;
+    margin-top: 52px;
 
     &::after {
       color: #808080;
@@ -521,6 +521,7 @@ header {
   color: #fff;
   padding-bottom: 0;
   padding-top: 0;
+  width: 100%;
 
   @include breakpoint(medium) {
     padding: 0;
@@ -703,8 +704,9 @@ header {
 .subnavigation {
 
   @include breakpoint(medium) {
-    background: #fff;
-    /*padding-bottom: 0;*/
+    width: 100%;
+    margin-top: 74px;
+    margin-bottom: 60px;
   }
 
   ul {
@@ -714,7 +716,7 @@ header {
     li {
       @include breakpoint(medium) {
         display: inline-block;
-        margin-right: rem-calc(20);
+        margin-right: 45px;
       }
     }
   }

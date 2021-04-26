@@ -93,14 +93,15 @@ es:
       consul: aplicación Santander SmartCitizen
       copyright: Ayuntamiento de Santander
     header:
-      collaborative_legislation: PROCESOS
-      debates: DEBATES
+      title: Santander participa
+      collaborative_legislation: Procesos
+      debates: Debates
       logo: Logo de Santander SmartCitizen
-      help: AYUDA
-      proposals: PROPUESTAS
-      poll_questions: ENCUESTAS/CONSULTAS
-      budgets: PRESUPUESTOS
-      forum: FORO
+      help: Ayuda
+      proposals: Propuestas
+      poll_questions: Encuestas/Consultas
+      budgets: Presupuestos
+      forum: Foro
   omniauth:
     finish_signup:
       username_warning: "Debido a que hemos cambiado la forma en la que nos conectamos con redes sociales y es posible que tu nombre de usuario/alias aparezca como 'ya en uso', incluso si antes podías acceder con él. Si es tu caso, por favor elige un nombre de usuario/alias distinto."

@@ -3,15 +3,14 @@
     <%= render "shared/remote_translations_button", remote_translations: @remote_translations %>
   <% end %>
 
-  <div class="top-links">
-    <div class="row">
+  <div class="row">
+    <div class="top-links">
 
     </div>
   </div>
 
   <div class="row">
-    <div class="top-bar" style="height: 45px; width: 100%;> 
-    <!-- style="padding-left: 37px; padding-right: 37px;" -->
+    <div class="top-bar" style="height: 45px;"> 
 
       <span data-responsive-toggle="responsive-menu" data-hide-for="medium" class="float-left">
         <span class="menu-icon dark" data-toggle></span>
@@ -42,7 +41,9 @@
       </div>
 
       <div class="top-bar-right" style="height: inherit; padding: 10px;">
+        <!--
         <%= render "shared/locale_switcher" %>
+      -->
         <div class="hide-for-small-only">
           <%= render "shared/top_links" %>
         </div>
@@ -52,8 +53,25 @@
     </div>
   </div>
 
-  <div id="navigation_bar" class="subnavigation expanded"> <!-- style="padding-left: 37px; padding-right: 37px;" -->
-    <div class="row">
+  <div class="row">
+    <div id="header_bar" class="header_bar">
+    
+      <%= link_to root_path, accesskey: "0" do %>
+        <%= image_tag(image_path_for("logo_header.svg"), class: "float-left", style: "height: 109px; width: auto;", alt: t("layouts.header.logo")) %>
+      <% end %>
+
+      <div class="header_title">
+        <h1><%= t("layouts.header.title") %></h1>
+      </div>
+      
+      <%= render "shared/locale_switcher" %>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="navigation_bar" class="subnavigation expanded">
+    
       <div class="hide-for-small-only" style="display: table;width: 100%;">
         <%= render "shared/subnavigation" %>
       </div>
@@ -62,4 +80,6 @@
       </div>
     </div>
   </div>
+
+
 </header>

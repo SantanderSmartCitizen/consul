@@ -92,14 +92,15 @@ en:
       consul: Santander SmartCitizen application
       copyright: Santander town hall
     header:
-      collaborative_legislation: PROCESSES
-      debates: DEBATES
+      title: Santander participa
+      collaborative_legislation: Processes
+      debates: Debates
       logo: Santander SmartCitizen logo
-      help: HELP
-      proposals: PROPOSALS
-      poll_questions: POLLS/QUESTIONS
-      budgets: BUDGETS
-      forum: FORUM
+      help: Help
+      proposals: Proposals
+      poll_questions: Polls/questions
+      budgets: Budgets
+      forum: Forum
   omniauth:
     finish_signup:
       username_warning: "Due to a change in the way we interact with social networks, it is possible that your username/alias now appears as 'already in use'. If that is your case, please choose a different username/alias."
