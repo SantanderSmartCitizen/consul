@@ -101,6 +101,16 @@ en:
       poll_questions: Polls/questions
       budgets: Budgets
       forum: Forum
+      notification_item:
+        new_notifications:
+          one: "(1 new)"
+          other: "(%{count} new)"
+      access: Access
+      participation: Participation
+      select_locale: Select language
+      open_access_menu: Open access menu
+      open_main_menu: Open menu
+      close: Close
   omniauth:
     finish_signup:
       username_warning: "Due to a change in the way we interact with social networks, it is possible that your username/alias now appears as 'already in use'. If that is your case, please choose a different username/alias."

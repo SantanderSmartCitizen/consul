@@ -468,23 +468,6 @@ header {
     border-bottom: 1px solid #fff;
   }
 
-  .locale {
-    float: right;
-    display: inline-block;
-    margin-top: 52px;
-
-    &::after {
-      color: #808080;
-      content: "\61";
-      font-family: "icons" !important;
-      font-size: $small-font-size;
-      pointer-events: none;
-      position: absolute;
-      right: 2px;
-      top: 9px;
-    }
-  }
-
   .remote-translations-button {
 
     &.callout {
@@ -1004,9 +987,21 @@ footer {
 
 // 06. Forms
 // ---------
+.locale {
+  &::after {
+    color: #808080;
+    content: "\61";
+    font-family: "icons" !important;
+    font-size: $small-font-size;
+    pointer-events: none;
+    position: absolute;
+    right: 2px;
+    top: 9px;
+  }
+}
 
 .locale-form {
-  display: inline-block;
+  /*display: inline-block;*/
   position: relative;
 
   label {

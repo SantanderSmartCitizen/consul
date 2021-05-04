@@ -3,7 +3,7 @@
     <form class="locale-form">
 
       <% I18n.available_locales.map do |loc| %>
-        <%= link_to loc.upcase, current_path_with_query_params(locale: loc), class: ("selected" if loc == I18n.locale) %>
+        <%= link_to loc.upcase, current_path_with_query_params(locale: loc), class: ("selected" if loc == I18n.locale), onclick: "closeSidebar();" %>
         <% if loc != I18n.available_locales.last %>
           <div class="delimiter"></div>
         <% end %>
