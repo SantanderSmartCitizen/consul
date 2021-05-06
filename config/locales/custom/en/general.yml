@@ -135,6 +135,8 @@ en:
       city_hall: City hall
       citizen: Citizen
   users:
+    login_to_comment: "You must %{signin} to leave a comment."
+    login_to_continue: "You must %{signin} to continue."
     show:
       deleted_forum: This thread has been deleted
       forums: Forum threads

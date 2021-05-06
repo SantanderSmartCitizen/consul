@@ -5,3 +5,5 @@
 #
 
 gem "bootstrap"
+gem 'ruby-saml'
+gem 'config'
