@@ -1,4 +1,4 @@
-<div class="row margin-top text-center pr-10p pl-10p" style="margin-left: 20px; margin-right: 20px;width: auto;">
+<div class="text-center">
 
 	<div class="card-deck">
 
@@ -7,84 +7,86 @@
 			<!-- Propuestas Ayuntamiento -->
 
 			<% if feed_city_hall_proposals_enabled? && feed_city_hall_proposals?(feed) %>
-				<% feed.items.each do |item| %>
-					<div class="col-12 col-md-6 col-lg-4">
-						<div class="card h-100">
-							<div class="card-header bg-transparent feature-title">
-								<h2><%= t(".city_hall_proposals.title") %></h2>
-							</div>
-						    <%= image_tag(image_path_for("feature-1.jpg"), style: "", alt: "Proceso", class: "card-img-top") %>
-						    <div class="card-body">
-								<h5 class="card-title"><%= item.title %></h5>
-								<p class="card-text"><%= item.summary %></p>	
-						    </div>
-						    <div class="card-footer bg-transparent">
-						    	<div style="min-height: 5em;">
-									<%= link_to t(".city_hall_proposals.see_button"), url_for(item), class: "button" %>
-								</div>
-							  	<div style="min-height: 8em;">
-						          <%= link_to t(".city_hall_proposals.see_all_button"), proposals_path("advanced_search[user_profile]": "city_hall"), class: "button main-button" %>
-								</div>
-						    </div>
-						</div>
+
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="feature-title">
+						<h2><%= t(".city_hall_proposals.title") %></h2>
 					</div>
-				<% end %>
+					<% feed.items.each do |item| %>
+						<div class="card margin-bottom">
+							<%= link_to url_for(item), title: t(".city_hall_proposals.see_button") do %>
+								<figure class="figure-card <%= item.class.to_s.parameterize(separator: "_") %> m-0">
+									<%= image_tag(image_path_for("feature-1.jpg"), style: "", alt: "Proceso") %>
+								</figure>
+								<div class="card-body">
+									<h5 class="title"><%= item.title %></h5>
+									<p class="description small"><%= item.summary %></p>
+								</div>
+							<% end %>
+						</div>
+					<% end %>
+					<div style="padding: 0 1.25rem;">
+						<%= link_to t(".city_hall_proposals.see_all_button"), proposals_path("advanced_search[user_profile]": "city_hall"), class: "button main-button" %>
+					</div>
+				</div>
+
 			<% end %>
 
 			<!-- Propuestas ciudadanos -->
 
 			<% if feed_citizen_proposals_enabled? && feed_citizen_proposals?(feed) %>
-				<% feed.items.each do |item| %>
-					<div class="col-12 col-md-6 col-lg-4">
-						<div class="card h-100">
-							<div class="card-header bg-transparent feature-title">
-								<h2><%= t(".citizen_proposals.title") %></h2>
-							</div>
-						    <%= image_tag(image_path_for("feature-2.jpg"), style: "", alt: "Proceso", class: "card-img-top") %>
-						    <div class="card-body">
-								<h5 class="card-title"><%= item.title %></h5>
-								<p class="card-text"><%= item.summary %></p>	
-						    </div>
-						    <div class="card-footer bg-transparent">
-						    	<div style="min-height: 5em;">
-									<%= link_to t(".citizen_proposals.see_button"), url_for(item), class: "button" %>
-								</div>
-							  	<div style="min-height: 8em;">
-						          <%= link_to t(".citizen_proposals.see_all_button"), proposals_path("advanced_search[user_profile]": "citizen"), class: "button main-button" %>
-								</div>
-						    </div>
-						</div>
+
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="feature-title">
+						<h2><%= t(".citizen_proposals.title") %></h2>
 					</div>
-				<% end %>
+					<% feed.items.each do |item| %>
+						<div class="card margin-bottom">
+							<%= link_to url_for(item), title: t(".citizen_proposals.see_button") do %>
+								<figure class="figure-card <%= item.class.to_s.parameterize(separator: "_") %> m-0">
+									<%= image_tag(image_path_for("feature-2.jpg"), style: "", alt: "Proceso") %>
+								</figure>
+								<div class="card-body">
+									<h5 class="title"><%= item.title %></h5>
+									<p class="description small"><%= item.summary %></p>
+								</div>
+							<% end %>
+						</div>
+					<% end %>
+					<div style="padding: 0 1.25rem;">
+						<%= link_to t(".citizen_proposals.see_all_button"), proposals_path("advanced_search[user_profile]": "citizen"), class: "button main-button" %>
+					</div>
+				</div>
+
 			<% end %>
 
 			<!-- Procesos abiertos -->
 
 			<% if feed_processes_enabled? && feed_processes?(feed) %>
-				<% feed.items.each do |item| %>
-					<div class="col-12 col-md-6 col-lg-4">
-						<div class="card h-100">
-							<div class="card-header bg-transparent feature-title">
-								<h2><%= t(".open_processes.title") %></h2>
-							</div>
-						    <%= image_tag(image_path_for("feature-3.jpg"), style: "", alt: "Proceso", class: "card-img-top") %>
-						    <div class="card-body">
-								<h5 class="card-title"><%= item.title %></h5>
-								<p class="card-text"><%= item.summary %></p>	
-						    </div>
-						    <div class="card-footer bg-transparent">
-						    	<div style="min-height: 5em;">
-									<%= link_to t(".open_processes.see_button"), url_for(item), class: "button" %>
-								</div>
-							  	<div style="min-height: 8em;">
-						          <%= link_to t(".open_processes.see_all_button"), legislation_processes_path, class: "button main-button" %>
-								</div>
-						    </div>
-						</div>
-					</div>
-				<% end %>
-			<% end %>
 
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="feature-title">
+						<h2><%= t(".open_processes.title") %></h2>
+					</div>
+					<% feed.items.each do |item| %>
+						<div class="card margin-bottom">
+							<%= link_to url_for(item), title: t(".open_processes.see_button") do %>
+								<figure class="figure-card <%= item.class.to_s.parameterize(separator: "_") %> m-0">
+									<%= image_tag(image_path_for("feature-3.jpg"), style: "", alt: "Proceso") %>
+								</figure>
+								<div class="card-body">
+									<h5 class="title"><%= item.title %></h5>
+									<p class="description small"><%= item.summary %></p>
+								</div>
+							<% end %>
+						</div>
+					<% end %>
+					<div style="padding: 0 1.25rem;">
+						<%= link_to t(".open_processes.see_all_button"), legislation_processes_path, class: "button main-button" %>
+					</div>
+				</div>
+
+			<% end %>
 
 		<% end %>
 
