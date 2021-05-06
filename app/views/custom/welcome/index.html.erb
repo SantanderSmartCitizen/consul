@@ -17,54 +17,20 @@
 
 <main>
 
- 
-<!--   <div class="row">
-    <% if feed_processes_enabled? %>
-      <%= render "processes" %>
-    <% end %>
-  </div> -->
-
-
   <div class="row">
-      <%= render "welcome/featured" %>
+    <%= render "welcome/featured" %>
   </div>
 
-  <div class="row">
-    <%= image_tag(image_path_for("section_separator.png"), class: "", alt: "Section separator", style: "") %>
+  <div class="row separator">
+    <%= image_tag(image_path_for("body_start_separator.svg"), alt: "Body start separator") %>
   </div>
 
   <%= render "welcome/indicators" %>
 
-  <div class="row">
-    <%= image_tag(image_path_for("section_separator.png"), class: "", alt: "Section separator", style: "") %>
+  <div class="row separator">
+    <%= image_tag(image_path_for("body_content_separator.svg"), alt: "Body content separator") %>
   </div>
 
   <%= render "welcome/complaints_and_suggestions" %>
 
-  <!-- <%= render "feeds" %> -->
-
-  <!--
-  <div class="row">
-    
-    <% if @cards.any? %>
-      <div class="small-12 column <%= "large-8" if feed_processes_enabled? %>">
-        <%= render "cards" %>
-      </div>
-    <% end %>
-
-    <% if feed_processes_enabled? %>
-      <div class="small-12 large-4 column">
-        <%= render "processes" %>
-      </div>
-    <% end %>
-  </div>
-  -->
-
-<!--
-  <% if feature?("user.recommendations") && (@recommended_debates.present? || @recommended_proposals.present?) %>
-    <%= render "recommended",
-                recommended_debates: @recommended_debates,
-                recommended_proposals: @recommended_proposals %>
-  <% end %>
--->
 </main>

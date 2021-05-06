@@ -89,17 +89,29 @@ en:
         submit_button: Save changes
   layouts:
     footer:
+      title: Our Portals
       consul: Santander SmartCitizen application
       copyright: Santander town hall
     header:
-      collaborative_legislation: PROCESSES
-      debates: DEBATES
+      title: Santander participa
+      collaborative_legislation: Processes
+      debates: Debates
       logo: Santander SmartCitizen logo
-      help: HELP
-      proposals: PROPOSALS
-      poll_questions: POLLS/QUESTIONS
-      budgets: BUDGETS
-      forum: FORUM
+      help: Help
+      proposals: Proposals
+      poll_questions: Polls/questions
+      budgets: Budgets
+      forum: Forum
+      notification_item:
+        new_notifications:
+          one: "(1 new)"
+          other: "(%{count} new)"
+      access: Access
+      participation: Participation
+      select_locale: Select language
+      open_access_menu: Open access menu
+      open_main_menu: Open menu
+      close: Close
   omniauth:
     finish_signup:
       username_warning: "Due to a change in the way we interact with social networks, it is possible that your username/alias now appears as 'already in use'. If that is your case, please choose a different username/alias."
@@ -167,3 +179,14 @@ en:
   proposals:
     index:
       map: Proposals located geographically
+    show:
+      publish: Publish proposal
+    created:
+      motivation: "It is important to prepare the launch campaign for your proposal to be successful. The first few days are decisive."
+      motivation_2: "<strong>You can publish your proposal now or at another time</strong>"
+      publish: Publish now
+      draft: Publish at another time and go to proposals
+    proposal:
+      created: "You've published a proposal!"
+      share:
+        view_proposal: Go to proposal

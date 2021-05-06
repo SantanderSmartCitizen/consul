@@ -37,8 +37,6 @@
         </div>
       </div>
     </div>
-  <% else %>
-    <%= render "shared/section_header", i18n_namespace: "forums.index.section_header", image: "forums" %>
   <% end %>
 
   <% if feature?("user.recommendations") && @recommended_forums.present? %>
@@ -104,6 +102,7 @@
 
       <aside class="margin-bottom">
         <%= link_to t("forums.index.start_forum"), new_forum_path, class: "button expanded" %>
+        <div class="sidebar-divider"></div>
         <%= render "shared/tag_cloud", taggable: "forum" %>
       </aside>
     </div>

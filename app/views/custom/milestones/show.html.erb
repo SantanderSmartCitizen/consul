@@ -9,7 +9,9 @@
       <div class="small-12 medium-9 column">
         <%= back_link_to %>
 
-        <h1>Acción desarrollada</h1>
+        <h1>
+          <%= t("milestones.show.title") %>
+        </h1>
 
         <div class="milestone-info">
           <% if @milestone.publication_date.present? %>
@@ -20,9 +22,11 @@
               </strong>
             </span>
           <% end %>
-          <span class="bullet">&nbsp;&bull;&nbsp;</span>
-          <span class="icon-comments"></span>&nbsp;
-          <%= link_to t("milestones.show.comments", count: @milestone.comments_count), "#comments" %>
+          <% if @milestone.allow_comments? %>
+            <span class="bullet">&nbsp;&bull;&nbsp;</span>
+            <span class="icon-comments"></span>&nbsp;
+            <%= link_to t("milestones.show.comments", count: @milestone.comments_count), "#comments" %>
+          <% end %>
         </div>
 
         <% if @milestone.status.present? %>
@@ -68,11 +72,13 @@
       </div>
 
       <aside class="small-12 medium-3 column">
-        <div class="sidebar-divider"></div>
-        <h2><%= t("votes.supports") %></h2>
-        <div id="<%= dom_id(@milestone) %>_votes">
-          <%= render "votes", milestone: @milestone %>
-        </div>
+        <% if @milestone.allow_votes? %>
+          <div class="sidebar-divider"></div>
+          <h2><%= t("votes.supports") %></h2>
+          <div id="<%= dom_id(@milestone) %>_votes">
+            <%= render "votes", milestone: @milestone %>
+          </div>
+        <% end %>
         <%= render "shared/social_share",
           share_title: t("milestones.show.share"),
           title: @milestone.milestoneable.title,
@@ -84,5 +90,6 @@
     </div>
   </div>
 <% end %>
-
-<%= render "comments" %>
+<% if @milestone.allow_comments? %>
+  <%= render "comments" %>
+<% end %>

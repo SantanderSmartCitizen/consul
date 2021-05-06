@@ -27,7 +27,9 @@
   }
 
   .icon-like,
-  .icon-unlike {
+  .icon-unlike,
+  .icon-plus,
+  .icon-minus {
     background: #fff;
     border: 2px solid $text-light;
     border-radius: rem-calc(3);
@@ -46,7 +48,8 @@
     }
   }
 
-  .icon-like {
+  .icon-like,
+  .icon-plus {
 
     &:hover,
     &:active {
@@ -55,7 +58,8 @@
     }
   }
 
-  .icon-unlike {
+  .icon-unlike,
+  .icon-minus {
 
     &:hover,
     &:active {
@@ -89,16 +93,20 @@
   .voted {
 
     .icon-like,
-    .icon-unlike {
+    .icon-unlike,
+    .icon-plus,
+    .icon-minus {
       color: #fff;
     }
 
-    .icon-like {
+    .icon-like,
+    .icon-plus {
       background: $like;
       border: 2px solid $like;
     }
 
-    .icon-unlike {
+    .icon-unlike,
+    .icon-minus {
       background: $unlike;
       border: 2px solid $unlike;
     }
@@ -107,7 +115,9 @@
   .no-voted {
 
     .icon-like,
-    .icon-unlike {
+    .icon-unlike,
+    .icon-plus,
+    .icon-minus {
       opacity: 0.3;
     }
   }
@@ -578,7 +588,7 @@
 .budget-investments-list {
 
   @include breakpoint(medium) {
-    min-height: $line-height * 15;
+    /*min-height: $line-height * 15;*/
   }
 }
 
@@ -1194,7 +1204,7 @@
     }
 
     .info {
-      background: #6a2a72;
+      background: $brand;
 
       p {
         margin-bottom: 0;
@@ -1205,8 +1215,6 @@
 }
 
 .jumbo-budget {
-  background: $budget;
-  border-bottom: 1px solid $budget;
 
   &.budget-heading {
     min-height: $line-height * 10;
@@ -1214,15 +1222,6 @@
 
   h2 {
     margin-bottom: 0;
-  }
-
-  h2,
-  h3,
-  .back,
-  .icon-angle-left,
-  p,
-  a {
-    color: #fff;
   }
 
   .tagline {
@@ -1237,17 +1236,6 @@
     a {
       color: $color-warning;
     }
-  }
-
-  a {
-    text-decoration: underline;
-  }
-
-  .button {
-    background: #fff;
-    color: $brand;
-    margin-bottom: rem-calc(3);
-    text-decoration: none;
   }
 
   .social-share-button a {
@@ -1305,29 +1293,32 @@
   position: relative;
 
   .progress {
-    background: #212033;
+    background: rgba($brand, 0.5);
     clear: both;
   }
 
   .progress-meter {
-    background: #fdcb10;
+    background: $brand;
     border-radius: 0;
     transition: width 2s;
+  }
+
+  .progress-meter-text {
+    color: $brand;
   }
 
   .spent-amount-progress,
   .spent-amount-meter {
     background: none !important;
+    height: 55px;
   }
 
   .spent-amount-text {
-    color: #fff;
     font-size: $base-font-size;
     font-weight: normal;
     position: absolute;
     right: 0;
     text-align: right;
-    top: 16px;
     width: 100%;
 
     &::before {
@@ -1342,10 +1333,10 @@
   }
 
   .total-amount {
-    color: #fff;
     font-size: rem-calc(18);
     font-weight: bold;
     float: right;
+    color: $brand;
   }
 
   .amount-available {
@@ -1496,7 +1487,6 @@
   z-index: 3;
 
   @include breakpoint(medium) {
-    background-color: $budget;
     transition: height 0.3s;
 
     h2 {

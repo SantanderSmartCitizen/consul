@@ -44,7 +44,7 @@ class Milestone < ApplicationRecord
   end
 
   def votes_score
-    cached_votes_score
+    cached_votes_total
   end
 
   def register_vote(user, vote_value)

@@ -90,17 +90,30 @@ es:
         submit_button: Guardar cambios
   layouts:
     footer:
+      title: Nuestros Portales
       consul: aplicación Santander SmartCitizen
       copyright: Ayuntamiento de Santander
     header:
-      collaborative_legislation: PROCESOS
-      debates: DEBATES
+      title: Santander participa
+      collaborative_legislation: Procesos
+      debates: Debates
       logo: Logo de Santander SmartCitizen
-      help: AYUDA
-      proposals: PROPUESTAS
-      poll_questions: ENCUESTAS/CONSULTAS
-      budgets: PRESUPUESTOS
-      forum: FORO
+      help: Ayuda
+      proposals: Propuestas
+      poll_questions: Encuestas/Consultas
+      budgets: Presupuestos
+      forum: Foro
+      moderation: Moderación
+      notification_item:
+        new_notifications:
+          one: "(1 nueva)"
+          other: "(%{count} nuevas)"
+      access: Acceso
+      participation: Participación
+      select_locale: Seleccionar idioma
+      open_access_menu: Abrir menú de acceso
+      open_main_menu: Abrir menú
+      close: Cerrar
   omniauth:
     finish_signup:
       username_warning: "Debido a que hemos cambiado la forma en la que nos conectamos con redes sociales y es posible que tu nombre de usuario/alias aparezca como 'ya en uso', incluso si antes podías acceder con él. Si es tu caso, por favor elige un nombre de usuario/alias distinto."
@@ -185,3 +198,14 @@ es:
   proposals:
     index:
       map: Propuestas localizables geográficamente
+    show:
+      publish: Publicar propuesta
+    created:
+      motivation: "Es importante preparar la campaña de lanzamiento para que tu propuesta tenga éxito. Los primeros días son decisivos."
+      motivation_2: "<strong>Puedes publicar tu propuesta ahora o en otro momento</strong>"
+      publish: Publicar ahora
+      draft: Publicar en otro momento y volver a propuestas
+    proposal:
+      created: "¡Has publicado una propuesta!"
+      share:
+        view_proposal: Acceder a propuesta

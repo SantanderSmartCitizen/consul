@@ -1,6 +1,10 @@
 en:
   milestones:
+    sidebar:
+      title: Milestones
+      button_to_access: Go to milestones
     show:
+      title: Developed action
       comments_title: Comments
       share: Share
       comments:

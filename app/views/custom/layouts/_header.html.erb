@@ -3,63 +3,63 @@
     <%= render "shared/remote_translations_button", remote_translations: @remote_translations %>
   <% end %>
 
-  <div class="top-links">
-    <div class="row">
+  <div class="row">
+    <div id="header_bar" class="header-bar">
+    
+      <div class="header-logo">
+        <%= link_to root_path, accesskey: "0" do %>
+          <%= image_tag(image_path_for("logo-santander-ciudad.svg"), class: "logo-santander-ciudad hide-for-small-only", alt: t("layouts.header.logo")) %>
+          <%= image_tag(image_path_for("logo-santander-ciudad-small.svg"), class: "logo-santander-ciudad show-for-small-only", alt: t("layouts.header.logo")) %>
+        <% end %>
+      </div>
+
+      <div class="header-title">
+        <h1><%= t("layouts.header.title") %></h1>
+      </div>
+
+      <div class="header-buttons">
+
+        <div class="hide-for-small-only">
+          <% if I18n.locale %>
+            <div class="locale locale-form" data-current-locale="<%= I18n.locale %>">
+              <div id="st-trigger-effects">
+                <button data-effect="st-locale" title="<%= t("layouts.header.select_locale") %>"><%= I18n.locale.upcase %></button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="menu-button">
+          <div id="st-trigger-effects">
+            <button data-effect="st-main">
+              <span class="far fa-user hide-for-small-only" aria-hidden="true" title="<%= t("layouts.header.open_access_menu") %>"></span>
+              <span class="fas fa-bars show-for-small-only" aria-hidden="true" title="<%= t("layouts.header.open_main_menu") %>"></span>
+            </button>
+          </div>
+        </div>
+
+      </div>
 
     </div>
   </div>
 
   <div class="row">
-    <div class="top-bar" style="height: 45px; width: 100%;> 
-    <!-- style="padding-left: 37px; padding-right: 37px;" -->
-
-      <span data-responsive-toggle="responsive-menu" data-hide-for="medium" class="float-left">
-        <span class="menu-icon dark" data-toggle></span>
-        <%= t("application.menu") %>
-      </span>
-
-
-
-      <div id="responsive-menu">
-        <div class="top-bar-left">
-
-          <ul class="menu" data-responsive-menu="medium-dropdown">
-            <%= render "shared/admin_login_items" %>
-            <%= render "layouts/notification_item" %>
-            <%= render "devise/menu/login_items" %>
-          </ul>
-
-          <div class="show-for-small-only">
-            <div class="subnavigation row">
-              <%= render "shared/subnavigation" %>
-              <div class="small-12 column">
-                <%= render "shared/top_links" %>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="top-bar-right" style="height: inherit; padding: 10px;">
-        <%= render "shared/locale_switcher" %>
-        <div class="hide-for-small-only">
-          <%= render "shared/top_links" %>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-
-  <div id="navigation_bar" class="subnavigation expanded"> <!-- style="padding-left: 37px; padding-right: 37px;" -->
-    <div class="row">
+    <div id="navigation_bar" class="subnavigation expanded">
+    
       <div class="hide-for-small-only" style="display: table;width: 100%;">
-        <%= render "shared/subnavigation" %>
+        <div class="column align-bottom" style="text-align: right; vertical-align: middle !important;">
+          <%= render "shared/subnavigation" %>
+        </div>
       </div>
       <div class="small-12 medium-3 column">
         <%= yield :header_addon %>
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <%= image_tag(image_path_for("header_separator.svg"), alt: "Header separator") %>
+  </div>
+
+
 </header>
