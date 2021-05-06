@@ -18,16 +18,13 @@
   </li>
 <% else %>
   <li>
-    <%= link_to t("devise_views.menu.login_items.login_as_admin"),
-                new_saml_user_session_path(issuer: Settings.identity_providers.city_hall_issuer),
+    <%= link_to t("devise_views.menu.login_items.login_as_citizen"),
+                new_saml_user_session_path(issuer: Settings.identity_providers.citizen_issuer), 
                 rel: "nofollow" %>
   </li>
   <li>
-    <div style="font-size: 0.875rem;padding: 12px 0px;">/</div>
-  </li>
-  <li>
-    <%= link_to t("devise_views.menu.login_items.login_as_citizen"),
-                new_saml_user_session_path(issuer: Settings.identity_providers.citizen_issuer), 
+    <%= link_to t("devise_views.menu.login_items.login_as_admin"),
+                new_saml_user_session_path(issuer: Settings.identity_providers.city_hall_issuer),
                 rel: "nofollow" %>
   </li>
 <% end %>
