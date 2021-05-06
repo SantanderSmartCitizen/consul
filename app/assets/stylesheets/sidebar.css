@@ -89,7 +89,7 @@
 .st-menu .st-menu-content {
 	max-width: 600px;
 	height: 100%;
-	background-image: url("menu_separator.svg");
+	background-image: image-url("menu_separator.svg");
 	background-repeat: no-repeat;
 	background-size: 160px 55px;
 	background-position-x: right;
