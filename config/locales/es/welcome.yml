@@ -14,7 +14,7 @@ es:
         see_button: Ver proceso
         see_all_button: Ver todos los procesos
     indicators:
-      title: INDICADORES
+      title: Indicadores
       subtitle: Lorem ipsum dolor
       general_description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pellentesque efficitur ipsum et dignissim. Donec ut ipsum eleifend, lobortis mauris quis, luctus felis. Vivamus ullamcorper lobortis mollis. Sed imperdiet eros est, in lacinia nulla gravida a. Donec et purus sollicitudin, condimentum nibh sit amet, convallis odio.
       description_1: Some quick example text to build on the card title and make up the bulk of the card's content.
@@ -22,10 +22,9 @@ es:
       description_3: Some quick example text to build on the card title and make up the bulk of the card's content.
     complaints_and_suggestions:
       initiative:
-        title: Lorem ipsum dolor sit amet, 
-        bold_title: consectetur adipiscing elit.
-        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum at magna ut eleifend. Vivamus semper volutpat leo, ac lacinia justo feugiat eget. Aliquam nec.
-        button: LA INICIATIVA
+        title: "<b>Santander a tu alcance</b>, participa y haz crecer la ciudad"
+        description: "Queremos que seas partícipe de todo lo que ocurra en Santander: colabora en decisiones de la ciudad, crea debates, participa en propuestas y decide en qué gastar parte de los presupuestos municipales."
+        button: La iniciativa
       debates:
         title: Debates
         description: Encontrarnos, debatir y compartir lo que nos parece importante en nuestra ciudad.
@@ -41,4 +40,4 @@ es:
       contact:
         title: Contacta
         description: Nos gustaría conocer su opinión y por ello le invitamos a enviar las sugerencias o consultas que desee sobre los contenidos de la web o alguna de las actividades que se desarrollen. Le responderemos a la cuenta de correo electrónico de contacto que nos indique a la mayor brevedad. Toda su información será tratada de forma confidencial y sometida al Reglamento General de Protección de Datos.
-        button: FORMULARIO
+        button: Formulario

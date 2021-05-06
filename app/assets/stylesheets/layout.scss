@@ -454,10 +454,7 @@ a {
 // ----------
 
 header {
-  /*background: $brand;*/
   background: white;
-  border-bottom: 1px solid $border;
-  /*margin-bottom: $line-height;*/
 
   @include breakpoint(small down) {
     position: relative;

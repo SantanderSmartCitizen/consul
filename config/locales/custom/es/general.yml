@@ -90,6 +90,7 @@ es:
         submit_button: Guardar cambios
   layouts:
     footer:
+      title: Nuestros Portales
       consul: aplicación Santander SmartCitizen
       copyright: Ayuntamiento de Santander
     header:

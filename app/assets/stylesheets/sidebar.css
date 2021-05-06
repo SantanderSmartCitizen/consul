@@ -159,6 +159,7 @@
 	color: #fff;
 	*/
 	color: $brand;
+	text-decoration: none;
 }
 
 /* Effect: Slide in on top */

@@ -89,6 +89,7 @@ en:
         submit_button: Save changes
   layouts:
     footer:
+      title: Our Portals
       consul: Santander SmartCitizen application
       copyright: Santander town hall
     header:
