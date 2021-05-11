@@ -35,8 +35,8 @@ identity_providers:
         #idp_cert_fingerprint: 10:B1:65:79:F9:3A:19:39:EC:92:DD:4D:5C:3E:18:90:4C:39:6E:8E:BC:25:BC:72:90:31:88:9B:9F:3A:D1:90
         force_authn: false
         #Optional Settings, set these up if using SLO as well
-    #    idp_slo_target_url:
-    #    single_logout_service_binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+        idp_slo_target_url: https://sso-pre.int.ayto-santander.es:9443/samlsso
+        single_logout_service_binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
 
         security:
             logout_requests_signed: true

@@ -23,7 +23,7 @@
 
   <% elsif !user_signed_in? %>
     <% question.question_answers.order(id: :desc).each do |answer| %>
-      <%= link_to answer.title, new_saml_user_session_path(issuer: Settings.identity_providers.citizen_issuer), class: "button secondary hollow" %>
+      <%= link_to answer.title, login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), class: "button secondary hollow" %>
     <% end %>
 
   <% elsif !current_user.level_two_or_three_verified? %>

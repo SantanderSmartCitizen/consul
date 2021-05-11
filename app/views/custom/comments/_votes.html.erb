@@ -12,7 +12,7 @@
             </span>
         <% end %>
       <% else %>
-        <%= link_to new_saml_user_session_path(issuer: Settings.identity_providers.citizen_issuer) do %>
+        <%= link_to login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer) do %>
           <span class="icon-like">
             <span class="show-for-sr"><%= t("votes.agree") %></span>
           </span>
@@ -52,7 +52,7 @@
               </span>
           <% end %>
         <% else %>
-          <%= link_to new_saml_user_session_path(issuer: Settings.identity_providers.citizen_issuer) do %>
+          <%= link_to login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer) do %>
             <span class="icon-like">
               <span class="show-for-sr"><%= t("votes.agree") %></span>
             </span>
@@ -70,7 +70,7 @@
               </span>
           <% end %>
         <% else %>
-          <%= link_to new_saml_user_session_path(issuer: Settings.identity_providers.citizen_issuer) do %>
+          <%= link_to login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer) do %>
             <span class="icon-unlike">
               <span class="show-for-sr"><%= t("votes.disagree") %></span>
             </span>
