@@ -11,5 +11,4 @@ es:
           username_label: Nombre de usuario/alias
     menu:
       login_items:
-        login_as_admin: Entrar como administrador
-        login_as_citizen: Entrar como ciudadano
+        login_as_citizen: Entrar
