@@ -105,8 +105,8 @@
         <% end %>
 
         <div class="sidebar-divider"></div>
-        <p class="sidebar-title"><%= t("milestones.sidebar.title") %></p>
-        <%= link_to t("milestones.sidebar.button_to_access"), "#tab-milestones", class: "button hollow expanded" %>
+        <h2 class="sidebar-title"><%= t("milestones.sidebar.title") %></h2>
+        <%= link_to t("milestones.sidebar.button_to_access"), "#tab-milestones", class: "button expanded" %>
 
         <%= render "shared/social_share",
           share_title: t("budgets.investments.show.share"),
