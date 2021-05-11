@@ -779,7 +779,7 @@ header {
   margin-bottom: $line-height / 2;
 
   a {
-    color: $text;
+    color: rgba($brand, 0.7);
     display: inline-block;
     font-weight: bold;
     margin-right: $line-height / 2;
@@ -797,7 +797,7 @@ header {
 
   .is-active {
     border-bottom: 2px solid $brand;
-    color: $brand;
+    color: $brand !important;
 
     &:hover {
       text-decoration: none;

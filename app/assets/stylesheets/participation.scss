@@ -664,7 +664,7 @@
       margin-top: $line-height / 2;
 
       a {
-        color: $text;
+        color: rgba($brand, .7);
       }
     }
 
@@ -958,15 +958,19 @@
   }
 
   .button {
-    background: #eee;
+    background-color: white !important;
     height: rem-calc(36);
     margin-bottom: 0;
     padding: $line-height / 4;
     width: rem-calc(36);
 
     &::before {
-      color: $text;
+      color: $brand;
       font-family: "icons";
+    }
+
+    &::hover {
+      background: white;
     }
   }
 
