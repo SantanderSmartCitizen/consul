@@ -20,6 +20,7 @@ class SamlSessionsController < Devise::SessionsController
   end
 
   def consume
+    redirect_path = root_path
     begin
       response_to_validate = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: @saml_settings)
     
@@ -31,8 +32,7 @@ class SamlSessionsController < Devise::SessionsController
       #puts "response_to_validate.nameid = #{response_to_validate.nameid}"
       
       if response_to_validate.is_valid? && username = response_to_validate.nameid
-        session[:saml_issuer] = @issuer
-
+        
         if @issuer == Settings.identity_providers.citizen_issuer
           if user = User.find_by(username: username)
             unless user.citizen_type
@@ -45,20 +45,28 @@ class SamlSessionsController < Devise::SessionsController
           unless user = User.find_by(username: username)
             raise "Could not login as city hall user: Username '#{username}' does not exist"
           end
+          if user.administrator?
+            redirect_path = admin_root_path
+          elsif user.moderator?
+            redirect_path = moderation_root_path
+          elsif user.valuator?
+            redirect_path = valuation_root_path
+          end
         else
           raise "Login failed: Unknown issuer"
         end
 
         sign_in user
+        session[:saml_issuer] = @issuer
         flash[:notice] = t("devise.sessions.signed_in")
-        redirect_to root_path
+        redirect_to redirect_path
       else
         raise "SAMLResponse is invalid or username does not exist"
       end
     rescue Exception => e
       Rails.logger.error "Exception: #{e}"
       flash[:error] = t("flash.actions.error.login")
-      redirect_to root_path
+      redirect_to redirect_path
     end
   end
 
