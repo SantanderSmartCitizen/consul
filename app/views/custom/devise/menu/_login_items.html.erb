@@ -22,9 +22,4 @@
                 login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), 
                 rel: "nofollow" %>
   </li>
-  <li>
-    <%= link_to t("devise_views.menu.login_items.login_as_admin"),
-                login_saml_user_path(issuer: Settings.identity_providers.city_hall_issuer),
-                rel: "nofollow" %>
-  </li>
 <% end %>

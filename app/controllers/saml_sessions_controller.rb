@@ -15,6 +15,10 @@ class SamlSessionsController < Devise::SessionsController
     end
   end
 
+  def login_city_hall_user
+    redirect_to login_saml_user_path(issuer: Settings.identity_providers.city_hall_issuer)
+  end
+
   def consume
     begin
       response_to_validate = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: @saml_settings)

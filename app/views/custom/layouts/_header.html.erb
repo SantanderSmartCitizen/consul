@@ -30,12 +30,30 @@
         </div>
         
         <div class="menu-button">
-          <div id="st-trigger-effects">
-            <button data-effect="st-main">
-              <span class="far fa-user hide-for-small-only" aria-hidden="true" title="<%= t("layouts.header.open_access_menu") %>"></span>
-              <span class="fas fa-bars show-for-small-only" aria-hidden="true" title="<%= t("layouts.header.open_main_menu") %>"></span>
-            </button>
-          </div>
+
+          <% if user_signed_in? %>
+
+            <div id="st-trigger-effects">
+              <button data-effect="st-main">
+                <span class="far fa-user hide-for-small-only" aria-hidden="true" title="<%= t("layouts.header.open_access_menu") %>"></span>
+                <span class="fas fa-bars show-for-small-only" aria-hidden="true" title="<%= t("layouts.header.open_main_menu") %>"></span>
+              </button>
+            </div>
+
+          <% else %>
+
+            <%= link_to login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), class: "hide-for-small-only" do %>
+                <span class="far fa-user" aria-hidden="true" title="<%= t("devise_views.menu.login_items.login_as_citizen") %>"></span>
+            <% end %>
+
+            <div id="st-trigger-effects">
+              <button data-effect="st-main">
+                <span class="fas fa-bars show-for-small-only" aria-hidden="true" title="<%= t("layouts.header.open_main_menu") %>"></span>
+              </button>
+            </div>
+
+          <% end %>
+
         </div>
 
       </div>
