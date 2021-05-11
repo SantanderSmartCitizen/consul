@@ -10,7 +10,7 @@
   <li>
     <% if session[:saml_issuer] %>
       <%= link_to t("devise_views.menu.login_items.logout"),
-                  session_activity_destroy_path, remote: true, rel: "nofollow" %>
+                  logout_saml_user_path, remote: true, rel: "nofollow" %>
     <% else %>
       <%= link_to t("devise_views.menu.login_items.logout"),
                   destroy_user_session_path, rel: "nofollow", method: :delete %>
@@ -19,12 +19,12 @@
 <% else %>
   <li>
     <%= link_to t("devise_views.menu.login_items.login_as_citizen"),
-                new_saml_user_session_path(issuer: Settings.identity_providers.citizen_issuer), 
+                login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), 
                 rel: "nofollow" %>
   </li>
   <li>
     <%= link_to t("devise_views.menu.login_items.login_as_admin"),
-                new_saml_user_session_path(issuer: Settings.identity_providers.city_hall_issuer),
+                login_saml_user_path(issuer: Settings.identity_providers.city_hall_issuer),
                 rel: "nofollow" %>
   </li>
 <% end %>

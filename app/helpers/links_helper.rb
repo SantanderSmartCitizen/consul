@@ -6,11 +6,11 @@ module LinksHelper
   end
 
   def link_to_signin(options = {})
-    link_to t("users.signin"), new_saml_user_session_path(issuer: Settings.identity_providers.citizen_issuer), options
+    link_to t("users.signin"), login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), options
   end
 
   def link_to_signup(options = {})
-    link_to t("users.signup"), new_saml_user_session_path(issuer: Settings.identity_providers.citizen_issuer), options
+    link_to t("users.signup"), login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), options
   end
 
   def link_to_verify_account
