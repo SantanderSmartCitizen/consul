@@ -1,5 +1,8 @@
 es:
   budgets:
+    ballots:
+      reasons_for_not_balloting:
+        not_logged_in: Necesitas %{signin} para continuar.
     index:
       title: Presupuestos
       empty_budgets: No hay presupuestos.
