@@ -146,6 +146,9 @@ class SamlSessionsController < Devise::SessionsController
     #relayState = root_path
     logout_request_created = logout_request.create(settings, :RelayState => relayState)
     
+    #settings.assertion_consumer_service_url = url_for controller: 'saml_sessions', action: 'logout'
+    #logout_request_created = logout_request.create(settings)
+
     #logger.info "#{logout_request_created}"
     #respond_to do |format|
     #  format.js { render partial: 'logout', locals: {redirect_address: logout_request_created} }
@@ -165,7 +168,7 @@ class SamlSessionsController < Devise::SessionsController
     #end
   end
 
-  # Despues de enviar una LogoutRequest iniciada por el SP al IdP, 
+  # Despues de enviar una LogoutRequest iniciada por el SP, 
   # debemos aceptar la LogoutResponse, verificarla y eliminarla de sesion
   def process_logout_response
     settings = @saml_settings
