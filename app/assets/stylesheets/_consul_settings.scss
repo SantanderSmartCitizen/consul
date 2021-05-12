@@ -42,24 +42,24 @@ $proposals-dark:    #794500;
 $budget:            rgba($brand, .7);
 $budget-hover:      $brand;
 
-$highlight:         #e7f2fc;
+$highlight:         rgba($brand, .2);
 $highlight-soft:    #f3f8fd;
 $light:             #f5f7fa;
 $featured:          #ffdc5c;
 
 $footer-border:     #bfc1c3;
 
-$success-bg:        #dff0d8;
-$success-border:    #d6e9c6;
-$color-success:     #3c763d;
+$success-bg:        white;
+$success-border:    $brand;
+$color-success:     $brand;
 
-$info-bg:           #d9edf7;
-$info-border:       #bce8f1;
-$color-info:        #31708f;
+$info-bg:           white;
+$info-border:       $brand;
+$color-info:        $brand;
 
-$warning-bg:        #fcf8e3;
-$warning-border:    #faebcc;
-$color-warning:     #8a6d3b;
+$warning-bg:        white;
+$warning-border:    $brand;
+$color-warning:     $brand;
 
 $alert-bg:          #f2dede;
 $alert-border:      #ebccd1;
