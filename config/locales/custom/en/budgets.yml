@@ -1,5 +1,8 @@
 en:
   budgets:
+    ballots:
+      reasons_for_not_balloting:
+        not_logged_in: You must %{signin} to continue.
     investments:
       form:
         estimated_price: Estimated price (%{currency})

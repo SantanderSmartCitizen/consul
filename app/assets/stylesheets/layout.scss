@@ -1167,12 +1167,14 @@ form {
     background-color: $success-bg;
     border-color: $success-border;
     color: $color-success;
+    border-radius: 11px;
   }
 
   &.primary {
     background-color: $info-bg;
     border-color: $info-border;
     color: $color-info;
+    border-radius: 11px;
 
     a {
       color: $link !important;
@@ -1183,6 +1185,7 @@ form {
     background-color: $warning-bg;
     border-color: $warning-border;
     color: $color-warning;
+    border-radius: 11px;
   }
 
   &.alert,
@@ -1190,6 +1193,7 @@ form {
     background-color: $alert-bg;
     border-color: $alert-border;
     color: $color-alert;
+    border-radius: 11px;
   }
 
   .close {
