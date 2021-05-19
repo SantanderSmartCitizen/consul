@@ -93,6 +93,8 @@ en:
       consul: Santander SmartCitizen application
       copyright: Santander town hall
       privacy_policy_url: https://santander.es/politica_privacidad
+      legal_notice: Legal Notice
+      legal_notice_url: https://santander.es/aviso_legal
     header:
       title: Santander participa
       collaborative_legislation: Processes
