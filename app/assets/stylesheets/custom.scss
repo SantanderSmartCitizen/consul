@@ -196,6 +196,13 @@ select {
     border-radius: 20px;
     margin: 0;
     font-weight: bold;
+    min-height: 35px;
+    padding: 0.5em 2em;
+    &.expanded {
+      width: auto;
+      margin-bottom: 35px;
+      margin-top: 8px;
+    }
     &:hover {
       background-color: $brand;
       color: #fefefe;
@@ -235,7 +242,7 @@ select {
 }
 
 label {
-  color: rgba($brand, 0.7);
+  color: $brand;
 }
 
 .required label::after {
@@ -535,6 +542,7 @@ a.footer-social-icons.instagram:hover {
 
 .view-mode {
   color: $brand;
+  outline-color: $brand;
   .view-list,
   .view-card {
     color: rgba($brand,0.7);

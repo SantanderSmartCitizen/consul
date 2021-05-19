@@ -10,7 +10,7 @@
 // 1. CONSUL variables
 // --------------------
 
-$base-font-size:      17px;
+$base-font-size:      13pt;
 $base-line:           rem-calc(26);
 $small-font-size:     rem-calc(14);
 $line-height:         rem-calc(24);
@@ -50,12 +50,16 @@ $featured:          #ffdc5c;
 $footer-border:     #bfc1c3;
 
 $success-bg:        white;
-$success-border:    $brand;
-$color-success:     $brand;
+$success-border:    rgba($brand, .2);
+$color-success:     rgba($brand, .7);
+
+$notice-bg:        rgb(233, 238, 241);
+$notice-border:    rgba($brand, .1);
+$color-notice:     rgba($brand, .7);
 
 $info-bg:           white;
-$info-border:       $brand;
-$color-info:        $brand;
+$info-border:       rgba($brand, .2);
+$color-info:        rgba($brand, .7);
 
 $warning-bg:        white;
 $warning-border:    $brand;

@@ -969,8 +969,13 @@
       font-family: "icons";
     }
 
-    &::hover {
+    &:hover {
       background: white;
+    }
+    &:active,
+    &:focus {
+      background: white;
+      outline: 3px solid $brand;
     }
   }
 
@@ -1300,7 +1305,7 @@
   position: relative;
 
   .progress {
-    background: rgba($brand, 0.5);
+    background: white;
     clear: both;
   }
 
@@ -1343,7 +1348,7 @@
     font-size: rem-calc(18);
     font-weight: bold;
     float: right;
-    color: $brand;
+    color: white;
   }
 
   .amount-available {
@@ -1381,8 +1386,8 @@
   }
 
   .ballot-content {
-    border: 2px solid #f9f9f9;
-    border-radius: rem-calc(6);
+    /*border: 2px solid #f9f9f9;
+    border-radius: rem-calc(6);*/
     padding: $line-height / 2;
   }
 
@@ -1393,7 +1398,7 @@
   }
 
   .amount-spent {
-    background: $success-bg;
+    /*background: $success-bg;*/
     font-weight: normal;
     padding: $line-height / 2;
 
@@ -1416,7 +1421,7 @@
     position: relative;
 
     a {
-      color: $text;
+      color: rgba($brand, .7);
     }
 
     span {
@@ -1429,7 +1434,7 @@
       height: 0;
 
       .icon-x {
-        color: #9f9f9f;
+        color: rgba($brand, .7);
         font-size: rem-calc(24);
         line-height: $line-height / 2;
         position: absolute;
