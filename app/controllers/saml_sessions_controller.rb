@@ -33,8 +33,12 @@ class SamlSessionsController < Devise::SessionsController
       #puts "response_to_validate.is_valid = #{response_to_validate.is_valid?}"
       #puts "response_to_validate.nameid = #{response_to_validate.nameid}"
       
+      logger.info "SessionIndex = '#{response_to_validate.sessionindex}'"
+
       if response_to_validate.is_valid? && username = response_to_validate.nameid
-        
+
+        session[:saml_session_index] = response_to_validate.sessionindex
+
         if @issuer == Settings.identity_providers.citizen_issuer
           if user = User.find_by(username: username)
             unless user.citizen_type
@@ -42,6 +46,8 @@ class SamlSessionsController < Devise::SessionsController
             end
           else
             user = create_citizen(username, response_to_validate.attributes)
+            
+
           end
         elsif @issuer == Settings.identity_providers.city_hall_issuer
           unless user = User.find_by(username: username)
@@ -121,6 +127,7 @@ class SamlSessionsController < Devise::SessionsController
 
     # LogoutRequest acepta solicitudes simples del navegador sin parametros
     settings = IdpSettingsAdapter.saml_settings(@issuer)
+
     logged_user = current_user
 
     #if settings.idp_slo_service_url.nil?
@@ -134,6 +141,8 @@ class SamlSessionsController < Devise::SessionsController
     if settings.name_identifier_value.nil?
       settings.name_identifier_value = logged_user.username
     end
+
+    settings.sessionindex = session[:saml_session_index]
 
     # Asegurar que el usuario haya cerrado sesion antes de redirigirlo al IdP, en caso de que algo salga mal durante el proceso de cierre de sesion unico (segun lo recomendado por saml2int[SDP-SP34])
     #logger.info "Delete session for '#{logged_user.username}'"
