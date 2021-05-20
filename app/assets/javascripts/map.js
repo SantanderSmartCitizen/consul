@@ -102,7 +102,7 @@
         simplifyFactor: 0.35,
         precision: 5,
         style: {
-          color: 'rgb(39, 90, 118)',
+          color: 'rgb(38, 89, 118)',
           weight: 1
         }
       }).addTo(map);
@@ -120,7 +120,7 @@
         document.getElementById('info-pane').innerHTML = mapGeozones[geozoneCode]['name'];
 
         distritos.setFeatureStyle(e.layer.feature.id, {
-          color: 'rgb(53, 129, 170)',
+          color: 'rgb(38, 89, 118)',
           weight: 3,
           opacity: 1
         });

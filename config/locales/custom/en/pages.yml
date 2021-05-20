@@ -14,8 +14,8 @@ en:
       budgets:
         title: "Budgets"
         link: "budgets"
-        image_alt: "Different phases of a budget"
-        figcaption: '"Support" and "Voting" phases of budgets.'
+        image_alt: "Voting phase of budgets"
+        figcaption: '"Voting" phase of budgets.'
       polls:
         title: "Polls/Questions"
         link: "polls/questions"

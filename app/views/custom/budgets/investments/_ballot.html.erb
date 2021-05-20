@@ -3,9 +3,15 @@
   <% if ballot.has_investment?(investment) %>
 
     <div class="remove supported inline-block">
-      <span class="icon-check-circle"
-            title="<%= t("budgets.investments.investment.already_added") %>">
-      </span>
+      
+
+
+      <div class="budget-investment-check" title="<%= t("budgets.investments.investment.already_added") %>">
+        <%= image_tag image_path_for("vectors/check-white.svg"), alt: t("budgets.investments.investment.already_added")  %>
+      </div>
+
+
+
       <p class="investment-project-amount">
         <%= investment.formatted_price %>
       </p>

@@ -24,17 +24,15 @@
   <% end %>
 
   <% if params[:search].present? || params[:advanced_search].present? %>
-    <div class="highlight no-margin-top padding margin-bottom">
-      <div class="row">
-        <div class="small-12 column">
-          <h2><%= t("shared.search_results") %></h2>
-          <p>
-            <%= page_entries_info @investments %>
-            <%= sanitize(t("budgets.investments.index.search_results",
-                   count: @investments.size,
-                   search_term: params[:search])) %>
-          </p>
-        </div>
+    <div class="row jumbo margin-bottom">
+      <div class="small-12 column">
+        <h2 class="white-color"><%= t("shared.search_results") %></h2>
+        <p>
+          <%= page_entries_info @investments %>
+          <%= sanitize(t("budgets.investments.index.search_results",
+                 count: @investments.size,
+                 search_term: params[:search])) %>
+        </p>
       </div>
     </div>
   <% end %>
