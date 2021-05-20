@@ -4,6 +4,10 @@ en:
       reasons_for_not_balloting:
         not_logged_in: You must %{signin} to continue.
     investments:
+      index:
+        voted:
+          one: "You voted one proposal with a cost of %{amount_spent}"
+          other: "You voted %{count} proposals with a cost of %{amount_spent}"
       form:
         estimated_price: Estimated price (%{currency})
       show:

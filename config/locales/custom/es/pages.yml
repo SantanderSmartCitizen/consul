@@ -15,8 +15,8 @@ es:
       budgets:
         title: "Presupuestos"
         link: "presupuestos"
-        image_alt: "Fase de votación de un presupuesto"
-        figcaption: 'Fase de "Votación" de los presupuestos.'
+        image_alt: "Fase de votación de presupuestos"
+        figcaption: 'Fase de "Votación" de presupuestos.'
       polls:
         title: "Encuestas/Consultas"
         link: "encuestas/consultas"

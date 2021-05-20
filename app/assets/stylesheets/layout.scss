@@ -338,20 +338,19 @@ a {
 }
 
 .close-button {
-  color: $text;
+  color: rgba($brand, .7);
   top: $line-height / 2;
 }
 
 .back,
 .icon-angle-left {
   clear: both;
-  color: $text-medium;
   display: inline-block;
   padding-right: $line-height / 2;
 }
 
 .back:not([class^="icon-"]) {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 .tabs-content {
@@ -1040,7 +1039,6 @@ form {
 
   label {
     font-size: $base-font-size;
-    font-weight: bold;
     line-height: $line-height;
   }
 
@@ -1062,9 +1060,13 @@ form {
   }
 
   [type]:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio]):not(.close-button) {
-    background: #f8f8f8;
-    height: $line-height * 2;
-    margin-bottom: rem-calc(16);
+    background: white;
+    height: 35px;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 7px;
+    color: rgba(0, 0, 0, .7);
 
     &.error {
       margin-bottom: rem-calc(1);
@@ -1156,25 +1158,37 @@ form {
 .callout {
   font-size: $small-font-size;
   overflow: hidden;
+  border-radius: 11px;
 
   a:not(.button) {
     font-weight: bold;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    /*border-bottom: 1px dotted $brand;
+    color: $brand;*/
   }
 
-  &.success,
-  &.notice {
+  &.success {
     background-color: $success-bg;
     border-color: $success-border;
     color: $color-success;
-    border-radius: 11px;
+  }
+
+  &.info {
+    background-color: $info-bg;
+    border-color: $info-border;
+    color: $color-info;
+  }
+
+  &.notice {
+    background-color: $notice-bg;
+    border-color: $notice-border;
+    color: $color-notice;
   }
 
   &.primary {
     background-color: $info-bg;
     border-color: $info-border;
     color: $color-info;
-    border-radius: 11px;
 
     a {
       color: $link !important;
@@ -1185,7 +1199,6 @@ form {
     background-color: $warning-bg;
     border-color: $warning-border;
     color: $color-warning;
-    border-radius: 11px;
   }
 
   &.alert,
@@ -1193,7 +1206,6 @@ form {
     background-color: $alert-bg;
     border-color: $alert-border;
     color: $color-alert;
-    border-radius: 11px;
   }
 
   .close {
@@ -1448,7 +1460,12 @@ form {
   }
 
   select {
-    height: $line-height * 2;
+    height: 35px;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 7px;
+    color: rgba(0, 0, 0, .7);
   }
 }
 
@@ -2605,7 +2622,7 @@ table {
     font-size: rem-calc(24);
 
     span {
-      color: #4f4f4f;
+      color: rgba($brand, .7);
       font-weight: normal;
     }
   }
