@@ -36,6 +36,7 @@ identity_providers:
         force_authn: false
         #Optional Settings, set these up if using SLO as well
         idp_slo_target_url: https://sso-pre.int.ayto-santander.es:9443/samlsso
+        single_logout_service_url: http://192.168.34.140/users/saml/sign_out
         single_logout_service_binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
 
         security:

@@ -7,7 +7,8 @@ class SamlSessionsController < Devise::SessionsController
   def init
     if params[:issuer]
       request = OneLogin::RubySaml::Authrequest.new
-      action = request.create(@saml_settings)
+      settings = IdpSettingsAdapter.saml_settings(@issuer)
+      action = request.create(settings)
       redirect_to action
     else
       #redirect_to new_user_session_path
@@ -22,17 +23,22 @@ class SamlSessionsController < Devise::SessionsController
   def consume
     redirect_path = root_path
     begin
-      response_to_validate = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: @saml_settings)
+      settings = IdpSettingsAdapter.saml_settings(@issuer)
+      response_to_validate = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: settings)
     
-      #puts "@saml_settings = #{@saml_settings.to_json}"
+      #puts "settings = #{settings.to_json}"
       #puts "params[:SAMLResponse] = [#{params[:SAMLResponse]}]"
-      #puts "@saml_settings.certificate = #{@saml_settings.certificate}"
-      #puts "@saml_settings.private_key = #{@saml_settings.private_key}"
+      #puts "settings.certificate = #{settings.certificate}"
+      #puts "settings.private_key = #{settings.private_key}"
       #puts "response_to_validate.is_valid = #{response_to_validate.is_valid?}"
       #puts "response_to_validate.nameid = #{response_to_validate.nameid}"
       
+      logger.info "SessionIndex = '#{response_to_validate.sessionindex}'"
+
       if response_to_validate.is_valid? && username = response_to_validate.nameid
-        
+
+        session[:saml_session_index] = response_to_validate.sessionindex
+
         if @issuer == Settings.identity_providers.citizen_issuer
           if user = User.find_by(username: username)
             unless user.citizen_type
@@ -40,6 +46,8 @@ class SamlSessionsController < Devise::SessionsController
             end
           else
             user = create_citizen(username, response_to_validate.attributes)
+            
+
           end
         elsif @issuer == Settings.identity_providers.city_hall_issuer
           unless user = User.find_by(username: username)
@@ -66,7 +74,7 @@ class SamlSessionsController < Devise::SessionsController
     rescue Exception => e
       Rails.logger.error "Exception: #{e}"
       flash[:error] = t("flash.actions.error.login")
-      redirect_to redirect_path
+      redirect_to root_path
     end
   end
 
@@ -100,7 +108,8 @@ class SamlSessionsController < Devise::SessionsController
 
   def metadata
     meta = OneLogin::RubySaml::Metadata.new
-    render :xml => meta.generate(@saml_settings)
+    settings = IdpSettingsAdapter.saml_settings(@issuer)
+    render :xml => meta.generate(settings)
   end
 
   protected
@@ -116,10 +125,9 @@ class SamlSessionsController < Devise::SessionsController
   # Crer un SLO iniciado por SP
   def sp_logout_request
 
-    #puts "@saml_settings = #{@saml_settings.to_json}"
-
     # LogoutRequest acepta solicitudes simples del navegador sin parametros
-    settings = @saml_settings
+    settings = IdpSettingsAdapter.saml_settings(@issuer)
+
     logged_user = current_user
 
     #if settings.idp_slo_service_url.nil?
@@ -134,9 +142,11 @@ class SamlSessionsController < Devise::SessionsController
       settings.name_identifier_value = logged_user.username
     end
 
+    settings.sessionindex = session[:saml_session_index]
+
     # Asegurar que el usuario haya cerrado sesion antes de redirigirlo al IdP, en caso de que algo salga mal durante el proceso de cierre de sesion unico (segun lo recomendado por saml2int[SDP-SP34])
-    logger.info "Delete session for '#{logged_user.username}'"
-    delete_session
+    #logger.info "Delete session for '#{logged_user.username}'"
+    #delete_session
 
     # Guardar el transaction_id para compararlo al volver con la respuesta
     session[:transaction_id] = logout_request.uuid
@@ -171,7 +181,8 @@ class SamlSessionsController < Devise::SessionsController
   # Despues de enviar una LogoutRequest iniciada por el SP, 
   # debemos aceptar la LogoutResponse, verificarla y eliminarla de sesion
   def process_logout_response
-    settings = @saml_settings
+    settings = IdpSettingsAdapter.saml_settings(@issuer)
+    #settings.sp_entity_id = @issuer
 
     if session.has_key? :transaction_id
       logout_response = OneLogin::RubySaml::Logoutresponse.new(params[:SAMLResponse], settings, :matches_request_id => session[:transaction_id])
@@ -179,22 +190,29 @@ class SamlSessionsController < Devise::SessionsController
       logout_response = OneLogin::RubySaml::Logoutresponse.new(params[:SAMLResponse], settings)
     end
 
-    logger.info "LogoutResponse is: #{logout_response.to_s}"
+    logger.info "LogoutResponse is: #{logout_response.response.to_s}"
 
     # Validar la respuesta de cierre de sesion de SAML
     if not logout_response.validate
-      logger.error "The SAML Logout Response is invalid"
+      logger.error "The SAML Logout Response is invalid. Errors: #{logout_response.errors}"
+      flash[:error] = t("devise.sessions.signed_out")
+      redirect_to root_path
     else
       # Cierre la sesion
-      logger.info "SLO completed for '#{session[:logged_out_user]}'"
-      delete_session
+      if logout_response.success?
+        logger.info "SLO completed for '#{session[:logged_out_user]['username']}'"
+        delete_session
+        flash[:notice] = t("devise.sessions.signed_out")
+        redirect_to root_path
+      else
+        # Mensaje
+      end
     end
   end
 
   # Elimina la sesion de un usuario
   def delete_session
     session[:userid] = nil
-    session[:attributes] = nil
     session[:transaction_id] = nil
     session[:logged_out_user] = nil
     session[:saml_issuer] = nil
@@ -203,7 +221,7 @@ class SamlSessionsController < Devise::SessionsController
 
   # Metodo para manejar los logout iniciados por IdP
   def idp_logout_request
-    settings = @saml_settings
+    settings = IdpSettingsAdapter.saml_settings(@issuer)
     logout_request = OneLogin::RubySaml::SloLogoutrequest.new(params[:SAMLRequest])
     if !logout_request.is_valid?
       logger.error "IdP initiated LogoutRequest was not valid!"
@@ -304,7 +322,6 @@ class SamlSessionsController < Devise::SessionsController
         end
       end
     end
-    #@saml_settings = IdpSettingsAdapter.saml_settings(@idp_entity_id)
-    @saml_settings = IdpSettingsAdapter.saml_settings(@issuer)
+    logger.info "@issuer = #{@issuer}"
   end
 end
