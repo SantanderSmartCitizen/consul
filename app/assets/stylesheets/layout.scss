@@ -135,7 +135,7 @@ a {
 
 .sidebar-divider {
   border-top: 1px solid $border;
-  margin-top: $line-height;
+  margin: 20px 0;
 
   &:first-child {
     margin-top: 0;
@@ -338,20 +338,19 @@ a {
 }
 
 .close-button {
-  color: $text;
+  color: rgba($brand, .7);
   top: $line-height / 2;
 }
 
 .back,
 .icon-angle-left {
   clear: both;
-  color: $text-medium;
   display: inline-block;
   padding-right: $line-height / 2;
 }
 
 .back:not([class^="icon-"]) {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 .tabs-content {
@@ -779,7 +778,7 @@ header {
   margin-bottom: $line-height / 2;
 
   a {
-    color: $text;
+    color: rgba($brand, 0.7);
     display: inline-block;
     font-weight: bold;
     margin-right: $line-height / 2;
@@ -797,7 +796,7 @@ header {
 
   .is-active {
     border-bottom: 2px solid $brand;
-    color: $brand;
+    color: $brand !important;
 
     &:hover {
       text-decoration: none;
@@ -912,12 +911,12 @@ footer {
 }
 
 .sidebar-title {
-  border-top: 2px solid $brand;
+  /*border-top: 2px solid $brand;*/
   display: inline-block;
   font-size: rem-calc(16);
   font-weight: bold;
   margin: -1px 0 $line-height / 2;
-  padding-top: $line-height / 4;
+  /*padding-top: $line-height / 4;*/
   text-transform: uppercase;
 }
 
@@ -1038,9 +1037,13 @@ footer {
 
 form {
 
+  .is-invalid-input:not(:focus){
+    border-color: #cc4b37 !important;
+    background-color: #faedeb !important;
+  }
+
   label {
     font-size: $base-font-size;
-    font-weight: bold;
     line-height: $line-height;
   }
 
@@ -1061,14 +1064,27 @@ form {
     }
   }
 
-  [type]:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio]):not(.close-button) {
-    background: #f8f8f8;
-    height: $line-height * 2;
-    margin-bottom: rem-calc(16);
+  [type]:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio]):not(.close-button), textarea {
+    background: white;
+    height: 35px;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 7px;
+    color: rgba(0, 0, 0, .7);
 
     &.error {
       margin-bottom: rem-calc(1);
     }
+  }
+
+  select {
+    height: 35px;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 7px;
+    color: rgba(0, 0, 0, .7);
   }
 
   [type="checkbox"] + label,
@@ -1100,6 +1116,7 @@ form {
     line-height: $line-height;
     vertical-align: middle;
   }
+
 }
 
 .translatable-fields {
@@ -1156,17 +1173,31 @@ form {
 .callout {
   font-size: $small-font-size;
   overflow: hidden;
+  border-radius: 11px;
 
   a:not(.button) {
     font-weight: bold;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    /*border-bottom: 1px dotted $brand;
+    color: $brand;*/
   }
 
-  &.success,
-  &.notice {
+  &.success {
     background-color: $success-bg;
     border-color: $success-border;
     color: $color-success;
+  }
+
+  &.info {
+    background-color: $info-bg;
+    border-color: $info-border;
+    color: $color-info;
+  }
+
+  &.notice {
+    background-color: $notice-bg;
+    border-color: $notice-border;
+    color: $color-notice;
   }
 
   &.primary {
@@ -1444,7 +1475,12 @@ form {
   }
 
   select {
-    height: $line-height * 2;
+    height: 35px;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 7px;
+    color: rgba(0, 0, 0, .7);
   }
 }
 
@@ -1734,10 +1770,14 @@ table {
   }
 }
 
-@include breakpoint(medium) {
+@include breakpoint(small down) {
+  .ssb-whatsapp_web {
+    display: none !important;
+  }
+}
 
-  .button.button-telegram,
-  .ssb-telegram {
+@include breakpoint(medium) {
+  .ssb-whatsapp_app {
     display: none !important;
   }
 }
@@ -2540,7 +2580,7 @@ table {
 
   .document-link {
     background: $highlight-soft;
-    border: 2px solid $highlight;
+    border: 1px solid $highlight;
     border-radius: rem-calc(5);
     display: block;
     margin: $line-height / 2 0;
@@ -2601,7 +2641,7 @@ table {
     font-size: rem-calc(24);
 
     span {
-      color: #4f4f4f;
+      color: rgba($brand, .7);
       font-weight: normal;
     }
   }

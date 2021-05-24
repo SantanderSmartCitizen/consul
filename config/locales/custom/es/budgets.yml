@@ -1,5 +1,8 @@
 es:
   budgets:
+    ballots:
+      reasons_for_not_balloting:
+        not_logged_in: Necesitas %{signin} para continuar.
     index:
       title: Presupuestos
       empty_budgets: No hay presupuestos.
@@ -17,7 +20,13 @@ es:
     results:
       heading: "Resultados presupuestos"
     investments:
+      index:
+        sidebar:
+          voted:
+            one: "Has votado un proyecto por un valor de %{amount_spent}"
+            other: "Has votado %{count} proyectos por un valor de %{amount_spent}"
       form:
         estimated_price: Coste estimado (%{currency})
       show:
-        estimated_price: "Coste estimado: <strong>%{estimated_price} %{currency}</strong>"
+        estimated_price: "Coste estimado: <strong>%{estimated_price}</strong>"
+        

@@ -84,7 +84,6 @@
         <% end %>
       </div>
 
-      <br>
       <%= f.text_field :tag_list, value: @investment.tag_list.to_s,
                         label: false,
                         placeholder: t("budgets.investments.form.tags_placeholder"),
@@ -99,8 +98,8 @@
         <%= f.check_box :terms_of_service,
           title: t("form.accept_terms_title"),
           label: t("form.accept_terms",
-                   policy: link_to(t("form.policy"), "/privacy", target: "blank"),
-                   conditions: link_to(t("form.conditions"), "/conditions", target: "blank")
+                   policy: link_to(t("form.policy"), t("layouts.footer.privacy_policy_url"), target: "_blank"),
+                   conditions: link_to(t("layouts.footer.legal_notice"), t("layouts.footer.legal_notice_url"), target: "_blank")
                   ) %>
       </div>
 

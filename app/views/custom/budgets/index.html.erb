@@ -95,7 +95,7 @@
 
           <ul class="no-bullet margin-top">
             <% show_links = show_links_to_budget_investments(current_budget) %>
-            <% if show_links %>
+            <% if show_links && false %>
               <li>
                 <%= link_to budget_path(current_budget) do %>
                   <small><%= t("budgets.index.investment_proyects") %></small>
@@ -103,15 +103,63 @@
               </li>
             <% end %>
             <li>
-              <%= link_to budget_path(current_budget, filter: "unfeasible") do %>
-                <small><%= t("budgets.index.unfeasible_investment_proyects") %></small>
+
+              <% if current_budget.has_unfeasible_investments? %>
+
+                <% if current_budget.groups.size == 1 && group = current_budget.groups.first %>
+
+                  <% if group.single_heading_group? %>
+                    <%= link_to budget_investments_path(current_budget,
+                                  heading_id: group.headings.first.id,
+                                  filter: "unfeasible"),
+                                data: { no_turbolink: true } do %>
+                      <small><%= t("budgets.index.unfeasible_investment_proyects") %></small>
+                    <% end %>
+                  <% else %>
+                    <%= link_to budget_group_path(current_budget, group,
+                                  filter: "unfeasible") do %>
+                      <small><%= t("budgets.index.unfeasible_investment_proyects") %></small>
+                    <% end %>
+                  <% end %>
+
+                <% else %>
+                  <%= link_to budget_path(current_budget, filter: "unfeasible") do %>
+                    <small><%= t("budgets.index.unfeasible_investment_proyects") %></small>
+                  <% end %>
+                <% end %>
+
               <% end %>
+
             </li>
             <% if show_links %>
               <li>
-                <%= link_to budget_path(current_budget, filter: "unselected") do %>
-                  <small><%= t("budgets.index.not_selected_investment_proyects") %></small>
+
+                <% if current_budget.has_unselected_investments? %>
+                
+                  <% if current_budget.groups.size == 1 && group = current_budget.groups.first %>
+
+                    <% if group.single_heading_group? %>
+                      <%= link_to budget_investments_path(current_budget,
+                                    heading_id: group.headings.first.id,
+                                    filter: "unselected"),
+                                  data: { no_turbolink: true } do %>
+                        <small><%= t("budgets.index.not_selected_investment_proyects") %></small>
+                      <% end %>
+                    <% else %>
+                      <%= link_to budget_group_path(current_budget, group,
+                                    filter: "unselected") do %>
+                        <small><%= t("budgets.index.not_selected_investment_proyects") %></small>
+                      <% end %>
+                    <% end %>
+
+                  <% else %>
+                    <%= link_to budget_path(current_budget, filter: "unselected") do %>
+                      <small><%= t("budgets.index.not_selected_investment_proyects") %></small>
+                    <% end %>
+                  <% end %>
+
                 <% end %>
+
               </li>
             <% end %>
           </ul>
@@ -149,9 +197,7 @@
 <div class="row">
   <div class="small-12 column">
     <div id="section_help" class="margin" data-magellan-target="section_help">
-      <p class="lead">
-        <strong><%= t("budgets.index.section_footer.title") %></strong>
-      </p>
+      <h2><%= t("budgets.index.section_footer.title") %></h2>
       <p><%= t("budgets.index.section_footer.description") %></p>
     </div>
   </div>

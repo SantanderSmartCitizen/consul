@@ -181,6 +181,14 @@ select {
     margin-right: 15%;
 }
 
+.mt-3r {
+  margin-top: 3rem;
+}
+
+.mb-3r {
+  margin-bottom: 3rem;
+}
+
 .button {
     background: rgba($brand,0.7);
     color: white;
@@ -188,6 +196,13 @@ select {
     border-radius: 20px;
     margin: 0;
     font-weight: bold;
+    min-height: 35px;
+    padding: 0.5em 2em;
+    &.expanded {
+      width: auto;
+      margin-bottom: 35px;
+      margin-top: 8px;
+    }
     &:hover {
       background-color: $brand;
       color: #fefefe;
@@ -222,9 +237,14 @@ select {
 .feature-title h2 {
     display:table-cell;
     vertical-align:middle;
-    color: rgba(38, 89, 118, 0.7);
+    color: rgba($brand, 0.7);
     font-size: 22pt;
 }
+
+label {
+  color: $brand;
+}
+
 .required label::after {
     content: " *";
     color: #f04124;
@@ -474,6 +494,160 @@ a.footer-social-icons.instagram:hover {
 }
 .background-color-10 {
   background-color: $color-1;
+}
+
+.delete {
+  border-bottom: 1px dotted $brand;
+  color: $brand;
+  font-size: $small-font-size;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-bottom: 1px dotted #fff;
+    color: $brand;
+  }
+}
+
+#sidebar {
+  strong {
+    color: $brand;
+  }
+}
+
+.tags a ,
+.tag-cloud a,
+.categories a,
+.geozone a,
+.sidebar-links a,
+.tags span {
+  background: rgba($brand,0.1) !important;
+  color: rgba($brand,0.7) !important;
+  border-radius: 5px;
+
+  &:hover {
+    background: rgba($brand,0.1) !important;
+    color: rgba($brand,0.7) !important;
+    font-weight: bold;
+  }
+
+  &.is-active {
+    background: rgba($brand,0.7) !important;
+    color: white !important;
+    font-style: italic; 
+  }
+}
+
+
+.view-mode {
+  color: $brand;
+  outline-color: $brand;
+  .view-list,
+  .view-card {
+    color: rgba($brand,0.7);
+   &.is-active {
+      color: $brand;
+    }
+  }
+}
+
+.dropdown-pane a {
+  color: rgba($brand,0.7);
+}
+
+#progress{
+  height: 2rem;
+  border-radius: 20px;
+}
+
+.budget-investment-check {
+  background: rgba($brand,0.7);
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 11px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.jumbo {
+  background: rgba($brand,0.7);
+  color: white;
+  margin-top: 0;
+}
+
+.social-share-full {
+
+  .ssb-twitter,
+  .ssb-facebook,
+  [class^="ssb-icon ssb-google"],
+  .ssb-telegram,
+  .ssb-whatsapp_app,
+  .ssb-whatsapp_web,
+  .ssb-linkedin {
+    background-color: #f5f7fc;
+    border-radius: 50%;
+    color: #8eb3c8;
+    min-width: 60px;
+    height: 60px !important;
+    font-size: 30px;
+    /*padding: 9px;
+    vertical-align: middle;*/
+
+    &::before {
+      font-size: 30px;
+      font-weight: bold;
+      line-height: 60px;
+      margin-left: -14px;
+    }
+
+    &:hover,
+    &:focus {
+      color: $brand;
+    }
+  }
+
+  .ssb-whatsapp_app,
+  .ssb-whatsapp_web,
+  .ssb-linkedin {
+      background-image: none !important;
+  }
+
+  .ssb-whatsapp_app::before,
+  .ssb-whatsapp_web::before {
+    font-family: "Font Awesome 5 Brands" !important;
+    content: "\f232";
+    position: absolute;
+    display: list-item;
+    margin: 0 auto !important;
+    margin-left: 17px !important;
+    list-style: none;
+  }
+
+  .ssb-telegram::before {
+    font-family: "Font Awesome 5 Brands" !important;
+    content: "\f3fe";
+  }
+
+  .ssb-facebook::before {
+    font-family: "Font Awesome 5 Brands" !important;
+    content: "\f39e";
+    margin-left: -8px;
+  }
+
+  .ssb-twitter::before {
+    font-family: "Font Awesome 5 Brands" !important;
+    content: "\f099";
+  }
+
+  .ssb-linkedin::before {
+    font-family: "Font Awesome 5 Brands" !important;
+    content: "\f0e1";
+    position: absolute;
+    display: list-item;
+    margin: 0 auto !important;
+    margin-left: 17px !important;
+    list-style: none;
+  }
+
 }
 
 @media screen and (max-width: 39.99875em) {

@@ -426,7 +426,7 @@ code {
 
 .admin-sidebar {
   background: $sidebar;
-  background: linear-gradient(to bottom, #245b80 0%, #488fb5 100%);
+  background: rgba($brand, .9);
   border-right: 1px solid $border;
 
   ul {
@@ -1158,7 +1158,7 @@ table {
       width: 30px;
       height: 30px;
       border-radius: 50% 50% 50% 0;
-      background: #00cae9;
+      background: $brand;
       transform: rotate(-45deg);
     }
 

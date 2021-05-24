@@ -47,7 +47,7 @@
     <div id="navigation_bar" class="subnavigation expanded">
     
       <div class="hide-for-small-only" style="display: table;width: 100%;">
-        <div class="column align-bottom" style="text-align: right; vertical-align: middle !important;">
+        <div class="column align-bottom" style="text-align: right; vertical-align: middle !important;padding-right: 11em;">
           <%= render "shared/subnavigation" %>
         </div>
       </div>
@@ -55,6 +55,10 @@
         <%= yield :header_addon %>
       </div>
     </div>
+  </div>
+
+  <div class="row">
+    <%= yield :breadcrumb %>
   </div>
 
   <div class="row">
