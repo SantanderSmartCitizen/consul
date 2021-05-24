@@ -28,5 +28,5 @@ es:
       form:
         estimated_price: Coste estimado (%{currency})
       show:
-        estimated_price: "Coste estimado: <strong>%{estimated_price} %{currency}</strong>"
+        estimated_price: "Coste estimado: <strong>%{estimated_price}</strong>"
         

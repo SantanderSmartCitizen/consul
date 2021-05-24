@@ -44,7 +44,7 @@
           amount_spent: @ballot.formatted_amount_spent(@heading))) %>
     </p>
   <% elsif @assigned_heading.present? %>
-    <p>
+    <p class="callout notice">
       <%= sanitize(t("budgets.investments.index.sidebar.different_heading_assigned",
               heading_link: heading_link(@assigned_heading, @budget)
             )) %>
@@ -56,7 +56,7 @@
       </small>
     </p>
   <% else %>
-    <p><strong><%= t("budgets.investments.index.sidebar.zero") %></strong></p>
+    <p class="callout notice"><%= t("budgets.investments.index.sidebar.zero") %></p>
   <% end %>
 
   <ul class="ballot-list">

@@ -26,7 +26,7 @@
 
 <% if investment.estimated_price.present? %>
   <p id="investment_estimated_price">
-    <%= sanitize(t("budgets.investments.show.estimated_price", estimated_price: investment.estimated_price, currency: investment.budget.currency_symbol)) %>
+    <%= sanitize(t("budgets.investments.show.estimated_price", estimated_price: investment.formatted_estimated_price)) %>
   </p>
 <% end %>
 
