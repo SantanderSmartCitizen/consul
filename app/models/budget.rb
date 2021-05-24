@@ -202,6 +202,14 @@ class Budget < ApplicationRecord
     investments.winners.map(&:milestone_tag_list).flatten.uniq.sort
   end
 
+  def has_unfeasible_investments?
+    investments.unfeasible.any?
+  end
+
+  def has_unselected_investments?
+    investments.unselected.any?
+  end
+
   private
 
     def generate_phases

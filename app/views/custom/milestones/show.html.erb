@@ -3,12 +3,15 @@
   <%= render "shared/canonical", href: milestone_url(@milestone) %>
 <% end %>
 
+<% content_for :breadcrumb do %>
+  <%= back_link_to %>
+<% end %>
+
 <% cache [locale_and_user_status, @milestone, @milestone_votes] do %>
   <div class="debate-show">
     <div id="<%= dom_id(@milestone) %>" class="row">
       <div class="small-12 medium-9 column">
-        <%= back_link_to %>
-
+        
         <h1>
           <%= t("milestones.show.title") %>
         </h1>

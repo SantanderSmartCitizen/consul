@@ -1,0 +1,20 @@
+<%= back_link_to admin_stats_path %>
+
+<h2><%= t("admin.stats.budgets.title") %></h2>
+
+<% @budgets.each do |budget| %>
+  <% if can? :read_admin_stats, budget %>
+    <table>
+      <tr id="<%= dom_id(budget) %>">
+        <td style="width: 50%;">
+          <strong><%= budget.name %></strong>
+        </td>
+        <td>
+          <%= link_to t("admin.stats.budgets.balloting_phase"),
+                      budget_balloting_admin_stats_path(budget_id: budget.id),
+                      class: "button" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>

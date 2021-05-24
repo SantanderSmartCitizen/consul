@@ -135,7 +135,7 @@ a {
 
 .sidebar-divider {
   border-top: 1px solid $border;
-  margin-top: $line-height;
+  margin: 20px 0;
 
   &:first-child {
     margin-top: 0;
@@ -911,12 +911,12 @@ footer {
 }
 
 .sidebar-title {
-  border-top: 2px solid $brand;
+  /*border-top: 2px solid $brand;*/
   display: inline-block;
   font-size: rem-calc(16);
   font-weight: bold;
   margin: -1px 0 $line-height / 2;
-  padding-top: $line-height / 4;
+  /*padding-top: $line-height / 4;*/
   text-transform: uppercase;
 }
 
@@ -1037,6 +1037,11 @@ footer {
 
 form {
 
+  .is-invalid-input:not(:focus){
+    border-color: #cc4b37 !important;
+    background-color: #faedeb !important;
+  }
+
   label {
     font-size: $base-font-size;
     line-height: $line-height;
@@ -1059,7 +1064,7 @@ form {
     }
   }
 
-  [type]:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio]):not(.close-button) {
+  [type]:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio]):not(.close-button), textarea {
     background: white;
     height: 35px;
     margin-bottom: 1em;
@@ -1071,6 +1076,15 @@ form {
     &.error {
       margin-bottom: rem-calc(1);
     }
+  }
+
+  select {
+    height: 35px;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 7px;
+    color: rgba(0, 0, 0, .7);
   }
 
   [type="checkbox"] + label,
@@ -1102,6 +1116,7 @@ form {
     line-height: $line-height;
     vertical-align: middle;
   }
+
 }
 
 .translatable-fields {
@@ -1755,10 +1770,14 @@ table {
   }
 }
 
-@include breakpoint(medium) {
+@include breakpoint(small down) {
+  .ssb-whatsapp_web {
+    display: none !important;
+  }
+}
 
-  .button.button-telegram,
-  .ssb-telegram {
+@include breakpoint(medium) {
+  .ssb-whatsapp_app {
     display: none !important;
   }
 }
@@ -2561,7 +2580,7 @@ table {
 
   .document-link {
     background: $highlight-soft;
-    border: 2px solid $highlight;
+    border: 1px solid $highlight;
     border-radius: rem-calc(5);
     display: block;
     margin: $line-height / 2 0;
