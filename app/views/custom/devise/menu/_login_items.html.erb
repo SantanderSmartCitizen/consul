@@ -1,4 +1,5 @@
 <% if user_signed_in? %>
+<!-- 
   <li>
     <%= layout_menu_link_to t("layouts.header.my_activity_link"),
                               user_path(current_user),
@@ -7,6 +8,7 @@
                               title: t("shared.go_to_page") +
                                      t("layouts.header.my_activity_link") %>
   </li>
+-->
   <li>
     <%= layout_menu_link_to t("layouts.header.my_account_link"),
                               account_path,

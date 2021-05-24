@@ -450,11 +450,11 @@
   aside {
 
     h2 {
-      border-top: 2px solid $brand;
+      /*border-top: 2px solid $brand;*/
       display: inline-block;
       font-size: rem-calc(16);
       margin: -1px 0 rem-calc(12);
-      padding-top: rem-calc(6);
+      /*padding-top: rem-calc(6);*/
       text-transform: uppercase;
     }
   }
@@ -651,6 +651,7 @@
     @include breakpoint(medium) {
       margin-bottom: rem-calc(-1);
       padding-bottom: rem-calc(12);
+      border-radius: 11px;
     }
 
     @include breakpoint(medium) {
@@ -1600,6 +1601,8 @@
   border: 1px solid $border;
   overflow: hidden;
   position: relative;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 11px;
 
   a {
     color: $text;

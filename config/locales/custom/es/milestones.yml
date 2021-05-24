@@ -20,3 +20,5 @@ es:
         zero: Sin votos
         one: 1 voto
         other: "%{count} votos"
+    index:
+      no_milestones: No hay acciones definidas
