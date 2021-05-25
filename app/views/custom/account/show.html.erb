@@ -26,14 +26,6 @@
             <% end %>
           </div>
 
-          <div>
-            <%= f.check_box :public_activity %>
-          </div>
-
-          <div>
-            <%= f.check_box :public_interests %>
-          </div>
-
           <% if @account.email.present? %>
             <br>
             <h2><%= t("account.show.notifications") %></h2>
@@ -63,23 +55,6 @@
             <div>
               <%= f.check_box :official_position_badge %>
             </div>
-          <% end %>
-
-          <% if feature?("user.recommendations") %>
-            <br>
-            <h2><%= t("account.show.recommendations") %></h2>
-
-            <% if feature?("user.recommendations_on_debates") %>
-              <div>
-                <%= f.check_box :recommended_debates %>
-              </div>
-            <% end %>
-
-            <% if feature?("user.recommendations_on_proposals") %>
-              <div>
-                <%= f.check_box :recommended_proposals %>
-              </div>
-            <% end %>
           <% end %>
 
           <%= f.submit t("account.show.save_changes_submit"), class: "button margin-top" %>
