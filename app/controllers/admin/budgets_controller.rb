@@ -68,7 +68,9 @@ class Admin::BudgetsController < Admin::BaseController
 
     def budget_params
       descriptions = Budget::Phase::PHASE_KINDS.map { |p| "description_#{p}" }.map(&:to_sym)
-      valid_attributes = [:phase,
+      valid_attributes = [:voting_system,
+                          :max_votes,
+                          :phase,
                           :currency_symbol,
                           administrator_ids: [],
                           valuator_ids: []

@@ -8,6 +8,9 @@ en:
         one: "Poll/Question"
         other: "Polls/Questions"
     attributes:
+      budget:
+        voting_system: Voting system
+        max_votes: Maximum number of votes
       user:
         login: "Email or username/alias"
         username: "Username/alias"

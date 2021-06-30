@@ -29,4 +29,7 @@ es:
         estimated_price: Coste estimado (%{currency})
       show:
         estimated_price: "Coste estimado: <strong>%{estimated_price}</strong>"
+    voting_system:
+      wallet: Monedero
+      max_votes: Número máximo de votos
         
