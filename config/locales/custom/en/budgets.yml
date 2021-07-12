@@ -3,12 +3,29 @@ en:
     ballots:
       reasons_for_not_balloting:
         not_logged_in: You must %{signin} to continue.
+        not_enough_money: "You have already reached the maximum number of votes allowed.<br><small>Remember you can %{change_ballot} at any time</small>"
+      show:
+        amount_spent: Amount spend
+        remaining: "Still available to you <span>%{amount}</span>"
+        voted:
+          one: "You voted 1 budget investment"
+          other: "You voted %{count} budget investments"
     investments:
       index:
-        voted:
-          one: "You voted one proposal with a cost of %{amount_spent}"
-          other: "You voted %{count} proposals with a cost of %{amount_spent}"
+        sidebar:
+          voted:
+            one: "You voted one proposal with a cost of %{amount_spent}"
+            other: "You voted %{count} proposals with a cost of %{amount_spent}"
+          voted_info: "You can %{link} at any time until the close of this phase. "
+          voted_info_max_votes_system: No need to spend all available votes.
+          voted_info_wallet_system: No need to spend all available money.
       form:
         estimated_price: Estimated price (%{currency})
       show:
         estimated_price: "Estimated price: <strong>%{estimated_price}</strong>"
+    progress_bar:
+      max_votes: "Maximum votes allowed: <strong>%{max_votes}</strong>"
+      voted: "You have voted: <strong>%{voted}</strong>"
+    voting_system:
+      wallet: Wallet
+      max_votes: Maximum number of votes

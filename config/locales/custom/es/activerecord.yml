@@ -17,6 +17,9 @@ es:
         one: "Proceso/Anotación"
         other: "Proceso/Anotaciones"
     attributes:
+      budget:
+        voting_system: Sistema de votación
+        max_votes: Número máximo de votos
       user:
         login: "Email o nombre de usuario/alias"
         username: "Nombre de usuario/alias"

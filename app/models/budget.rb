@@ -20,12 +20,14 @@ class Budget < ApplicationRecord
     end
   end
 
+  VOTING_SYSTEM_KINDS = %w[wallet max_votes].freeze
   CURRENCY_SYMBOLS = %w[€ $ £ ¥].freeze
 
   validates_translation :name, presence: true
   validates :phase, inclusion: { in: Budget::Phase::PHASE_KINDS }
   validates :currency_symbol, presence: true
   validates :slug, presence: true, format: /\A[a-z0-9\-_]+\z/
+  validates :max_votes, presence: true, if: lambda {self.voting_system == 'max_votes'}
 
   has_many :investments, dependent: :destroy
   has_many :ballots, dependent: :destroy
@@ -208,6 +210,10 @@ class Budget < ApplicationRecord
 
   def has_unselected_investments?
     investments.unselected.any?
+  end
+
+  def has_max_votes_system?
+    voting_system == "max_votes"
   end
 
   private
