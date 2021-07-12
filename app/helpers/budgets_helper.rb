@@ -21,6 +21,10 @@ module BudgetsHelper
     Budget::Phase::PHASE_KINDS.map { |ph| [t("budgets.phase.#{ph}"), ph] }
   end
 
+  def budget_voting_systems_select_options
+    Budget::VOTING_SYSTEM_KINDS.map { |vs| [t("budgets.voting_system.#{vs}"), vs] }
+  end
+
   def budget_currency_symbol_select_options
     Budget::CURRENCY_SYMBOLS.map { |cs| [cs, cs] }
   end

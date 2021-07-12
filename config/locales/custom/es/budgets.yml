@@ -3,6 +3,13 @@ es:
     ballots:
       reasons_for_not_balloting:
         not_logged_in: Necesitas %{signin} para continuar.
+        not_enough_votes: "Ya has alcanzado el número máximo de votos permitidos.<br><small>Recuerda que puedes %{change_ballot} en cualquier momento</small>"
+      show:
+        amount_spent: Has asignado
+        remaining: "Todavía disponible <span>%{amount}</span>"
+        voted:
+          one: "Has votado 1 proyecto"
+          other: "Has votado %{count} proyectos"
     index:
       title: Presupuestos
       empty_budgets: No hay presupuestos.
@@ -25,8 +32,17 @@ es:
           voted:
             one: "Has votado un proyecto por un valor de %{amount_spent}"
             other: "Has votado %{count} proyectos por un valor de %{amount_spent}"
+          voted_info: Puedes %{link} en cualquier momento hasta el cierre de esta fase. 
+          voted_info_max_votes_system: No es necesario gastar todos los votos disponibles.
+          voted_info_wallet_system: No es necesario gastar todo el dinero disponible.
       form:
         estimated_price: Coste estimado (%{currency})
       show:
         estimated_price: "Coste estimado: <strong>%{estimated_price}</strong>"
+    progress_bar:
+      max_votes: "Número máximo de votos permitidos: <strong>%{max_votes}</strong>"
+      voted: "Has votado: <strong>%{voted}</strong>"
+    voting_system:
+      wallet: Monedero
+      max_votes: Número máximo de votos
         
