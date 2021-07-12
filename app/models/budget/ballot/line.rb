@@ -19,7 +19,8 @@ class Budget
       after_save :store_user_heading
 
       def check_sufficient_funds
-        errors.add(:money, "insufficient funds") if ballot.amount_available(investment.heading) < investment.price.to_i
+        errors.add(:money, "insufficient funds") if (!investment.budget.has_max_votes_system?) && (ballot.amount_available(investment.heading) < investment.price.to_i)
+        errors.add(:votes, "insufficient available votes") if (investment.budget.has_max_votes_system?) && (ballot.available_votes < 1)
       end
 
       def check_valid_heading

@@ -212,6 +212,10 @@ class Budget < ApplicationRecord
     investments.unselected.any?
   end
 
+  def has_max_votes_system?
+    voting_system == "max_votes"
+  end
+
   private
 
     def generate_phases

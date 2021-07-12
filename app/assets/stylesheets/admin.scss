@@ -45,7 +45,7 @@ $sidebar-active: #f4fcd0;
   }
 
   .top-links {
-    background: #000;
+    background: $brand;
 
     a {
       line-height: rem-calc($line-height * 1.5);
@@ -1234,19 +1234,19 @@ table {
   }
 
   &.enabled {
-    color: $check;
+    color: $color-2;
 
     &::before {
-      color: $check;
+      color: $color-2;
       content: "\6c";
     }
   }
 
   &.disabled {
-    color: #000;
+    color: $color-1;
 
     &::before {
-      color: #000;
+      color: $color-1;
       content: "\76";
     }
   }

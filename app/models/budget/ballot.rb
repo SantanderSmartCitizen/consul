@@ -37,6 +37,10 @@ class Budget
       groups.include?(group)
     end
 
+    def has_lines_in_heading?(heading)
+      lines.where(heading_id: heading.id).exists?
+    end
+
     def wrong_budget?(heading)
       heading.budget_id != budget_id
     end
@@ -47,7 +51,8 @@ class Budget
     end
 
     def valid_heading?(heading)
-      !wrong_budget?(heading) && !different_heading_assigned?(heading)
+      #!wrong_budget?(heading) && !different_heading_assigned?(heading)
+      !wrong_budget?(heading)
     end
 
     def has_lines_with_no_heading?
@@ -75,5 +80,18 @@ class Budget
     def casted_offline?
       budget.poll&.voted_by?(user)
     end
+
+    def total_votes
+      investments.count.to_i
+    end
+
+    def total_votes_by_heading(heading)
+      investments.by_heading(heading.id).count.to_i
+    end
+
+    def available_votes
+      budget.max_votes - total_votes
+    end
+
   end
 end

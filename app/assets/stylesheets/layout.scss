@@ -254,7 +254,7 @@ a {
     }
 
     a {
-      color: $text;
+      color: rgba($brand, .7);
       display: inline-block;
       font-weight: bold;
       position: relative;
@@ -655,7 +655,7 @@ header {
     margin: 0 rem-calc(6);
 
     &:hover {
-      text-decoration: underline;
+      color: rgb(212, 222, 228);
     }
   }
 
@@ -1177,9 +1177,10 @@ form {
 
   a:not(.button) {
     font-weight: bold;
-    /*text-decoration: underline;*/
-    /*border-bottom: 1px dotted $brand;
-    color: $brand;*/
+    color: rgba($brand, .7) !important;
+    &:hover {
+      color: $link !important;
+    }
   }
 
   &.success {
@@ -1230,6 +1231,14 @@ form {
   .button {
     margin-bottom: 0;
   }
+
+  strong {
+    color: rgba($brand, .7);
+  }
+}
+
+.shadow {
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
 }
 
 .no-error {
