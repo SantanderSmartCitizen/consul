@@ -6,3 +6,4 @@
 //
 //= require leaflet
 //= require esri-leaflet
+//= require 'apexcharts'

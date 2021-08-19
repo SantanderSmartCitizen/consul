@@ -5,3 +5,5 @@
 #
 
 gem "bootstrap"
+gem "apexcharts"
+gem "functionable-json"

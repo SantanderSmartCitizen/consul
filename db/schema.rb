@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210630110745) do
+ActiveRecord::Schema.define(version: 20210818073402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -275,6 +275,7 @@ ActiveRecord::Schema.define(version: 20210630110745) do
     t.integer  "original_heading_id"
     t.bigint   "estimated_price"
     t.bigint   "maintenance_cost"
+    t.boolean  "meets_feasibility_requirements"
     t.index ["administrator_id"], name: "index_budget_investments_on_administrator_id", using: :btree
     t.index ["author_id"], name: "index_budget_investments_on_author_id", using: :btree
     t.index ["community_id"], name: "index_budget_investments_on_community_id", using: :btree
@@ -1101,6 +1102,29 @@ ActiveRecord::Schema.define(version: 20210630110745) do
     t.index ["user_id"], name: "index_moderators_on_user_id", using: :btree
   end
 
+  create_table "municipal_area_assignments", force: :cascade do |t|
+    t.integer  "municipal_area_id"
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["municipal_area_id", "user_id"], name: "idx_municipal_area_assignments_on_municipal_area_id_and_user_id", unique: true, using: :btree
+    t.index ["municipal_area_id"], name: "index_municipal_area_assignments_on_municipal_area_id", using: :btree
+    t.index ["user_id"], name: "index_municipal_area_assignments_on_user_id", using: :btree
+  end
+
+  create_table "municipal_area_translations", force: :cascade do |t|
+    t.integer  "municipal_area_id"
+    t.string   "locale"
+    t.string   "title"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["municipal_area_id", "locale"], name: "idx_municipal_area_translations_on_municipal_area_id_and_locale", unique: true, using: :btree
+    t.index ["municipal_area_id"], name: "index_municipal_area_translations_on_municipal_area_id", using: :btree
+  end
+
+  create_table "municipal_areas", force: :cascade do |t|
+  end
+
   create_table "newsletters", force: :cascade do |t|
     t.string   "subject"
     t.string   "segment_recipient", null: false
@@ -1669,6 +1693,7 @@ ActiveRecord::Schema.define(version: 20210630110745) do
     t.boolean  "recommended_debates",                       default: true
     t.boolean  "recommended_proposals",                     default: true
     t.string   "citizen_type"
+    t.string   "official_sublevel"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["geozone_id"], name: "index_users_on_geozone_id", using: :btree
@@ -1820,6 +1845,8 @@ ActiveRecord::Schema.define(version: 20210630110745) do
   add_foreign_key "locks", "users"
   add_foreign_key "managers", "users"
   add_foreign_key "moderators", "users"
+  add_foreign_key "municipal_area_assignments", "municipal_areas"
+  add_foreign_key "municipal_area_assignments", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "organizations", "users"
   add_foreign_key "poll_answers", "poll_questions", column: "question_id"

@@ -96,6 +96,25 @@ en:
         title: "Edit Question"
       new:
         title: "Create question to poll/question %{poll}"
+    stats:
+      show:
+        budgets_title: Budgets
+        participatory_budgets: Budgets
+      budgets:
+        title: "Budgets stats"
+        participation: Participation
+        results: Finished budget
+        comparative: Comparative
+        no_data_before_results_phase: "There isn't any data to show before finalizing the budget phases."
+      budget_balloting:
+        title: Stats - Voting projects
+        participants_per_heading: Participants per heading
+      participation:
+        title: Stats - Participation
+      results:
+        title: Stats - Finished budget
+      comparative:
+        title: Stats - Comparative
     homepage:
       feeds:
         citizen_proposals: Citizen Proposals

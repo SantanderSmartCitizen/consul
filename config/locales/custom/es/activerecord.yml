@@ -1,4 +1,6 @@
 es:
+  attributes:
+    advanced_stats_enabled: "Mostrar estadísticas de la fase final"
   activerecord:
     models:
       budget:
