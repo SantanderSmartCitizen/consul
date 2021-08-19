@@ -44,7 +44,11 @@
 
 <% if investment.organization_name.present? %>
   <p>
-    <%= sanitize(t("budgets.investments.show.organization_name", name: investment.organization_name)) %>
+    <% if investment.author&.management? %>
+      <%= sanitize(t("budgets.investments.show.organization_area_name", name: investment.organization_name)) %> 
+    <% else %>
+      <%= sanitize(t("budgets.investments.show.organization_name", name: investment.organization_name)) %>
+    <% end %>
   </p>
 <% end %>
 

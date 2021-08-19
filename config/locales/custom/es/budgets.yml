@@ -39,6 +39,8 @@ es:
         estimated_price: Coste estimado (%{currency})
       show:
         estimated_price: "Coste estimado: <strong>%{estimated_price}</strong>"
+        organization_name: "Propuesto por: <strong>%{name}</strong>"
+        organization_area_name: "Área competente: <strong>%{name}</strong>"
     progress_bar:
       max_votes: "Número máximo de votos permitidos: <strong>%{max_votes}</strong>"
       voted: "Has votado: <strong>%{voted}</strong>"

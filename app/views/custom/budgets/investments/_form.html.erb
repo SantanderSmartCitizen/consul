@@ -70,7 +70,12 @@
     </div>
 
     <div class="small-12 column">
-      <%= f.text_field :organization_name %>
+      <% if current_user.management? %>
+        <%= f.label :organization_name, "Área competente" %>
+      <% else %>
+        <%= f.label :organization_name %>
+      <% end %>
+      <%= f.text_field :organization_name, label: false %>
     </div>
 
     <div class="small-12 column">
