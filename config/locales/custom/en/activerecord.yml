@@ -1,4 +1,6 @@
 en:
+  attributes:
+    advanced_stats_enabled: "Show final stats"
   activerecord:
     models:
       budget:

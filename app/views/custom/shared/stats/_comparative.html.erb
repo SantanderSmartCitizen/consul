@@ -1,0 +1,20 @@
+<div id="participation_statistics">
+
+  <div id="by_final_phase" class="stats-group">
+    <h4><%= t("stats.by_final_phase") %></h4>
+    <div class="row justify-content-center">
+      <%= render "shared/stats/comparative/budget_investments/by_final_phase_previous", stats: stats, exportable: exportable %>
+      <%= render "shared/stats/comparative/budget_investments/by_final_phase_now", stats: stats, exportable: exportable %>
+      <%= render "shared/stats/comparative/budget_investments/by_final_phase", stats: stats, exportable: exportable %>
+      <%= render "shared/stats/comparative/budget_investments/by_heading", stats: stats, exportable: exportable %>
+    </div>
+  </div>
+
+  <div id="by_budget_execution" class="stats-group">
+    <h4><%= t("stats.by_budget_execution") %></h4>
+    <div class="row justify-content-center">
+    	<%= render "shared/stats/comparative/budget_execution/by_budget_execution", stats: stats, exportable: exportable %>
+   	</div>
+  </div>
+
+</div>

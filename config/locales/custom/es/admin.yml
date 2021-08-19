@@ -125,13 +125,26 @@ es:
         participatory_budgets: Presupuestos
         polls: Encuestas/Consultas
       budgets:
-        title: "Presupuestos - Estadisticas de participación"
+        title: "Estadísticas de presupuestos"
+        participation: Participación
+        results: Resultados
+        comparative: Comparativa
+        no_data_before_results_phase: "No hay datos que mostrar hasta que la fase de resultados no esté abierta."
       polls:
         title: Estadísticas de encuestas/consultas
         all: Encuestas/Consultas
         poll_questions: "Preguntas de encuesta/consulta: %{poll}"
         table:
           poll_name: Encuesta/Consulta
+      budget_balloting:
+        title: Estadísticas - Votación final
+        participants_per_heading: Participantes por partida
+      participation:
+        title: Estadísticas - Participación
+      results:
+        title: Estadísticas - Resultados
+      comparative:
+        title: Estadísticas - Comparativa
     homepage:
       feeds:
         citizen_proposals: Propuestas ciudadanos

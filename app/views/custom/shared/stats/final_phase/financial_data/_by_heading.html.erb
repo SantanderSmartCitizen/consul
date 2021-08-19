@@ -1,0 +1,22 @@
+<% 
+	series = [
+		{
+	        name: t("stats.budget"),
+	        data: stats.total_headings_price_by_heading
+	    },
+	    {
+	        name: t("stats.estimated_engaged"),
+	        data: stats.total_winning_investments_price_by_heading
+	    },
+	    {
+	        name: t("stats.remaining"),
+	        data: stats.total_remaining_price_by_heading
+	    }
+	]
+%>
+
+<% if series.present? %>
+	<div class="col-md-12">
+		<%= render "shared/stats/column_chart", series: series, exportable: exportable %> 
+	</div>
+<% end %>

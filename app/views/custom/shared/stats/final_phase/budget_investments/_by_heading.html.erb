@@ -1,0 +1,5 @@
+<% series = stats.winning_investments_by_heading %>
+
+<% if series.present? %>
+	<%= render "shared/stats/donut_chart", series: series, title: t("stats.by_heading"), exportable: exportable %>
+<% end %>

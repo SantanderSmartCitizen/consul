@@ -1,0 +1,5 @@
+<%= back_link_to budgets_admin_stats_path %>
+
+<h2><%= @budget.name %> - <%= t("admin.stats.comparative.title") %></h2>
+
+<%= render "shared/stats/comparative", exportable: true, stats: @stats %>

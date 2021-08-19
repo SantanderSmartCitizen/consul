@@ -1,4 +1,8 @@
 class Admin::StatsController < Admin::BaseController
+
+  before_action :load_budget, only: [:budget_supporting, :budget_balloting, :participation, :results, :comparative]
+  before_action :load_stats, only: [:participation, :results, :comparative]
+
   def show
     @event_types = Ahoy::Event.pluck(:name).uniq.sort
 
@@ -54,11 +58,10 @@ class Admin::StatsController < Admin::BaseController
   end
 
   def budgets
-    @budgets = Budget.all
+    @budgets = Budget.order(id: :desc)
   end
 
   def budget_supporting
-    @budget = Budget.find(params[:budget_id])
     heading_ids = @budget.heading_ids
 
     votes = Vote.where(votable_type: "Budget::Investment").
@@ -75,8 +78,6 @@ class Admin::StatsController < Admin::BaseController
   end
 
   def budget_balloting
-    @budget = Budget.find(params[:budget_id])
-
     authorize! :read_admin_stats, @budget, message: t("admin.stats.budgets.no_data_before_balloting_phase")
 
     @user_count = @budget.ballots.select { |ballot| ballot.lines.any? }.count
@@ -85,7 +86,20 @@ class Admin::StatsController < Admin::BaseController
 
     @vote_count_by_heading = @budget.lines.group(:heading_id).count.map { |k, v| [Budget::Heading.find(k).name, v] }.sort
 
-    @user_count_by_district = User.where.not(balloted_heading_id: nil).group(:balloted_heading_id).count.map { |k, v| [Budget::Heading.find(k).name, v] }.sort
+    # @user_count_by_district = User.where.not(balloted_heading_id: nil).group(:balloted_heading_id).count.map { |k, v| [Budget::Heading.find(k).name, v] }.sort
+    @user_count_by_heading = @budget.lines.select("budget_ballots.user_id").group(:heading_id).distinct.count.map { |k, v| [Budget::Heading.find(k).name, v] }.sort
+
+  end
+
+  def participation
+  end
+
+  def results
+    authorize! :read_final_admin_stats, @budget, message: t("admin.stats.budgets.no_data_before_results_phase")
+  end
+
+  def comparative
+    authorize! :read_final_admin_stats, @budget, message: t("admin.stats.budgets.no_data_before_results_phase")
   end
 
   def polls
@@ -94,6 +108,14 @@ class Admin::StatsController < Admin::BaseController
   end
 
   private
+
+    def load_budget
+      @budget = Budget.find(params[:budget_id])
+    end
+
+    def load_stats
+      @stats = Budget::Stats.new(@budget)
+    end
 
     def voters_in_heading(heading)
       Vote.where(votable_type: "Budget::Investment").

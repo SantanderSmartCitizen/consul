@@ -1,0 +1,4 @@
+<% series = stats.winning_investments_by_municipal_area %>
+<% if series.present? %>
+	<%= render "shared/stats/donut_chart", series: series, title: t("stats.by_municipal_area"), exportable: exportable %>
+<% end %>
