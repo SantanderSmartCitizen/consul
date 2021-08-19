@@ -17,6 +17,9 @@ es:
       destroy:
         unable_notice_polls: No se puede eliminar un presupuesto con una encuesta/consulta asociada
     budget_investments:
+      index:
+        list:
+          ballot_lines_count: Votos
       edit:
         estimated_price: Coste estimado (%{currency})
     forums:

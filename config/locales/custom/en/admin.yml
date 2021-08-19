@@ -4,6 +4,9 @@ en:
       destroy:
         unable_notice_polls: You cannot delete a budget that has an associated poll/question
     budget_investments:
+      index:
+        list:
+          ballot_lines_count: Votes
       edit:
         estimated_price: Estimated price (%{currency})
     forums:
