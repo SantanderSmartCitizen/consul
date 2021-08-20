@@ -167,6 +167,14 @@
           <h2 class="w-100 text-center"><%= t("budgets.index.all_phases") %></h2>
           <%= render "phases", budget: current_budget %>
         </div>
+
+        <% if feature?(:allow_attached_documents) %>
+          <h2 class="w-100 text-center">Documentos</h2>
+          <%= render "documents/documents",
+                      documents: current_budget.documents,
+                      hide_title: true %>
+        <% end %>
+
       </div>
     </div>
 

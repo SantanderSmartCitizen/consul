@@ -331,7 +331,8 @@
 .milestone-new,
 .milestone-edit,
 .image-form,
-.dashboard-action-form {
+.dashboard-action-form,
+.edit_budget {
   @include direct-uploads;
 }
 

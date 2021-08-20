@@ -4,6 +4,7 @@ class Budget < ApplicationRecord
   include StatsVersionable
   include Reportable
   include Graphqlable
+  include Documentable
 
   translates :name, touch: true
   include Globalizable

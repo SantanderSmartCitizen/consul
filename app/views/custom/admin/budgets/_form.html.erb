@@ -30,7 +30,15 @@
     </div>
   </div>
 
-  <div class="row margin-top">
+  <div class="row">
+    <div class="small-12 column">
+      <div class="documents">
+        <%= render "documents/nested_documents", documentable: @budget, f: f %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
     <% %w[administrators valuators].each do |staff| %>
       <div class="small-12 medium-4 column end">
         <%= link_to t("admin.budgets.edit.#{staff}", count: @budget.send(staff).count),
