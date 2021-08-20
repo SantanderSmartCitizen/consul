@@ -151,6 +151,9 @@ es:
       user_profile_blank: "Elige un perfil"
       city_hall: Ayuntamiento
       citizen: Ciudadano
+    author_info:
+      author_anonymous: Anónimo
+      author_anonymous_detail: Se publica sin datos personales
   users:
     show:
       deleted_forum: Este tema ha sido eliminado
