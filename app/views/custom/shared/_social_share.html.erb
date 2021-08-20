@@ -8,7 +8,7 @@
 <% end %>
 
 <div class="social-share-full">
-  <%= social_share_button_tag("#{title} #{setting["twitter_hashtag"]} #{setting["twitter_handle"]}",
+  <%= social_share_button_tag(title,
                               allow_sites: %w(whatsapp_web whatsapp_app telegram facebook twitter),
                               url: local_assigns[:url],
                               image: local_assigns.fetch(:image_url, ""),

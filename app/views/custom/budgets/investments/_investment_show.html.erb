@@ -111,17 +111,26 @@
         <h2 class="sidebar-title"><%= t("milestones.sidebar.title") %></h2>
         <%= link_to t("milestones.sidebar.button_to_access"), "#tab-milestones", class: "button expanded" %>
 
+        <%
+          social_media_message = t("budgets.investments.share.message", 
+            title: investment.title, org_name: setting["org_name"])
+
+          if investment.budget.accepting?
+            social_media_message += t("budgets.investments.share.message_accepting_phase")
+          elsif investment.budget.balloting?
+            social_media_message += t("budgets.investments.share.message_balloting_phase")
+          else
+            social_media_message += t("budgets.investments.share.message_other_phase")
+          end
+        %>
+
         <%= render "shared/social_share",
           share_title: t("budgets.investments.show.share"),
-          title: investment.title,
+          title: social_media_message,
           image_url: image_absolute_url(investment.image, :thumb),
           url: budget_investment_url(investment.budget, investment),
-          description: t("budgets.investments.share.message",
-                          title: investment.title,
-                          handle: setting["org_name"]),
-          mobile: t("budgets.investments.share.message",
-                     title: investment.title,
-                     handle: setting["twitter_handle"]) %>
+          description: social_media_message,
+          mobile: social_media_message %>
 
        </aside>
     </div>

@@ -41,6 +41,11 @@ es:
         estimated_price: "Coste estimado: <strong>%{estimated_price}</strong>"
         organization_name: "Propuesto por: <strong>%{name}</strong>"
         organization_area_name: "Área competente: <strong>%{name}</strong>"
+      share:
+        message: "Echa un vistazo al proyecto '%{title}' presentado en '%{org_name}'. "
+        message_accepting_phase: "¡Presenta un proyecto tú también!"
+        message_balloting_phase: "¡Aún puedes votar!"
+        message_other_phase: "¡Participa dejando tus comentarios!"
     progress_bar:
       max_votes: "Número máximo de votos permitidos: <strong>%{max_votes}</strong>"
       voted: "Has votado: <strong>%{voted}</strong>"
