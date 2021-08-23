@@ -1,0 +1,71 @@
+<% provide :title do %><%= @forum.title %><% end %>
+<% content_for :canonical do %>
+  <%= render "shared/canonical", href: forum_url(@forum) %>
+<% end %>
+
+<% cache [locale_and_user_status(@forum), @forum, @forum.author, Flag.flagged?(current_user, @forum), @forum_votes] do %>
+  <div class="forum-show">
+    <div id="<%= dom_id(@forum) %>" class="row">
+      <div class="small-12 medium-9 column">
+        <%= back_link_to %>
+        <div>
+          <div class="forum-header">
+            <h1><%= @forum.title %></h1>
+            <% if @forum.conflictive? %>
+              <div data-alert class="callout alert margin-top">
+                <strong><%= t("forums.show.flag") %></strong>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="forum-info">
+            <%= render "/shared/author_info", resource: @forum %>
+
+            <span class="bullet">&nbsp;&bull;&nbsp;</span>
+            <%= l @forum.created_at.to_date %>
+            <span class="bullet">&nbsp;&bull;&nbsp;</span>
+            <span class="icon-comments"></span>&nbsp;
+            <%= link_to t("forums.show.comments", count: @forum.comments_count), "#comments" %>
+            <span class="bullet">&nbsp;&bull;&nbsp;</span>
+            <span class="js-flag-actions">
+              <%= render "forums/flag_actions", forum: @forum %>
+            </span>
+          </div>
+          <div style="clear: both;"></div>
+        </div>
+
+
+        <%= auto_link_already_sanitized_html wysiwyg(@forum.description) %>
+
+        <%= render "shared/tags", taggable: @forum %>
+
+        <%= render "relationable/related_content", relationable: @forum %>
+
+        <div class="js-moderator-forum-actions margin">
+          <%= render "actions", forum: @forum %>
+        </div>
+      </div>
+
+      <aside class="small-12 medium-3 column">
+        <% if current_user && @forum.editable_by?(current_user) %>
+          <div class="sidebar-divider"></div>
+          <h2><%= t("forums.show.author") %></h2>
+          <%= link_to edit_forum_path(@forum), class: "button hollow expanded" do %>
+            <span class="icon-edit"></span>
+            <%= t("forums.show.edit_forum_link") %>
+          <% end %>
+        <% end %>
+
+        <%= render "shared/social_share",
+          share_title: t("forums.show.share"),
+          title: @forum.title,
+          url: forum_url(@forum),
+          description: @forum.title,
+          mobile: @forum.title
+        %>
+      </aside>
+    </div>
+  </div>
+<% end %>
+
+<%= render "comments" %>

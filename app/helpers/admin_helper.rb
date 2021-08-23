@@ -24,7 +24,7 @@ module AdminHelper
   end
 
   def moderated_sections
-    ["hidden_proposals", "hidden_debates", "hidden_comments", "hidden_users", "activity",
+    ["hidden_proposals", "hidden_debates", "hidden_forums", "hidden_comments", "hidden_users", "activity",
      "hidden_budget_investments"]
   end
 
@@ -36,6 +36,12 @@ module AdminHelper
     controller.class.parent == Admin::Poll::Questions::Answers ||
       %w[polls active_polls recounts results questions answers].include?(controller_name) &&
       action_name != "booth_assignments"
+  end
+
+  def menu_gamifications?
+    controllers_names = ["gamifications"]
+    controller_params = ["admin/gamification/actions", "admin/gamification/actions/additional_scores", "admin/gamification/rewards", "admin/gamification/requested_rewards"]
+    controllers_names.include?(controller_name) || controller_params.include?(params[:controller])
   end
 
   def menu_booths?
@@ -68,7 +74,8 @@ module AdminHelper
   end
 
   def menu_dashboard?
-    ["actions", "administrator_tasks"].include?(controller_name)
+    ["administrator_tasks"].include?(controller_name) ||
+     ["admin/dashboard/actions"].include?(params[:controller])
   end
 
   def submenu_local_census_records?

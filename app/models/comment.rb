@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   include Graphqlable
   include Notifiable
 
-  COMMENTABLE_TYPES = %w[Debate Proposal Budget::Investment Poll Topic
+  COMMENTABLE_TYPES = %w[Debate Milestone Forum Proposal Budget::Investment Poll Topic
                         Legislation::Question Legislation::Annotation
                         Legislation::Proposal].freeze
 
@@ -40,9 +40,13 @@ class Comment < ApplicationRecord
   scope :public_for_api, -> do
     not_valuations
       .where(%{(comments.commentable_type = 'Debate' and comments.commentable_id in (?)) or
+            (comments.commentable_type = 'Milestone' and comments.commentable_id in (?)) or
+            (comments.commentable_type = 'Forum' and comments.commentable_id in (?)) or
             (comments.commentable_type = 'Proposal' and comments.commentable_id in (?)) or
             (comments.commentable_type = 'Poll' and comments.commentable_id in (?))},
           Debate.public_for_api.pluck(:id),
+          Milestone.public_for_api.pluck(:id),
+          Forum.public_for_api.pluck(:id),
           Proposal.public_for_api.pluck(:id),
           Poll.public_for_api.pluck(:id))
   end

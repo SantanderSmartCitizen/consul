@@ -1,0 +1,19 @@
+es:
+  flash:
+    actions:
+      create:
+        forum: "Tema creado correctamente."
+        gamification: "Juego creado correctamente."
+        gamification_action: "Acción creada correctamente."
+        gamification_reward: "Recompensa creada correctamente."
+      update:
+        forum: "Tema actualizado correctamente."
+        gamification: "Juego actualizado correctamente."
+        gamification_action: "Acción actualizada correctamente."
+        gamification_reward: "Recompensa actualizada correctamente."
+      destroy:
+        gamification: "Juego eliminado correctamente."
+        gamification_action: "Acción eliminada correctamente."
+        gamification_reward: "Recompensa eliminada correctamente."
+      error:
+        login: "No ha podido acceder correctamente, contacte con el administrador."

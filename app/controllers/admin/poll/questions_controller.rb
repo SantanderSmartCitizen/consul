@@ -56,12 +56,12 @@ class Admin::Poll::QuestionsController < Admin::Poll::BaseController
   private
 
     def question_params
-      attributes = [:poll_id, :question, :proposal_id]
+      attributes = [:poll_id, :question, :proposal_id, :answer_type]
       params.require(:poll_question).permit(*attributes, translation_params(Poll::Question))
     end
 
     def search_params
-      params.permit(:poll_id, :search)
+      params.permit(:poll_id, :search, :answer_type)
     end
 
     def resource

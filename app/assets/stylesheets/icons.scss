@@ -80,6 +80,10 @@
   content: "\f201";
 }
 
+.icon-gamification::before {
+  content: "\f11b";
+}
+
 .icon-proposals::before {
   content: "\f0eb";
 }
@@ -286,6 +290,18 @@
 
 .icon-bars::before {
   content: "\f0c9";
+}
+
+.icon-forums::before {
+  content: "\f086";
+}
+
+.icon-plus::before {
+  content: "\f067";
+}
+
+.icon-minus::before {
+  content: "\f068";
 }
 
 .icon-blog,

@@ -1,0 +1,88 @@
+<header>
+  <% if display_remote_translation_info?(@remote_translations, I18n.locale) %>
+    <%= render "shared/remote_translations_button", remote_translations: @remote_translations %>
+  <% end %>
+
+  <div class="row">
+    <div id="header_bar" class="header-bar">
+    
+      <div class="header-logo">
+        <%= link_to root_path, accesskey: "0" do %>
+          <%= image_tag(image_path_for("logo-santander-ciudad.svg"), class: "logo-santander-ciudad hide-for-small-only", alt: t("layouts.header.logo")) %>
+          <%= image_tag(image_path_for("logo-santander-ciudad-small.svg"), class: "logo-santander-ciudad show-for-small-only", alt: t("layouts.header.logo")) %>
+        <% end %>
+      </div>
+
+      <div class="header-title">
+        <!-- <h1><%= t("layouts.header.title") %></h1> -->
+        <%= image_tag(image_path_for("dependent_brand_logo.png"), class: "logo-marca-dependiente hide-for-small-only", alt: t("layouts.header.dependent_brand_logo")) %>
+      </div>
+
+      <div class="header-buttons">
+
+        <div class="hide-for-small-only">
+          <% if I18n.locale %>
+            <div class="locale locale-form" data-current-locale="<%= I18n.locale %>">
+              <div id="st-trigger-effects">
+                <button data-effect="st-locale" title="<%= t("layouts.header.select_locale") %>"><%= I18n.locale.upcase %></button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="menu-button">
+
+          <% if user_signed_in? %>
+
+            <div id="st-trigger-effects">
+              <button data-effect="st-main">
+                <span class="far fa-user hide-for-small-only" aria-hidden="true" title="<%= t("layouts.header.open_access_menu") %>"></span>
+                <span class="fas fa-bars show-for-small-only" aria-hidden="true" title="<%= t("layouts.header.open_main_menu") %>"></span>
+              </button>
+            </div>
+
+          <% else %>
+
+            <%= link_to login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), class: "hide-for-small-only" do %>
+                <span class="far fa-user" aria-hidden="true" title="<%= t("devise_views.menu.login_items.login_as_citizen") %>"></span>
+            <% end %>
+
+            <div id="st-trigger-effects">
+              <button data-effect="st-main">
+                <span class="fas fa-bars show-for-small-only" aria-hidden="true" title="<%= t("layouts.header.open_main_menu") %>"></span>
+              </button>
+            </div>
+
+          <% end %>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="navigation_bar" class="subnavigation expanded">
+    
+      <div class="hide-for-small-only" style="display: table;width: 100%;">
+        <div class="column align-bottom" style="text-align: right; vertical-align: middle !important;padding-right: 11em;">
+          <%= render "shared/subnavigation" %>
+        </div>
+      </div>
+      <div class="small-12 medium-3 column">
+        <%= yield :header_addon %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= yield :breadcrumb %>
+  </div>
+
+  <div class="row">
+    <%= image_tag(image_path_for("header_separator.svg"), alt: "Header separator") %>
+  </div>
+
+
+</header>

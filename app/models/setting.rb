@@ -104,6 +104,8 @@ class Setting < ApplicationRecord
         "homepage.widgets.feeds.debates": true,
         "homepage.widgets.feeds.processes": true,
         "homepage.widgets.feeds.proposals": true,
+        "homepage.widgets.feeds.city_hall_proposals": true,
+        "homepage.widgets.feeds.citizen_proposals": true,
         # Code to be included at the top (inside <body>) of every page
         "html.per_page_code_body": "",
         # Code to be included at the top (inside <head>) of every page (useful for tracking)
@@ -111,7 +113,10 @@ class Setting < ApplicationRecord
         "map.latitude": 51.48,
         "map.longitude": 0.0,
         "map.zoom": 10,
+        "map.arcgis.feature_layer_url": "",
+        "map.arcgis.district_code_field": "CODDC",
         "process.debates": true,
+        "process.forums": true,
         "process.proposals": true,
         "process.polls": true,
         "process.budgets": true,
@@ -151,12 +156,12 @@ class Setting < ApplicationRecord
         # Users with this email domain will automatically be marked as level 1 officials
         # Emails under the domain's subdomains will also be included
         "email_domain_for_officials": "",
-        "facebook_handle": nil,
-        "instagram_handle": nil,
+        "facebook_handle": "CONSUL",
+        "instagram_handle": "CONSUL",
         "telegram_handle": nil,
-        "twitter_handle": nil,
-        "twitter_hashtag": nil,
-        "youtube_handle": nil,
+        "twitter_handle": "@consul_dev",
+        "twitter_hashtag": "#consul_dev",
+        "youtube_handle": "CONSUL",
         "url": "http://example.com", # Public-facing URL of the app.
         # CONSUL installation's organization name
         "org_name": "CONSUL",
@@ -185,7 +190,8 @@ class Setting < ApplicationRecord
         "remote_census.response.gender": "",
         "remote_census.response.name": "",
         "remote_census.response.surname": "",
-        "remote_census.response.valid": ""
+        "remote_census.response.valid": "",
+        "last_citizens_official_level": "1"
       }
     end
 

@@ -50,7 +50,7 @@ gem "rollbar", "~> 2.18.0"
 gem "sassc-rails", "~> 2.1.2"
 gem "savon", "~> 2.12.0"
 gem "sitemap_generator", "~> 6.0.2"
-gem "social-share-button", "~> 1.1"
+gem "social-share-button", "~> 1.2.4"
 gem "sprockets", "~> 3.7.2"
 gem "translator-text", "~> 0.1.0"
 gem "turbolinks", "~> 2.5.3"
@@ -61,7 +61,6 @@ gem "wicked_pdf", "~> 1.1.0"
 gem "wkhtmltopdf-binary", "~> 0.12.4"
 
 source "https://rails-assets.org" do
-  gem "rails-assets-leaflet"
   gem "rails-assets-markdown-it", "~> 8.2.1"
 end
 

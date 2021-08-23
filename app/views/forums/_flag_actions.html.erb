@@ -1,0 +1,19 @@
+<span class="flag-content">
+  <% if show_flag_action? forum %>
+    <a id="flag-expand-forum-<%= forum.id %>" data-toggle="flag-drop-forum-<%= forum.id %>" title="<%= t("shared.flag") %>">
+      <span class="icon-flag flag-disable"></span>
+    </a>
+    <span class="dropdown-pane" id="flag-drop-forum-<%= forum.id %>" data-dropdown data-auto-focus="true">
+      <%= link_to t("shared.flag"), flag_forum_path(forum), method: :put, remote: true, id: "flag-forum-#{forum.id}" %>
+    </span>
+  <% end %>
+
+  <% if show_unflag_action? forum %>
+    <a id="unflag-expand-forum-<%= forum.id %>" data-toggle="unflag-drop-forum-<%= forum.id %>" title="<%= t("shared.unflag") %>">
+      <span class="icon-flag flag-active"></span>
+    </a>
+    <span class="dropdown-pane" id="unflag-drop-forum-<%= forum.id %>" data-dropdown data-auto-focus="true">
+      <%= link_to t("shared.unflag"), unflag_forum_path(forum), method: :put, remote: true, id: "unflag-forum-#{forum.id}" %>
+    </span>
+  <% end %>
+</span>

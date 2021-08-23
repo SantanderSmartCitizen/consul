@@ -3,6 +3,7 @@ class Budget < ApplicationRecord
   include Sluggable
   include StatsVersionable
   include Reportable
+  include Graphqlable
 
   translates :name, touch: true
   include Globalizable
@@ -19,12 +20,14 @@ class Budget < ApplicationRecord
     end
   end
 
+  VOTING_SYSTEM_KINDS = %w[wallet max_votes].freeze
   CURRENCY_SYMBOLS = %w[€ $ £ ¥].freeze
 
   validates_translation :name, presence: true
   validates :phase, inclusion: { in: Budget::Phase::PHASE_KINDS }
   validates :currency_symbol, presence: true
   validates :slug, presence: true, format: /\A[a-z0-9\-_]+\z/
+  validates :max_votes, presence: true, if: lambda {self.voting_system == 'max_votes'}
 
   has_many :investments, dependent: :destroy
   has_many :ballots, dependent: :destroy
@@ -52,6 +55,7 @@ class Budget < ApplicationRecord
   scope :balloting, -> { where(phase: "balloting") }
   scope :reviewing_ballots, -> { where(phase: "reviewing_ballots") }
   scope :finished, -> { where(phase: "finished") }
+  scope :public_for_api, -> { all }
 
   class << self; undef :open; end
   scope :open, -> { where.not(phase: "finished") }
@@ -198,6 +202,18 @@ class Budget < ApplicationRecord
 
   def investments_milestone_tags
     investments.winners.map(&:milestone_tag_list).flatten.uniq.sort
+  end
+
+  def has_unfeasible_investments?
+    investments.unfeasible.any?
+  end
+
+  def has_unselected_investments?
+    investments.unselected.any?
+  end
+
+  def has_max_votes_system?
+    voting_system == "max_votes"
   end
 
   private

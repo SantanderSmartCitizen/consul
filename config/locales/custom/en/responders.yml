@@ -1,0 +1,19 @@
+en:
+  flash:
+    actions:
+      create:
+        forum: "Thread created successfully."
+        gamification: "Game created successfully."
+        gamification_action: "Action created successfully."
+        gamification_reward: "Reward created successfully."
+      update:
+        forum: "Thread updated successfully."
+        gamification: "Game updated successfully."
+        gamification_action: "Action updated successfully."
+        gamification_reward: "Reward updated successfully."
+      destroy:
+        gamification: "Game deleted successfully."
+        gamification_action: "Action deleted successfully."
+        gamification_reward: "Reward deleted successfully."
+      error:
+        login: "You have not been able to access correctly, contact the administrator."

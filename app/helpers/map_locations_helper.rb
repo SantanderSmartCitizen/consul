@@ -23,14 +23,21 @@ module MapLocationsHelper
     "remove-marker-link-#{dom_id(map_location)}"
   end
 
-  def render_map(map_location, parent_class, editable, remove_marker_label, investments_coordinates = nil)
+  def render_map(map_location, parent_class, editable, remove_marker_label, investments_coordinates = nil, find_proposals_by_district = nil)
     map_location = MapLocation.new if map_location.nil?
     map = content_tag :div, "",
                       id: dom_id(map_location),
                       class: "map_location map",
-                      data: prepare_map_settings(map_location, editable, parent_class, investments_coordinates)
+                      data: prepare_map_settings(map_location, editable, parent_class, investments_coordinates, find_proposals_by_district)
+    map += map_info_pane
     map += map_location_remove_marker(map_location, remove_marker_label) if editable
     map
+  end
+
+  def map_info_pane
+    content_tag :small, "",
+                id: "info-pane",
+                style: "position: inherit; color: rgb(39, 90, 118); font-weight: bold; float: right;min-height: 25px;";
   end
 
   def map_location_remove_marker(map_location, text)
@@ -46,7 +53,7 @@ module MapLocationsHelper
 
   private
 
-    def prepare_map_settings(map_location, editable, parent_class, investments_coordinates = nil)
+    def prepare_map_settings(map_location, editable, parent_class, investments_coordinates = nil, find_proposals_by_district = nil)
       options = {
         map: "",
         map_center_latitude: map_location_latitude(map_location),
@@ -59,7 +66,11 @@ module MapLocationsHelper
         latitude_input_selector: "##{map_location_input_id(parent_class, "latitude")}",
         longitude_input_selector: "##{map_location_input_id(parent_class, "longitude")}",
         zoom_input_selector: "##{map_location_input_id(parent_class, "zoom")}",
-        marker_investments_coordinates: investments_coordinates
+        marker_investments_coordinates: investments_coordinates,
+        map_arcgis_feature_layer_url: Setting["map.arcgis.feature_layer_url"],
+        map_arcgis_district_code_field: Setting["map.arcgis.district_code_field"],
+        map_geozones: Geozone.all.index_by(&:external_code),
+        find_proposals_by_district: find_proposals_by_district
       }
       options[:marker_latitude] = map_location.latitude if map_location.latitude.present?
       options[:marker_longitude] = map_location.longitude if map_location.longitude.present?

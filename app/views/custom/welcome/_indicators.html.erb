@@ -1,0 +1,104 @@
+<div class="indicators-frame">
+	<div class="indicators-content">
+
+		<div class="text-center">
+			<h2 class="small-12"><%= t(".title") %></h2>
+			<h3 class="small-12 subtitle"><%= t(".subtitle") %></h3>
+		</div>
+
+		<div class="row margin-top d-flex text-center">
+			<div id="chart" class="small-12 medium-6 large-4"></div>
+			<div id="chart2" class="small-12 medium-6 large-4"></div>
+			<div id="chart3" class="small-12 medium-12 large-4"></div>
+		</div>
+
+		<div class="row margin-top d-flex">
+			<div class="small-12 medium-12 large-4 text-justify p-4">
+				<p><%= t(".general_description") %></p>
+			</div>
+			<div class="small-12 medium-12 large-8 ">
+				<div class="row pl-3 pr-3 d-flex">
+					<div class="small-12 medium-4 large-4 pl-2 pr-2">
+						<div class="card text-white mb-3 background-color-1" style="max-width: 18rem; border-radius: 60px 0px; margin: 0 auto;">
+						  <div class="card-body">
+						    <h1 class="card-title white-color" style="font-size: 70pt; line-height: 60pt; text-align: center;">87%</h1>
+						    <p class="card-text" style="font-size: small;"><%= t(".description_1") %></p>
+						  </div>
+						</div>
+					</div>
+					<div class="small-12 medium-4 large-4 pl-2 pr-2">
+						<div class="card text-white mb-3 background-color-2" style="max-width: 18rem; border-radius: 60px 0px; margin: 0 auto;">
+						  <div class="card-body">
+						    <h1 class="card-title white-color" style="font-size: 70pt; line-height: 60pt; text-align: center;">36%</h1>
+						    <p class="card-text" style="font-size: small;"><%= t(".description_2") %></p>
+						  </div>
+						</div>
+					</div>
+					<div class="small-12 medium-4 large-4 pl-2 pr-2">
+						<div class="card text-white mb-3 background-color-3" style="max-width: 18rem; border-radius: 60px 0px; margin: 0 auto;">
+						  <div class="card-body">
+						    <h1 class="card-title white-color" style="font-size: 70pt; line-height: 60pt; text-align: center;">24%</h1>
+						    <p class="card-text" style="font-size: small;"><%= t(".description_3") %></p>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	var chart = c3.generate({
+		bindto: '#chart',
+	    data: {
+	        type : 'donut',
+	        columns: [
+	            ["Data1", 33],
+	            ["Data2", 17],
+	            ["Data3", 50]
+	        ]
+	    },
+	    donut: {
+	        title: "Lorem ipsum 1"
+	    },
+	    color: {
+        	pattern: ['rgba(213, 132, 73, 1)', 'rgba(213, 132, 73, .7)', 'rgba(213, 132, 73, .5)']
+    	}
+	});
+	var chart2 = c3.generate({
+		bindto: '#chart2',
+	    data: {
+	        type : 'donut',
+	        columns: [
+	            ["Data1", 47],
+	            ["Data2", 20],
+	            ["Data3", 33]
+	        ]
+	    },
+	    donut: {
+	        title: "Lorem ipsum 2"
+	    },
+	    color: {
+        	pattern: ['rgba(145, 192, 97, 1)', 'rgba(145, 192, 97, .7)', 'rgba(145, 192, 97, .5)']
+    	}
+	});
+	var chart3 = c3.generate({
+		bindto: '#chart3',
+	    data: {
+	        type : 'donut',
+	        columns: [
+	            ["Data1", 43],
+	            ["Data2", 21],
+	            ["Data3", 36]
+	        ]
+	    },
+	    donut: {
+	        title: "Lorem ipsum 3"
+	    },
+	    color: {
+        	pattern: ['rgba(53, 129, 170, 1)', 'rgba(53, 129, 170, .7)', 'rgba(53, 129, 170, .5)']
+    	}
+	});
+</script>

@@ -80,3 +80,30 @@ Vote:
     votable_type:      string
     public_created_at: string
     vote_flag:         boolean
+Forum:
+  fields:
+    id:                 integer
+    title:              string
+    description:        string
+    public_created_at:  string
+    comments_count:     integer
+    comments:           [Comment]
+    public_author:      User
+    tags:               [Tag]
+Budget:
+  fields:
+    id:                             integer
+    currency_symbol:                integer
+    phase:                          string
+    description_accepting:          string
+    description_reviewing:          string
+    description_selecting:          string
+    description_valuating:          string
+    description_balloting:          string
+    description_reviewing_ballots:  string
+    description_finished:           string
+    slug:                           string
+    description_drafting:           string
+    description_publishing_prices:  string
+    description_informing:          string
+

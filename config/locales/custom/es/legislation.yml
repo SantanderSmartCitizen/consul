@@ -1,0 +1,14 @@
+es:
+  legislation:
+    processes:
+      index:
+        section_header:
+          icon_alt: Icono de procesos
+          title: Procesos
+          help: Ayuda sobre Procesos
+        section_footer:
+          title: Ayuda sobre Procesos
+      show:
+        title: Proceso
+    proposals:
+      process_title: Proceso

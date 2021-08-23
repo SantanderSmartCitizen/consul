@@ -1,4 +1,5 @@
 require "application_responder"
+require 'idp_settings_adapter'
 
 class ApplicationController < ActionController::Base
   include GlobalizeFallbacks
@@ -16,14 +17,21 @@ class ApplicationController < ActionController::Base
   before_action :track_email_campaign
   before_action :set_return_url
 
+  after_action :rewrite_turbolinks_header
+
   check_authorization unless: :devise_controller?
   self.responder = ApplicationResponder
 
   layout :set_layout
   respond_to :html
   helper_method :current_budget
+  helper_method :saml_session?
 
   private
+
+    def saml_session?
+      @saml_session_check ||= session[:saml_issuer]
+    end
 
     def authenticate_http_basic
       authenticate_or_request_with_http_basic do |username, password|
@@ -68,6 +76,14 @@ class ApplicationController < ActionController::Base
 
     def set_debate_votes(debates)
       @debate_votes = current_user ? current_user.debate_votes(debates) : {}
+    end
+
+    def set_milestone_votes(milestones)
+      @milestone_votes = current_user ? current_user.milestone_votes(milestones) : {}
+    end
+
+    def set_forum_votes(forums)
+      @forum_votes = current_user ? current_user.forum_votes(forums) : {}
     end
 
     def set_proposal_votes(proposals)
@@ -127,4 +143,15 @@ class ApplicationController < ActionController::Base
 
       redirect_to path, response_status
     end
+
+    def rewrite_turbolinks_header
+      return unless response.headers.key? "Turbolinks-Location"
+      uri = Addressable::URI.parse response.headers['Turbolinks-Location']
+      uri.scheme = nil
+      uri.port = nil
+      uri.host = Rails.application.config.action_mailer.default_url_options[:host]
+      response.headers['Turbolinks-Location'] = uri.to_s
+      return
+    end
+
 end

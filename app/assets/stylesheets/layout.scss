@@ -135,7 +135,7 @@ a {
 
 .sidebar-divider {
   border-top: 1px solid $border;
-  margin-top: $line-height;
+  margin: 20px 0;
 
   &:first-child {
     margin-top: 0;
@@ -162,24 +162,24 @@ a {
 }
 
 .margin {
-  margin-bottom: $line-height;
-  margin-top: $line-height;
+  margin-bottom: $line-height !important;
+  margin-top: $line-height !important;
 }
 
 .margin-top {
-  margin-top: $line-height;
+  margin-top: $line-height !important;
 }
 
 .margin-bottom {
-  margin-bottom: $line-height;
+  margin-bottom: $line-height !important;
 }
 
 .margin-left {
-  margin-left: $line-height;
+  margin-left: $line-height !important;
 }
 
 .margin-right {
-  margin-right: $line-height;
+  margin-right: $line-height !important;
 }
 
 .float-right-medium {
@@ -190,7 +190,8 @@ a {
 }
 
 .no-margin-top {
-  margin-top: rem-calc(-24);
+  /*margin-top: rem-calc(-24);*/
+  margin-top: 0px;
 }
 
 .padding {
@@ -253,7 +254,7 @@ a {
     }
 
     a {
-      color: $text;
+      color: rgba($brand, .7);
       display: inline-block;
       font-weight: bold;
       position: relative;
@@ -337,20 +338,19 @@ a {
 }
 
 .close-button {
-  color: $text;
+  color: rgba($brand, .7);
   top: $line-height / 2;
 }
 
 .back,
 .icon-angle-left {
   clear: both;
-  color: $text-medium;
   display: inline-block;
   padding-right: $line-height / 2;
 }
 
 .back:not([class^="icon-"]) {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 .tabs-content {
@@ -453,9 +453,7 @@ a {
 // ----------
 
 header {
-  background: $brand;
-  border-bottom: 1px solid $border;
-  margin-bottom: $line-height;
+  background: white;
 
   @include breakpoint(small down) {
     position: relative;
@@ -464,24 +462,6 @@ header {
 
   .selected {
     border-bottom: 1px solid #fff;
-  }
-
-  .locale {
-    float: left;
-    height: $line-height * 1.5;
-    margin-left: $line-height / 2;
-    position: relative;
-
-    &::after {
-      color: #808080;
-      content: "\61";
-      font-family: "icons" !important;
-      font-size: $small-font-size;
-      pointer-events: none;
-      position: absolute;
-      right: 2px;
-      top: 9px;
-    }
   }
 
   .remote-translations-button {
@@ -520,6 +500,7 @@ header {
   color: #fff;
   padding-bottom: 0;
   padding-top: 0;
+  width: 100%;
 
   @include breakpoint(medium) {
     padding: 0;
@@ -571,7 +552,7 @@ header {
 
       @include breakpoint(medium) {
         font-size: $small-font-size;
-        padding: rem-calc(11) rem-calc(16);
+        padding: rem-calc(16) rem-calc(16);
       }
     }
 
@@ -674,7 +655,7 @@ header {
     margin: 0 rem-calc(6);
 
     &:hover {
-      text-decoration: underline;
+      color: rgb(212, 222, 228);
     }
   }
 
@@ -702,8 +683,9 @@ header {
 .subnavigation {
 
   @include breakpoint(medium) {
-    background: #fff;
-    padding-bottom: 0;
+    width: 100%;
+    margin-top: 74px;
+    margin-bottom: 60px;
   }
 
   ul {
@@ -713,7 +695,7 @@ header {
     li {
       @include breakpoint(medium) {
         display: inline-block;
-        margin-right: rem-calc(20);
+        margin-right: 45px;
       }
     }
   }
@@ -796,7 +778,7 @@ header {
   margin-bottom: $line-height / 2;
 
   a {
-    color: $text;
+    color: rgba($brand, 0.7);
     display: inline-block;
     font-weight: bold;
     margin-right: $line-height / 2;
@@ -814,7 +796,7 @@ header {
 
   .is-active {
     border-bottom: 2px solid $brand;
-    color: $brand;
+    color: $brand !important;
 
     &:hover {
       text-decoration: none;
@@ -875,8 +857,8 @@ footer {
 }
 
 .footer {
-  background: #f1f1f1;
-  margin-top: $line-height * 2;
+  background: transparent;
+  /*margin-top: $line-height * 2;*/
   padding-top: $line-height;
 }
 
@@ -929,12 +911,12 @@ footer {
 }
 
 .sidebar-title {
-  border-top: 2px solid $brand;
+  /*border-top: 2px solid $brand;*/
   display: inline-block;
   font-size: rem-calc(16);
   font-weight: bold;
   margin: -1px 0 $line-height / 2;
-  padding-top: $line-height / 4;
+  /*padding-top: $line-height / 4;*/
   text-transform: uppercase;
 }
 
@@ -1001,9 +983,21 @@ footer {
 
 // 06. Forms
 // ---------
+.locale {
+  &::after {
+    color: #808080;
+    content: "\61";
+    font-family: "icons" !important;
+    font-size: $small-font-size;
+    pointer-events: none;
+    position: absolute;
+    right: 2px;
+    top: 9px;
+  }
+}
 
 .locale-form {
-  display: inline-block;
+  /*display: inline-block;*/
   position: relative;
 
   label {
@@ -1043,9 +1037,13 @@ footer {
 
 form {
 
+  .is-invalid-input:not(:focus){
+    border-color: #cc4b37 !important;
+    background-color: #faedeb !important;
+  }
+
   label {
     font-size: $base-font-size;
-    font-weight: bold;
     line-height: $line-height;
   }
 
@@ -1066,14 +1064,27 @@ form {
     }
   }
 
-  [type]:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio]):not(.close-button) {
-    background: #f8f8f8;
-    height: $line-height * 2;
-    margin-bottom: rem-calc(16);
+  [type]:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio]):not(.close-button), textarea {
+    background: white;
+    height: 35px;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 7px;
+    color: rgba(0, 0, 0, .7);
 
     &.error {
       margin-bottom: rem-calc(1);
     }
+  }
+
+  select {
+    height: 35px;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 7px;
+    color: rgba(0, 0, 0, .7);
   }
 
   [type="checkbox"] + label,
@@ -1105,6 +1116,7 @@ form {
     line-height: $line-height;
     vertical-align: middle;
   }
+
 }
 
 .translatable-fields {
@@ -1161,17 +1173,32 @@ form {
 .callout {
   font-size: $small-font-size;
   overflow: hidden;
+  border-radius: 11px;
 
   a:not(.button) {
     font-weight: bold;
-    text-decoration: underline;
+    color: rgba($brand, .7) !important;
+    &:hover {
+      color: $link !important;
+    }
   }
 
-  &.success,
-  &.notice {
+  &.success {
     background-color: $success-bg;
     border-color: $success-border;
     color: $color-success;
+  }
+
+  &.info {
+    background-color: $info-bg;
+    border-color: $info-border;
+    color: $color-info;
+  }
+
+  &.notice {
+    background-color: $notice-bg;
+    border-color: $notice-border;
+    color: $color-notice;
   }
 
   &.primary {
@@ -1204,6 +1231,14 @@ form {
   .button {
     margin-bottom: 0;
   }
+
+  strong {
+    color: rgba($brand, .7);
+  }
+}
+
+.shadow {
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
 }
 
 .no-error {
@@ -1449,7 +1484,12 @@ form {
   }
 
   select {
-    height: $line-height * 2;
+    height: 35px;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 7px;
+    color: rgba(0, 0, 0, .7);
   }
 }
 
@@ -1739,10 +1779,14 @@ table {
   }
 }
 
-@include breakpoint(medium) {
+@include breakpoint(small down) {
+  .ssb-whatsapp_web {
+    display: none !important;
+  }
+}
 
-  .button.button-telegram,
-  .ssb-telegram {
+@include breakpoint(medium) {
+  .ssb-whatsapp_app {
     display: none !important;
   }
 }
@@ -2116,17 +2160,16 @@ table {
     padding: $line-height / 4;
     position: relative;
 
-    .relative,
-    [class^="icon-arrow"] {
-      padding-left: $line-height / 2;
+    .relative {
+      padding-left: rem-calc(18);
     }
 
-    [class^="icon-arrow"] {
-      font-size: $base-font-size;
-      left: -20px;
+    .far {
+      font-size: $small-font-size;
+      left: 0;
       position: absolute;
       text-decoration: none;
-      top: -1px;
+      top: 2px;
     }
 
     .divider {
@@ -2546,7 +2589,7 @@ table {
 
   .document-link {
     background: $highlight-soft;
-    border: 2px solid $highlight;
+    border: 1px solid $highlight;
     border-radius: rem-calc(5);
     display: block;
     margin: $line-height / 2 0;
@@ -2607,7 +2650,7 @@ table {
     font-size: rem-calc(24);
 
     span {
-      color: #4f4f4f;
+      color: rgba($brand, .7);
       font-weight: normal;
     }
   }
@@ -2794,6 +2837,9 @@ table {
 
     a {
 
+      box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
+      border-radius: 11px;
+
       img {
         transition-duration: 0.3s;
         transition-property: transform;
@@ -2804,7 +2850,7 @@ table {
       text-decoration: none;
 
       &:not(.see-all) {
-        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.5);
       }
 
       img {
@@ -2814,6 +2860,27 @@ table {
 
     p {
       padding: 0 $line-height / 4;
+    }
+  }
+
+  .card-body {
+    .title {
+      border-bottom: 0;
+      margin: 0;
+      color: rgba(0, 0, 0, 0.7);
+      font-weight: bold;
+      font-size: 16pt;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .description {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 12pt;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 
@@ -2904,9 +2971,9 @@ table {
 
 .figure-card {
   display: flex;
-  margin: 0 0 $line-height;
   overflow: hidden;
   position: relative;
+  border-radius: 11px 11px 0 0;
 
   @include breakpoint(medium down) {
     min-height: $line-height * 4;

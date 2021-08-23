@@ -129,6 +129,9 @@ en:
       local_census_record:
         one: Local census record
         other: Local census records
+      forum:
+        one: "Forum post"
+        other: "Forum posts"
     attributes:
       budget:
         name: "Name"

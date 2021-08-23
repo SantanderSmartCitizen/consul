@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => "/ckeditor"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   draw :devise
   draw :direct_upload
   draw :document
+  draw :forum
   draw :graphql
   draw :legislation
   draw :management
@@ -25,8 +27,10 @@ Rails.application.routes.draw do
   draw :user
   draw :valuation
   draw :verification
+  draw :gamification
 
-  root "welcome#index"
+  #root "welcome#index"
+  root "budgets#index"
   get "/welcome", to: "welcome#welcome"
   get "/consul.json", to: "installation#details"
 
@@ -35,6 +39,11 @@ Rails.application.routes.draw do
   resources :documents, only: [:destroy]
   resources :follows, only: [:create, :destroy]
   resources :remote_translations, only: [:create]
+  resources :milestones, only: [:show] do
+    member do
+      post :vote
+    end
+  end
 
   # More info pages
   get "help",             to: "pages#show", id: "help/index",             as: "help"

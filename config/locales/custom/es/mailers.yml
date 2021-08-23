@@ -1,0 +1,7 @@
+es:
+  mailers:
+    budget_investment_created:
+      text: "Muchas gracias por crear tu proyecto <strong>%{investment}</strong> para los Presupuestos <strong>%{budget}</strong>."
+      follow_link: "Presupuestos"
+    evaluation_comment:
+      new_comment_by: Hay un nuevo comentario de evaluación de <strong>%{commenter}</strong> en el presupuesto %{investment}

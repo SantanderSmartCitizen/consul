@@ -1,0 +1,24 @@
+es:
+  settings:
+    org_name: "Santander SmartCitizen"
+    feature:
+      signature_sheets_description: "Permite añadir desde el panel de Administración firmas recogidas de forma presencial a Propuestas y proyectos de gasto de los Presupuestos"
+      community_description: "Activa la sección de comunidad en las propuestas y en los proyectos de gasto de los Presupuestos"
+      allow_images_description: "Permite que los usuarios suban imágenes al crear propuestas y proyectos de gasto de los Presupuestos"
+      allow_attached_documents_description: "Permite que los usuarios suban documentos al crear propuestas y proyectos de gasto de los Presupuestos"
+      guides_description: "Muestra una guía de diferencias entre las propuestas y los proyectos de gasto si hay un presupuesto activo"
+      valuation_comment_notification_description: "Envía un email a todos los usuarios menos al que haya comentado asociados a un presupuesto cuando se cree un nuevo comentario de evaluación"
+    process:
+      polls: "Encuestas/Consultas"
+      polls_description: "Las encuestas/consultas ciudadanas son un mecanismo de participación por el que la ciudadanía con derecho a voto puede tomar decisiones de forma directa"
+      budgets: "Presupuestos"
+      budgets_description: "Con los presupuestos la ciudadanía decide a qué proyectos presentados por los vecinos y vecinas va destinada una parte del presupuesto"
+      legislation: "Legislación colaborativa"
+      legislation_description: "En los procesos se ofrece a la ciudadanía la oportunidad de participar en la elaboración y modificación de normativa que afecta a la sociedad y de dar su opinión sobre ciertas actuaciones que se tiene previsto llevar a cabo"
+    map:
+      arcgis:
+        feature_layer_url: "URL de ArcGIS"
+        feature_layer_url_description: "URL de la capa de características de ArcGIS"
+        district_code_field: "Código de distrito en ArcGIS"
+        district_code_field_description: "Nombre del campo 'código de distrito' en ArcGIS"
+      

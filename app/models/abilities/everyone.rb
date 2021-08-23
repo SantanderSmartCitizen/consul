@@ -4,6 +4,7 @@ module Abilities
 
     def initialize(user)
       can [:read, :map], Debate
+      can [:read, :map], Forum
       can [:read, :map, :summary, :share], Proposal
       can :read, Comment
       can :read, Poll
@@ -19,12 +20,13 @@ module Abilities
       can :read_stats, Budget, id: Budget.valuating_or_later.stats_enabled.ids
       can :read_executions, Budget, phase: "finished"
       can :new, DirectMessage
-      can [:read, :debate, :draft_publication, :allegations, :result_publication,
+      can [:read, :debate, :forum, :draft_publication, :allegations, :result_publication,
            :proposals, :milestones], Legislation::Process, published: true
       can [:read, :changes, :go_to_version], Legislation::DraftVersion
       can [:read], Legislation::Question
       can [:read, :map, :share], Legislation::Proposal
       can [:search, :comments, :read, :create, :new_comment], Legislation::Annotation
+      can :read, Milestone
     end
   end
 end

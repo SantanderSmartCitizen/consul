@@ -8,6 +8,7 @@ class Activity < ApplicationRecord
 
   scope :on_proposals, -> { where(actionable_type: "Proposal") }
   scope :on_debates, -> { where(actionable_type: "Debate") }
+  scope :on_forums, -> { where(actionable_type: "Forum") }
   scope :on_users, -> { where(actionable_type: "User") }
   scope :on_comments, -> { where(actionable_type: "Comment") }
   scope :on_budget_investments, -> { where(actionable_type: "Budget::Investment") }

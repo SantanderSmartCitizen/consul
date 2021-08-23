@@ -1,0 +1,59 @@
+es:
+  activerecord:
+    models:
+      budget:
+        one: "Presupuesto"
+        other: "Presupuestos"
+      poll:
+        one: "Encuesta/Consulta"
+        other: "Encuestas/Consultas"
+      legislation/question:
+        one: "Proceso/Debate previo"
+        other: "Proceso/Debates previos"
+      legislation/proposal:
+        one: "Proceso/Propuesta"
+        other: "Proceso/Propuestas"
+      legislation/annotation:
+        one: "Proceso/Anotación"
+        other: "Proceso/Anotaciones"
+    attributes:
+      budget:
+        voting_system: Sistema de votación
+        max_votes: Número máximo de votos
+      user:
+        login: "Email o nombre de usuario/alias"
+        username: "Nombre de usuario/alias"
+      poll:
+        only_terminals: Mostrar solo en Terminales
+      gamification:
+        key: Clave
+        actions: Acciones
+        rewards: Recompensas
+        user_rankings: Puntuaciones
+      gamification/translation:
+        title: Título
+        description: Descripción
+      gamification/action:
+        key: Clave
+        score: Puntuación
+        gamification: Juego
+        gamification_action_additional_scores: Puntuación adicional
+        gamification_user_actions: Acciones de usuario
+      gamification/action/translation:
+        title: Título
+        description: Descripción
+      gamification/reward:
+        gamification: Juego
+        minimum_score: Puntuación mínima
+        active: Activa
+        gamification_requested_rewards: Recompensas solicitadas
+      gamification/reward/translation:
+        title: Título
+        description: Descripción
+        reward: Recompensa
+      milestone:
+        video_url: "Enlace a vídeo externo"
+        allow_votes: "Permitir votos"
+        allow_comments: "Permitir comentarios"
+      newsletter:
+        from: "Dirección de correo electrónico que aparecerá como remitente"

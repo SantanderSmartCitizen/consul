@@ -1,0 +1,8 @@
+<%= render "proposals" if @proposals.present? && feature?(:proposals) %>
+<%= render "debates" if @debates.present? && feature?(:debates) %>
+<%= render "forums" if @forums.present? && feature?(:forums) %>
+<%= render "budget_investments" if @budget_investments.present? && feature?(:budgets) %>
+<%= render "comments" if @comments.present? %>
+<%= render "gamification_user_rankings"  if @gamification_user_rankings.present? %>
+<%= render "gamification_user_actions"  if @gamification_user_actions.present? %>
+<%= render "gamification_rewards"  if @gamifications.present? %>

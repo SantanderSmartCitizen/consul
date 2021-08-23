@@ -28,6 +28,8 @@ module UsersHelper
       t("users.show.deleted_proposal")
     when "Debate"
       t("users.show.deleted_debate")
+    when "Forum"
+      t("users.show.deleted_forum")
     when "Budget::Investment"
       t("users.show.deleted_budget_investment")
     else
@@ -68,5 +70,27 @@ module UsersHelper
     else
       t("account.show.public_interests_user_title_list")
     end
+  end
+
+
+  def gamification_reward_card_class(gamification_reward, user)
+    return "alert" unless gamification_reward.active_for?(user)
+    return "success" if gamification_reward.executed_for?(user)
+
+    "primary"
+  end
+
+  def gamification_reward_tooltip(gamification_reward, user)
+    return t("users.show.rewards.reward_locked") unless gamification_reward.active_for?(user)
+    return t("users.show.rewards.view_reward") if gamification_reward.executed_for?(user) || (!gamification_reward.request_to_administrators && gamification_reward.active_for?(@user))
+    return t("users.show.rewards.reward_requested") if gamification_reward.requested_for?(user)
+
+    t("users.show.rewards.request_reward")
+  end
+
+  def gamification_reward_availability_label(gamification_reward)
+    t("users.show.rewards.required_score", 
+      score: number_with_delimiter(gamification_reward.minimum_score, 
+        delimiter: ".")) 
   end
 end

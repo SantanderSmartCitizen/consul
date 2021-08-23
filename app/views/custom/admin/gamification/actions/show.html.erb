@@ -1,0 +1,20 @@
+<%= back_link_to admin_gamification_path(@action.gamification), t("admin.gamification.actions.index.back") %>
+
+<%= link_to t("admin.gamification.actions.show.edit_action"),
+            edit_admin_gamification_action_path(@action),
+            class: "button hollow float-right" %>
+
+<%= render "admin/gamification/actions/show" %>
+
+<% if @action.process_type.present? && 
+  @action.operation.present? && 
+  ["create"].exclude?(@action.operation) %>
+
+  <div class="gamification-action-processes-form">
+    <%= render "admin/gamification/actions/processes/#{@action.process_type.gsub("::", "_").downcase.pluralize}/additional_scores" %>
+  </div>
+<% else %>
+  <div class="callout primary margin">
+    <%= t("admin.gamification.actions.show.cannot_be_configured") %>
+  </div>
+<% end %>

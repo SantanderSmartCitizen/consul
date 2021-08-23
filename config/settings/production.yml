@@ -1,0 +1,49 @@
+## READ THIS FIRST
+#  idp_cert can be omitted if you have idp_cert_fingerprint and idp_cert_fingerprint_algorithm
+
+identity_providers:
+    city_hall_issuer: saml2.ssc.c4.empleados
+    citizen_issuer: saml2.ssc.c4
+    attributes:
+        document_type: http://wso2.org/claims/doctype
+        document_number: http://wso2.org/claims/documento
+        date_of_birth: http://wso2.org/claims/dobNew
+        gender: http://wso2.org/claims/genero
+        email: http://wso2.org/claims/emailaddress
+        geozone_code: http://wso2.org/claims/distrito
+        user_type: http://wso2.org/claims/user_type
+        organization_name: http://wso2.org/claims/business_name
+        organization_responsible_name: http://wso2.org/claims/responsable
+        #http://wso2.org/claims/lastname
+        #http://wso2.org/claims/givenname
+    onelogin:
+        #Mandatory Settings
+        #Page of IDP where user accesses all his/her apps authenticated by the IDP
+        idp_homepage: https://sso.santander.es/samlsso
+        # Entity ID of IDP
+        idp_entity_id: wso2.ssc
+        #Single Sign On Target URL
+        idp_sso_target_url: https://sso.santander.es/samlsso
+        #issuer: saml2.ssc.c4.empleados
+        #Assertion consumer service URL
+        assertion_consumer_service_url: http://192.168.34.40/users/saml/auth
+        name_identifier_format: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+        assertion_consumer_service_binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
+
+        #idp_cert_fingerprint_algorithm: http://www.w3.org/2000/09/xmldsig#sha256
+        #Most IDPs would provide this, otherwise run openssl x509 -text -noout -in ~/path/to/your/certificate  -fingerprint -sha256
+        #idp_cert_fingerprint: 10:B1:65:79:F9:3A:19:39:EC:92:DD:4D:5C:3E:18:90:4C:39:6E:8E:BC:25:BC:72:90:31:88:9B:9F:3A:D1:90
+        force_authn: false
+        #Optional Settings, set these up if using SLO as well
+        idp_slo_target_url: https://sso.santander.es/samlsso
+        single_logout_service_binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+
+        security:
+            logout_requests_signed: true
+            authn_requests_signed: true
+            want_assertions_signed: true
+            metadata_signed: true
+            #signature_method: http://www.w3.org/2001/04/xmldsig-more#rsa-sha256
+            #digest_method: http://www.w3.org/2001/04/xmlenc#sha256
+            signature_method: http://www.w3.org/2000/09/xmldsig#rsa-sha1
+            digest_method: http://www.w3.org/2000/09/xmldsig#sha1

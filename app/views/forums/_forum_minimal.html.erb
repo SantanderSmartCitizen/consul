@@ -1,0 +1,14 @@
+<div id="<%= dom_id(forum) %>" class="forum minimal clear" data-type="forum">
+  <div class="panel">
+    <div class="row">
+      <div class="small-12 column">
+        <div class="forum-content">
+          <% cache [locale_and_user_status,
+                    "index_minimal", forum, @forum_votes[forum.id]] do %>
+            <h3><%= link_to forum.title, forum %></h3>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

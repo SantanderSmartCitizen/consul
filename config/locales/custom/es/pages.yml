@@ -1,0 +1,46 @@
+es:
+  pages:
+    help:
+      menu:
+        forums: "Foro"
+        budgets: "Presupuestos"
+        polls: "Encuestas/Consultas"
+        processes: "Procesos"
+      forums:
+        title: "Foro"
+        description: "En la sección de %{link} puedes exponer y compartir tu opinión con otras personas sobre temas que te preocupan relacionados con la ciudad."
+        link: "foro"
+        feature: "Puedes abrir temas en el foro y comentarlos. Para ello tienes que %{link}."
+        feature_link: "registrarte en %{org}"
+      budgets:
+        title: "Presupuestos"
+        link: "presupuestos"
+        image_alt: "Fase de votación de presupuestos"
+        figcaption: 'Fase de "Votación" de presupuestos.'
+      polls:
+        title: "Encuestas/Consultas"
+        link: "encuestas/consultas"
+        feature_1: "Para participar en las encuestas/consultas tienes que %{link} y verificar tu cuenta."
+      processes:
+        title: "Procesos"
+        link: "procesos"
+        feature_1: Para participar en un proceso tienes que %{link_1} y revisar la página de %{link_2} periódicamente para ver qué reglamentos y políticas se están discutiendo y consultando.
+        feature_1_link: "registrarte en %{org_name}"
+    accessibility:
+      keyboard_shortcuts:
+        navigation_table:
+          rows:
+            - key_column: 0
+              page_column: Inicio
+            - key_column: 1
+              page_column: Debates
+            - key_column: 2
+              page_column: Propuestas
+            - key_column: 3
+              page_column: Encuestas/consultas
+            - key_column: 4
+              page_column: Presupuestos
+            - key_column: 5
+              page_column: Procesos
+            - key_column: 6
+              page_column: Foro

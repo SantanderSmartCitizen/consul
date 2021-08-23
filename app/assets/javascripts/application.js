@@ -40,7 +40,10 @@
 //= require jquery-ui/widgets/autocomplete
 //= require jquery-ui/widgets/sortable
 //= require jquery-fileupload/basic
+//= require jquery.raty
 //= require foundation
+//= require popper
+//= require bootstrap
 //= require turbolinks
 //= require ckeditor/loader
 //= require_directory ./ckeditor
@@ -110,6 +113,9 @@
 //= require cookies
 //= require columns_selector
 //= require budget_edit_associations
+//= require admin_gamification_action
+//= require admin_budget
+//= require_tree .
 
 var initialize_modules = function() {
   "use strict";

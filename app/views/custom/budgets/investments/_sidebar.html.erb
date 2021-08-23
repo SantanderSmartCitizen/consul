@@ -1,0 +1,35 @@
+<div class="clear"></div>
+
+<% if can?(:create, Budget::Investment.new(budget: @budget)) %>
+  <% if current_user && current_user.level_two_or_three_verified? %>
+    <%= link_to t("budgets.investments.index.sidebar.create"),
+               new_budget_investment_path(budget_id: @budget.id), class: "button budget expanded" %>
+  <% else %>
+    <div class="callout warning">
+      <%= sanitize(t("budgets.investments.index.sidebar.verified_only",
+          verify: link_to_verify_account)) %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @heading && can?(:show, @ballot) %>
+  <p class="callout success">
+    <%= sanitize(t("budgets.investments.index.sidebar.voted_info",
+      link: link_to(t("budgets.investments.index.sidebar.voted_info_link"),
+          budget_ballot_path(@budget)))) %>
+    <% if @budget.has_max_votes_system? %>
+      <%= t("budgets.investments.index.sidebar.voted_info_max_votes_system") %>
+    <% else %>
+      <%= t("budgets.investments.index.sidebar.voted_info_wallet_system") %>
+    <% end %>
+  </p>
+<% end %>
+
+<% if @heading && !@heading.content_blocks.where(locale: I18n.locale).empty? %>
+  <%= render "budgets/investments/content_blocks" %>
+<% end %>
+<% if @map_location&.available? %>
+  <%= render "budgets/investments/map" %>
+<% end %>
+<%= render "shared/tag_cloud", taggable: "budget/investment" %>
+<%= render "budgets/investments/categories" %>

@@ -1,0 +1,5 @@
+en:
+  management:
+    account_info:
+      username_label: "Username/alias:"
+    username_label: Username/alias

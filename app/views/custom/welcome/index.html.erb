@@ -1,0 +1,36 @@
+<% content_for :body_class, "home-page" %>
+
+<% content_for :canonical do %>
+  <%= render "shared/canonical", href: root_url %>
+<% end %>
+
+<% if has_banners? %>
+  <%= render "shared/banner" %>
+<% end %>
+
+<% provide :social_media_meta_tags do %>
+  <%= render "shared/social_media_meta_tags",
+              social_url: root_url %>
+<% end %>
+
+<%= render "header", header: @header %>
+
+<main>
+
+  <div class="row">
+    <%= render "welcome/featured" %>
+  </div>
+
+  <div class="row separator">
+    <%= image_tag(image_path_for("body_start_separator.svg"), alt: "Body start separator") %>
+  </div>
+
+  <%= render "welcome/indicators" %>
+
+  <div class="row separator">
+    <%= image_tag(image_path_for("body_content_separator.svg"), alt: "Body content separator") %>
+  </div>
+
+  <%= render "welcome/complaints_and_suggestions" %>
+
+</main>

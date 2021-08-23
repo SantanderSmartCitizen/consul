@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191108173350) do
+ActiveRecord::Schema.define(version: 20210630110745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -273,6 +273,8 @@ ActiveRecord::Schema.define(version: 20191108173350) do
     t.datetime "ignored_flag_at"
     t.integer  "flags_count",                                 default: 0
     t.integer  "original_heading_id"
+    t.bigint   "estimated_price"
+    t.bigint   "maintenance_cost"
     t.index ["administrator_id"], name: "index_budget_investments_on_administrator_id", using: :btree
     t.index ["author_id"], name: "index_budget_investments_on_author_id", using: :btree
     t.index ["community_id"], name: "index_budget_investments_on_community_id", using: :btree
@@ -360,6 +362,8 @@ ActiveRecord::Schema.define(version: 20191108173350) do
     t.text     "description_drafting"
     t.text     "description_publishing_prices"
     t.text     "description_informing"
+    t.string   "voting_system"
+    t.integer  "max_votes"
   end
 
   create_table "campaigns", force: :cascade do |t|
@@ -590,6 +594,167 @@ ActiveRecord::Schema.define(version: 20191108173350) do
     t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id", using: :btree
     t.index ["user_id", "followable_type", "followable_id"], name: "access_follows", using: :btree
     t.index ["user_id"], name: "index_follows_on_user_id", using: :btree
+  end
+
+  create_table "forum_translations", force: :cascade do |t|
+    t.integer  "forum_id",    null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "title"
+    t.text     "description"
+    t.datetime "hidden_at"
+    t.index ["forum_id"], name: "index_forum_translations_on_forum_id", using: :btree
+    t.index ["hidden_at"], name: "index_forum_translations_on_hidden_at", using: :btree
+    t.index ["locale"], name: "index_forum_translations_on_locale", using: :btree
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string   "deprecated_title",             limit: 80
+    t.text     "deprecated_description"
+    t.integer  "author_id"
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.string   "visit_id"
+    t.datetime "hidden_at"
+    t.integer  "flags_count",                             default: 0
+    t.datetime "ignored_flag_at"
+    t.integer  "cached_votes_total",                      default: 0
+    t.integer  "cached_votes_up",                         default: 0
+    t.integer  "cached_votes_down",                       default: 0
+    t.integer  "comments_count",                          default: 0
+    t.datetime "confirmed_hide_at"
+    t.integer  "cached_anonymous_votes_total",            default: 0
+    t.integer  "cached_votes_score",                      default: 0
+    t.bigint   "hot_score",                               default: 0
+    t.integer  "confidence_score",                        default: 0
+    t.integer  "geozone_id"
+    t.tsvector "tsv"
+    t.datetime "featured_at"
+    t.index ["author_id", "hidden_at"], name: "index_forums_on_author_id_and_hidden_at", using: :btree
+    t.index ["author_id"], name: "index_forums_on_author_id", using: :btree
+    t.index ["cached_votes_down"], name: "index_forums_on_cached_votes_down", using: :btree
+    t.index ["cached_votes_score"], name: "index_forums_on_cached_votes_score", using: :btree
+    t.index ["cached_votes_total"], name: "index_forums_on_cached_votes_total", using: :btree
+    t.index ["cached_votes_up"], name: "index_forums_on_cached_votes_up", using: :btree
+    t.index ["confidence_score"], name: "index_forums_on_confidence_score", using: :btree
+    t.index ["geozone_id"], name: "index_forums_on_geozone_id", using: :btree
+    t.index ["hidden_at"], name: "index_forums_on_hidden_at", using: :btree
+    t.index ["hot_score"], name: "index_forums_on_hot_score", using: :btree
+    t.index ["tsv"], name: "index_forums_on_tsv", using: :gin
+  end
+
+  create_table "gamification_action_additional_scores", force: :cascade do |t|
+    t.integer  "gamification_action_id", null: false
+    t.string   "process_type",           null: false
+    t.integer  "process_id",             null: false
+    t.integer  "additional_score",       null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_action_id", "process_type", "process_id"], name: "idx_gamification_additional_scores_on_action_and_process", unique: true, using: :btree
+    t.index ["gamification_action_id"], name: "idx_gamification_additional_scores_on_gamification_action_id", using: :btree
+    t.index ["process_type", "process_id"], name: "idx_gamification_additional_scores_on_process_type_process_id", using: :btree
+  end
+
+  create_table "gamification_action_translations", force: :cascade do |t|
+    t.integer  "gamification_action_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_action_id", "locale"], name: "idx_gamification_action_translations_on_action_id_and_locale", unique: true, using: :btree
+    t.index ["gamification_action_id"], name: "idx_gamification_action_translations_on_gamification_action_id", using: :btree
+  end
+
+  create_table "gamification_actions", force: :cascade do |t|
+    t.string   "key",             null: false
+    t.integer  "score"
+    t.integer  "gamification_id", null: false
+    t.string   "process_type"
+    t.string   "operation"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["gamification_id", "process_type", "operation"], name: "idx_gamification_internal_actions", unique: true, where: "((process_type IS NOT NULL) AND ((process_type)::text <> ''::text) AND (operation IS NOT NULL) AND ((operation)::text <> ''::text))", using: :btree
+    t.index ["gamification_id"], name: "index_gamification_actions_on_gamification_id", using: :btree
+    t.index ["key", "gamification_id"], name: "index_gamification_actions_on_key_and_gamification_id", unique: true, using: :btree
+  end
+
+  create_table "gamification_requested_rewards", force: :cascade do |t|
+    t.integer  "gamification_reward_id", null: false
+    t.integer  "user_id",                null: false
+    t.integer  "administrator_id"
+    t.datetime "executed_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["administrator_id"], name: "index_gamification_requested_rewards_on_administrator_id", using: :btree
+    t.index ["gamification_reward_id"], name: "index_gamification_requested_rewards_on_gamification_reward_id", using: :btree
+    t.index ["user_id"], name: "index_gamification_requested_rewards_on_user_id", using: :btree
+  end
+
+  create_table "gamification_reward_translations", force: :cascade do |t|
+    t.integer  "gamification_reward_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_reward_id", "locale"], name: "idx_gamification_reward_translations_on_reward_id_and_locale", unique: true, using: :btree
+    t.index ["gamification_reward_id"], name: "idx_gamification_reward_translations_on_gamification_reward_id", using: :btree
+  end
+
+  create_table "gamification_rewards", force: :cascade do |t|
+    t.integer  "minimum_score"
+    t.integer  "gamification_id",           null: false
+    t.boolean  "active"
+    t.boolean  "request_to_administrators"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["gamification_id"], name: "index_gamification_rewards_on_gamification_id", using: :btree
+  end
+
+  create_table "gamification_translations", force: :cascade do |t|
+    t.integer  "gamification_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["gamification_id", "locale"], name: "index_gamification_translations_on_gamification_id_and_locale", unique: true, using: :btree
+    t.index ["gamification_id"], name: "index_gamification_translations_on_gamification_id", using: :btree
+  end
+
+  create_table "gamification_user_actions", force: :cascade do |t|
+    t.integer  "user_id",                null: false
+    t.integer  "gamification_action_id", null: false
+    t.string   "process_type"
+    t.integer  "process_id"
+    t.integer  "score"
+    t.integer  "additional_score"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_action_id"], name: "index_gamification_user_actions_on_gamification_action_id", using: :btree
+    t.index ["process_type", "process_id"], name: "idx_gamification_user_actions_on_process_type_process_id", using: :btree
+    t.index ["user_id"], name: "index_gamification_user_actions_on_user_id", using: :btree
+  end
+
+  create_table "gamification_user_rankings", force: :cascade do |t|
+    t.integer  "user_id",         null: false
+    t.integer  "gamification_id", null: false
+    t.integer  "score"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["gamification_id"], name: "index_gamification_user_rankings_on_gamification_id", using: :btree
+    t.index ["user_id", "gamification_id"], name: "index_gamification_user_rankings_on_user_id_and_gamification_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_gamification_user_rankings_on_user_id", using: :btree
+  end
+
+  create_table "gamifications", force: :cascade do |t|
+    t.string   "key",                        null: false
+    t.boolean  "locked",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["key"], name: "index_gamifications_on_key", unique: true, using: :btree
   end
 
   create_table "geozones", force: :cascade do |t|
@@ -911,8 +1076,23 @@ ActiveRecord::Schema.define(version: 20191108173350) do
     t.integer  "milestoneable_id"
     t.datetime "publication_date"
     t.integer  "status_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "video_url"
+    t.boolean  "allow_votes",        default: false
+    t.boolean  "allow_comments",     default: false
+    t.integer  "comments_count",     default: 0
+    t.integer  "cached_votes_total", default: 0
+    t.integer  "cached_votes_up",    default: 0
+    t.integer  "cached_votes_down",  default: 0
+    t.integer  "author_id"
+    t.datetime "hidden_at"
+    t.integer  "cached_votes_score", default: 0
+    t.index ["cached_votes_down"], name: "index_milestones_on_cached_votes_down", using: :btree
+    t.index ["cached_votes_score"], name: "index_milestones_on_cached_votes_score", using: :btree
+    t.index ["cached_votes_total"], name: "index_milestones_on_cached_votes_total", using: :btree
+    t.index ["cached_votes_up"], name: "index_milestones_on_cached_votes_up", using: :btree
+    t.index ["hidden_at"], name: "index_milestones_on_hidden_at", using: :btree
     t.index ["status_id"], name: "index_milestones_on_status_id", using: :btree
   end
 
@@ -1079,6 +1259,7 @@ ActiveRecord::Schema.define(version: 20191108173350) do
     t.datetime "updated_at"
     t.tsvector "tsv"
     t.string   "video_url"
+    t.string   "answer_type",         default: "simple"
     t.index ["author_id"], name: "index_poll_questions_on_author_id", using: :btree
     t.index ["poll_id"], name: "index_poll_questions_on_poll_id", using: :btree
     t.index ["proposal_id"], name: "index_poll_questions_on_proposal_id", using: :btree
@@ -1169,6 +1350,7 @@ ActiveRecord::Schema.define(version: 20191108173350) do
     t.integer  "budget_id"
     t.string   "related_type"
     t.integer  "related_id"
+    t.boolean  "only_terminals",     default: false
     t.index ["budget_id"], name: "index_polls_on_budget_id", unique: true, using: :btree
     t.index ["related_type", "related_id"], name: "index_polls_on_related_type_and_related_id", using: :btree
     t.index ["starts_at", "ends_at"], name: "index_polls_on_starts_at_and_ends_at", using: :btree
@@ -1403,7 +1585,9 @@ ActiveRecord::Schema.define(version: 20191108173350) do
     t.integer "budget/investments_count",                default: 0
     t.integer "legislation/proposals_count",             default: 0
     t.integer "legislation/processes_count",             default: 0
+    t.integer "forums_count",                            default: 0
     t.index ["debates_count"], name: "index_tags_on_debates_count", using: :btree
+    t.index ["forums_count"], name: "index_tags_on_forums_count", using: :btree
     t.index ["legislation/processes_count"], name: "index_tags_on_legislation/processes_count", using: :btree
     t.index ["legislation/proposals_count"], name: "index_tags_on_legislation/proposals_count", using: :btree
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
@@ -1484,6 +1668,7 @@ ActiveRecord::Schema.define(version: 20191108173350) do
     t.boolean  "public_interests",                          default: false
     t.boolean  "recommended_debates",                       default: true
     t.boolean  "recommended_proposals",                     default: true
+    t.string   "citizen_type"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["geozone_id"], name: "index_users_on_geozone_id", using: :btree
@@ -1616,6 +1801,16 @@ ActiveRecord::Schema.define(version: 20191108173350) do
   add_foreign_key "failed_census_calls", "users"
   add_foreign_key "flags", "users"
   add_foreign_key "follows", "users"
+  add_foreign_key "gamification_action_additional_scores", "gamification_actions"
+  add_foreign_key "gamification_actions", "gamifications"
+  add_foreign_key "gamification_requested_rewards", "gamification_rewards"
+  add_foreign_key "gamification_requested_rewards", "users"
+  add_foreign_key "gamification_requested_rewards", "users", column: "administrator_id"
+  add_foreign_key "gamification_rewards", "gamifications"
+  add_foreign_key "gamification_user_actions", "gamification_actions"
+  add_foreign_key "gamification_user_actions", "users"
+  add_foreign_key "gamification_user_rankings", "gamifications"
+  add_foreign_key "gamification_user_rankings", "users"
   add_foreign_key "geozones_polls", "geozones"
   add_foreign_key "geozones_polls", "polls"
   add_foreign_key "identities", "users"

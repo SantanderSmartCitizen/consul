@@ -1,27 +1,8 @@
-devise_for :users, controllers: {
-                     registrations: "users/registrations",
-                     sessions: "users/sessions",
-                     confirmations: "users/confirmations",
-                     omniauth_callbacks: "users/omniauth_callbacks"
-                   }
-
+devise_for :users, skip: [:saml_authenticatable]
 devise_scope :user do
-  patch "/user/confirmation", to: "users/confirmations#update", as: :update_user_confirmation
-  get "/user/registrations/check_username", to: "users/registrations#check_username"
-  get "users/sign_up/success", to: "users/registrations#success"
-  get "users/registrations/delete_form", to: "users/registrations#delete_form"
-  delete "users/registrations", to: "users/registrations#delete"
-  get :finish_signup, to: "users/registrations#finish_signup"
-  patch :do_finish_signup, to: "users/registrations#do_finish_signup"
-end
-
-devise_for :organizations, class_name: "User",
-           controllers: {
-             registrations: "organizations/registrations",
-             sessions: "devise/sessions"
-           },
-           skip: [:omniauth_callbacks]
-
-devise_scope :organization do
-  get "organizations/sign_up/success", to: "organizations/registrations#success"
+  get 'users/saml/sign_in' => 'saml_sessions#init', as: :login_saml_user
+  post 'users/saml/auth' => 'saml_sessions#consume', as: :consume_saml_user
+  match 'users/saml/sign_out' => 'saml_sessions#logout', as: :logout_saml_user, via: [:get, :post]
+  get 'users/saml/metadata' => 'saml_sessions#metadata', as: :metadata_saml_user
+  get 'gestion' => 'saml_sessions#login_city_hall_user', as: :login_city_hall_user
 end

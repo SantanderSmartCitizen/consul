@@ -1,0 +1,21 @@
+<div class="row section-content">
+  <div class="small-12 column">
+    <h3 id="forums" data-magellan-target="forums">
+      <%= t("pages.help.forums.title") %>
+    </h3>
+    <p>
+      <%= sanitize(t("pages.help.forums.description",
+          org: setting["org_name"],
+          link: link_to(t("pages.help.forums.link"),
+                              forums_path))) %>
+    </p>
+    <ul class="features">
+      <li>
+        <%= sanitize(t("pages.help.forums.feature",
+              link: link_to(t("pages.help.forums.feature_link", org: setting["org_name"]),
+                               new_user_registration_path))) %>
+      </li>
+    </ul>
+
+  </div>
+</div>

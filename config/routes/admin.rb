@@ -31,6 +31,15 @@ namespace :admin do
 
   resources :debates, only: [:index, :show]
 
+  resources :hidden_forums, only: :index do
+    member do
+      put :restore
+      put :confirm_hide
+    end
+  end
+
+  resources :forums, only: [:index, :show]
+
   resources :proposals, only: [:index, :show, :update] do
     member { patch :toggle_selection }
     resources :milestones, controller: "proposal_milestones"
@@ -59,6 +68,11 @@ namespace :admin do
     resources :groups, except: [:show], controller: "budget_groups" do
       resources :headings, except: [:show], controller: "budget_headings"
     end
+
+    get "budget_investments/:id/edit_administrator", to: "budget_investments#edit_administrator", as: "budget_investment_edit_administrator"
+    patch "budget_investments/:id/update_administrator", to: "budget_investments#update_administrator"
+    get "budget_investments/:id/edit_valuators", to: "budget_investments#edit_valuators", as: "budget_investment_edit_valuators"
+    patch "budget_investments/:id/update_valuators", to: "budget_investments#update_valuators"
 
     resources :budget_investments, only: [:index, :show, :edit, :update] do
       member { patch :toggle_selection }
@@ -200,6 +214,20 @@ namespace :admin do
     get :proposal_notifications, on: :collection
     get :direct_messages, on: :collection
     get :polls, on: :collection
+  end
+
+  scope module: :gamification do
+    resources :gamifications
+  end
+
+  namespace :gamification do
+    resources :actions, shallow: true do
+      get :search
+      resources :additional_scores, except: [:index, :show], controller: "actions/additional_scores"
+    end
+    get "update_operations", to: "actions#update_operations", as: "update_operations"
+    resources :rewards
+    resources :requested_rewards
   end
 
   namespace :legislation do
