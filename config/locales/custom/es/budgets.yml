@@ -24,6 +24,7 @@ es:
         description: Con los presupuestos la ciudadanía decide a qué proyectos va destinada una parte del presupuesto.
       index:
         title: Presupuestos
+      see_stats: Ver estadísticas
     results:
       heading: "Resultados presupuestos"
     investments:

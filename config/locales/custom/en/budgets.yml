@@ -10,6 +10,8 @@ en:
         voted:
           one: "You voted 1 budget investment"
           other: "You voted %{count} budget investments"
+    index:
+      see_stats: See stats
     investments:
       index:
         sidebar:
