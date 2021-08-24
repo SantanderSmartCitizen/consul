@@ -10,6 +10,8 @@ en:
         voted:
           one: "You voted 1 budget investment"
           other: "You voted %{count} budget investments"
+    index:
+      see_stats: See stats
     investments:
       index:
         sidebar:
@@ -23,6 +25,13 @@ en:
         estimated_price: Estimated price (%{currency})
       show:
         estimated_price: "Estimated price: <strong>%{estimated_price}</strong>"
+        organization_name: "Proposed by: <strong>%{name}</strong>"
+        organization_area_name: "Competent area: <strong>%{name}</strong>"
+      share:
+        message: Check out the '%{title}' investment project featured on '%{org_name}'. "
+        message_accepting_phase: "Create an investment project too!"
+        message_balloting_phase: "You can still vote!"
+        message_other_phase: "Participate by leaving your comments!"
     progress_bar:
       max_votes: "Maximum votes allowed: <strong>%{max_votes}</strong>"
       voted: "You have voted: <strong>%{voted}</strong>"

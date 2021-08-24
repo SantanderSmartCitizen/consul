@@ -6,27 +6,9 @@
   <div id="social-share" class="sidebar-divider"></div>
   <h2 class="sidebar-title"><%= share_title %></h2>
 <% end %>
-<!--<div class="social-share-full">
-  <%= social_share_button_tag("#{title} #{setting["twitter_hashtag"]} #{setting["twitter_handle"]}",
-                              url: local_assigns[:url],
-                              image: local_assigns.fetch(:image_url, ""),
-                              desc: description,
-                              "data-twitter-title": local_assigns[:mobile]) %>
-  <a href="whatsapp://send?text=<%= mobile_url %><%= url %>"
-      class="show-for-small-only" data-action="share/whatsapp/share">
-    <span class="icon-whatsapp whatsapp"></span>
-    <span class="show-for-sr"><%= t("social.whatsapp") %></span>
-  </a>
-  
-  <a href="telegram://send?text=<%= mobile_url %><%= url %>"
-     class="show-for-small-only" class="show-for-small-only" data-action="share/whatsapp/share">
-    <span class="icon-telegram telegram"></span>
-    <span class="show-for-sr"><%= t("social.telegram") %></span>
-  </a>
-</div>-->
 
 <div class="social-share-full">
-  <%= social_share_button_tag("#{title} #{setting["twitter_hashtag"]} #{setting["twitter_handle"]}",
+  <%= social_share_button_tag(title,
                               allow_sites: %w(whatsapp_web whatsapp_app telegram facebook twitter),
                               url: local_assigns[:url],
                               image: local_assigns.fetch(:image_url, ""),

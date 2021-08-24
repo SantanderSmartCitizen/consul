@@ -215,6 +215,10 @@ class User < ApplicationRecord
     manager.present?
   end
 
+  def management?
+    administrator? || moderator? || valuator? || manager?
+  end
+
   def poll_officer?
     poll_officer.present?
   end
