@@ -21,9 +21,11 @@
                                 class: "button mr-2 mb-2" %>
                   <% end %>
 
-                  <%= link_to t("budgets.index.see_stats"),
-                              budget_stats_path(budget),
-                              class: "button mr-2 ml-2 mb-2" %>
+                  <% if can?(:read_stats, budget) %>
+                    <%= link_to t("budgets.index.see_stats"),
+                                budget_stats_path(budget),
+                                class: "button mr-2 ml-2 mb-2" %>
+                  <% end %>
 
                   <%= link_to t("budgets.index.milestones"),
                               budget_executions_path(budget),
