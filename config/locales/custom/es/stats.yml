@@ -1,0 +1,42 @@
+es:
+  stats:
+    advanced: Estadísticas de la fase final
+    by_registered_projects: Proyectos presentados
+    by_user_type: Por tipo de usuario
+    citizen_investments: Ciudadano
+    city_hall_investments: Ayuntamiento
+    by_civic_center: Por centro cívico
+    by_heading: Por distrito
+    by_population_segment: Segmento de población
+    by_gender: Por sexo
+    male: Hombres
+    female: Mujeres
+    unknown: Desconocidos
+    by_age: Por edad
+    age_less_or_equal_than: "Hasta %{finish} años"
+    age_range: "De %{start} a %{finish} años"
+    age_more_than: "De %{start} años en adelante"
+    by_feasibility: Viabilidad de proyectos
+    feasibility: Viabilidad
+    feasible: Viables
+    unfeasible: Inviables
+    by_final_phase: Proyectos que pasan a fase final
+    by_municipal_area: Por área municipal
+    by_economic_effort: Esfuerzo económico
+    total_price_of_heading: Presupuesto
+    total_price_of_winning_investments: Admitidas
+    by_budget_execution: Ejecución presupuestaria
+    registered: Presentados
+    excluded: Excluidos
+    admitted: Admitidos
+    budget: Presupuesto
+    estimated_engaged: Comprometido estimado
+    remaining: Remanente
+    by_financial_data: Datos financieros
+    by_feasibility_requirements: Nota de corte
+    meet_feasibility_requirements: Superan la nota de corte
+    dont_meet_feasibility_requirements: No superan la nota de corte
+    by_unfeasibility_reason: Motivo inviabilidad
+    without_reason: Sin motivo
+    by_execution_status: Estado ejecución
+    

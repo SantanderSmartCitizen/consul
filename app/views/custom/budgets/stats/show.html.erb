@@ -1,0 +1,37 @@
+<% provide :title do %>
+  <%= t("stats.budgets.page_title", budget: @budget.name) %>
+<% end %>
+<% provide :social_media_meta_tags do %>
+<%= render "shared/social_media_meta_tags",
+            social_url: budget_stats_url(@budget),
+            social_title: @budget.name,
+            social_description: @budget.description_for_phase("finished") %>
+<% end %>
+
+<% content_for :breadcrumb do %>
+  <%= back_link_to budgets_path %>
+<% end %>
+
+<div class="participation-stats budgets-stats">
+  <div class="expanded header">
+    <div class="row">
+      <div class="small-12 column">
+        <h2><%= @budget.name %></h2>
+      </div>
+    </div>
+  </div>
+
+  <%= render "budgets/subnav", budget: @budget %>
+
+  <div class="row text-center">
+
+    <div class="small-12 medium-12 column">
+      <h3 class="section-title"><%= t("stats.title") %></h3>
+      <%= render "shared/stats/participation", exportable: false, stats: @stats %>
+      <% if @stats.advanced? && @budget.finished? %>
+        <h3 class="section-title"><%= t("stats.advanced") %></h3>
+        <%= render "shared/stats/final_phase", exportable: false, stats: @stats %>
+      <% end %>
+    </div>
+  </div>
+</div>

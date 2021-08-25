@@ -1,0 +1,19 @@
+<% 
+	headings_total_price = stats.headings_total_price
+	series = [
+		{
+	        name: t("stats.total_price_of_heading"),
+	        data: stats.economic_effort_by_heading(headings_total_price)
+	    },
+	    {
+	        name: t("stats.total_price_of_winning_investments"),
+	        data: stats.economic_effort_of_winning_investments_by_heading(headings_total_price)
+	    }
+	]
+%>
+
+<% if series.present? %>
+	<div class="col-md-12 col-lg-8">
+		<%= render "shared/stats/column_chart", series: series, exportable: exportable, percentage: true %> 
+	</div>
+<% end %>

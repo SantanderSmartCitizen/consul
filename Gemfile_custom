@@ -7,3 +7,5 @@
 gem "bootstrap"
 gem 'ruby-saml'
 gem 'config'
+gem "apexcharts"
+gem "functionable-json"

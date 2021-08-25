@@ -1,0 +1,9 @@
+<% 
+	series = [
+		{name: t("stats.admitted"), data: stats.total_winner_investments_in_current_budget},
+		{name: t("stats.excluded"), data: stats.total_nowinner_investments_in_current_budget}
+	] 
+
+	year = stats.current_budget_year
+%>
+<%= render "shared/stats/donut_chart", series: series, title: year, exportable: exportable %>

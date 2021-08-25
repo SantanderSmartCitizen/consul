@@ -214,6 +214,9 @@ namespace :admin do
     get :proposal_notifications, on: :collection
     get :direct_messages, on: :collection
     get :polls, on: :collection
+    get :participation, on: :member
+    get :results, on: :member
+    get :comparative, on: :member
   end
 
   scope module: :gamification do

@@ -1,6 +1,6 @@
 class Budget
   class Investment < ApplicationRecord
-    SORTING_OPTIONS = { id: "id", supports: "cached_votes_up" }.freeze
+    SORTING_OPTIONS = { id: "id", supports: "cached_votes_up", ballot_lines_count: "ballot_lines_count" }.freeze
 
     include Rails.application.routes.url_helpers
     include Measurable
@@ -101,6 +101,9 @@ class Budget
     scope :by_tag,            ->(tag_name)    { tagged_with(tag_name).distinct }
 
     scope :for_render, -> { includes(:heading) }
+
+    scope :meet_feasibility_requirements,       -> { where(meets_feasibility_requirements: true) }
+    scope :dont_meet_feasibility_requirements,  -> { where(meets_feasibility_requirements: false) }
 
     def self.by_valuator(valuator_id)
       where("budget_valuator_assignments.valuator_id = ?", valuator_id).joins(:valuator_assignments)

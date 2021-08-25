@@ -79,6 +79,7 @@ module Abilities
       can :create, Budget::ValuatorAssignment
 
       can :read_admin_stats, Budget, &:balloting_or_later?
+      can :read_final_admin_stats, Budget, &:finished?
 
       can [:search, :edit, :update, :create, :index, :destroy], Banner
 

@@ -14,6 +14,10 @@
   <%= investment.total_votes %>
 </td>
 
+<td class="text-center" data-field="ballot_lines_count">
+  <%= investment.ballot_lines_count %>
+</td>
+
 <td class="small" data-field="admin">
   <% no_administrators_assigned = t("admin.budget_investments.index.no_admin_assigned") %>
   <%= link_to investment.administrator.present? ? investment.administrator.description_or_name : no_administrators_assigned,

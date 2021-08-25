@@ -14,11 +14,17 @@
               </div>
 
               <div class="small-12 medium-6 column table no-margin-bottom" data-equalizer-watch>
-                <div id="budget_<%= budget.id %>_results" class="table-cell align-middle">
+                <div id="budget_<%= budget.id %>_results" class="table-cell align-middle text-center">
                   <% if can?(:read_results, budget) %>
                     <%= link_to t("budgets.index.see_results"),
                                 budget_results_path(budget),
                                 class: "button mr-2 mb-2" %>
+                  <% end %>
+
+                  <% if can?(:read_stats, budget) %>
+                    <%= link_to t("budgets.index.see_stats"),
+                                budget_stats_path(budget),
+                                class: "button mr-2 ml-2 mb-2" %>
                   <% end %>
 
                   <%= link_to t("budgets.index.milestones"),

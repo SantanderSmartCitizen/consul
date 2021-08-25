@@ -1,4 +1,4 @@
-<ul class="no-bullet budget-timeline medium-12 large-6 column right">
+<ul class="no-bullet budget-timeline medium-12 large-6 column right margin-bottom">
   <% current_budget.published_phases.each do |phase| %>
     <li class="phase <%= "is-active" if phase == current_budget.current_phase %>">
       <h3><%= t("budgets.phase.#{phase.kind}") %></h3>
