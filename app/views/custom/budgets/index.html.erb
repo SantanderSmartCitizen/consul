@@ -173,7 +173,7 @@
           <%= render "phases", budget: current_budget %>
         </div>
 
-        <% if feature?(:allow_attached_documents) %>
+        <% if feature?(:allow_attached_documents) && current_budget.documents.present? %>
           <h2 class="w-100 text-center">Documentos</h2>
           <%= render "documents/documents",
                       documents: current_budget.documents,
