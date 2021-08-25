@@ -99,7 +99,8 @@ a {
   }
 
   &.medium {
-    font-size: $small-font-size;
+    font-size: 14px;
+    padding: 10px 30px;
   }
 }
 
@@ -1308,7 +1309,9 @@ form {
 }
 
 .author-deleted,
-.user-deleted {
+.user-deleted,
+.author-anonymous,
+.user-anonymous {
   color: rgba(0, 0, 0, 0.4);
   display: inline-block;
   font-size: rem-calc(32);

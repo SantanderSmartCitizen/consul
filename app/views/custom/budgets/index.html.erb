@@ -25,7 +25,12 @@
         <h2 class="no-margin-bottom"><%= t("budgets.phase.#{current_budget.phase}") %></h2>
 
         <%= link_to t("budgets.index.section_header.all_phases"), "#all_phases" %>
-
+        
+        <% if can?(:read_stats, current_budget) %>
+          <p class="d-inline main-color"> | </p>
+          <%= link_to t("budgets.index.see_stats"), budget_stats_path(current_budget) %>
+        <% end %>
+        
         <% if current_budget.accepting? %>
           <br>
           <% if current_user %>
@@ -167,6 +172,14 @@
           <h2 class="w-100 text-center"><%= t("budgets.index.all_phases") %></h2>
           <%= render "phases", budget: current_budget %>
         </div>
+
+        <% if feature?(:allow_attached_documents) %>
+          <h2 class="w-100 text-center">Documentos</h2>
+          <%= render "documents/documents",
+                      documents: current_budget.documents,
+                      hide_title: true %>
+        <% end %>
+
       </div>
     </div>
 

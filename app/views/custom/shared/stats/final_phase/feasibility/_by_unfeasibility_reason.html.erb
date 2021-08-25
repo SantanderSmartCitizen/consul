@@ -1,0 +1,4 @@
+<% series = stats.unfeasible_investments_by_unfeasibility_reason %>
+<% if series.present? %>
+	<%= render "shared/stats/donut_chart", series: series, title: t("stats.by_unfeasibility_reason"), exportable: exportable %>
+<% end %>

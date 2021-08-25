@@ -4,6 +4,7 @@ class Budget < ApplicationRecord
   include StatsVersionable
   include Reportable
   include Graphqlable
+  include Documentable
 
   translates :name, touch: true
   include Globalizable
@@ -59,6 +60,8 @@ class Budget < ApplicationRecord
 
   class << self; undef :open; end
   scope :open, -> { where.not(phase: "finished") }
+
+  scope :previous, lambda { |id| where("id < ?", id).order("id DESC") }
 
   def self.current
     where.not(phase: "drafting").order(:created_at).last
@@ -214,6 +217,22 @@ class Budget < ApplicationRecord
 
   def has_max_votes_system?
     voting_system == "max_votes"
+  end
+
+  def previous
+    Budget.previous(self.id).first
+  end
+
+  def has_previous?
+    Budget.previous(self.id).first.present?
+  end
+
+  def year
+    name.delete("^0-9")
+  end
+
+  def heading_names
+    headings.joins(:translations).where("budget_heading_translations.locale": I18n.locale).pluck("budget_heading_translations.name")
   end
 
   private

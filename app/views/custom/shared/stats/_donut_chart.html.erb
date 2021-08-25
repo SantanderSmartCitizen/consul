@@ -1,0 +1,99 @@
+<% 
+  options = {
+    theme: 'custom-theme',
+    chart: {
+     	type: 'donut',
+      locales: [
+        {
+          'name': 'es',
+          'options': {
+            'months': ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            'shortMonths': ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            'days': ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            'shortDays': ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            'toolbar': {
+                'exportToSVG': 'Descargar SVG',
+                'exportToPNG': 'Descargar PNG',
+                'exportToCSV': 'Descargar CSV',
+                'menu': 'Descargar',
+                'selection': 'Seleccionar',
+                'selectionZoom': 'Seleccionar Zoom',
+                'zoomIn': 'Acercar Zoom',
+                'zoomOut': 'Alejar Zoom',
+                'pan': 'Mover',
+                'reset': 'Reestablecer Zoom'
+            }
+          }
+        },
+        {
+          'name': 'en',
+          'options': {
+            'months': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            'shortMonths': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            'days': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            'shortDays': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            'toolbar': {
+                'exportToSVG': 'Download SVG',
+                'exportToPNG': 'Download PNG',
+                'exportToCSV': 'Download CSV',
+                'menu': 'Download',
+                'selection': 'Selection',
+                'selectionZoom': 'Selection Zoom',
+                'zoomIn': 'Zoom In',
+                'zoomOut': 'Zoom Out',
+                'pan': 'Panning',
+                'reset': 'Reset Zoom'
+            }
+          }
+        }
+      ],
+      defaultLocale: I18n.locale,
+     	width: '100%',
+     	height: 400,
+  		toolbar: {
+  			show: false,
+        tools: {
+          download: '<i class="fa fa-download" aria-hidden="true"></i>'
+        }
+  		}
+    },
+    dataLabels: {
+      enabled: true,
+    },
+    plotOptions: {
+      pie: {
+        customScale: 0.9,
+        donut: {
+          size: '60%'
+        },
+        offsetY: 0,
+        expandOnClick: true
+      }
+    },
+    title: {
+      text: title,
+      align: 'center',
+      floating: true,
+      offsetY: 135,
+      style: {
+        fontFamily: 'Lato',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        color: '#63889f'
+      }
+    },
+    legend: {
+      position: 'bottom',
+      horizontalAlign: 'center',
+      height: 50,
+      floating: false,
+      offsetY: 5
+    }
+  }
+
+  if defined?(exportable) && exportable.present?
+    options[:chart][:toolbar][:show] = true
+  end
+%>
+
+<%= donut_chart(series, options) %>

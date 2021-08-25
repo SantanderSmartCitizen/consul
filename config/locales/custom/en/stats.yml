@@ -1,0 +1,41 @@
+en:
+  stats:
+    advanced: Final statistics
+    by_registered_projects: Registered projects
+    by_user_type: By user type
+    citizen_investments: Citizen
+    city_hall_investments: City hall
+    by_civic_center: By civic center
+    by_heading: By district
+    by_population_segment: Population segment
+    by_gender: By gender
+    male: Male
+    female: Female
+    unknown: Unknown
+    by_age: By Age
+    age_less_or_equal_than: "Up to %{finish} years old"
+    age_range: "From %{start} to %{finish} years old"
+    age_more_than: "More than %{start} years old"
+    by_feasibility: Project feasibility
+    feasibility: Feasibility
+    feasible: Feasible
+    unfeasible: Unfeasible
+    by_final_phase: Final phase projects
+    by_municipal_area: By municipal area
+    by_economic_effort: Economic effort
+    total_price_of_heading: Budget
+    total_price_of_winning_investments: Accepted
+    by_budget_execution: Budget execution
+    registered: Registered
+    excluded: Excluded
+    admitted: Admitted
+    budget: Budget
+    estimated_engaged: Estimated engaged
+    remaining: Remaining
+    by_financial_data: Financial data
+    by_feasibility_requirements: Feasibility requirements
+    meet_feasibility_requirements: Meet the feasibility requirements
+    dont_meet_feasibility_requirements: Do not meet the feasibility requirements
+    by_unfeasibility_reason: Unfeasibility reason
+    without_reason: Without reason
+    by_execution_status: Execution status

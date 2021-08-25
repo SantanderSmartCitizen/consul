@@ -138,6 +138,9 @@ en:
       user_profile_blank: "Select a profile"
       city_hall: City hall
       citizen: Citizen
+    author_info:
+      author_anonymous: Anonymous
+      author_anonymous_detail: It is published without personal data
   users:
     login_to_comment: "You must %{signin} to leave a comment."
     login_to_continue: "You must %{signin} to continue."

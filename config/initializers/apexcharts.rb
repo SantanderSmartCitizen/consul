@@ -1,0 +1,1 @@
+ApexCharts::Theme.create "custom-theme", ["#e1af46","#91c061","#3581aa","#d58449","#accb5f","#add3f0","#eed346","#d1de57","#cee5f6"]

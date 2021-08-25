@@ -76,6 +76,10 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     inverse_of:  :author
   has_many :topics, foreign_key: :author_id, inverse_of: :author
+  
+  has_many :municipal_area_assignments, dependent: :destroy
+  has_many :municipal_areas, through: :municipal_area_assignments
+
   belongs_to :geozone
 
   validates :username, presence: true, if: :username_required?
@@ -101,6 +105,8 @@ class User < ApplicationRecord
   scope :officials,      -> { where("official_level > 0") }
   scope :male,           -> { where(gender: "male") }
   scope :female,         -> { where(gender: "female") }
+  scope :unknown_gender, -> { where("gender != 'male' and gender != 'female'") }
+  scope :civic_center,   -> { where(official_sublevel: "civic_center") }
   scope :newsletter,     -> { where(newsletter: true) }
   scope :for_render,     -> { includes(:organization) }
   scope :by_document,    ->(document_type, document_number) do
@@ -207,6 +213,10 @@ class User < ApplicationRecord
 
   def manager?
     manager.present?
+  end
+
+  def management?
+    administrator? || moderator? || valuator? || manager?
   end
 
   def poll_officer?
