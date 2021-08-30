@@ -128,6 +128,7 @@ en:
       section_footer:
         title: Help about polls/questions
       no_polls: "There are no open polls."
+      not_logged_in: "You must sign in to participate"
     show:
       back: Back to polls/questions
       evaluate: "Evaluate the poll/question"
