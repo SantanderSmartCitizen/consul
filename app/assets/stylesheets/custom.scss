@@ -685,6 +685,16 @@ a.footer-social-icons.instagram:hover {
   right: calc(50% - 30px) !important;
 }
 
+.height-auto-medium {
+  @include breakpoint(medium) {
+    height: auto !important;
+  }
+}
+
+.min-height-inherit {
+  min-height: inherit;
+}
+
 @media screen and (max-width: 39.99875em) {
   header {
     .header-bar {

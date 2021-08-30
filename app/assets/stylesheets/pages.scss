@@ -43,6 +43,10 @@
       display: inline-block;
       margin-right: $line-height / 2;
     }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 

@@ -22,16 +22,16 @@
       <% polls_by_geozone_restriction = @polls.group_by(&:geozone_restricted) %>
 
       <% if polls_by_geozone_restriction[false].present? %>
-        <h3 class="section-title-divider">
+        <h2 class="text-center">
           <span><%= t("polls.index.no_geozone_restricted") %></span>
-        </h3>
+        </h2>
         <%= render "poll_group", poll_group: polls_by_geozone_restriction[false] %>
       <% end %>
 
       <% if polls_by_geozone_restriction[true].present? %>
-        <h3 class="section-title-divider">
+        <h2 class="text-center">
           <span><%= t("polls.index.geozone_restricted") %></span>
-        </h3>
+        </h2>
         <%= render "poll_group", poll_group: polls_by_geozone_restriction[true] %>
       <% end %>
 
@@ -42,12 +42,11 @@
       </div>
     <% end %>
 
-    <div id="section_help" class="margin" data-magellan-target="section_help">
-      <p class="lead">
-        <strong><%= t("polls.index.section_footer.title") %></strong>
-      </p>
+    <div id="section_help" class="margin text-center" data-magellan-target="section_help">
+      <h2><%= t("polls.index.section_footer.title") %></h2>
       <p><%= t("polls.index.section_footer.description") %></p>
       <%= render_custom_partial "footer" %>
     </div>
+
   </div>
 </div>
