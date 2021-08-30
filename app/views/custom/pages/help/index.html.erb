@@ -8,15 +8,19 @@
 <% end %>
 
 <div>
-  <div class="row jumbo">
+  <div class="row text-center">
     <!-- <div class="small-12 medium-9 column"> -->
     <div class="column">
-      <h2 class="white-color"><%= t("pages.help.title", org: setting["org_name"]) %></h2>
+      <h2><%= t("pages.help.title", org: setting["org_name"]) %></h2>
       <p><%= t("pages.help.guide", org: setting["org_name"]) %></p>
     </div>
   </div>
 
   <%= render "pages/help/menu" %>
+</div>
+
+<div class="row separator">
+  <%= image_tag(image_path_for("body_start_separator.svg"), alt: "Body content separator")%>
 </div>
 
 <div id="more-info" class="more-info-content">
@@ -55,7 +59,7 @@
 -->
   </div>
 
-  <div class="row">
+  <div class="row section-content text-center">
     <hr>
     <div class="small-12 column">
       <%= render "pages/help/other" %>

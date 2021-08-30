@@ -636,7 +636,8 @@
 .investment-project,
 .budget-investment,
 .legislation,
-.communities-show {
+.communities-show,
+.poll {
   margin: $line-height / 4 0;
 
   .panel {
@@ -1761,7 +1762,7 @@
   border-bottom: 1px solid #eee;
 
   .column:nth-child(odd) {
-    border-right: 2px solid $text;
+    border-right: 2px solid rgba($brand, .7);
   }
 
   .answer-divider {
@@ -1848,7 +1849,7 @@
   &.with-image {
 
     @include breakpoint(medium) {
-      padding: 0 $line-height / 2 0 0;
+      /*padding: 0 $line-height / 2 0 0;*/
     }
 
     img {
@@ -1861,14 +1862,12 @@
 
 .poll,
 .poll-question {
-  border: 1px solid $border;
   margin-bottom: $line-height / 2;
-  padding: $line-height / 2;
   position: relative;
 
   .icon-poll-answer {
     border-top: 0;
-    border-bottom: 60px solid transparent;
+    /*border-bottom: 60px solid transparent;*/
     height: 0;
     position: absolute;
     right: 0;

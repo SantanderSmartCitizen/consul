@@ -16,16 +16,16 @@
   <td>
     <%= link_to t("admin.actions.edit"),
                 edit_admin_poll_path(poll),
-                class: "button hollow" %>
+                class: "button mb-2" %>
 
     <%= link_to t("admin.actions.delete"),
             admin_poll_path(poll),
             method: :delete,
             "data-confirm": t("admin.polls.destroy.alert"),
-            class: "button hollow alert" %>
+            class: "button alert mb-2" %>
 
     <%= link_to t("admin.actions.configure"),
                 admin_poll_path(poll),
-                class: "button hollow " %>
+                class: "button mb-2" %>
   </td>
 </tr>
