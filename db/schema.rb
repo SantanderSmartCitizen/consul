@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210820075448) do
+ActiveRecord::Schema.define(version: 20210914115157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "unaccent"
   enable_extension "pg_trgm"
+  enable_extension "unaccent"
 
   create_table "active_poll_translations", force: :cascade do |t|
     t.integer  "active_poll_id", null: false
@@ -177,6 +177,13 @@ ActiveRecord::Schema.define(version: 20210820075448) do
     t.index ["heading_id"], name: "index_budget_content_blocks_on_heading_id", using: :btree
   end
 
+  create_table "budget_geozones", force: :cascade do |t|
+    t.string   "name"
+    t.string   "external_code"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "budget_group_translations", force: :cascade do |t|
     t.integer  "budget_group_id", null: false
     t.string   "locale",          null: false
@@ -290,6 +297,7 @@ ActiveRecord::Schema.define(version: 20210820075448) do
     t.datetime "updated_at",      null: false
     t.text     "description"
     t.text     "summary"
+    t.string   "kind"
     t.index ["budget_phase_id"], name: "index_budget_phase_translations_on_budget_phase_id", using: :btree
     t.index ["locale"], name: "index_budget_phase_translations_on_locale", using: :btree
   end
@@ -1144,6 +1152,27 @@ ActiveRecord::Schema.define(version: 20210820075448) do
     t.datetime "emailed_at"
     t.datetime "read_at"
     t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  end
+
+  create_table "oauth_access_tokens", primary_key: "access_token", id: :string, limit: 40, force: :cascade do |t|
+    t.string   "client_id",   limit: 80,   null: false
+    t.string   "user_id",     limit: 255
+    t.datetime "expires"
+    t.string   "scope",       limit: 2000
+    t.datetime "marcatiempo"
+  end
+
+  create_table "oauth_clients", primary_key: "client_id", id: :string, limit: 80, force: :cascade do |t|
+    t.string "client_secret", limit: 80
+    t.string "redirect_uri",  limit: 2000
+    t.string "grand_types",   limit: 80
+    t.string "scope",         limit: 100
+    t.string "user_id",       limit: 80
+  end
+
+  create_table "oauth_scopes", id: false, force: :cascade do |t|
+    t.text    "scope"
+    t.integer "is_default", limit: 2
   end
 
   create_table "organizations", force: :cascade do |t|

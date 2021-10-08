@@ -110,14 +110,20 @@
       var oldId;
 
       distritos.on('mouseout', function (e) {
-        document.getElementById('info-pane').innerHTML = '';
+        /*document.getElementById('info-pane').innerHTML = '';*/
+        document.querySelectorAll(".map-info-pane").forEach(function (element, index, array) {
+          element.innerHTML = '';
+        });
         distritos.resetFeatureStyle(oldId);
       });
 
       distritos.on('mouseover', function (e) {
         oldId = e.layer.feature.id;
         var geozoneCode = e.layer.feature.properties[mapArcgisDistrictCodeField];
-        document.getElementById('info-pane').innerHTML = mapGeozones[geozoneCode]['name'];
+        /*document.getElementById('info-pane').innerHTML = mapGeozones[geozoneCode]['name'];*/
+        document.querySelectorAll(".map-info-pane").forEach(function (element, index, array) {
+          element.innerHTML = mapGeozones[geozoneCode]['name'];
+        });
 
         distritos.setFeatureStyle(e.layer.feature.id, {
           color: 'rgb(38, 89, 118)',

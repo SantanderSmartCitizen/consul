@@ -49,6 +49,7 @@ es:
         placeholder: Buscar temas de foro por título o descripción
     menu:
       budgets: Presupuestos
+      budget_geozones: Gestionar zonas presupuestarias
       polls: Encuestas/Consultas
       forums: Foros
       site_customization:
@@ -122,6 +123,12 @@ es:
         free_text: Texto libre
       new:
         title: "Crear pregunta ciudadana para la encuesta/consulta %{poll}"
+    settings:
+      index:
+        map:
+          title: Mapa de propuestas
+        budget_map:
+          title: Mapa de proyectos de gasto
     stats:
       show:
         budgets_title: Presupuestos
@@ -155,6 +162,29 @@ es:
     geozones:
       geozone:
         external_code_help: Código de respuesta para esta zona en la API del GIS
+    budget_geozones:
+      index:
+        title: Zonas presupuestarias
+        create: Crear una zona presupuestaria
+        edit: Editar
+        delete: Borrar
+      budget_geozone:
+        name: Nombre
+        external_code: Código externo
+        external_code_help: Código de respuesta para esta zona en la API del GIS
+        coordinates: Coordenadas
+        coordinates_help: Coordenadas que generarán una zona clicable en un mapa de imagen HTML
+      edit:
+        form:
+          submit_button: Guardar cambios
+        editing: Editando zona presupuestaria
+        back: Volver
+      new:
+        back: Volver
+        creating: Crear zona presupuestaria
+      delete:
+        success: Zona presupuestaria borrada correctamente
+        error: No se puede borrar la zona presupuestaria porque ya tiene elementos asociados
     gamifications:
       index:
         table_title: Juegos
