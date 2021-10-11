@@ -14,8 +14,13 @@
       </div>
 
       <div class="header-title">
-        <!-- <h1><%= t("layouts.header.title") %></h1> -->
-        <%= image_tag(image_path_for("dependent_brand_logo.png"), class: "logo-marca-dependiente hide-for-small-only", alt: t("layouts.header.dependent_brand_logo")) %>
+
+
+        <% if params[:controller].start_with?("budgets") || params[:controller].start_with?("milestones") %>
+          <%= image_tag(image_path_for("dependent_brand_logo.png"), class: "logo-marca-dependiente hide-for-small-only", alt: t("layouts.header.dependent_brand_logo")) %>
+        <% else %>
+          <h1><%= t("layouts.header.title") %></h1>
+        <% end %>
       </div>
 
       <div class="header-buttons">
