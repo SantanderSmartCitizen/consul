@@ -13,6 +13,9 @@ en:
       budget:
         voting_system: Voting system
         max_votes: Maximum number of votes
+      budget_geozone:
+        name: Name
+        external_code: External code
       user:
         login: "Email or username/alias"
         username: "Username/alias"

@@ -36,8 +36,7 @@ module MapLocationsHelper
 
   def map_info_pane
     content_tag :small, "",
-                id: "info-pane",
-                style: "position: inherit; color: rgb(39, 90, 118); font-weight: bold; float: right;min-height: 25px;";
+                class: "map-info-pane";
   end
 
   def map_location_remove_marker(map_location, text)
