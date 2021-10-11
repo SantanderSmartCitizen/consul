@@ -229,6 +229,10 @@
           <%= link_to t("admin.menu.geozones"), admin_geozones_path %>
         </li>
 
+        <li <%= "class=is-active" if controller_name == "budget_geozones" %>>
+          <%= link_to t("admin.menu.budget_geozones"), admin_budget_geozones_path %>
+        </li>
+
         <li <%= "class=is-active" if controller_name == "images" &&
                                   controller.class.parent != Admin::Poll::Questions::Answers %>>
           <%= link_to t("admin.menu.site_customization.images"), admin_site_customization_images_path %>

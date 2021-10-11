@@ -1,0 +1,33 @@
+<%= link_to t("admin.budget_geozones.index.create"),
+              new_admin_budget_geozone_path, class: "button float-right" %>
+
+<h2 class="inline-block"><%= t("admin.budget_geozones.index.title") %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t("admin.budget_geozones.budget_geozone.name") %></th>
+      <th><%= t("admin.budget_geozones.budget_geozone.external_code") %></th>
+      <th><%= t("admin.actions.actions") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @budget_geozones.each do |budget_geozone| %>
+      <tr id="<%= dom_id(budget_geozone) %>">
+        <td><%= budget_geozone.name %></td>
+        <td><%= budget_geozone.external_code %></td>
+        <td>
+          <%= link_to t("admin.budget_geozones.index.edit"),
+                      edit_admin_budget_geozone_path(budget_geozone),
+                      class: "button" %>
+
+          <%= link_to t("admin.budget_geozones.index.delete"),
+                      admin_budget_geozone_path(budget_geozone),
+                      method: :delete,
+                      class: "button alert" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -93,7 +93,7 @@
         <% unless current_budget.informing? %>
           <div class="map inline">
             <h3 class="w-100 text-center"><%= t("budgets.index.map") %></h3>
-            <%= render_map(nil, "budgets", false, nil, @budgets_coordinates) %>
+            <%= render_budget_map(nil, "budgets", false, nil, @budgets_coordinates) %>
           </div>
 
           <ul class="no-bullet margin-top">

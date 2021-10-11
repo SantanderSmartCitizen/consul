@@ -29,7 +29,7 @@ module AdminHelper
   end
 
   def menu_budgets?
-    controller_name.starts_with?("budget")
+    controller_name.starts_with?("budget") && controller_name != "budget_geozones"
   end
 
   def menu_polls?
@@ -54,7 +54,7 @@ module AdminHelper
   end
 
   def menu_settings?
-    controllers_names = ["settings", "tags", "geozones", "images", "content_blocks",
+    controllers_names = ["settings", "tags", "geozones", "budget_geozones", "images", "content_blocks",
       "local_census_records", "imports"]
     controllers_names.include?(controller_name) &&
       controller.class.parent != Admin::Poll::Questions::Answers
