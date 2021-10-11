@@ -10,4 +10,16 @@ en:
         feature_layer_url_description: "ArcGIS feature layer url"
         district_code_field: "ArcGIS district code"
         district_code_field_description: "Name of the 'district code' field in ArcGIS"
+    budget_map:
+      latitude: "Latitude"
+      latitude_description: "Latitude to show the map position"
+      longitude: "Longitude"
+      longitude_description: "Longitude to show the position of the map"
+      zoom: "Zoom"
+      zoom_description: "Zoom to show the map position"
+      arcgis:
+        feature_layer_url: "ArcGIS URL"
+        feature_layer_url_description: "ArcGIS feature layer url"
+        district_code_field: "ArcGIS district code"
+        district_code_field_description: "Name of the 'district code' field in ArcGIS"
       
