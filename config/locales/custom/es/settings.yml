@@ -21,4 +21,16 @@ es:
         feature_layer_url_description: "URL de la capa de características de ArcGIS"
         district_code_field: "Código de distrito en ArcGIS"
         district_code_field_description: "Nombre del campo 'código de distrito' en ArcGIS"
+    budget_map:
+      latitude: "Latitud"
+      latitude_description: "Latitud para mostrar la posición del mapa"
+      longitude: "Longitud"
+      longitude_description: "Longitud para mostrar la posición del mapa"
+      zoom: "Zoom"
+      zoom_description: "Zoom para mostrar la posición del mapa"
+      arcgis:
+        feature_layer_url: "URL de ArcGIS"
+        feature_layer_url_description: "URL de la capa de características de ArcGIS"
+        district_code_field: "Código de distrito en ArcGIS"
+        district_code_field_description: "Nombre del campo 'código de distrito' en ArcGIS"
       
