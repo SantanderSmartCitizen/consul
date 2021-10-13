@@ -53,4 +53,14 @@ es:
     voting_system:
       wallet: Monedero
       max_votes: Número máximo de votos
+    phase:
+      drafting: Borrador (No visible para el público)
+      informing: Información
+      accepting: Presentación de ideas
+      reviewing: Preselección ideas propuestas
+      selecting: Selección ideas propuestas finalistas
+      valuating: Evaluación y análisis de viabilidad
+      balloting: Votación popular
+      reviewing_ballots: Votación popular finalizada
+      finished: Anuncio ideas ganadoras
         

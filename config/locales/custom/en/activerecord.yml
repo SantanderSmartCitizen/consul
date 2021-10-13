@@ -53,3 +53,12 @@ en:
         allow_comments: "Allow comments"
       newsletter:
         from: "E-mail address that will appear as sending"
+      forum:
+        author: "Author"
+        description: "Content"
+        tag_list: "Topics"
+        terms_of_service: "Terms of service"
+        title: "Title"
+      forum/translation:
+        title: "Thread title"
+        description: "Thread content"

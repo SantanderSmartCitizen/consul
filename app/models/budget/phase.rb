@@ -1,8 +1,8 @@
 class Budget
   class Phase < ApplicationRecord
-    PHASE_KINDS = %w[drafting informing accepting reviewing selecting valuating publishing_prices balloting
+    PHASE_KINDS = %w[drafting informing accepting valuating reviewing selecting balloting
                 reviewing_ballots finished].freeze
-    PUBLISHED_PRICES_PHASES = %w[publishing_prices balloting reviewing_ballots finished].freeze
+    PUBLISHED_PRICES_PHASES = %w[balloting reviewing_ballots finished].freeze
     SUMMARY_MAX_LENGTH = 1000
     DESCRIPTION_MAX_LENGTH = 2000
 
@@ -52,10 +52,6 @@ class Budget
 
     def valuating_or_later?
       in_phase_or_later?("valuating")
-    end
-
-    def publishing_prices_or_later?
-      in_phase_or_later?("publishing_prices")
     end
 
     def balloting_or_later?
