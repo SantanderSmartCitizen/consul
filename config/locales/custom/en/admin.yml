@@ -35,6 +35,7 @@ en:
         button: Search
         placeholder: Search forum posts by title or description
     menu:
+      budget_geozones: Manage budget geozones
       polls: Polls/Questions
       forums: Forums
       site_customization:
@@ -99,6 +100,12 @@ en:
         title: "Edit Question"
       new:
         title: "Create question to poll/question %{poll}"
+    settings:
+      index:
+        map:
+          title: Proposal map
+        budget_map:
+          title: Budget investment map
     stats:
       show:
         budgets_title: Budgets
@@ -125,6 +132,29 @@ en:
     geozones:
       geozone:
         external_code_help: Response code for this geozone on the GIS API
+    budget_geozones:
+      index:
+        title: Budget geozone
+        create: Create budget geozone
+        edit: Edit
+        delete: Delete
+      budget_geozone:
+        name: Name
+        external_code: External code
+        external_code_help: Response code for this geozone on the GIS API
+        coordinates: Coordinates
+        coordinates_help: Coordinates that will generate a clickable area on an HTML image map
+      edit:
+        form:
+          submit_button: Save changes
+        editing: Editing budget geozone
+        back: Go back
+      new:
+        back: Go back
+        creating: Create budget geozone
+      delete:
+        success: Budget geozone successfully deleted
+        error: This budget geozone can't be deleted since there are elements attached to it
     gamifications:
       index:
         table_title: Games

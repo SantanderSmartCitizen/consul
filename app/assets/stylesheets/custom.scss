@@ -695,6 +695,13 @@ a.footer-social-icons.instagram:hover {
   min-height: inherit;
 }
 
+.map-info-pane {
+  position: inherit;
+  color: $brand;
+  font-weight: bold; 
+  float: right;
+}
+
 @media screen and (max-width: 39.99875em) {
   header {
     .header-bar {

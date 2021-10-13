@@ -139,10 +139,6 @@ class Budget < ApplicationRecord
     current_phase&.valuating_or_later?
   end
 
-  def publishing_prices_or_later?
-    current_phase&.publishing_prices_or_later?
-  end
-
   def balloting_process?
     balloting? || reviewing_ballots?
   end
