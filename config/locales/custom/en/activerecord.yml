@@ -13,6 +13,9 @@ en:
       budget:
         voting_system: Voting system
         max_votes: Maximum number of votes
+      budget_geozone:
+        name: Name
+        external_code: External code
       user:
         login: "Email or username/alias"
         username: "Username/alias"
@@ -50,3 +53,12 @@ en:
         allow_comments: "Allow comments"
       newsletter:
         from: "E-mail address that will appear as sending"
+      forum:
+        author: "Author"
+        description: "Content"
+        tag_list: "Topics"
+        terms_of_service: "Terms of service"
+        title: "Title"
+      forum/translation:
+        title: "Thread title"
+        description: "Thread content"

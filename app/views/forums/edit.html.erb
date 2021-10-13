@@ -1,7 +1,10 @@
 <div class="forum-form row">
 
   <div class="small-12 column">
-    <%= back_link_to %>
+  	
+    <% content_for :breadcrumb do %>
+      <%= back_link_to %>
+    <% end %>
 
     <div class="float-right">
       <%= link_to t("forums.edit.show_link"), @forum %>
