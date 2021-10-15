@@ -1,6 +1,26 @@
   <ul>
     <%= raw content_block("subnavigation_left", I18n.locale) %>
 
+    <% if feature?(:budgets) %>
+      <li>
+        <%= layout_menu_link_to t("layouts.header.budgets"),
+                                  budgets_path,
+                                  controller_name == "budgets" || controller_name == "investments",
+                                  accesskey: "4",
+                                  title: t("shared.go_to_page") + t("layouts.header.budgets") %>
+      </li>
+    <% end %>
+    
+    <% if feature?(:polls) %>
+      <li>
+        <%= layout_menu_link_to t("layouts.header.poll_questions"),
+                                  polls_path,
+                                  controller_name == "polls" || (controller_name == "questions" && controller.class.parent == Polls),
+                                  accesskey: "3",
+                                  title: t("shared.go_to_page") + t("layouts.header.poll_questions") %>
+      </li>
+    <% end %>
+
     <% if feature?(:debates) %>
       <li>
         <%= layout_menu_link_to t("layouts.header.debates"),
@@ -19,27 +39,8 @@
                                 title: t("shared.go_to_page") + t("layouts.header.proposals") %>
       </li>
     <% end %>
-    <% if feature?(:polls) %>
-      <li>
-        <%= layout_menu_link_to t("layouts.header.poll_questions"),
-                                  polls_path,
-                                  controller_name == "polls" || (controller_name == "questions" && controller.class.parent == Polls),
-                                  accesskey: "3",
-                                  title: t("shared.go_to_page") + t("layouts.header.poll_questions") %>
-      </li>
-    <% end %>
-    <% if feature?(:budgets) %>
-      <li>
-        <%= layout_menu_link_to t("layouts.header.budgets"),
-                                  budgets_path,
-                                  controller_name == "budgets" || controller_name == "investments",
-                                  accesskey: "4",
-                                  title: t("shared.go_to_page") + t("layouts.header.budgets") %>
-      </li>
-    <% end %>
 
-    <!-- jrsanchez: Para desactivar opcion de menu "Legislacion Colaborativa": UPDATE settings SET value = null WHERE key = 'process.legislation'; -->
-     <% if feature?(:legislation) %>
+    <% if feature?(:legislation) %>
       <li>
         <%= layout_menu_link_to t("layouts.header.collaborative_legislation"),
                                 legislation_processes_path,
@@ -47,10 +48,6 @@
                                 accesskey: "5" %>
       </li>
     <% end %>
-
-    <!-- jrsanchez: Activar opcion de menu "Foro": INSERT INTO settings (key, value) VALUES ('process.forum','t'); -->
-    
-    <!-- forum_index_url -->
 
     <% if feature?(:forums) %>
       <li>
