@@ -35,7 +35,7 @@ class SamlSessionsController < Devise::SessionsController
       
       logger.info "SessionIndex = '#{response_to_validate.sessionindex}'"
 
-      if response_to_validate.is_valid? && username = response_to_validate.nameid
+      if response_to_validate.is_valid? && username = response_to_validate.nameid.downcase
 
         session[:saml_session_index] = response_to_validate.sessionindex
 
