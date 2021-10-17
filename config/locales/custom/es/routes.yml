@@ -1,6 +1,7 @@
 es:
   routes:
     accessibility: accesibilidad
+    account: cuenta
     allegations: alegaciones
     budgets: presupuestos
     debates: debates
@@ -11,6 +12,7 @@ es:
     help: ayuda
     investments: ideas
     legislation: legislacion
+    map: mapa
     new: nuevo
     processes: procesos
     polls: encuestas_consultas

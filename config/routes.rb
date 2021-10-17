@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   localized do
+    draw :account
     draw :budget
     draw :debate
     draw :forum
@@ -11,9 +12,9 @@ Rails.application.routes.draw do
     draw :legislation
     draw :poll
     draw :proposal
+    draw :user
   end
 
-  draw :account
   draw :admin
   draw :annotation
   draw :comment
@@ -28,7 +29,6 @@ Rails.application.routes.draw do
   draw :officing
   draw :related_content
   draw :tag
-  draw :user
   draw :valuation
   draw :verification
 
