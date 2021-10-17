@@ -1,0 +1,18 @@
+es:
+  routes:
+    accessibility: accesibilidad
+    allegations: alegaciones
+    budgets: presupuestos
+    debates: debates
+    draft_versions: versiones_borrador
+    edit: editar
+    forums: foro
+    gamifications: gamificacion
+    help: ayuda
+    investments: ideas
+    legislation: legislacion
+    new: nuevo
+    processes: procesos
+    polls: encuestas_consultas
+    proposals: propuestas
+    users: usuarios
