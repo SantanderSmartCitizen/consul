@@ -1,6 +1,7 @@
 en:
   routes:
     accessibility: accessibility
+    account: account
     allegations: allegations
     budgets: budgets
     debates: debates
