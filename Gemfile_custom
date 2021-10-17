@@ -7,3 +7,4 @@
 gem "bootstrap"
 gem "apexcharts"
 gem "functionable-json"
+gem "route_translator"
