@@ -21,15 +21,15 @@
     <%= render "welcome/featured" %>
   </div>
 
-  <div class="row separator">
-    <%= image_tag(image_path_for("body_start_separator.svg"), alt: "Body start separator") %>
-  </div>
+  <%= render "shared/right_separator" %>
 
   <%= render "welcome/indicators" %>
 
-  <div class="row separator">
-    <%= image_tag(image_path_for("body_content_separator.svg"), alt: "Body content separator") %>
-  </div>
+  <%= render "shared/left_separator" %>
+
+  <%= render "welcome/slogan" %>
+
+  <%= render "shared/right_separator" %>
 
   <%= render "welcome/complaints_and_suggestions" %>
 

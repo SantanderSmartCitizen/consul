@@ -332,7 +332,9 @@
 .milestone-edit,
 .image-form,
 .dashboard-action-form,
-.edit_budget {
+.edit_budget,
+.edit_header_slide,
+.new_header_slide {
   @include direct-uploads;
 }
 

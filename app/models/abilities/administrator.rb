@@ -83,6 +83,8 @@ module Abilities
 
       can [:search, :edit, :update, :create, :index, :destroy], Banner
 
+      can [:search, :edit, :update, :create, :index, :destroy], HeaderSlide
+
       can [:index, :create, :edit, :update, :destroy], Geozone
       can [:index, :create, :edit, :update, :destroy], BudgetGeozone
 

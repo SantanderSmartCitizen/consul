@@ -21,6 +21,7 @@ class ForumsController < ApplicationController
 
   def index_customization
     @featured_forums = @forums.featured
+    @header_slides = HeaderSlide.forums
   end
 
   def show
