@@ -12,6 +12,7 @@ class PollsController < ApplicationController
   ::Poll::Answer # trigger autoload
 
   def index
+    @header_slides = HeaderSlide.polls
     @polls = Kaminari.paginate_array(
       @polls.created_by_admin.not_budget.only_users.send(@current_filter).includes(:geozones).sort_for_list
     ).page(params[:page])

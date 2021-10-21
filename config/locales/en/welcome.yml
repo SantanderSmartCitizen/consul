@@ -20,11 +20,12 @@ en:
       description_1: Some quick example text to build on the card title and make up the bulk of the card's content.
       description_2: Some quick example text to build on the card title and make up the bulk of the card's content.
       description_3: Some quick example text to build on the card title and make up the bulk of the card's content.
-    complaints_and_suggestions:
+    slogan:
       initiative:
         title: "<b>Santander a tu alcance</b>, participa y haz crecer la ciudad"
         description: "Queremos que seas partícipe de todo lo que ocurra en Santander: colabora en decisiones de la ciudad, crea debates, participa en propuestas y decide en qué gastar parte de los presupuestos municipales."
         button: The initiative
+    complaints_and_suggestions:
       debates:
         title: Discussions
         description: Find, discuss and share what we think is important in our city.

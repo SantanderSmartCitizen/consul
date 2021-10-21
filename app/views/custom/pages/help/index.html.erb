@@ -3,6 +3,8 @@
   <%= render "shared/canonical", href: help_url %>
 <% end %>
 
+<% @header_slides = HeaderSlide.help %>
+
 <% if has_banners? %>
   <%= render "shared/banner" %>
 <% end %>
@@ -19,9 +21,7 @@
   <%= render "pages/help/menu" %>
 </div>
 
-<div class="row separator">
-  <%= image_tag(image_path_for("body_start_separator.svg"), alt: "Body content separator")%>
-</div>
+<%= render "shared/right_separator" %>
 
 <div id="more-info" class="more-info-content">
   <div class="row">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210914115157) do
+ActiveRecord::Schema.define(version: 20211019115949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -780,6 +780,21 @@ ActiveRecord::Schema.define(version: 20210914115157) do
     t.integer "poll_id"
     t.index ["geozone_id"], name: "index_geozones_polls_on_geozone_id", using: :btree
     t.index ["poll_id"], name: "index_geozones_polls_on_poll_id", using: :btree
+  end
+
+  create_table "header_slide_translations", force: :cascade do |t|
+    t.integer  "header_slide_id"
+    t.string   "locale"
+    t.string   "title"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["header_slide_id"], name: "index_header_slide_translations_on_header_slide_id", using: :btree
+  end
+
+  create_table "header_slides", force: :cascade do |t|
+    t.string   "page"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "i18n_content_translations", force: :cascade do |t|

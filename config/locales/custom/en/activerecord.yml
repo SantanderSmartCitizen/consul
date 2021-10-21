@@ -9,6 +9,9 @@ en:
       poll:
         one: "Poll/Question"
         other: "Polls/Questions"
+      header_slide:
+        one: "Image"
+        other: "Images"
     attributes:
       budget:
         voting_system: Voting system
@@ -62,3 +65,7 @@ en:
       forum/translation:
         title: "Thread title"
         description: "Thread content"
+      header_slide:
+        page: "Section where it will appear"
+      header_slide/translation:
+        title: "Title"

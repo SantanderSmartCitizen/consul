@@ -27,6 +27,9 @@ es:
       legislation/annotation:
         one: "Proceso/Anotación"
         other: "Proceso/Anotaciones"
+      header_slide:
+        one: "Imagen"
+        other: "Imágenes"
     attributes:
       budget:
         voting_system: Sistema de votación
@@ -80,3 +83,7 @@ es:
       forum/translation:
         title: "Título del tema"
         description: "Contenido del tema"
+      header_slide:
+        page: "Sección en la que aparece"
+      header_slide/translation:
+        title: "Título"

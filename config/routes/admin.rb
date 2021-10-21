@@ -93,6 +93,10 @@ namespace :admin do
     collection { get :search }
   end
 
+  resources :header_slides, only: [:index, :new, :create, :edit, :update, :destroy] do
+    collection { get :search }
+  end
+
   resources :hidden_comments, only: :index do
     member do
       put :restore

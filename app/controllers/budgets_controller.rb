@@ -18,6 +18,7 @@ class BudgetsController < ApplicationController
     @finished_budgets = @budgets.finished.order(created_at: :desc)
     @budgets_coordinates = current_budget_map_locations
     @banners = Banner.in_section("budgets").with_active
+    @header_slides = HeaderSlide.budgets
   end
 
   private
