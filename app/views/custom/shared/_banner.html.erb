@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-12 flexslider banner-slider">
+    <ul class="slides">
+      <% @banners.each do |banner| %>
+        <li>
+          <div class="flex-caption banner text-center">
+          	<%= sanitize banner_target_link(banner), attributes: %w[href] %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
