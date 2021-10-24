@@ -1,3 +1,7 @@
+<% if has_banners? %>
+  <%= render "shared/banner" %>
+<% end %>
+
 <% provide :title do %><%= t("polls.index.title") %><% end %>
 
 <%= render_custom_partial "meta_description" %>

@@ -1,9 +1,18 @@
 es:
   admin:
     banners:
+      index:
+        table:
+          title: Título
+        edit: Editar
+        delete: Eliminar
       banner:
         sections:
+          homepage: Página principal
           budgets: Presupuestos
+          polls: Encuestas/Consultas
+          legislation_processes: Procesos
+          forums: Foro
     budgets:
       index:
         title: Presupuestos
@@ -169,7 +178,7 @@ es:
         title: Zonas presupuestarias
         create: Crear una zona presupuestaria
         edit: Editar
-        delete: Borrar
+        delete: Eliminar
       budget_geozone:
         name: Nombre
         external_code: Código externo
@@ -386,7 +395,7 @@ es:
         actions: Acciones
         draft: Borrador
         edit: Editar
-        delete: Borrar
+        delete: Eliminar
         preview: Previsualizar
         empty_newsletters: No hay notificaciones por email para mostrar
       new:

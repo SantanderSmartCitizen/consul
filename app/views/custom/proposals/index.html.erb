@@ -1,3 +1,7 @@
+<% if has_banners? %>
+  <%= render "shared/banner" %>
+<% end %>
+
 <% provide :title do %><%= t("proposals.index.title") %><% end %>
 <% content_for :header_addon do %>
 <!--
@@ -48,10 +52,6 @@
 
   <div class="row">
     <div id="proposals" class="proposals-list small-12 medium-9 column">
-
-      <% if has_banners? %>
-        <%= render "shared/banner" %>
-      <% end %>
 
       <% if show_featured_proposals? %>
         <div id="featured-proposals" class="row featured-proposals">

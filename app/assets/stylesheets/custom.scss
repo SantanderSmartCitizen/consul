@@ -718,6 +718,20 @@ a.footer-social-icons.instagram:hover {
       color: white !important;
     }
   }
+  &.banner-slider{
+    .flex-direction-nav a {
+      &::before {
+        color: #5a839d !important;
+      }
+    }
+    a {
+      &:hover {
+        h3 {
+          color: inherit;
+        }
+      }
+    }
+  }
 
   .flex-control-nav {
     display: none;
@@ -736,6 +750,12 @@ a.footer-social-icons.instagram:hover {
     border-radius: 0 30px 0 0;
     position: absolute;
     margin: 0;
+    &.banner {
+      position: inherit;
+      border-radius: 6px;
+      padding: 2em;
+      background-color: #d2e6f7;
+    }
   }
 }
 
