@@ -12,6 +12,9 @@ en:
       header_slide:
         one: "Image"
         other: "Images"
+      event:
+        one: "Event"
+        other: "Events"
     attributes:
       budget:
         voting_system: Voting system
@@ -69,3 +72,9 @@ en:
         page: "Section where it will appear"
       header_slide/translation:
         title: "Title"
+      event:
+        start_time: "Start date"
+        end_time: "End date"
+      event/translation:
+        title: "Title"
+        description: "Description"

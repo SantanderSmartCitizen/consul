@@ -75,6 +75,7 @@ es:
       newsletters: Notificaciones por email
       header_slides: Carrusel de imágenes
       banner: Carrusel de banners
+      events: Gestor de eventos
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -453,3 +454,23 @@ es:
           submit_button: Guardar cambios
       new:
         creating: Añadir imagen
+    events:
+      index:
+        title: Gestor de eventos
+        create: Añadir evento
+        edit: Editar
+        delete: Eliminar
+        table:
+          title: Título
+          starts_at: Fecha inicio
+          ends_at: Fecha fin
+        filters:
+          all: Todos
+          previous: Anteriores
+          next: Siguientes
+      edit:
+        editing: Editar evento
+        form:
+          submit_button: Guardar cambios
+      new:
+        creating: Añadir evento

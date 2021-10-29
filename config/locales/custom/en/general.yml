@@ -142,6 +142,8 @@ en:
     author_info:
       author_anonymous: Anonymous
       author_anonymous_detail: It is published without personal data
+    events:
+      title: Events
   users:
     show:
       deleted_forum: This thread has been deleted
@@ -198,3 +200,6 @@ en:
       created: "You've published a proposal!"
       share:
         view_proposal: Go to proposal
+  simple_calendar:
+    previous: "<"
+    next: ">"

@@ -97,6 +97,10 @@ namespace :admin do
     collection { get :search }
   end
 
+  resources :events, only: [:index, :new, :create, :edit, :update, :destroy] do
+    collection { get :search }
+  end
+
   resources :hidden_comments, only: :index do
     member do
       put :restore

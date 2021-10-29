@@ -27,6 +27,7 @@ module Abilities
       can [:read, :map, :share], Legislation::Proposal
       can [:search, :comments, :read, :create, :new_comment], Legislation::Annotation
       can :read, Milestone
+      can :read, Event
     end
   end
 end

@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="w-100 text-center">
+		<h2 id="eventos"><%= t(".title") %></h2>
+	</div>
+
+	<%= month_calendar events: @events do |date, events|  %>
+		<%= date.day %>
+		<% events.each do |event| %>
+			<%= link_to event.title, event, class: "event" %>
+		<% end %>
+	<% end %>
+
+</div>
