@@ -65,6 +65,7 @@ en:
       newsletters: Email notifications
       header_slides: Image carousel
       banner: Banner carousel
+      events: Event manager
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -420,3 +421,23 @@ en:
           submit_button: Save changes
       new:
         creating: Create image
+    events:
+      index:
+        title: Event manager
+        create: Create event
+        edit: Edit
+        delete: Delete
+        table:
+          title: Title
+          starts_at: Start date
+          ends_at: End date
+        filters:
+          all: All
+          previous: Previous
+          next: next
+      edit:
+        editing: Edit event
+        form:
+          submit_button: Save changes
+      new:
+        creating: Create event

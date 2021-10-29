@@ -1,0 +1,3 @@
+<h1><%= @event.title %></h1>
+<%= render_image(@event.image, :large, true) if @event.image.present? %>
+<%= auto_link_already_sanitized_html wysiwyg(@event.description) %>

@@ -1,0 +1,47 @@
+<%= render "shared/globalize_locales", resource: @event %>
+
+<%= translatable_form_for [:admin, @event] do |f| %>
+
+  <%= render "shared/errors", resource: @event %>
+
+  <div class="row">
+    <%= f.translatable_fields do |translations_form| %>
+      <div class="small-12 medium-6 column">
+        <%= translations_form.text_field :title %>
+      </div>
+
+      <div class="small-12 column">
+        <%= translations_form.text_area :description, class: "html-area admin" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <% start_time = @event.start_time.present? ? l(@event.start_time.to_date) : nil %>
+    <div class="small-12 medium-3 column">
+      <%= f.text_field :start_time,
+                        value: start_time,
+                        class: "js-calendar-full",
+                        :format => :datetime %>
+    </div>
+    <% end_time = @event.end_time.present? ? l(@event.end_time.to_date) : nil %>
+    <div class="small-12 medium-3 column">
+      <%= f.text_field :end_time,
+                        value: end_time,
+                        class: "js-calendar-full" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 column">
+      <%= render "images/nested_image", imageable: @event, f: f %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="actions small-12 medium-3 column">
+      <%= f.submit(class: "button expanded", value: t("admin.events.edit.form.submit_button")) %>
+    </div>
+  </div>
+
+<% end %>
