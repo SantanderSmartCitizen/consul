@@ -85,6 +85,8 @@ module Abilities
 
       can [:search, :edit, :update, :create, :index, :destroy], HeaderSlide
 
+      can [:search, :edit, :update, :create, :index, :destroy], Event
+
       can [:index, :create, :edit, :update, :destroy], Geozone
       can [:index, :create, :edit, :update, :destroy], BudgetGeozone
 

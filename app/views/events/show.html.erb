@@ -1,0 +1,41 @@
+<% preview = false unless local_assigns.has_key? :preview %>
+<% provide :title do %><%= @event.title %><% end %>
+<% content_for :meta_description do %><%= @event.description %><% end %>
+<% provide :social_media_meta_tags do %>
+  <%= render "shared/social_media_meta_tags",
+              social_url: event_url(@event),
+              social_title: @event.title,
+              social_description: @event.description,
+              twitter_image_url: (@event.image.present? ? @event.image_url(:thumb) : nil),
+              og_image_url: (@event.image.present? ? @event.image_url(:thumb) : nil) %>
+<% end %>
+<% content_for :canonical do %>
+  <%= render "shared/canonical", href: event_url(@event) %>
+<% end %>
+
+<% content_for :breadcrumb do %>
+	<%= back_link_to unless preview %>
+<% end %>
+
+<div class="event-show">
+  <div id="<%= dom_id(@event) %>" class="row">
+
+    <div class="small-12 medium-9 column">
+      <%= render "events/info", event: @event %>
+    </div>
+
+    <% unless preview %>
+      <aside class="small-12 medium-3 column">
+        <%= render "events/social_share", event: @event, share_title: t("events.show.share") %>
+      </aside>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+
+
+
+

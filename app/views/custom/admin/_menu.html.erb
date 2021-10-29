@@ -107,6 +107,10 @@
           <%= link_to t("admin.menu.site_customization.information_texts"), admin_site_customization_information_texts_path %>
         </li>
 
+        <li <%= "class=is-active" if controller_name == "events" %>>
+          <%= link_to t("admin.menu.events"), admin_events_path %>
+        </li>
+
       </ul>
     </li>
 

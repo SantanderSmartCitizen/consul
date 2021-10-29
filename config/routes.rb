@@ -57,4 +57,6 @@ Rails.application.routes.draw do
     resources :pages, path: "/", only: [:show]
   end
 
+  resources :events, only: [:index, :show]
+
 end

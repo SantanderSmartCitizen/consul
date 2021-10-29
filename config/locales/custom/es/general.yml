@@ -155,6 +155,8 @@ es:
     author_info:
       author_anonymous: Anónimo
       author_anonymous_detail: Se publica sin datos personales
+    events:
+      title: Eventos
   users:
     show:
       deleted_forum: Este tema ha sido eliminado
@@ -217,3 +219,6 @@ es:
       created: "¡Has publicado una propuesta!"
       share:
         view_proposal: Acceder a propuesta
+  simple_calendar:
+    previous: "<"
+    next: ">"

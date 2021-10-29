@@ -750,6 +750,9 @@ a.footer-social-icons.instagram:hover {
     border-radius: 0 30px 0 0;
     position: absolute;
     margin: 0;
+    background: transparent;
+    color: white;
+    text-shadow: 1px 1px black;
     &.banner {
       position: inherit;
       border-radius: 6px;
@@ -763,6 +766,79 @@ a.footer-social-icons.instagram:hover {
   &:last-child:not(:first-child) {
     float: left;
   }
+}
+
+.simple-calendar {
+  width: 100%;
+  .calendar-heading {
+    width: 100%;
+    background-color: rgba($brand, 0.7);
+    color: white;
+    border-radius: 15px;
+    font-size: 16pt;
+    text-align: center;
+    a {
+      font-size: 20px;
+      color: white;
+      font-weight: bold;
+      &:first-child {
+        float: left;
+        margin-left: 10px;
+      }
+      &:last-child {
+        float: right;
+        margin-right: 10px;
+      }
+    }
+  }
+  table {
+    border: none !important;
+    color: $brand;
+    thead {
+      border: none;
+      th {
+        border: none;
+        background: white;
+        color: $brand;
+        text-align: center;
+      }
+    }
+    td {
+      padding: 4px;
+    }
+    .event {
+      font-weight: normal;
+      background: rgba($brand, 0.7);
+      color: white;
+      border-radius: 3px;
+      padding: 0 3px;
+      text-align: initial;
+      display: block;
+    }
+    .prev-month,
+    .next-month {
+      .event {
+        background: rgba($brand, 0.4);
+      }
+    }
+  }
+  .prev-month,
+  .next-month {
+    color: rgb(222, 222, 222) !important;
+    background: rgb(245, 245, 245) !important;
+  }
+  .day {
+    color: $brand;
+    text-align: end;
+  }
+  .today {
+    font-weight: bold;
+    background: rgb(209, 222, 87) !important;
+  }
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: white;
 }
 
 @media screen and (max-width: 39.99875em) {
