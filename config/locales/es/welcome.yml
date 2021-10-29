@@ -13,11 +13,25 @@ es:
         title: Procesos abiertos
         see_button: Ver proceso
         see_all_button: Ver todos los procesos
+    featured_processes:
+      title: Procesos participativos
+      city_hall_proposals:
+        title: Propuestas Ayuntamiento
+        see_button: Ver propuestas Ayuntamiento
+        summary: Ver propuestas creadas por el Ayuntamiento
+      citizen_proposals:
+        title: Propuestas ciudadanos
+        see_button: Ver propuestas ciudadanos
+        summary: Ver propuestas creadas por los ciudadanos
+      open_processes:
+        title: Procesos abiertos
+        see_button: Ver procesos abiertos
+        summary: Ver todos los procesos abiertos
     indicators:
-      title: Indicadores
-      subtitle: Lorem ipsum dolor
+      title: Propuestas de gasto
+      subtitle: (Presupuesto 2018)
       general_description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pellentesque efficitur ipsum et dignissim. Donec ut ipsum eleifend, lobortis mauris quis, luctus felis. Vivamus ullamcorper lobortis mollis. Sed imperdiet eros est, in lacinia nulla gravida a. Donec et purus sollicitudin, condimentum nibh sit amet, convallis odio.
-      description_1: Some quick example text to build on the card title and make up the bulk of the card's content.
+      description_1: Propuestas de gasto presentadas
       description_2: Some quick example text to build on the card title and make up the bulk of the card's content.
       description_3: Some quick example text to build on the card title and make up the bulk of the card's content.
     slogan:

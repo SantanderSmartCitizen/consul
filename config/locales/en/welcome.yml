@@ -13,6 +13,20 @@ en:
         title: Open processes
         see_button: See process
         see_all_button: See all processes
+    featured_processes:
+      title: Participatory processes
+      city_hall_proposals:
+        title: City hall proposals
+        see_button: See city hall proposals
+        summary: See proposals created by the city hall
+      citizen_proposals:
+        title: Citizen proposals
+        see_button: See citizen proposals
+        summary: See proposals created by the citizens
+      open_processes:
+        title: Open processes
+        see_button: See open processes
+        summary: See all open processes
     indicators:
       title: Indicators
       subtitle: Lorem ipsum dolor

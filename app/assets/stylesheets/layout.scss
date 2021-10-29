@@ -686,7 +686,7 @@ header {
   @include breakpoint(medium) {
     width: 100%;
     margin-top: 74px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
   }
 
   ul {
@@ -2837,6 +2837,7 @@ table {
   .card {
     border: 0;
     overflow: visible;
+    margin: 0;
 
     a {
 
@@ -2872,15 +2873,16 @@ table {
       margin: 0;
       color: rgba(0, 0, 0, 0.7);
       font-weight: bold;
-      font-size: 16pt;
+      font-size: 16px;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
+      text-transform: uppercase;
     }
     .description {
       margin: 0;
       color: rgba(0, 0, 0, 0.7);
-      font-size: 12pt;
+      font-size: 14px;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
