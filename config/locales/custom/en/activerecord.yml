@@ -19,6 +19,7 @@ en:
       budget:
         voting_system: Voting system
         max_votes: Maximum number of votes
+        legal_bases_page: Legal bases URL
       budget_geozone:
         name: Name
         external_code: External code

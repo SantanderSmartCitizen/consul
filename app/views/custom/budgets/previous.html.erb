@@ -1,0 +1,36 @@
+<% provide :title do %><%= t("budgets.previous_budgets.title") %><% end %>
+
+<div class="row">
+  <h2 class="w-100 text-center mb-4"><%= t("budgets.previous_budgets.title") %></h2>
+</div>
+
+<div class="row center">
+  <% @previous_budgets.each do |budget| %>
+
+    <div class="small-12 medium-6 large-4 column">
+      <div class="panel previous-budgets">
+        <h3 class="text-center mb-4"><%= budget.name %></h3>
+        <div id="previous_budget_<%= budget.id %>">
+          <% if can?(:read_results, budget) %>
+            <%= link_to t("budgets.previous_budgets.results"),
+                        budget_results_path(budget),
+                        class: "button expanded mb-3" %>
+          <% end %>
+
+          <% if can?(:read_stats, budget) %>
+            <%= link_to t("budgets.previous_budgets.stats"),
+                        budget_stats_path(budget),
+                        class: "button expanded mb-3" %>
+          <% end %>
+
+          <% if can?(:read_executions, budget) %>
+            <%= link_to t("budgets.previous_budgets.milestones"),
+                        budget_executions_path(budget),
+                        class: "button expanded mb-3" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+  <% end %>
+</div>

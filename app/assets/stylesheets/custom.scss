@@ -109,6 +109,15 @@ a {
 
 .row {
 	max-width: 1200px;
+  &.center {
+    display: block;
+    text-align:center;
+    .column {
+      margin: inherit !important;
+      float: inherit !important;
+      display: inline-grid;
+    }
+  }
 }
 
 .delimiter {
@@ -254,7 +263,7 @@ label {
 }
 
 .dropdown-menu {
-  transform: translate3d(-6px, 49px, 0px)!important;
+  transform: translate3d(-6px, 35px, 0px)!important;
 }
 
 header {
@@ -357,6 +366,10 @@ header {
       color: $brand;
     }
   }
+}
+
+.nav-link {
+  padding: 0;
 }
 
 footer {
@@ -565,6 +578,14 @@ a.footer-social-icons.instagram:hover {
   color: rgba($brand,0.7);
 }
 
+.dropdown-item {
+  &.active,
+  &:active {
+    background-color: transparent;
+    color: $brand;
+  }
+}
+
 #progress{
   height: 2rem;
   border-radius: 20px;
@@ -578,6 +599,15 @@ a.footer-social-icons.instagram:hover {
   width: 80px;
   margin: 0 auto;
   margin-bottom: 10px;
+}
+
+.panel {
+  &.previous-budgets {
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 11px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .jumbo {
@@ -867,3 +897,14 @@ a.footer-social-icons.instagram:hover {
   }
 }
 
+@media print, screen and (min-width: 40em) {
+  .medium-6 {
+    width: 49%;
+  }
+}
+
+@media print, screen and (min-width: 64em) {
+  .large-4 {
+    width: 33%;
+  }
+}

@@ -73,6 +73,7 @@ class Admin::BudgetsController < Admin::BaseController
                           :max_votes,
                           :phase,
                           :currency_symbol,
+                          :legal_bases_page,
                           administrator_ids: [],
                           valuator_ids: [],
                           documents_attributes: documents_attributes

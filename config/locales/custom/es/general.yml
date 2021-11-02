@@ -106,6 +106,8 @@ es:
       proposals: Propuestas
       poll_questions: Encuestas/Consultas
       budgets: Presupuestos
+      legal_bases: Bases legales
+      check_ballot: Mis votos
       forum: Foro
       moderation: Moderación
       notification_item:

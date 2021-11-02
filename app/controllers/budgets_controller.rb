@@ -21,6 +21,10 @@ class BudgetsController < ApplicationController
     @header_slides = HeaderSlide.budgets
   end
 
+  def previous
+    @previous_budgets = Budget.previous(Budget.current.id)
+  end
+
   private
 
     def load_budget

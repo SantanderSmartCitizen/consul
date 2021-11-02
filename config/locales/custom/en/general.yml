@@ -105,6 +105,8 @@ en:
       proposals: Proposals
       poll_questions: Polls/questions
       budgets: Budgets
+      legal_bases: Legal bases
+      check_ballot: my ballot
       forum: Forum
       notification_item:
         new_notifications:
