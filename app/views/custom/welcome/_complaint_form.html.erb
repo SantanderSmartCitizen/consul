@@ -21,11 +21,18 @@
     </div>
 
     <div class="complaint-form">
-      <%= form_for :post, url: root_path, method: :send_complaints do |f| %>
-        <%= f.text_field :complaint_sugestion %>
-        <%= f.text_field :department %>
+      <%= form_for @complaint, url: welcome_path, method: :send_complaint do |f| %>
+        <div class="row">
+          <div class="small-6 pr-3">
+            <%= f.select :type, ["Queja", "Sugerencia"] %>
+          </div>
+          <div class="small-6">
+            <%= f.select :department, ["SJ Fomento", "Vivienda"] %>
+          </div>
+        </div>
+        
         <%= f.text_field :subject %>
-        <%= f.text_field :body %>
+        <%= f.text_area :body %>
         <%= f.submit(class: "button expanded float-right", value: t("welcome.complaint_form.submit")) %>
       <% end %>
     </div>

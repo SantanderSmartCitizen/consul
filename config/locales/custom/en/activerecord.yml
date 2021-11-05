@@ -79,3 +79,8 @@ en:
       event/translation:
         title: "Title"
         description: "Description"
+      complaint:
+        type: Type
+        department: Department
+        subject: Subject
+        body: Text
