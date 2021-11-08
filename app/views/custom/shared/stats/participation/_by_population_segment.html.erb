@@ -1,0 +1,7 @@
+  <div id="by_population_segment" class="stats-group">
+    <h4><%= t("stats.by_population_segment") %></h4>
+    <div class="row justify-content-center">
+    	<%= render "shared/stats/participation/population_segment/by_gender", stats: stats, exportable: exportable %>
+    	<%= render "shared/stats/participation/population_segment/by_age", stats: stats, exportable: exportable %>
+   	</div>
+  </div>
