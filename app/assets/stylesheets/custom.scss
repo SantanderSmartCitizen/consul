@@ -118,6 +118,9 @@ a {
       display: inline-grid;
     }
   }
+  &.same-height {
+    display: flex;
+  }
 }
 
 .delimiter {
@@ -898,7 +901,7 @@ a.footer-social-icons.instagram:hover {
     }
   }
   .service-description {
-    padding-top: 10px;
+    padding: 10px;
     p {
       font-size: 16px;
       color: #333;
@@ -907,7 +910,6 @@ a.footer-social-icons.instagram:hover {
 }
 
 .complaint-form {
-  padding-top: 10px;
 }
 
 @media screen and (max-width: 39.99875em) {
@@ -945,5 +947,8 @@ a.footer-social-icons.instagram:hover {
 @media print, screen and (min-width: 64em) {
   .large-4 {
     width: 33%;
+  }
+  .large-border-left {
+    border-left: 1px solid $border;
   }
 }

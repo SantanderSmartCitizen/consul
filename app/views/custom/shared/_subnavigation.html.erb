@@ -6,7 +6,7 @@
       <% if current_budget.present? %>
         <li class="dropdown">
           <a class="nav-link dropdown-toggle <%= 'is-active' if controller_name == 'budgets' || controller_name == 'investments' %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= t("layouts.header.budgets") %>
+            <%= t("layouts.header.budgets.title") %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
@@ -17,51 +17,62 @@
                         class: "dropdown-item" %>
 
             <% if current_budget.legal_bases_page.present? %> 
-              <%= link_to t("layouts.header.legal_bases"), 
+              <%= link_to t("layouts.header.budgets.legal_bases"), 
                           page_path(current_budget.legal_bases_page),
-                          title: t("shared.go_to_page") + t("layouts.header.legal_bases"),
+                          title: t("shared.go_to_page") + t("layouts.header.budgets.legal_bases"),
                           class: "dropdown-item" %>
             <% end %>
 
             <% if user_signed_in? && current_budget.balloting? %>
-              <%= link_to t("layouts.header.check_ballot"),
+              <%= link_to t("layouts.header.budgets.check_ballot"),
                           budget_ballot_path(current_budget),
-                          title: t("shared.go_to_page") + t("layouts.header.check_ballot"),
+                          title: t("shared.go_to_page") + t("layouts.header.budgets.check_ballot"),
                           class: "dropdown-item" %>
             <% end %>
 
             <% if current_budget.has_previous? %>
               <div class="dropdown-divider"></div>
-              <%= link_to "Presupuestos anteriores",
+              <%= link_to t("layouts.header.budgets.previous"),
                           previous_budgets_path,
-                          title: t("shared.go_to_page") + "Presupuestos anteriores",
+                          title: t("shared.go_to_page") + t("layouts.header.budgets.previous"),
                           class: "dropdown-item" %>
             <% end %>
 
           </div>
         </li>
-
-
-
-
       <% else %>
-        <%= layout_menu_link_to t("layouts.header.budgets"),
+        <%= layout_menu_link_to t("layouts.header.budgets.title"),
                                 budgets_path,
                                 controller_name == "budgets" || controller_name == "investments",
                                 accesskey: "1",
-                                title: t("shared.go_to_page") + t("layouts.header.budgets") %>
+                                title: t("shared.go_to_page") + t("layouts.header.budgets.title") %>
       <% end %>
 
     <% end %>
     
     <% if feature?(:polls) %>
-      <li>
-        <%= layout_menu_link_to t("layouts.header.poll_questions"),
-                                  polls_path,
-                                  controller_name == "polls" || (controller_name == "questions" && controller.class.parent == Polls),
-                                  accesskey: "2",
-                                  title: t("shared.go_to_page") + t("layouts.header.poll_questions") %>
+
+      <li class="dropdown">
+        <a class="nav-link dropdown-toggle <%= 'is-active' if controller_name == 'polls' || (controller_name == 'questions' && controller.class.parent == Polls) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= t("layouts.header.poll_questions.title") %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-item">
+            <%= layout_menu_link_to t("layouts.header.poll_questions.current"),
+                                    polls_path,
+                                    (controller_name == "polls" || (controller_name == "questions" && controller.class.parent == Polls)) && @current_filter == "current",
+                                    accesskey: "2",
+                                    title: t("shared.go_to_page") + t("layouts.header.poll_questions.current") %>
+          </div>
+          <div class="dropdown-item">
+            <%= layout_menu_link_to t("layouts.header.poll_questions.expired"),
+                                    polls_path(filter: "expired", page: 1),
+                                    (controller_name == "polls" || (controller_name == "questions" && controller.class.parent == Polls)) && @current_filter == "expired",
+                                    title: t("shared.go_to_page") + t("layouts.header.poll_questions.expired")%>
+          </div>
+        </div>
       </li>
+
     <% end %>
 
     <% if feature?(:debates) %>

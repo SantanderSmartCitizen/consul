@@ -2762,6 +2762,7 @@ table {
 
 .images .button {
   margin-top: $line-height / 2;
+  margin-bottom: 1em;
 }
 
 // 23. Maps
@@ -2881,6 +2882,10 @@ table {
       overflow: hidden;
       white-space: nowrap;
       text-transform: uppercase;
+    }
+    .date-range{
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 12px;
     }
     .description {
       margin: 0;
