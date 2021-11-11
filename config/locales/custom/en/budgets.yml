@@ -12,6 +12,15 @@ en:
           other: "You voted %{count} budget investments"
     index:
       see_stats: See stats
+      map:
+        accepted: Accepted proposals
+        selected: Selected proposals
+    previous_budgets:
+      title: Previous budgets
+      empty_budgets: There are no previous budgets.
+      results: Results
+      stats: Stats
+      milestones: Milestones
     investments:
       index:
         sidebar:

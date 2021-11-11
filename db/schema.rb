@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210914115157) do
+ActiveRecord::Schema.define(version: 20211103113750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -373,6 +373,7 @@ ActiveRecord::Schema.define(version: 20210914115157) do
     t.text     "description_informing"
     t.string   "voting_system"
     t.integer  "max_votes"
+    t.string   "legal_bases_page"
   end
 
   create_table "campaigns", force: :cascade do |t|
@@ -440,6 +441,17 @@ ActiveRecord::Schema.define(version: 20210914115157) do
   create_table "communities", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "complaints", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "type"
+    t.string   "department"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_complaints_on_user_id", using: :btree
   end
 
   create_table "dashboard_actions", force: :cascade do |t|
@@ -567,6 +579,23 @@ ActiveRecord::Schema.define(version: 20210914115157) do
     t.index ["documentable_type", "documentable_id"], name: "index_documents_on_documentable_type_and_documentable_id", using: :btree
     t.index ["user_id", "documentable_type", "documentable_id"], name: "access_documents", using: :btree
     t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
+  end
+
+  create_table "event_translations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["event_id"], name: "index_event_translations_on_event_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "failed_census_calls", force: :cascade do |t|
@@ -780,6 +809,21 @@ ActiveRecord::Schema.define(version: 20210914115157) do
     t.integer "poll_id"
     t.index ["geozone_id"], name: "index_geozones_polls_on_geozone_id", using: :btree
     t.index ["poll_id"], name: "index_geozones_polls_on_poll_id", using: :btree
+  end
+
+  create_table "header_slide_translations", force: :cascade do |t|
+    t.integer  "header_slide_id"
+    t.string   "locale"
+    t.string   "title"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["header_slide_id"], name: "index_header_slide_translations_on_header_slide_id", using: :btree
+  end
+
+  create_table "header_slides", force: :cascade do |t|
+    t.string   "page"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "i18n_content_translations", force: :cascade do |t|
@@ -1848,6 +1892,7 @@ ActiveRecord::Schema.define(version: 20210914115157) do
   add_foreign_key "budget_investments", "communities"
   add_foreign_key "budget_valuators", "budgets"
   add_foreign_key "budget_valuators", "valuators"
+  add_foreign_key "complaints", "users"
   add_foreign_key "dashboard_administrator_tasks", "users"
   add_foreign_key "dashboard_executed_actions", "dashboard_actions", column: "action_id"
   add_foreign_key "dashboard_executed_actions", "proposals"

@@ -1,3 +1,7 @@
+<% if has_banners? %>
+  <%= render "shared/banner" %>
+<% end %>
+
 <% provide :title do %><%= t("polls.index.title") %><% end %>
 
 <%= render_custom_partial "meta_description" %>
@@ -8,15 +12,13 @@
 
 <%= render_custom_partial "social_meta_tags" %>
 
-<div class="row">
+<div class="row custom-page">
   <div class="small-12 column">
     <% if show_polls_description? %>
       <div class="polls-description">
         <%= auto_link_already_sanitized_html wysiwyg(@active_poll.description) %>
       </div>
     <% end %>
-
-    <%= render "shared/filter_subnav", i18n_namespace: "polls.index" %>
 
     <% if @polls.any? %>
       <% polls_by_geozone_restriction = @polls.group_by(&:geozone_restricted) %>
@@ -29,6 +31,9 @@
       <% end %>
 
       <% if polls_by_geozone_restriction[true].present? %>
+        <% if polls_by_geozone_restriction[false].present? %>
+          <%= render "shared/right_separator" %>
+        <% end %>
         <h2 class="text-center">
           <span><%= t("polls.index.geozone_restricted") %></span>
         </h2>
@@ -42,11 +47,6 @@
       </div>
     <% end %>
 
-    <div id="section_help" class="margin text-center" data-magellan-target="section_help">
-      <h2><%= t("polls.index.section_footer.title") %></h2>
-      <p><%= t("polls.index.section_footer.description") %></p>
-      <%= render_custom_partial "footer" %>
-    </div>
 
   </div>
 </div>

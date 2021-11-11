@@ -1,0 +1,21 @@
+en:
+  routes:
+    accessibility: accessibility
+    account: account
+    allegations: allegations
+    budgets: budgets
+    debates: debates
+    draft_versions: draft_versions
+    edit: edit
+    forums: forum
+    gamifications: gamification
+    help: help
+    investments: investments
+    legislation: legislation
+    map: map
+    new: new
+    previous_budgets: previous_budgets
+    processes: processes
+    polls: polls
+    proposals: proposals
+    users: user

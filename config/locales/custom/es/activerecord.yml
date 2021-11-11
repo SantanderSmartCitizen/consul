@@ -27,10 +27,17 @@ es:
       legislation/annotation:
         one: "Proceso/Anotación"
         other: "Proceso/Anotaciones"
+      header_slide:
+        one: "Imagen"
+        other: "Imágenes"
+      event:
+        one: "Evento"
+        other: "Eventos"
     attributes:
       budget:
         voting_system: Sistema de votación
         max_votes: Número máximo de votos
+        legal_bases_page: Ruta de acceso a bases legales
       budget_geozone:
         name: Nombre
         external_code: Código externo
@@ -80,3 +87,18 @@ es:
       forum/translation:
         title: "Título del tema"
         description: "Contenido del tema"
+      header_slide:
+        page: "Sección en la que aparece"
+      header_slide/translation:
+        title: "Título"
+      event:
+        start_time: "Fecha inicio"
+        end_time: "Fecha fin"
+      event/translation:
+        title: "Título"
+        description: "Descripción"
+      complaint:
+        type: Tipo
+        department: Departamento
+        subject: Asunto
+        body: Texto

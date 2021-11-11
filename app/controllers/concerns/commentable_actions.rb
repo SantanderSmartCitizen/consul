@@ -116,6 +116,8 @@ module CommentableActions
         "proposals"
       when "Debate"
         "debates"
+      when "Forum"
+        "forums"
       end
     end
 

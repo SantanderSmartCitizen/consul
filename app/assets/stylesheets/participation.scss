@@ -332,7 +332,11 @@
 .milestone-edit,
 .image-form,
 .dashboard-action-form,
-.edit_budget {
+.edit_budget,
+.edit_header_slide,
+.new_header_slide,
+.edit_event,
+.new_event {
   @include direct-uploads;
 }
 
@@ -1289,6 +1293,10 @@
 
     .heading-name {
       padding: $line-height / 2;
+    }
+
+    .is-active {
+      background: $highlight;
     }
 
     span {

@@ -1,0 +1,7 @@
+<div class="row separator">
+  	<% if defined?(@header_slides) && @header_slides.any? %>
+  		<%= image_tag(image_path_for("body_content_separator.svg"), alt: "Body content separator")%>
+  	<% else %>
+	    <%= image_tag(image_path_for("body_start_separator.svg"), alt: "Body content separator")%>
+    <% end %>
+</div>

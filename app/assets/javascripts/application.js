@@ -170,6 +170,7 @@ var initialize_modules = function() {
     App.ColumnsSelector.initialize();
   }
   App.BudgetEditAssociations.initialize();
+  $('.flexslider').flexslider();
 };
 
 $(function() {
