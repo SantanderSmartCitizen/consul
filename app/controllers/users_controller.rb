@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  has_filters %w[debates proposals budget_investments forums comments gamification_user_rankings gamification_user_actions gamification_rewards], only: :show
+  #has_filters %w[debates proposals budget_investments forums comments gamification_user_rankings gamification_user_actions gamification_rewards], only: :show
+  has_filters %w[debates proposals budget_investments forums comments], only: :show
 
   load_and_authorize_resource
   helper_method :author?
@@ -31,9 +32,9 @@ class UsersController < ApplicationController
       when "budget_investments" then load_budget_investments
       when "forums"     then load_forums
       when "comments" then load_comments
-      when "gamification_user_rankings" then load_gamification_user_rankings
-      when "gamification_user_actions" then load_gamification_user_actions
-      when "gamification_rewards" then load_gamifications
+      # when "gamification_user_rankings" then load_gamification_user_rankings
+      # when "gamification_user_actions" then load_gamification_user_actions
+      # when "gamification_rewards" then load_gamifications
       else load_available_activity
       end
     end
@@ -55,15 +56,15 @@ class UsersController < ApplicationController
       elsif  @activity_counts[:comments] > 0
         load_comments
         @current_filter = "comments"
-      elsif  @activity_counts[:gamification_user_rankings] > 0
-        load_gamification_user_rankings
-        @current_filter = "gamification_user_rankings"
-      elsif  @activity_counts[:gamification_user_actions] > 0
-        load_gamification_user_actions
-        @current_filter = "gamification_user_actions"
-      elsif  @activity_counts[:gamification_rewards] > 0
-        load_gamifications
-        @current_filter = "gamification_rewards"
+      # elsif  @activity_counts[:gamification_user_rankings] > 0
+      #   load_gamification_user_rankings
+      #   @current_filter = "gamification_user_rankings"
+      # elsif  @activity_counts[:gamification_user_actions] > 0
+      #   load_gamification_user_actions
+      #   @current_filter = "gamification_user_actions"
+      # elsif  @activity_counts[:gamification_rewards] > 0
+      #   load_gamifications
+      #   @current_filter = "gamification_rewards"
       end
     end
 
