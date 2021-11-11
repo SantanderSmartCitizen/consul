@@ -20,16 +20,6 @@
       </div>
     <% end %>
 
-    <div class="float-right">
-      <% if @current_filter == "current" %>
-        <%= link_to t("polls.index.filters.expired"),
-          current_path_with_query_params(filter: "expired", page: 1) %>
-      <% else %>
-        <%= link_to t("polls.index.filters.current"),
-          current_path_with_query_params(filter: "current", page: 1) %>
-      <% end %>
-    </div>
-
     <% if @polls.any? %>
       <% polls_by_geozone_restriction = @polls.group_by(&:geozone_restricted) %>
 

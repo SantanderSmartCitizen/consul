@@ -1295,6 +1295,10 @@
       padding: $line-height / 2;
     }
 
+    .is-active {
+      background: $highlight;
+    }
+
     span {
       color: $text;
       display: block;

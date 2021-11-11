@@ -155,10 +155,10 @@
               <% group.headings.sort_by_name.each do |heading| %>
                 <li class="heading small-12 medium-4 large-2" data-equalizer-watch>
                   <% unless current_budget.informing? || current_budget.finished? %>
-                    <%= link_to budget_investments_path(current_budget.id,
-                                                        heading_id: heading.id) do %>
-                      <%= heading_name_and_price_html(heading, current_budget) %>
-                    <% end %>
+                    <div class="<%= 'is-active' if params[:heading_id].present? && params[:heading_id] == heading.id.to_s %>" >
+                      <%= link_to heading_name_and_price_html(heading, current_budget),
+                                  budgets_path(heading_id: heading.id, anchor: "propuestas") %>
+                    </div>
                   <% else %>
                     <div class="heading-name">
                       <%= heading_name_and_price_html(heading, current_budget) %>
@@ -169,6 +169,49 @@
             </ul>
           <% end %>
         </div>
+
+        <% unless current_budget.informing? || current_budget.finished? %>
+          <% if @investments.present? %>
+
+            <table id="propuestas" class="table-for-mobile column-selectable">
+              <thead>
+                <tr>
+                  <th data-field="title"><%= t("admin.budget_investments.index.list.title") %></th>
+                  <th data-field="feasibility"><%= t("admin.budget_investments.index.list.feasibility") %></th>
+                  <th data-field="price"><%= t("admin.budget_investments.index.list.price") %></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @investments.each do |investment| %>
+                  <tr id="<%= dom_id(investment) %>" class="budget_investment">
+
+                    <td data-field="title">
+                      <%= link_to investment.title,
+                                  namespaced_budget_investment_path(investment) %>
+                    </td>
+
+                    <td class="small" data-field="feasibility">
+                      <%= t("admin.budget_investments.index.feasibility.#{investment.feasibility}") %>
+                    </td>
+
+                    <td class="small" data-field="price">
+                      <%= investment.formatted_price %>
+                    </td>
+
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <%= paginate @investments, params: { anchor: "propuestas" } %>
+
+          <% else %>
+            <div class="callout primary clear">
+              <%= t("admin.budget_investments.index.no_budget_investments") %>
+            </div>
+          <% end %>
+
+        <% end %>
 
         <% if feature?(:allow_attached_documents) && current_budget.documents.present? %>
           <h2 class="w-100 text-center">Documentos</h2>
