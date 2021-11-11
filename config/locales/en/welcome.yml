@@ -13,6 +13,20 @@ en:
         title: Open processes
         see_button: See process
         see_all_button: See all processes
+    featured_processes:
+      title: Participatory processes
+      city_hall_proposals:
+        title: City hall proposals
+        see_button: See city hall proposals
+        summary: See proposals created by the city hall
+      citizen_proposals:
+        title: Citizen proposals
+        see_button: See citizen proposals
+        summary: See proposals created by the citizens
+      open_processes:
+        title: Open processes
+        see_button: See open processes
+        summary: See all open processes
     indicators:
       title: Indicators
       subtitle: Lorem ipsum dolor
@@ -25,20 +39,25 @@ en:
         title: "<b>Santander a tu alcance</b>, participa y haz crecer la ciudad"
         description: "Queremos que seas partícipe de todo lo que ocurra en Santander: colabora en decisiones de la ciudad, crea debates, participa en propuestas y decide en qué gastar parte de los presupuestos municipales."
         button: The initiative
-    complaints_and_suggestions:
+    actions:
       debates:
         title: Discussions
         description: Find, discuss and share what we think is important in our city.
+        icon: Discussions icon
       proposals:
         title: You propose
         description: Open space for citizen proposals on the type of council in which we want to live.
+        icon: You propose icon
       decide:
         title: Decides
         description: Citizens decide whether to accept or reject the most supported proposals.
+        icon: Decides icon
       it_does:
         title: It is done
         description: If the proposal is mostly accepted, the City Council assumes it as its own and is done.
-      contact:
-        title: Contact
-        description: We would like to know your opinion and therefore we invite you to send the suggestions or queries you want about the contents of the web or any of the activities that are developed. We will respond to the contact email account you indicate as soon as possible. All your information will be treated confidentially and subject to the General Data Protection Regulation.
-        button: Form
+        icon: It is done icon
+    complaint_form:
+      title: Complaints and sugestions
+      description: We would like to know your opinion and therefore we invite you to send the suggestions or queries you want about the contents of the web or any of the activities that are developed. We will respond to the contact email account you indicate as soon as possible. All your information will be treated confidentially and subject to the General Data Protection Regulation.
+      submit: Send
+      

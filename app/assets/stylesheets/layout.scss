@@ -686,7 +686,7 @@ header {
   @include breakpoint(medium) {
     width: 100%;
     margin-top: 74px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
   }
 
   ul {
@@ -697,6 +697,9 @@ header {
       @include breakpoint(medium) {
         display: inline-block;
         margin-right: 45px;
+        &:last-child {
+          margin-right: 0;
+        }
       }
     }
   }
@@ -2759,6 +2762,7 @@ table {
 
 .images .button {
   margin-top: $line-height / 2;
+  margin-bottom: 1em;
 }
 
 // 23. Maps
@@ -2837,6 +2841,7 @@ table {
   .card {
     border: 0;
     overflow: visible;
+    margin: 0;
 
     a {
 
@@ -2872,15 +2877,20 @@ table {
       margin: 0;
       color: rgba(0, 0, 0, 0.7);
       font-weight: bold;
-      font-size: 16pt;
+      font-size: 16px;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
+      text-transform: uppercase;
+    }
+    .date-range{
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 12px;
     }
     .description {
       margin: 0;
       color: rgba(0, 0, 0, 0.7);
-      font-size: 12pt;
+      font-size: 14px;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;

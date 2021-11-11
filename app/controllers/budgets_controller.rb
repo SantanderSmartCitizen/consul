@@ -6,6 +6,7 @@ class BudgetsController < ApplicationController
   before_action :load_budget, only: :show
   load_and_authorize_resource
   before_action :set_default_budget_filter, only: :show
+  before_action :load_investments, only: :index
   has_filters %w[not_unfeasible feasible unfeasible unselected selected winners], only: :show
 
   respond_to :html, :js
@@ -21,9 +22,31 @@ class BudgetsController < ApplicationController
     @header_slides = HeaderSlide.budgets
   end
 
+  def previous
+    @previous_budgets = Budget.previous(Budget.current.id)
+  end
+
   private
 
     def load_budget
       @budget = Budget.find_by_slug_or_id! params[:id]
+    end
+
+    def load_investments
+      if params[:heading_id].present?
+        @heading = current_budget.headings.find_by(id: params[:heading_id])
+        if @heading.present?
+          if current_budget.balloting_or_later? && current_budget.investments.selected.any?
+            @investments = @heading.investments.selected.order(:title).page(params[:page]).per(10).for_render
+          else
+            @investments = @heading.investments.order(:title).page(params[:page]).per(10).for_render
+          end
+          
+        else
+          @investments = current_budget.investments.order(:title).page(params[:page]).per(10).for_render
+        end
+      else
+        @investments = current_budget.investments.order(:title).page(params[:page]).per(10).for_render
+      end
     end
 end

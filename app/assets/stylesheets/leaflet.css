@@ -220,6 +220,7 @@
 .leaflet-popup-pane,
 .leaflet-control {
 	cursor: auto;
+	z-index: 9 !important;
 	}
 .leaflet-dragging .leaflet-grab,
 .leaflet-dragging .leaflet-grab .leaflet-interactive,

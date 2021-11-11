@@ -13,11 +13,25 @@ es:
         title: Procesos abiertos
         see_button: Ver proceso
         see_all_button: Ver todos los procesos
+    featured_processes:
+      title: Procesos participativos
+      city_hall_proposals:
+        title: Propuestas Ayuntamiento
+        see_button: Ver propuestas Ayuntamiento
+        summary: Ver propuestas creadas por el Ayuntamiento
+      citizen_proposals:
+        title: Propuestas ciudadanos
+        see_button: Ver propuestas ciudadanos
+        summary: Ver propuestas creadas por los ciudadanos
+      open_processes:
+        title: Procesos abiertos
+        see_button: Ver procesos abiertos
+        summary: Ver todos los procesos abiertos
     indicators:
-      title: Indicadores
-      subtitle: Lorem ipsum dolor
+      title: Propuestas de gasto
+      subtitle: (Presupuesto 2018)
       general_description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pellentesque efficitur ipsum et dignissim. Donec ut ipsum eleifend, lobortis mauris quis, luctus felis. Vivamus ullamcorper lobortis mollis. Sed imperdiet eros est, in lacinia nulla gravida a. Donec et purus sollicitudin, condimentum nibh sit amet, convallis odio.
-      description_1: Some quick example text to build on the card title and make up the bulk of the card's content.
+      description_1: Propuestas de gasto presentadas
       description_2: Some quick example text to build on the card title and make up the bulk of the card's content.
       description_3: Some quick example text to build on the card title and make up the bulk of the card's content.
     slogan:
@@ -25,20 +39,25 @@ es:
         title: "<b>Santander a tu alcance</b>, participa y haz crecer la ciudad"
         description: "Queremos que seas partícipe de todo lo que ocurra en Santander: colabora en decisiones de la ciudad, crea debates, participa en propuestas y decide en qué gastar parte de los presupuestos municipales."
         button: La iniciativa
-    complaints_and_suggestions:
+    actions:
       debates:
         title: Debates
         description: Encontrarnos, debatir y compartir lo que nos parece importante en nuestra ciudad.
+        icon: Icono de debates
       proposals:
         title: Propones
         description: Espacio abierto para propuestas ciudadanas sobre el tipo de concejo en el que queremos vivir.
+        icon: Icono de propones
       decide:
         title: Decides
         description: La ciudadanía decide si acepta o rechaza las propuestas más apoyadas.
+        icon: Icono de decides
       it_does:
         title: Se hace
         description: Si la propuesta es aceptada mayoritariamente, el Ayuntamiento la asume como propia y se hace.
-      contact:
-        title: Contacta
-        description: Nos gustaría conocer su opinión y por ello le invitamos a enviar las sugerencias o consultas que desee sobre los contenidos de la web o alguna de las actividades que se desarrollen. Le responderemos a la cuenta de correo electrónico de contacto que nos indique a la mayor brevedad. Toda su información será tratada de forma confidencial y sometida al Reglamento General de Protección de Datos.
-        button: Formulario
+        icon: Icono se hace
+    complaint_form:
+      title: Quejas y sugerencias
+      description: Nos gustaría conocer su opinión y por ello le invitamos a enviar las sugerencias o consultas que desee sobre los contenidos de la web o alguna de las actividades que se desarrollen. Le responderemos a la cuenta de correo electrónico de contacto que nos indique a la mayor brevedad. Toda su información será tratada de forma confidencial y sometida al Reglamento General de Protección de Datos.
+      submit: Enviar
+      

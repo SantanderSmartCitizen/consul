@@ -37,6 +37,7 @@ es:
       budget:
         voting_system: Sistema de votación
         max_votes: Número máximo de votos
+        legal_bases_page: Ruta de acceso a bases legales
       budget_geozone:
         name: Nombre
         external_code: Código externo
@@ -96,3 +97,8 @@ es:
       event/translation:
         title: "Título"
         description: "Descripción"
+      complaint:
+        type: Tipo
+        department: Departamento
+        subject: Asunto
+        body: Texto

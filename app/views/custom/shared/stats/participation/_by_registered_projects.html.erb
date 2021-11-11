@@ -1,0 +1,9 @@
+  <div id="by_registered_projects" class="stats-group">
+    <h4><%= t("stats.by_registered_projects") %></h4>
+  	<div class="row justify-content-center">
+  		<!-- render "shared/stats/participation/registered_projects/by_user_type", stats: stats, exportable: exportable -->
+  		<%= render "shared/stats/participation/registered_projects/by_organization_name", stats: stats, exportable: exportable %>
+  		<%= render "shared/stats/participation/registered_projects/by_heading", stats: stats, exportable: exportable %>
+  		<%= render "shared/stats/participation/registered_projects/by_civic_center", stats: stats, exportable: exportable %>
+  	</div>
+  </div>

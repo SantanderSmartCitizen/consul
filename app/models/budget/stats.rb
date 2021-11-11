@@ -86,6 +86,15 @@ class Budget::Stats
     end
   end
 
+  def total_investments_by_organization_name
+    budget.investments.group(:organization_name).count.map do |name, data|
+      {
+        name: name, 
+        data: data
+      }
+    end
+  end
+
   def total_investments_by_civic_centers
     User.unscoped.civic_center.where(id: authors).map do |civic_center|
       {

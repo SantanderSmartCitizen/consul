@@ -15,7 +15,7 @@
           @investment_votes] do %>
 
   <% content_for :breadcrumb do %>
-    <%= back_link_to budget_investments_path(investment.budget, heading_id: investment.heading) %>
+    <%= back_link_to %>
   <% end %>
 
   <section class="budget-investment-show" id="<%= dom_id(investment) %>">

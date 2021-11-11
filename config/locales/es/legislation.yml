@@ -58,9 +58,9 @@ es:
       index:
         filter: Filtro
         filters:
-          open: Procesos activos
+          open: Procesos abiertos
           past: Terminados
-        no_open_processes: No hay procesos activos
+        no_open_processes: No hay procesos abiertos
         no_past_processes: No hay procesos terminados
         section_header:
           icon_alt: Icono de legislación colaborativa

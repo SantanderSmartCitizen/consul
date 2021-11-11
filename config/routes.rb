@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   root "welcome#index"
   get "/welcome", to: "welcome#welcome"
   get "/consul.json", to: "installation#details"
+  post "/welcome", to: "welcome#send_complaint"
 
   resources :stats, only: [:index]
   resources :images, only: [:destroy]
