@@ -1,4 +1,4 @@
-<div class="indicators-frame">
+<!-- <div class="indicators-frame">
 	<div class="indicators-content">
 
 		<div class="text-center">
@@ -13,15 +13,13 @@
 		</div>
 
 		<div class="row margin-top d-flex">
-			<div class="small-12 medium-12 large-4 text-justify p-4">
-				<p><%= t(".general_description") %></p>
-			</div>
-			<div class="small-12 medium-12 large-8 ">
+
+			<div class="small-12 medium-12 large-12 ">
 				<div class="row pl-3 pr-3 d-flex">
 					<div class="small-12 medium-4 large-4 pl-2 pr-2">
 						<div class="card text-white mb-3 background-color-1" style="max-width: 18rem; border-radius: 60px 0px; margin: 0 auto;">
 						  <div class="card-body">
-						    <h1 class="card-title white-color" style="font-size: 70pt; line-height: 60pt; text-align: center;">87%</h1>
+						    <h1 class="card-title white-color" style="font-size: 70pt; line-height: 60pt; text-align: center;">66</h1>
 						    <p class="card-text" style="font-size: small;"><%= t(".description_1") %></p>
 						  </div>
 						</div>
@@ -55,16 +53,17 @@
 	    data: {
 	        type : 'donut',
 	        columns: [
-	            ["Data1", 33],
-	            ["Data2", 17],
-	            ["Data3", 50]
+	            ["Distrito Nordeste", 12.1],
+	            ["Distrito Noroeste", 21.2],
+	            ["Distrito Sudeste", 45.5],
+	            ["Distrito Suroeste", 21.2]
 	        ]
 	    },
 	    donut: {
-	        title: "Lorem ipsum 1"
+	        title: "Presentadas por distrito"
 	    },
 	    color: {
-        	pattern: ['rgba(213, 132, 73, 1)', 'rgba(213, 132, 73, .7)', 'rgba(213, 132, 73, .5)']
+        	pattern: ['rgba(213, 132, 73, 1)', 'rgba(213, 132, 73, .8)', 'rgba(213, 132, 73, .6)', 'rgba(213, 132, 73, .4)']
     	}
 	});
 	var chart2 = c3.generate({
@@ -101,4 +100,13 @@
         	pattern: ['rgba(53, 129, 170, 1)', 'rgba(53, 129, 170, .7)', 'rgba(53, 129, 170, .5)']
     	}
 	});
-</script>
+</script> -->
+
+<% if feature?(:budgets) %>
+	<% if @current_budget.present? %>
+		<div class="text-center">
+			<h2 class="small-12"><%= @current_budget.name %></h2>
+			<%= render "shared/stats/participation/by_registered_projects", stats: @stats, exportable: false %>
+		</div>
+	<% end %>
+<% end %>

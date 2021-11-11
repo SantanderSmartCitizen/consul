@@ -93,3 +93,15 @@
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Lato";
+  src: font-url("lato-bold-italic.eot"); /* IE9 Compat Modes */
+  src: font-url("lato-bold-italic.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       font-url("lato-bold-italic.woff2") format("woff2"), /* Modern Browsers */
+       font-url("lato-bold-italic.woff") format("woff"), /* Modern Browsers */
+       font-url("lato-bold-italic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  text-rendering: optimizeLegibility;
+}

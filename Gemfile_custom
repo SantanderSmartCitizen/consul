@@ -9,3 +9,6 @@ gem 'ruby-saml'
 gem 'config'
 gem "apexcharts"
 gem "functionable-json"
+gem "route_translator"
+gem "flex-slider-rails"
+gem "simple_calendar", "~> 2.4"

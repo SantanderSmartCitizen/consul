@@ -1,5 +1,18 @@
 en:
   admin:
+    banners:
+      index:
+        table:
+          title: Título
+        edit: Edit
+        delete: Delete
+      banner:
+        sections:
+          homepage: Homepage
+          budgets: Budgets
+          polls: Poll/Questions
+          legislation_processes: Processes
+          forums: Forum
     budgets:
       destroy:
         unable_notice_polls: You cannot delete a budget that has an associated poll/question
@@ -50,6 +63,9 @@ en:
         requested_rewards: Requested rewards
         ranking: Ranking
       newsletters: Email notifications
+      header_slides: Image carousel
+      banner: Banner carousel
+      events: Event manager
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -370,3 +386,58 @@ en:
         body: Email content
         body_help_text: This is how the users will see the email.
         send_alert: Are you sure you want to send this email notification to %{n} users?
+    header_slides:
+      index:
+        title: Image carousel
+        create: Create image
+        edit: Edit
+        delete: Delete
+        table:
+          page: Section
+          title: Title
+        filters:
+          all: All
+          homepage: Homepage
+          budgets: Budgets
+          polls: Poll/questions
+          debates: Debates
+          proposals: Proposals
+          legislation_processes: Processes
+          forums: Forum
+          help: Help
+      header_slide:
+        pages:
+          homepage: Homepage
+          budgets: Budgets
+          polls: Poll/questions
+          debates: Debates
+          proposals: Proposals
+          legislation_processes: Processes
+          forums: Forum
+          help: Help
+      edit:
+        editing: Edit imagen
+        form:
+          submit_button: Save changes
+      new:
+        creating: Create image
+    events:
+      index:
+        title: Event manager
+        create: Create event
+        edit: Edit
+        delete: Delete
+        table:
+          title: Title
+          starts_at: Start date
+          ends_at: End date
+        filters:
+          all: All
+          previous: Previous
+          next: next
+      edit:
+        editing: Edit event
+        form:
+          submit_button: Save changes
+      new:
+        creating: Create event

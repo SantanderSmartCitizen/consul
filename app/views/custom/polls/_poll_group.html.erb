@@ -1,3 +1,4 @@
+<!--
 <% poll_group.each do |poll| %>
   <div class="poll with-image">
     <div class="panel">
@@ -69,3 +70,36 @@
     </div>
   </div>
 <% end %>
+-->
+
+<div class="card-deck text-center justify-content-center mt-4">
+  <% poll_group.each do |poll| %>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card margin-bottom">
+
+        <% if poll.expired? %>
+          <% poll_title = t("polls.index.participate_button_expired") %>
+        <% else %>
+          <% poll_title =  t("polls.index.participate_button") %>
+        <% end %>
+
+        <%= link_to poll_path(id: poll.slug || poll.id), title: poll_title do %>
+          <figure class="figure-card m-0">
+            <% if poll.image.present? %>
+              <%= image_tag poll.image_url(:large), alt: poll.image.title.unicode_normalize %>
+            <% end %>
+          </figure>
+          <div class="card-body">
+            <h5 class="title"><%= poll.name %></h5>
+            <p class="date-range">
+              <small><%= poll_dates(poll) %></small>
+            </p>
+            <p class="description"><%= poll.summary %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

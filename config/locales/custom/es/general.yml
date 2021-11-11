@@ -104,8 +104,15 @@ es:
       dependent_brand_logo: Logo de marca dependiente
       help: Ayuda
       proposals: Propuestas
-      poll_questions: Encuestas/Consultas
-      budgets: Presupuestos
+      poll_questions:
+        title: Encuestas/Consultas
+        current: Encuestas abiertas
+        expired: Encuestas finalizadas
+      budgets:
+        title: Presupuestos
+        legal_bases: Bases legales
+        check_ballot: Mis votos
+        previous: Presupuestos anteriores
       forum: Foro
       moderation: Moderación
       notification_item:
@@ -137,6 +144,11 @@ es:
         description: Las encuestas ciudadanas son un mecanismo de participación por el que la ciudadanía con derecho a voto puede tomar decisiones de forma directa.
       no_polls: "No hay encuestas abiertas."
       not_logged_in: "Necesitas iniciar sesión para participar"
+      no_geozone_restricted: "Encuestas para toda la ciudad"
+      geozone_restricted: "Encuestas para distritos"
+      filters:
+        current: "Ver encuestas abiertas"
+        expired: "Ver encuestas finalizadas"
     show:
       already_voted_in_booth: "Ya has participado en esta encuesta en urnas presenciales, no puedes volver a participar."
       already_voted_in_web: "Ya has participado en esta encuesta. Si vuelves a votar se sobreescribirá tu resultado anterior."
@@ -155,6 +167,8 @@ es:
     author_info:
       author_anonymous: Anónimo
       author_anonymous_detail: Se publica sin datos personales
+    events:
+      title: Eventos
   users:
     login_to_comment: "Necesitas %{signin} para comentar."
     login_to_continue: "Necesitas %{signin} para continuar."
@@ -219,3 +233,8 @@ es:
       created: "¡Has publicado una propuesta!"
       share:
         view_proposal: Acceder a propuesta
+  simple_calendar:
+    previous: "<"
+    next: ">"
+  form:
+    poll: la encuesta/consulta

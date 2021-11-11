@@ -1,0 +1,10 @@
+<%= render "shared/social_share",
+            share_title: share_title,
+            title: event.title,
+            url: event_url(event),
+            description: t("events.share.message",
+                         title: event.title,
+                         handle: setting["org_name"]),
+            mobile: t("events.share.message",
+                    title: event.title,
+                    handle: setting["twitter_handle"]) %>

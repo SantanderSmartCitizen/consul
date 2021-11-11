@@ -1,0 +1,33 @@
+<%= render "shared/globalize_locales", resource: @header_slide %>
+
+<%= translatable_form_for [:admin, @header_slide] do |f| %>
+
+  <%= render "shared/errors", resource: @header_slide %>
+
+  <div class="row">
+    <%= f.translatable_fields do |translations_form| %>
+      <div class="small-12 medium-6 column required">
+        <%= translations_form.text_field :title %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="small-12 column">
+      <%= render "images/nested_image", imageable: @header_slide, f: f %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 column">
+      <%= f.select :page, header_slide_pages_select_options %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="actions small-12 medium-3 column">
+      <%= f.submit(class: "button expanded", value: t("admin.header_slides.edit.form.submit_button")) %>
+    </div>
+  </div>
+
+<% end %>

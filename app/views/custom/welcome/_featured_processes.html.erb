@@ -1,0 +1,60 @@
+<div class="row">
+	<div class="text-center">
+
+		<h2 class="small-12" style="margin-bottom: 30px;">
+			<%= t(".title") %>
+		</h2>
+
+		<div class="card-deck">
+
+			<% if feed_city_hall_proposals_enabled? %>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="card margin-bottom">
+						<%= link_to proposals_path("advanced_search[user_profile]": "city_hall"), title: t(".city_hall_proposals.see_button") do %>
+							<figure class="figure-card m-0">
+								<%= image_tag(image_path_for("cityhall.jpg"), style: "", alt: "Proceso") %>
+							</figure>
+							<div class="card-body">
+								<h5 class="title"><%= t(".city_hall_proposals.title") %></h5>
+								<p class="description small"><%= t(".city_hall_proposals.summary") %></p>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+
+			<% if feed_citizen_proposals_enabled? %>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="card margin-bottom">
+						<%= link_to proposals_path("advanced_search[user_profile]": "citizen"), title: t(".citizen_proposals.see_button") do %>
+							<figure class="figure-card m-0">
+								<%= image_tag(image_path_for("citizen.jpg"), style: "", alt: "Proceso") %>
+							</figure>
+							<div class="card-body">
+								<h5 class="title"><%= t(".citizen_proposals.title") %></h5>
+								<p class="description small"><%= t(".citizen_proposals.summary") %></p>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+
+			<% if feed_processes_enabled? %>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="card margin-bottom">
+						<%= link_to legislation_processes_path, title: t(".open_processes.see_button") do %>
+							<figure class="figure-card m-0">
+								<%= image_tag(image_path_for("processes.jpg"), style: "", alt: "Proceso") %>
+							</figure>
+							<div class="card-body">
+								<h5 class="title"><%= t(".open_processes.title") %></h5>
+								<p class="description small"><%= t(".open_processes.summary") %></p>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+
+		</div>
+	</div>
+</div>

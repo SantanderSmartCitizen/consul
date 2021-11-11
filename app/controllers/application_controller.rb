@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
 
   layout :set_layout
   respond_to :html
-  helper_method :current_budget
   helper_method :saml_session?
+  helper_method :current_budget, :current_budget_ballot
 
   private
 
@@ -135,6 +135,10 @@ class ApplicationController < ActionController::Base
 
     def current_budget
       Budget.current
+    end
+
+    def current_budget_ballot
+      Budget::Ballot.where(user: current_user, budget: current_budget) 
     end
 
     def redirect_with_query_params_to(options, response_status = {})

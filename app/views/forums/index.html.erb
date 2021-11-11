@@ -1,3 +1,7 @@
+<% if has_banners? %>
+  <%= render "shared/banner" %>
+<% end %>
+
 <% provide :title do %><%= t("forums.index.title") %><% end %>
 
 <% content_for :header_addon do %>
@@ -47,10 +51,6 @@
 
   <div class="row">
     <div id="forums" class="forums-list small-12 medium-9 column">
-
-      <% if has_banners? %>
-        <%= render "shared/banner" %>
-      <% end %>
 
       <% unless @tag_filter || @search_terms || !has_featured? %>
         <%= render "featured_forums" %>

@@ -1,0 +1,4 @@
+<% series = stats.total_investments_by_organization_name %>
+<% if series.present? %>
+	<%= render "shared/stats/donut_chart", series: series, title: t("stats.by_organization_name"), exportable: exportable %>
+<% end %>
