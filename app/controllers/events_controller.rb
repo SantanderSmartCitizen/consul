@@ -17,6 +17,6 @@ class EventsController < ApplicationController
 
   private
     def resource_model
-	  Event
+      Event
     end
 end

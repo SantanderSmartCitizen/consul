@@ -123,6 +123,10 @@ en:
       open_access_menu: Open access menu
       open_main_menu: Open menu
       close: Close
+      my_rewards: My rewards
+      available_rewards:
+        one: "(1 available)"
+        other: "(%{count} available)"
   omniauth:
     finish_signup:
       username_warning: "Due to a change in the way we interact with social networks, it is possible that your username/alias now appears as 'already in use'. If that is your case, please choose a different username/alias."
