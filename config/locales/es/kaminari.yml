@@ -15,8 +15,8 @@ es:
   views:
     pagination:
       current: Estás en la página
-      first: Primera
-      last: Última
-      next: Siguiente
-      previous: Anterior
-      truncate: "&hellip;"
+      first: primera
+      last: última
+      next: siguiente
+      previous: anterior
+      truncate: ""

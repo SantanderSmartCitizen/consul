@@ -613,6 +613,14 @@ a.footer-social-icons.instagram:hover {
   }
 }
 
+.current_phase {
+  background: $highlight;
+  border-radius: 11px;
+  p {
+    color: rgba($brand,0.7);
+  }
+}
+
 .jumbo {
   background: rgba($brand,0.7);
   color: white;
