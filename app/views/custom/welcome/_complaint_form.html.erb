@@ -1,35 +1,34 @@
-<div class="row expanded large-border-left">
+<div class="row expanded">
   <div class="small-12 column">
-
-<!--   <%= image_tag(image_path_for("icono_contacta.png"), class: "rounded-circle", alt: "Generic placeholder image", style: "", width: "100", height: "100") %>
-  <h2><%= t("welcome.complaint_form.title") %></h2>
-  <p><%= t("welcome.complaint_form.description") %></p>
-
-  <%= link_to t("welcome.complaint_form.button"), "https://santander.es/servicios-ciudadano/buzon-ciudadano", class: "button mt-4", target: "_blank" %> -->
-
 
     <div class="text-center">
       <h2 class="small-12"><%= t("welcome.complaint_form.title") %></h2>
     </div>
 
-    <div class="complaint-form">
-      <%= form_for @complaint, url: welcome_path, method: :send_complaint do |f| %>
-        <div class="row">
-          <div class="small-6 pr-3">
-            <%= f.select :type, ["Queja", "Sugerencia"] %>
-          </div>
-          <div class="small-6">
-            <%= f.select :department, ["Actividades Económicas", "Actividades Molestas", "Agencia de Desarrollo Local", "Alcaldía", "Archivo Municipal", "Arquitectura", "Atención al Ciudadano", "Autonomía Personal", "Banda de Música", "Barrios, Participación Ciudadana, Dinamización Global", "Bibliotecas Municipales", "Bienes Inmuebles", "Bomberos", "Centro de Documentación de la Imagen", "Centros Culturales", "Comercio y Mercados", "Compras", "Consumo", "Contabilidad", "Contratación", "Cultura", "Denuncia", "Deportes", "Deportes y Salud", "Economía, Hacienda y Personal", "Empleo y Promoción Empresarial", "Empleo, Desarrollo Empresarial y Servicios Técnicos", "Estadística", "Familia, Servicios sociales y Protección Ciudadana", "Festejos", "Fiscalización y Control Interno", "Gestión Tributaria", "Gestión Tributaria: Rentas y Exacciones", "Igualdad", "Informática", "Ingeniería Industrial", "Inmigración", "Innovación", "Inspección, Evaluación y Calidad", "Instituto Municipal de Deportes", "Intervención", "Juventud", "Licencias y Autorizaciones", "Medio Ambiente y Movilidad Sostenible", "Multas", "Museo de Bellas Artes", "Obras", "Parques y Jardines", "Participación Ciudadana", "Patrimonio", "Personal", "Plusvalía", "Policía Local", "Policía Local UEPA", "Policías", "Presupuestos", "Prevención de Riesgos", "Promoción Empresarial", "Protección Civil", "Protocolo", "Recaudación", "Regimen Interior", "Registro General", "Salud", "Sanciones de Tráfico", "Sanidad", "Secretaría General", "Servicios Generales", "Servicios Sociales", "SJ Fomento", "Tesorería", "Transparencia", "Transportes Urbanos", "Turismo", "Turismo y Relaciones Institucionales", "Urbanismo", "Vehículos", "Vialidad", "Viveros", "Vivienda"] %>
-          </div>
-        </div>
-        
-        <%= f.text_field :subject %>
-        <%= f.text_area :body %>
-        <%= f.submit(class: "button expanded float-right mb-0", value: t("welcome.complaint_form.submit")) %>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
 
+      <div class="complaint-form">
+        <%= form_for @complaint, url: welcome_path, method: :send_complaint do |f| %>
+          <div class="row">
+            <div class="small-6 pr-3">
+              <%= f.select :type, ["Queja", "Sugerencia"] %>
+            </div>
+            <div class="small-6">
+              <%= f.select :department, ["Actividades Económicas", "Actividades Molestas", "Agencia de Desarrollo Local", "Alcaldía", "Archivo Municipal", "Arquitectura", "Atención al Ciudadano", "Autonomía Personal", "Banda de Música", "Barrios, Participación Ciudadana, Dinamización Global", "Bibliotecas Municipales", "Bienes Inmuebles", "Bomberos", "Centro de Documentación de la Imagen", "Centros Culturales", "Comercio y Mercados", "Compras", "Consumo", "Contabilidad", "Contratación", "Cultura", "Denuncia", "Deportes", "Deportes y Salud", "Economía, Hacienda y Personal", "Empleo y Promoción Empresarial", "Empleo, Desarrollo Empresarial y Servicios Técnicos", "Estadística", "Familia, Servicios sociales y Protección Ciudadana", "Festejos", "Fiscalización y Control Interno", "Gestión Tributaria", "Gestión Tributaria: Rentas y Exacciones", "Igualdad", "Informática", "Ingeniería Industrial", "Inmigración", "Innovación", "Inspección, Evaluación y Calidad", "Instituto Municipal de Deportes", "Intervención", "Juventud", "Licencias y Autorizaciones", "Medio Ambiente y Movilidad Sostenible", "Multas", "Museo de Bellas Artes", "Obras", "Parques y Jardines", "Participación Ciudadana", "Patrimonio", "Personal", "Plusvalía", "Policía Local", "Policía Local UEPA", "Policías", "Presupuestos", "Prevención de Riesgos", "Promoción Empresarial", "Protección Civil", "Protocolo", "Recaudación", "Regimen Interior", "Registro General", "Salud", "Sanciones de Tráfico", "Sanidad", "Secretaría General", "Servicios Generales", "Servicios Sociales", "SJ Fomento", "Tesorería", "Transparencia", "Transportes Urbanos", "Turismo", "Turismo y Relaciones Institucionales", "Urbanismo", "Vehículos", "Vialidad", "Viveros", "Vivienda"] %>
+            </div>
+          </div>
+          
+          <%= f.text_field :subject %>
+          <%= f.text_area :body %>
+          <%= f.submit(class: "button expanded float-right mb-0", value: t("welcome.complaint_form.submit")) %>
+        <% end %>
+      </div>
 
+    <% else %>
+      <div class="callout success">
+        <%= sanitize(t("users.login_to_continue", signin: link_to_signin)) %>
+      </div>
+    <% end %>
 
   </div>
 </div>

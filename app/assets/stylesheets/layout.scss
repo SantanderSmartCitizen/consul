@@ -407,12 +407,53 @@ a {
   margin: 0 $line-height / 2;
 }
 
-.pagination .current {
-  background: $brand;
+.pagination {
+  margin: 0 auto;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  width: fit-content;
+  .current {
+    background: rgba($brand, .7);
+  }
+  li {
+    display: inline-block;
+    border-radius: 0;
+    margin: 0;
+    &:not(:last-child) {
+      border-right: 1px solid rgb(204, 204, 204);
+    }
+  }
+  a {
+    color: rgba($brand, .7);
+  }
 }
 
-.pagination li {
+.pagination-first a::before,
+.pagination-first.disabled::before {
   display: inline-block;
+  margin-right: 5px;
+  content: "\000AB";
+}
+
+.pagination-previous a::before,
+.pagination-previous.disabled::before {
+  display: inline-block;
+  margin-right: 5px;
+  content: "\02039";
+}
+
+.pagination-next a::after,
+.pagination-next.disabled::after {
+  display: inline-block;
+  margin-left: 5px;
+  content: "\0203A";
+}
+
+.pagination-last a::after,
+.pagination-last.disabled::after {
+  display: inline-block;
+  margin-left: 5px;
+  content: "\000BB";
 }
 
 .truncate-horizontal-text {
