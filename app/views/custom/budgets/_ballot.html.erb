@@ -1,0 +1,51 @@
+<% reason = investment.reason_for_not_being_ballotable_by(current_user, ballot) %>
+<div class="js-participation supports ballot">
+
+  <% if ballot.has_investment?(investment) %>
+
+    <div class="remove supported inline-block">
+      
+      <div class="budget-investment-check" title="<%= t("budgets.investments.investment.already_added") %>">
+        <%= image_tag image_path_for("vectors/check-white.svg"), alt: t("budgets.investments.investment.already_added")  %>
+      </div>
+
+      <% if investment.should_show_ballots? %>
+        <%= link_to t("budgets.ballots.show.remove"),
+                    budget_ballot_line_path(id: investment.id,
+                                            budget_id: investment.budget_id,
+                                            investments_ids: investment_ids,
+                                            show_in_table: true),
+                    class: "delete small expanded",
+                    method: :delete,
+                    remote: true %>
+      <% end %>
+    </div>
+
+  <% else %>
+
+    <div class="add in-favor">
+      <% if investment.should_show_ballots? %>
+        <%= link_to t("budgets.investments.investment.add"),
+                    budget_ballot_lines_path(investment_id: investment.id,
+                                             budget_id: investment.budget_id,
+                                             investments_ids: investment_ids,
+                                             show_in_table: true),
+                    class: "button expanded mt-2",
+                    title: t("budgets.investments.investment.support_title"),
+                    method: :post,
+                    remote: true %>
+      <% end %>
+    </div>
+
+  <% end %>
+
+  <% if reason.present? && !ballot.has_investment?(investment) %>
+
+    <div class="js-participation-not-allowed participation-not-allowed p-0" style="display:none">
+
+      <div class="button expanded mt-2 disabled" title="<%= t('budgets.ballots.reasons_for_not_balloting.max_votes_allowed') %>"><%= t("budgets.investments.investment.add") %></div>
+
+    </div>
+
+  <% end %>
+</div>

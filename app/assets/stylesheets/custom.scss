@@ -604,6 +604,22 @@ a.footer-social-icons.instagram:hover {
   margin-bottom: 10px;
 }
 
+#tabla-propuestas {
+  .investment-project-amount {
+    display: none;
+  }
+  .budget-investment-check {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0;
+    display: none;
+  }
+  .button.expanded {
+    margin: 0 auto !important;
+    max-width: 150px;
+  }
+}
+
 .panel {
   &.previous-budgets {
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);

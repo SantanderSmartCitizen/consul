@@ -4,6 +4,7 @@ en:
       reasons_for_not_balloting:
         not_logged_in: You must %{signin} to continue.
         not_enough_money: "You have already reached the maximum number of votes allowed.<br><small>Remember you can %{change_ballot} at any time</small>"
+        max_votes_allowed: "You have already reached the maximum number of votes allowed."
       show:
         amount_spent: Amount spend
         remaining: "Still available to you <span>%{amount}</span>"
