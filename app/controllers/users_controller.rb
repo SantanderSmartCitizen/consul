@@ -17,7 +17,7 @@ class UsersController < ApplicationController
                           proposals: Proposal.where(author_id: @user.id).count,
                           budget_investments: (Setting["process.budgets"] ? Budget::Investment.where(author_id: @user.id).count : 0),
                           forums: (Setting["process.forums"] ? Forum.where(author_id: @user.id).count : 0),
-                          comments: only_active_commentables.count
+                          comments: only_active_commentables.count)
     end
 
     def load_filtered_activity
