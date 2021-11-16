@@ -76,6 +76,7 @@ module Budgets
           @investments_map_coordinates = MapLocation.where(investment: @investments).map(&:json_data)
           @map_location = MapLocation.load_from_heading(@heading)
         end
+
     end
   end
 end

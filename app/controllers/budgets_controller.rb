@@ -7,6 +7,7 @@ class BudgetsController < ApplicationController
   load_and_authorize_resource
   before_action :set_default_budget_filter, only: :show
   before_action :load_investments, only: :index
+  before_action :load_ballot, only: :index
   has_filters %w[not_unfeasible feasible unfeasible unselected selected winners], only: :show
 
   respond_to :html, :js
@@ -20,6 +21,7 @@ class BudgetsController < ApplicationController
     @budgets_coordinates = current_budget_map_locations
     @banners = Banner.in_section("budgets").with_active
     @header_slides = HeaderSlide.budgets
+    @budget = current_budget
   end
 
   def previous
@@ -47,6 +49,13 @@ class BudgetsController < ApplicationController
         end
       else
         @investments = current_budget.investments.order(:title).page(params[:page]).per(10).for_render
+      end
+    end
+
+    def load_ballot
+      if current_budget.balloting? && user_signed_in?
+        query = Budget::Ballot.where(user: current_user, budget: current_budget)
+        @ballot = current_budget.balloting? ? query.first_or_create! : query.first_or_initialize
       end
     end
 end
