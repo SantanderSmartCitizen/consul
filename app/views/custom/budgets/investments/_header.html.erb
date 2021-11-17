@@ -1,0 +1,71 @@
+<% if @heading.present? %>
+
+<% content_for :breadcrumb do %>
+  <%= back_link_to budgets_path %>
+<% end %>
+
+  <section class="no-margin-top margin-bottom">
+    <% if can? :show, @ballot %>
+      <div class="expanded budget budget-heading">    
+        <div class="row progress-votes">
+
+          <h1 class="text-center w-100">
+            <%= t("budgets.ballots.show.title") %>
+          </h1>
+
+          <div class="small-12 column padding callout shadow">
+            
+            <div id="check-ballot" style="display: none;">
+              <%= link_to t("budgets.investments.header.check_ballot"),
+                          budget_ballot_path(@budget) %>
+            </div>
+
+            <% if @ballot.valid_heading?(@heading) %>
+              <div class="progress-bar-nav" data-fixed-bar>
+                <div id="progress_bar" class="no-margin-top">
+                  <%= render "budgets/ballot/progress_bar" %>
+                </div>
+              </div>
+              
+              <%= link_to t("budgets.investments.header.check_ballot"),
+                          budget_ballot_path(@budget),
+                          class: "button", style: "float: right;" %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row margin-top">
+      <div class="small-12 medium-9 column">
+        <h1 class="mb-0">
+          <%= t("budgets.investments.index.by_heading", heading: @heading.name) %>
+        </h1>
+        <% unless can? :show, @ballot %>
+          <h3>
+            <span class="tagline"><%= t("budgets.investments.header.price") %></span>
+            <%= @budget.formatted_heading_price(@heading) %>
+          </h3>
+        <% end %>
+      </div>
+    </div>
+
+  </section>
+
+<% else %>
+  <% content_for :breadcrumb do %>
+  <%= back_link_to budget_path(@budget)%>
+<% end %>
+
+<!--   <div class="expanded budget">
+    <div class="row">
+      <div class="small-12 column">
+        <h1 class="text-center w-100">
+          <%= t("budgets.investments.index.title") %>
+        </h1>
+      </div>
+    </div>
+  </div> -->
+  
+<% end %>

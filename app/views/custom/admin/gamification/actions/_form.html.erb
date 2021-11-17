@@ -1,0 +1,84 @@
+<%= render "shared/globalize_locales", resource: @action %>
+
+<%= translatable_form_for(@action, url: form_url) do |f| %>
+
+  <%= render "shared/errors", resource: @action %>
+
+  <% if params['return_to'] %>
+    <%= f.hidden_field :return_to, value: params['return_to'] %>
+  <% end %>
+
+  <div class="row">
+    <div class="small-12">
+      <% if @gamification.present? %>
+        <%= f.hidden_field :gamification_id, value: @gamification.id %>
+      <% elsif @action.gamification.present? %>
+        <%= f.hidden_field :gamification_id, value: @action.gamification.id %>
+      <% else %>
+        <div class="small-12 medium-6 large-4 column required">
+          <%= f.select :gamification_id,
+                        gamification_select_options,
+                        prompt: t("admin.gamification.actions.form.select_gamification"),
+                        label: t("admin.gamification.actions.form.gamification") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="clear">
+      <div class="small-12 medium-6 column required">
+        <%= f.text_field :key,
+                          label: t("admin.gamification.actions.form.key"),
+                          disabled: @action.gamification&.locked %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.translatable_fields do |translations_form| %>
+      <div class="small-12 medium-6 column required">
+        <%= translations_form.text_field :title %>
+      </div>
+
+      <div class="small-12 column">
+        <%= translations_form.text_area :description, rows: 8 %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 column required">
+      <%= f.number_field :score, step: 1, min: 1,
+                        label: t("admin.gamification.actions.form.score") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <p>
+      <%= t("admin.gamification.actions.form.process_type_title") %>
+    </p>
+  </div>
+
+  <div class="row" style="background-color: #e6e6e6;">
+    <div class="small-12 medium-6 column">
+      <%= f.select :process_type,
+                    get_process_type_select_options,
+                    {label: t("admin.gamification.actions.form.process_type"), include_blank: "..."},
+                    {disabled: @action.gamification&.locked} %>
+    </div>
+    <div class="small-12 medium-6 column">
+      <%= f.select :operation,
+                    get_operation_select_options(@action.process_type),
+                    {label: t("admin.gamification.actions.form.operation"), include_blank: "..."},
+                    {disabled: @action.gamification&.locked} %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-3 column clear end">
+      <%= f.submit t("admin.gamification.actions.#{admin_submit_action(@action)}.submit_button"), class: "button success expanded margin-top" %>
+    </div>
+  </div>
+
+<% end %>

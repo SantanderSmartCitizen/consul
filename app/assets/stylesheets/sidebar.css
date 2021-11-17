@@ -1,0 +1,202 @@
+.st-container,
+.st-pusher,
+.st-content {
+	margin: 0;
+	height: 100%;
+}
+
+.st-content {
+	overflow-y: scroll;
+	background: white;
+}
+
+.st-content,
+.st-content-inner {
+	position: relative;
+}
+
+.st-container {
+	position: relative;
+	overflow: hidden;
+}
+
+.st-pusher {
+	position: relative;
+	left: 0;
+	z-index: 99;
+	height: 100%;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.st-pusher::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	background: rgba(0,0,0,0.1);
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+	transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+.st-menu-open .st-pusher::after {
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.st-menu {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 100;
+	visibility: hidden;
+	width: 50%;
+	height: 100%;
+	background: white;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.st-menu::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.2);
+	content: '';
+	opacity: 1;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.st-menu-open .st-menu::after {
+	width: 0;
+	height: 0;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+	transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+/* content style */
+
+.st-menu .st-menu-content {
+	max-width: 600px;
+	height: 100%;
+	background-image: image-url("menu_separator.svg");
+	background-repeat: no-repeat;
+	background-size: 160px 55px;
+	background-position-x: right;
+	background-position-y: 254px;
+	padding: 52px 40px 0 52px;
+}
+
+.st-menu .st-menu-content .st-buttons button{
+	color: $brand;
+    cursor: pointer;
+    line-height: 16px;
+}
+
+.st-menu .st-menu-content .st-buttons-left {
+	float: left;
+}
+.st-menu .st-menu-content .st-buttons-right {
+	float: right;
+}
+
+.st-menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.st-menu h2 {
+	color: rgba($brand, 0.5);
+	font-weight: bold;
+	font-size: 16px;
+	border-bottom: 1px solid rgba($brand, 0.5);
+	text-transform: uppercase;
+}
+
+.st-menu ul li a {
+	/*
+	display: block;
+	padding: 1em 1em 1em 1.2em;
+	outline: none;
+	box-shadow: inset 0 -1px rgba(0,0,0,0.2);
+	color: rgba(0,0,0,0.4);
+	text-transform: uppercase;
+	text-shadow: 0 0 1px rgba(255,255,255,0.1);s
+	letter-spacing: 1px;
+	font-weight: 400;
+	-webkit-transition: background 0.3s, box-shadow 0.3s;
+	transition: background 0.3s, box-shadow 0.3s;
+	*/
+	color: rgba($brand, 0.5);
+	font-size: 20px;
+}
+
+.st-menu ul li a.is-active {
+	color: $brand;
+}
+
+.st-menu ul li:first-child a {
+	/*
+	box-shadow: inset 0 -1px rgba(0,0,0,0.2), inset 0 1px rgba(0,0,0,0.2);
+	*/
+}
+
+.st-menu ul li a:hover {
+	/*
+	background: rgba(0,0,0,0.2);
+	box-shadow: inset 0 -1px rgba(0,0,0,0);
+	color: #fff;
+	*/
+	color: $brand;
+	text-decoration: none;
+}
+
+/* Effect: Slide in on top */
+.st-locale.st-menu,
+.st-main.st-menu {
+	visibility: visible;
+	-webkit-transform: translate3d(100%, 0, 0);
+	transform: translate3d(100%, 0, 0);
+}
+
+.st-locale.st-menu-open .st-locale.st-menu,
+.st-main.st-menu-open .st-main.st-menu {
+	visibility: visible;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.st-locale.st-menu::after,
+.st-main.st-menu::after {
+	display: none;
+}
+
+/* Fallback example for browsers that don't support 3D transforms (and no JS fallback) */
+.no-csstransforms3d .st-pusher,
+.no-js .st-pusher {
+	/*padding-left: 300px;*/
+}
+
+@media screen and (max-width: 39.99875em) {
+	.st-menu {
+		width: 100%;
+	}
+	.st-menu .st-menu-content {
+		padding: 20px 40px 0 40px;
+	}
+	.st-menu .st-menu-content .st-buttons button {
+		color: rgba($brand, 0.5);
+		font-size: 30px;
+	}
+}

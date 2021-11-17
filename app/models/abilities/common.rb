@@ -82,7 +82,7 @@ module Abilities
       can [:create, :destroy], Follow
 
       can [:destroy], Document do |document|
-        document.documentable&.author_id == user.id
+        document.user_id == user.id
       end
 
       can [:destroy], Image, imageable: { author_id: user.id }
@@ -93,6 +93,7 @@ module Abilities
         can :vote, Debate
         can :vote, Forum
         can :vote, Comment
+        can :vote, Milestone
       end
 
       if user.level_two_or_three_verified?
@@ -130,6 +131,11 @@ module Abilities
       can [:update, :destroy], Topic, author_id: user.id
 
       can :disable_recommendations, [Debate, Forum, Proposal]
+
+      can :request_reward, Gamification::Reward do |reward|
+        reward.active_for?(user)
+      end
+      
     end
   end
 end

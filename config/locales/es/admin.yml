@@ -414,7 +414,7 @@ es:
       index:
         id: ID
         author: Autor
-        title: Debates
+        title: Debate
         no_debates: No hay debates.
     hidden_debates:
       index:
@@ -1522,7 +1522,7 @@ es:
           status: Estado
           updated_at: Última actualización
           title: Título
-          slug: Slug
+          slug: Ruta de acceso
           cards_title: Tarjetas
           see_cards: Ver tarjetas
         cards:

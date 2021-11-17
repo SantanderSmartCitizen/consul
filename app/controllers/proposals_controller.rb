@@ -53,6 +53,7 @@ class ProposalsController < ApplicationController
     load_selected
     load_featured
     remove_archived_from_order_links
+    @header_slides = HeaderSlide.proposals
   end
 
   def vote

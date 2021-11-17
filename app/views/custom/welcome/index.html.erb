@@ -4,10 +4,6 @@
   <%= render "shared/canonical", href: root_url %>
 <% end %>
 
-<% if has_banners? %>
-  <%= render "shared/banner" %>
-<% end %>
-
 <% provide :social_media_meta_tags do %>
   <%= render "shared/social_media_meta_tags",
               social_url: root_url %>
@@ -17,54 +13,22 @@
 
 <main>
 
- 
-<!--   <div class="row">
-    <% if feed_processes_enabled? %>
-      <%= render "processes" %>
-    <% end %>
-  </div> -->
+  <% if has_banners? %>
+    <%= render "shared/banner" %>
+  <% end %>
+  
+  <%= render "welcome/featured_processes" %>
 
-
-  <div class="row">
-      <%= render "welcome/featured" %>
-  </div>
-
-  <div class="row">
-    <%= image_tag(image_path_for("section_separator.png"), class: "", alt: "Section separator", style: "") %>
-  </div>
+  <%= render "shared/right_separator" %>
 
   <%= render "welcome/indicators" %>
 
-  <div class="row">
-    <%= image_tag(image_path_for("section_separator.png"), class: "", alt: "Section separator", style: "") %>
-  </div>
+  <%= render "shared/left_separator" %>
 
-  <%= render "welcome/complaints_and_suggestions" %>
+  <%= render "shared/events" %>
 
-  <!-- <%= render "feeds" %> -->
+  <%= render "shared/right_separator" %>
 
-  <!--
-  <div class="row">
-    
-    <% if @cards.any? %>
-      <div class="small-12 column <%= "large-8" if feed_processes_enabled? %>">
-        <%= render "cards" %>
-      </div>
-    <% end %>
+  <%= render "welcome/actions_and_complaint_form" %>
 
-    <% if feed_processes_enabled? %>
-      <div class="small-12 large-4 column">
-        <%= render "processes" %>
-      </div>
-    <% end %>
-  </div>
-  -->
-
-<!--
-  <% if feature?("user.recommendations") && (@recommended_debates.present? || @recommended_proposals.present?) %>
-    <%= render "recommended",
-                recommended_debates: @recommended_debates,
-                recommended_proposals: @recommended_proposals %>
-  <% end %>
--->
 </main>

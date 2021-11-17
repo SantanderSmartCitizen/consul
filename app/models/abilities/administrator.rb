@@ -79,10 +79,16 @@ module Abilities
       can :create, Budget::ValuatorAssignment
 
       can :read_admin_stats, Budget, &:balloting_or_later?
+      can :read_final_admin_stats, Budget, &:finished?
 
       can [:search, :edit, :update, :create, :index, :destroy], Banner
 
+      can [:search, :edit, :update, :create, :index, :destroy], HeaderSlide
+
+      can [:search, :edit, :update, :create, :index, :destroy], Event
+
       can [:index, :create, :edit, :update, :destroy], Geozone
+      can [:index, :create, :edit, :update, :destroy], BudgetGeozone
 
       can [:read, :create, :update, :destroy, :add_question, :search_booths, :search_officers, :booth_assignments], Poll
       can [:read, :create, :update, :destroy, :available], Poll::Booth
@@ -114,6 +120,13 @@ module Abilities
 
       can :manage, LocalCensusRecord
       can [:create, :read], LocalCensusRecords::Import
+
+      can [:read, :create, :update, :destroy, :add_action], Gamification
+      can [:read, :create, :update, :update_operations, :search], Gamification::Action
+      can :destroy, Gamification::Action
+      can [:read, :create, :update], Gamification::Reward
+      can :destroy, Gamification::Reward
+      can [:read, :update], Gamification::RequestedReward
     end
   end
 end

@@ -29,13 +29,19 @@ module AdminHelper
   end
 
   def menu_budgets?
-    controller_name.starts_with?("budget")
+    controller_name.starts_with?("budget") && controller_name != "budget_geozones"
   end
 
   def menu_polls?
     controller.class.parent == Admin::Poll::Questions::Answers ||
       %w[polls active_polls recounts results questions answers].include?(controller_name) &&
       action_name != "booth_assignments"
+  end
+
+  def menu_gamifications?
+    controllers_names = ["gamifications"]
+    controller_params = ["admin/gamification/actions", "admin/gamification/actions/additional_scores", "admin/gamification/rewards", "admin/gamification/requested_rewards"]
+    controllers_names.include?(controller_name) || controller_params.include?(params[:controller])
   end
 
   def menu_booths?
@@ -48,14 +54,14 @@ module AdminHelper
   end
 
   def menu_settings?
-    controllers_names = ["settings", "tags", "geozones", "images", "content_blocks",
+    controllers_names = ["settings", "tags", "geozones", "budget_geozones", "images", "content_blocks",
       "local_census_records", "imports"]
     controllers_names.include?(controller_name) &&
       controller.class.parent != Admin::Poll::Questions::Answers
   end
 
   def menu_customization?
-    ["pages", "banners", "information_texts", "documents"].include?(controller_name) ||
+    ["pages", "banners", "header_slides", "information_texts", "documents", "events"].include?(controller_name) ||
     menu_homepage? || menu_pages?
   end
 
@@ -68,7 +74,8 @@ module AdminHelper
   end
 
   def menu_dashboard?
-    ["actions", "administrator_tasks"].include?(controller_name)
+    ["administrator_tasks"].include?(controller_name) ||
+     ["admin/dashboard/actions"].include?(params[:controller])
   end
 
   def submenu_local_census_records?

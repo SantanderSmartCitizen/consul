@@ -1,0 +1,99 @@
+<% content_for :breadcrumb do %>
+  <%= back_link_to %>
+<% end %>
+
+<div class="expanded budget no-margin-top">
+  <div class="row">
+    <h1 class="text-center w-100">
+      <%= t("budgets.ballots.show.title") %>
+    </h1>
+    <div class="small-12 column padding small-centered text-center callout shadow">
+      <h2>
+        <%= sanitize(t("budgets.ballots.show.voted", count: @ballot.investments.count)) %>
+      </h2>
+      <p class="confirmed">
+        <%= t("budgets.ballots.show.voted_info") %>
+      <p>
+      <p>
+        <%= t("budgets.ballots.show.voted_info_2") %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="row ballot">
+  <% ballot_groups = @ballot.groups.sort_by_name %>
+
+
+
+
+  <% ballot_groups.each do |group| %>
+
+    <% group.headings.each do |heading| %>
+
+    <div id="<%= dom_id(group) %>" class="small-12 medium-6 column end">
+      <div class="margin-top ballot-content">
+        <div class="subtitle">
+          <h3>
+            <%= link_to group.name,
+                        budget_group_path(@budget, group),
+                        data: { no_turbolink: true } %> - <%= link_to heading.name,
+                        budget_investments_path(heading_id: heading.id),
+                        data: { no_turbolink: true } %>
+          </h3>
+          <% unless @budget.has_max_votes_system? %>
+          <%= link_to sanitize(t("budgets.ballots.show.remaining",
+                          amount: @ballot.formatted_amount_available(heading))),
+                        budget_investments_path(heading_id: heading.id),
+                        data: { no_turbolink: true } %>
+          <% end %>
+        </div>
+
+        <% if @ballot.has_lines_in_heading?(heading) %>
+          <h4 class="amount-spent text-right">
+            <% if @budget.has_max_votes_system? %>
+              <%= t("budgets.ballots.show.voted", count: @ballot.total_votes_by_heading(heading)) %>
+            <% else %>
+              <%= t("budgets.ballots.show.amount_spent") %>
+              <span>
+                <%= @ballot.formatted_amount_spent(heading) %>
+              </span>
+            <% end %>
+          </h4>
+        <% else %>
+          <p>
+            <%= t("budgets.ballots.show.zero") %><br>
+          </p>
+        <% end %>
+
+        <ul class="ballot-list">
+          <%= render partial: "budgets/ballot/investment",
+                     collection: @ballot.investments.by_heading(heading.id) %>
+        </ul>
+      </div>
+    </div>
+
+    <% end %>
+  <% end %>
+
+
+
+
+
+
+
+  <% no_balloted_groups = @budget.groups.sort_by_name - ballot_groups %>
+  <% no_balloted_groups.each do |group| %>
+    <div id="<%= dom_id(group) %>" class="small-12 medium-6 column end">
+      <div class="margin-top ballot-content">
+        <div class="callout notice">
+          <h3>
+            <%= group.name %>
+          </h3>
+          <%= link_to t("budgets.ballots.show.no_balloted_group_yet"), budget_group_path(@budget, group) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

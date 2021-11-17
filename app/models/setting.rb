@@ -8,7 +8,7 @@ class Setting < ApplicationRecord
   end
 
   def type
-    if %w[feature process proposals map html homepage uploads].include? prefix
+    if %w[feature process proposals map budget_map html homepage uploads].include? prefix
       prefix
     elsif %w[remote_census].include? prefix
       key.rpartition(".").first
@@ -113,6 +113,13 @@ class Setting < ApplicationRecord
         "map.latitude": 51.48,
         "map.longitude": 0.0,
         "map.zoom": 10,
+        "map.arcgis.feature_layer_url": "",
+        "map.arcgis.district_code_field": "",
+        "budget_map.latitude": 51.48,
+        "budget_map.longitude": 0.0,
+        "budget_map.zoom": 10,
+        "budget_map.arcgis.feature_layer_url": "",
+        "budget_map.arcgis.district_code_field": "",
         "process.debates": true,
         "process.forums": true,
         "process.proposals": true,

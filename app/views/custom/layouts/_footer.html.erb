@@ -1,76 +1,184 @@
 <footer>
 
+  <!-- <div class="row" style="margin-top: 80px; margin-bottom: 45px;">
+    <%= image_tag(image_path_for("footer_separator.svg"), alt: "Footer separator") %>
+  </div>
 
-  <div class="row text-center pr-15p pl-15p" style="background: #4d9dbe; color: white; padding-top: 50px; padding-bottom: 40px;">
+  <div class="row text-center" style="margin-bottom: 55px;">
+    <h1><%= t("layouts.footer.title") %></h1>
+  </div>
 
-    <div class="medium-12 large-3 column footer-column-container">
-      <%= t("layouts.footer.copyright") %>
-    </div>
-    
-    <div class="medium-12 large-6 column footer-column-container">
-      <ul class="no-bullet inline-block">
-        <li class="inline-block"><%= link_to t("layouts.footer.privacy"), page_path("privacy") %>&nbsp;|</li>
-        <li class="inline-block"><%= link_to t("layouts.footer.conditions"), page_path("conditions") %>&nbsp;|</li>
-        <li class="inline-block"><%= link_to t("layouts.footer.accessibility"), page_path("accessibility") %></li>
+  <div class="row footerLinks" style="margin-bottom: 75px;">
+
+    <div class="listLinks">
+      <ul class="no-bullet">
+        <li>
+          <a href="http://www.a21santander.com/inicio/index.aspx" target="_blank">Agenda 21</a>
+        </li>
+        <li>
+          <a href="http://portal.ayto-santander.es/portalcdis/Index.do" target="_blank">Centro de Documentación de la Imagen</a>
+        </li>
+        <li>
+          <a href="http://www.comerciosantander.com/" target="_blank">Comercio Santander</a>
+        </li>
+        <li>
+          <a href="http://www.juventudsantander.es/" target="_blank">Espacio joven</a>
+        </li>
+        <li>
+          <a href="http://meetingpoint.santander.es/" target="_blank">Meeng Point Oficina del Voluntariado</a>
+        </li>
+        <li>
+          <a href="http://www.palaciodeexposicionesycongresos.com/" target="_blank">Palacio de Exposiciones y Congresos de Santander</a>
+        </li>
+        <li>
+          <a href="https://aytosantander.maps.arcgis.com/apps/webappviewer/index.html?id=81908d63b4be4ec3a2f9f1e93a608888" target="_blank">Plano Interactivo Callejero Santander</a>
+        </li>
+        <li>
+          <a href="http://redludotecassantander.com/" target="_blank">Red Municipal de Ludotecas</a>
+        </li>
+        <li>
+          <a href="https://sede.santander.es/" target="_blank">Sede Electrónica</a>
+        </li>
+        <li>
+          <a href="https://turismo.santander.es/" target="_blank">Turismo</a>
+        </li>
       </ul>
     </div>
 
-    <div class="medium-12 large-3 column footer-column-container social">
-      <div class="row mb-0 d-inline-block" style="min-width: calc(165px + 2.4em);">
-
-
-          <% if setting["twitter_handle"] %>
- 
-              <%= link_to "https://twitter.com/#{setting["twitter_handle"]}", target: "_blank",
-                           title: t("shared.go_to_page") + t("social.twitter", org: setting["org_name"]) + t("shared.target_blank"), class: "footer-social-icons twitter d-inline-block" do %>
-                              <span class="show-for-sr"><%= t("social.twitter", org: setting["org_name"]) %></span>
-                              <span class="icon-twitter" aria-hidden="true"></span>
-              <% end %>
-
-          <% end %>
-          <% if setting["facebook_handle"] %>
-
-              <%= link_to "https://www.facebook.com/#{setting["facebook_handle"]}/", target: "_blank",
-                          title: t("shared.go_to_page") + t("social.facebook", org: setting["org_name"]) + t("shared.target_blank"), class: "footer-social-icons facebook d-inline-block" do %>
-                          <span class="show-for-sr"><%= t("social.facebook", org: setting["org_name"]) %></span>
-                          <span class="icon-facebook" aria-hidden="true"></span>
-              <% end %>
-
-          <% end %>
-          <% if setting["youtube_handle"] %>
-
-              <%= link_to "https://www.youtube.com/#{setting["youtube_handle"]}", target: "_blank",
-                          title: t("shared.go_to_page") + t("social.youtube", org: setting["org_name"]) + t("shared.target_blank"), class: "footer-social-icons youtube d-inline-block" do %>
-                          <span class="show-for-sr"><%= t("social.youtube", org: setting["org_name"]) %></span>
-                          <span class="icon-youtube" aria-hidden="true"></span>
-              <% end %>
-
-          <% end %>
-          <% if setting["telegram_handle"] %>
-
-              <%= link_to "https://www.telegram.me/#{setting["telegram_handle"]}", target: "_blank",
-                          title: t("shared.go_to_page") + t("social.telegram", org: setting["org_name"]) + t("shared.target_blank"), class: "footer-social-icons telegram d-inline-block" do %>
-                          <span class="show-for-sr"><%= t("social.telegram", org: setting["org_name"]) %></span>
-                          <span class="icon-telegram" aria-hidden="true"></span>
-              <% end %>
-
-          <% end %>
-          <% if setting["instagram_handle"] %>
-
-              <%= link_to "https://www.instagram.com/#{setting["instagram_handle"]}", target: "_blank",
-                          title: t("shared.go_to_page") + t("social.instagram", org: setting["org_name"]) + t("shared.target_blank"), class: "footer-social-icons instagram d-inline-block" do %>
-                          <span class="show-for-sr"><%= t("social.instagram", org: setting["org_name"]) %></span>
-                          <span class="icon-instagram" aria-hidden="true"></span>
-              <% end %>
-
-          <% end %>
-          <%= raw content_block("footer", I18n.locale) %>
-
-      </div>
+    <div class="listLinks">
+      <ul class="no-bullet">
+        <li>
+          <a href="http://www.bibliotecademenendezpelayo.org/" target="_blank">Biblioteca de Menéndez Pelayo</a>
+        </li>
+        <li>
+          <a href="http://www.cmicadsantander.es/" target="_blank">Centro Municipal de Inmigración y cooperación al desarrollo</a>
+        </li>
+        <li>
+          <a href="http://www.conservatorioataulfoargenta.es/" target="_blank">Conservatorio Ataufo Argenta</a>
+        </li>
+        <li>
+          <a href="http://www.santanderdeportes.com/" target="_blank">Instituto Municipal de Deportes</a>
+        </li>
+        <li>
+          <a href="http://www.museosantandermas.es/" target="_blank">Museo de arte Moderno y Contemporáneo de Santander</a>
+        </li>
+        <li>
+          <a href="http://www.palaciomagdalena.com/" target="_blank">Palacio de la Magdalena</a>
+        </li>
+        <li>
+          <a href="http://agenciadesarrollo.ayto-santander.es/" target="_blank">Portal de empleo</a>
+        </li>
+        <li>
+          <a href="http://www.santandercitybrain.com/" target="_blank">Santander City Brain</a>
+        </li>
+        <li>
+          <a href="http://www.svs-santander.es/" target="_blank">Sociedad de la vivienda y suelo de Santander</a>
+        </li>
+      </ul>
     </div>
+
+    <div class="listLinks">
+      <ul class="no-bullet">
+        <li>
+          <a href="http://cementeriodeciriego.es/" target="_blank">Cementerio de Ciriego</a>
+        </li>
+        <li>
+          <a href="http://www.centroscivicossantander.com/" target="_blank">Centros Cívicos</a>
+        </li>
+        <li>
+          <a href="http://www.santanderconventionbureau.com/" target="_blank">Convention Bureau</a>
+        </li>
+        <li>
+          <a href="http://www.lineaverdesantander.com/" target="_blank">Línea verde Santander</a>
+        </li>
+        <li>
+          <a href="http://www.oficinacambioclimaticosantander.es/" target="_blank">Oficina del Cambio Climático de Santander</a>
+        </li>
+        <li>
+          <a href="http://www.planestrategicosantander.com/" target="_blank">Plan Estratégico de Santander</a>
+        </li>
+        <li>
+          <a href="http://www.bibliotecaspublicas.es/rbm-santander/" target="_blank">Red de Bibliotecas de Santander</a>
+        </li>
+        <li>
+          <a href="http://www.santandertv.tv/" target="_blank">Santander TV</a>
+        </li>
+        <li>
+          <a href="http://www.tusantander.es/" target="_blank">T.U.S</a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+
+  <div class="row" style="margin-top: 100px;">
+    <%= image_tag(image_path_for("footer_start_line.svg"), alt: "Footer start line") %>
   </div>
 
-  <div class="row pt-4 pb-4 pl-10p pr-10p">
+  <div class="row">
+    
+    <div class="medium-12 large-6 column social">
+      <div class="row d-inline-block" style="margin-bottom: 10px; margin-top: 12px; line-height: 60px;">
+
+          <% if setting["twitter_handle"] %>
+            <%= link_to "https://twitter.com/#{setting["twitter_handle"]}", target: "_blank",
+                        title: t("shared.go_to_page") + t("social.twitter", org: setting["org_name"]) + t("shared.target_blank"), class: "footer-social-icons twitter d-inline-block text-center" do %>
+              <span class="show-for-sr"><%= t("social.twitter", org: setting["org_name"]) %></span>
+              <span class="icon-twitter" aria-hidden="true"></span>
+            <% end %>
+          <% end %>
+
+          <% if setting["facebook_handle"] %>
+            <%= link_to "https://www.facebook.com/#{setting["facebook_handle"]}/", target: "_blank",
+                          title: t("shared.go_to_page") + t("social.facebook", org: setting["org_name"]) + t("shared.target_blank"), class: "footer-social-icons facebook d-inline-block text-center" do %>
+              <span class="show-for-sr"><%= t("social.facebook", org: setting["org_name"]) %></span>
+              <span class="icon-facebook" aria-hidden="true"></span>
+            <% end %>
+          <% end %>
+
+          <% if setting["youtube_handle"] %>
+            <%= link_to "https://www.youtube.com/#{setting["youtube_handle"]}", target: "_blank",
+                          title: t("shared.go_to_page") + t("social.youtube", org: setting["org_name"]) + t("shared.target_blank"), class: "footer-social-icons youtube d-inline-block text-center" do %>
+              <span class="show-for-sr"><%= t("social.youtube", org: setting["org_name"]) %></span>
+              <span class="icon-youtube" aria-hidden="true"></span>
+            <% end %>
+          <% end %>
+
+          <% if setting["telegram_handle"] %>
+            <%= link_to "https://www.telegram.me/#{setting["telegram_handle"]}", target: "_blank",
+                          title: t("shared.go_to_page") + t("social.telegram", org: setting["org_name"]) + t("shared.target_blank"), class: "footer-social-icons telegram d-inline-block text-center" do %>
+              <span class="show-for-sr"><%= t("social.telegram", org: setting["org_name"]) %></span>
+              <span class="icon-telegram" aria-hidden="true"></span>
+            <% end %>
+          <% end %>
+
+          <% if setting["instagram_handle"] %>
+            <%= link_to "https://www.instagram.com/#{setting["instagram_handle"]}", target: "_blank",
+                          title: t("shared.go_to_page") + t("social.instagram", org: setting["org_name"]) + t("shared.target_blank"), class: "footer-social-icons instagram d-inline-block text-center" do %>
+              <span class="show-for-sr"><%= t("social.instagram", org: setting["org_name"]) %></span>
+              <span class="icon-instagram" aria-hidden="true"></span>
+            <% end %>
+          <% end %>
+
+          <%= raw content_block("footer", I18n.locale) %>
+          
+      </div>
+    </div>
+
+    <div class="medium-12 large-6 column text-right">
+      <ul class="no-bullet inline-block" style="margin-top: 22px; margin-bottom: 50px; line-height: 10px;">
+        <li class="inline-block mr-2"><%= link_to t("layouts.footer.privacy"), t("layouts.footer.privacy_policy_url") %>&nbsp;</li>
+        <li class="inline-block mr-2"><%= link_to t("layouts.footer.legal_notice"), t("layouts.footer.legal_notice_url") %>&nbsp;</li>
+        <li class="inline-block mr-2"><%= link_to t("layouts.footer.accessibility"), page_path("accesibilidad") %></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <%= image_tag(image_path_for("footer_end_line.svg"), alt: "Footer end line") %>
+  </div>
+
+  <div class="row pt-1 pb-4">
     <%= image_tag(image_path_for("pie_web.svg"), class: "", alt: "Generic placeholder image", style: "margin: 0 auto;") %>
   </div>
 

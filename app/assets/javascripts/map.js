@@ -12,7 +12,7 @@
       });
     },
     initializeMap: function(element) {
-      var addMarkerInvestments, clearFormfields, createMarker, editable, getPopupContent, latitudeInputSelector, longitudeInputSelector, map, mapAttribution, mapCenterLatLng, mapCenterLatitude, mapCenterLongitude, mapTilesProvider, marker, markerIcon, markerLatitude, markerLongitude, moveOrPlaceMarker, openMarkerPopup, removeMarker, removeMarkerSelector, updateFormfields, zoom, zoomInputSelector;
+      var addMarkerInvestments, clearFormfields, createMarker, editable, getPopupContent, latitudeInputSelector, longitudeInputSelector, map, mapAttribution, mapCenterLatLng, mapCenterLatitude, mapCenterLongitude, mapTilesProvider, marker, markerIcon, markerLatitude, markerLongitude, moveOrPlaceMarker, openMarkerPopup, removeMarker, removeMarkerSelector, updateFormfields, zoom, zoomInputSelector, mapArcgisFeatureLayerUrl, mapArcgisDistrictCodeField, mapGeozones, findProposalsByDistrict;
       App.Map.cleanInvestmentCoordinates(element);
       mapCenterLatitude = $(element).data("map-center-latitude");
       mapCenterLongitude = $(element).data("map-center-longitude");
@@ -27,6 +27,11 @@
       removeMarkerSelector = $(element).data("marker-remove-selector");
       addMarkerInvestments = $(element).data("marker-investments-coordinates");
       editable = $(element).data("marker-editable");
+      mapArcgisFeatureLayerUrl = $(element).data("map-arcgis-feature-layer-url");
+      mapArcgisDistrictCodeField = $(element).data("map-arcgis-district-code-field");
+      mapGeozones = $(element).data("map-geozones");
+      findProposalsByDistrict = $(element).data("find-proposals-by-district");
+
       marker = null;
       markerIcon = L.divIcon({
         className: "map-marker",
@@ -84,13 +89,56 @@
         });
       };
       getPopupContent = function(data) {
-        return "<a href='/budgets/" + data.budget_id + "/investments/" + data.investment_id + "'>" + data.investment_title + "</a>";
+        return "<a href='/presupuestos/" + data.budget_id + "/propuestas/" + data.investment_id + "'>" + data.investment_title + "</a>";
       };
       mapCenterLatLng = new L.LatLng(mapCenterLatitude, mapCenterLongitude);
       map = L.map(element.id).setView(mapCenterLatLng, zoom);
-      L.tileLayer(mapTilesProvider, {
-        attribution: mapAttribution
+
+      L.esri.basemapLayer('Gray').addTo(map);
+      L.esri.basemapLayer('GrayLabels').addTo(map);
+
+      var distritos = L.esri.featureLayer({
+        url: mapArcgisFeatureLayerUrl,
+        simplifyFactor: 0.35,
+        precision: 5,
+        style: {
+          color: 'rgb(38, 89, 118)',
+          weight: 1
+        }
       }).addTo(map);
+      
+      var oldId;
+
+      distritos.on('mouseout', function (e) {
+        /*document.getElementById('info-pane').innerHTML = '';*/
+        document.querySelectorAll(".map-info-pane").forEach(function (element, index, array) {
+          element.innerHTML = '';
+        });
+        distritos.resetFeatureStyle(oldId);
+      });
+
+      distritos.on('mouseover', function (e) {
+        oldId = e.layer.feature.id;
+        var geozoneCode = e.layer.feature.properties[mapArcgisDistrictCodeField];
+        /*document.getElementById('info-pane').innerHTML = mapGeozones[geozoneCode]['name'];*/
+        document.querySelectorAll(".map-info-pane").forEach(function (element, index, array) {
+          element.innerHTML = mapGeozones[geozoneCode]['name'];
+        });
+
+        distritos.setFeatureStyle(e.layer.feature.id, {
+          color: 'rgb(38, 89, 118)',
+          weight: 3,
+          opacity: 1
+        });
+      });
+
+      if (findProposalsByDistrict) {
+        distritos.on('click', function (e) {
+          var geozoneCode = e.layer.feature.properties[mapArcgisDistrictCodeField];
+          window.location.href = '/proposals?search='+ mapGeozones[geozoneCode]['name'];
+        });
+      }
+      
       if (markerLatitude && markerLongitude && !addMarkerInvestments) {
         marker = createMarker(markerLatitude, markerLongitude);
       }

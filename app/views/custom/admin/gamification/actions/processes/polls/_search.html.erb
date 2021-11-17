@@ -1,0 +1,41 @@
+<%= back_link_to admin_gamification_action_path(@action), t("admin.gamification.actions.back") %>
+
+<% provide(:title) do %>
+  <%= t("admin.header.title") %> - <%= t("admin.polls.index.title") %>
+<% end %>
+
+<h2><%= t("admin.polls.index.title") %></h2>
+
+<% if @processes.any? %>
+
+  <h3 class="inline-block"><%= page_entries_info @processes %></h3>
+
+  <table>
+    <thead>
+      <th><%= t("admin.polls.index.name") %></th>
+      <th><%= t("admin.polls.index.start_date") %></th>
+      <th><%= t("admin.polls.index.closing_date") %></th>
+      <th><%= t("admin.actions.actions") %></th>
+    </thead>
+    <tbody>
+      <% @processes.each do |poll| %>
+        <tr id="<%= dom_id(poll) %>" class="polls">
+          <td><%= link_to poll.name, admin_poll_path(poll) %></td>
+          <td><%= l poll.starts_at.to_date %></td>
+          <td><%= l poll.ends_at.to_date %></td>
+          <td>
+            <%= link_to t("admin.gamification.actions.show.select"),
+            new_admin_gamification_action_additional_score_path(@action, :process_id => poll.id),
+              class: "button hollow" %>
+          </td> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @processes %>
+<% else %>
+  <div class="callout primary margin">
+    <%= t("admin.polls.index.no_polls") %>
+  </div>
+<% end %>

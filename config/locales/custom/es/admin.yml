@@ -1,9 +1,18 @@
 es:
   admin:
     banners:
+      index:
+        table:
+          title: Título
+        edit: Editar
+        delete: Eliminar
       banner:
         sections:
+          homepage: Página principal
           budgets: Presupuestos
+          polls: Encuestas/Consultas
+          legislation_processes: Procesos
+          forums: Foro
     budgets:
       index:
         title: Presupuestos
@@ -16,6 +25,12 @@ es:
         title: Editar presupuestos
       destroy:
         unable_notice_polls: No se puede eliminar un presupuesto con una encuesta/consulta asociada
+    budget_investments:
+      index:
+        list:
+          ballot_lines_count: Votos
+      edit:
+        estimated_price: Coste estimado (%{currency})
     forums:
       index:
         id: ID
@@ -37,13 +52,30 @@ es:
           title: Procesos
         new:
           title: Crear nuevo proceso
+    shared:
+      forum_search:
+        button: Buscar
+        placeholder: Buscar temas de foro por título o descripción
     menu:
       budgets: Presupuestos
+      budget_geozones: Gestionar zonas presupuestarias
       polls: Encuestas/Consultas
+      forums: Foros
       site_customization:
         information_texts_menu:
           polls: "Encuestas/Consultas"
       legislation: Procesos
+      title_gamification: Gamificación
+      gamification: 
+        gamifications: Juegos
+        actions: Acciones
+        rewards: Recompensas
+        requested_rewards: Recompensas solicitadas
+        ranking: Clasificación
+      newsletters: Notificaciones por email
+      header_slides: Carrusel de imágenes
+      banner: Carrusel de banners
+      events: Gestor de eventos
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -103,20 +135,342 @@ es:
         free_text: Texto libre
       new:
         title: "Crear pregunta ciudadana para la encuesta/consulta %{poll}"
+    settings:
+      index:
+        map:
+          title: Mapa de propuestas
+        budget_map:
+          title: Mapa de proyectos de gasto
     stats:
       show:
         budgets_title: Presupuestos
         participatory_budgets: Presupuestos
         polls: Encuestas/Consultas
       budgets:
-        title: "Presupuestos - Estadisticas de participación"
+        title: "Estadísticas de presupuestos"
+        participation: Participación
+        results: Resultados
+        comparative: Comparativa
+        no_data_before_results_phase: "No hay datos que mostrar hasta que la fase de resultados no esté abierta."
       polls:
         title: Estadísticas de encuestas/consultas
         all: Encuestas/Consultas
         poll_questions: "Preguntas de encuesta/consulta: %{poll}"
         table:
           poll_name: Encuesta/Consulta
+      budget_balloting:
+        title: Estadísticas - Votación final
+        participants_per_heading: Participantes por partida
+      participation:
+        title: Estadísticas - Participación
+      results:
+        title: Estadísticas - Resultados
+      comparative:
+        title: Estadísticas - Comparativa
     homepage:
       feeds:
         citizen_proposals: Propuestas ciudadanos
         city_hall_proposals: Propuestas Ayuntamiento
+    geozones:
+      geozone:
+        external_code_help: Código de respuesta para esta zona en la API del GIS
+    budget_geozones:
+      index:
+        title: Zonas presupuestarias
+        create: Crear una zona presupuestaria
+        edit: Editar
+        delete: Eliminar
+      budget_geozone:
+        name: Nombre
+        external_code: Código externo
+        external_code_help: Código de respuesta para esta zona en la API del GIS
+        coordinates: Coordenadas
+        coordinates_help: Coordenadas que generarán una zona clicable en un mapa de imagen HTML
+      edit:
+        form:
+          submit_button: Guardar cambios
+        editing: Editando zona presupuestaria
+        back: Volver
+      new:
+        back: Volver
+        creating: Crear zona presupuestaria
+      delete:
+        success: Zona presupuestaria borrada correctamente
+        error: No se puede borrar la zona presupuestaria porque ya tiene elementos asociados
+    gamifications:
+      index:
+        table_title: Juegos
+        create: Crear juego
+        ranking: Ver clasificación
+        key: Clave
+        title: Título
+        description: Descripción
+        no_gamifications: No hay juegos.
+        back: Volver a juegos
+      new:
+        title: Nuevo juego
+        submit_button: Crear juego
+      edit:
+        title: Editar juego
+        submit_button: Actualizar juego
+      show:
+        header_title: "Juego: "
+        actions_tab: Acciones
+        rewards_tab: Recompensas
+        ranking_tab: Clasificación
+        no_actions: "No hay acciones asignadas a este juego."
+        actions_title: "Listado de acciones asignadas"
+        no_rewards: "No hay recompensas asignadas a este juego."
+        rewards_title: "Listado de recompensas asignadas"
+        ranking_title: Clasificación
+        no_user_rankings: "No hay puntuaciones en este juego."
+        ranking_table:
+          user: Usuario
+          score: Puntuación
+      flash:
+        action_added: "Acción añadida a este juego"
+        error_on_action_added: "No pudo añadirse la acción"
+      destroy:
+        alert: "Esta acción eliminará el juego."
+        success_notice: "Juego eliminado correctamente"
+      ranking:
+        title: Clasificación
+    gamification:
+      actions:
+        back: Volver
+        index:
+          table_title: Acciones
+          create: Crear acción
+          back: Volver a juego
+        form:
+          gamification: Juego
+          key: Clave
+          title: Título
+          description: Descripción
+          score: Puntuación
+          process_type: Tipo de proceso participativo
+          operation: Operación
+          select_gamification: Selecciona un juego
+          process_type_title: "Rellene estos campos si la acción está vinculada a un proceso participativo:"
+        new:
+          title: "Crear acción para el juego '%{gamification}'"
+          general_title: "Crear acción"
+          submit_button: Crear acción
+        edit:
+          title: "Editar acción del juego '%{gamification}'"
+          general_title: "Editar acción"
+          submit_button: Actualizar acción
+        show:
+          edit_action: Editar acción
+          select: Seleccionar
+          cannot_be_configured: Esta acción no puede configurarse.
+          debates:
+            title: Debates con puntuación adicional
+            add: Añadir debate
+            no_data: No hay debates asociados a esta acción.
+          proposals:
+            title: Propuestas con puntuación adicional
+            add: Añadir propuesta
+            no_data: No hay propuestas asociadas a esta acción.
+          polls:
+            title: Encuestas/Consultas con puntuación adicional
+            add: Añadir encuesta/consulta
+            no_data: No hay encuestas/consultas asociadas a esta acción.
+          processes:
+            title: Procesos con puntuación adicional
+            add: Añadir proceso
+            no_data: No hay procesos asociados a esta acción.
+          forums:
+            title: Temas de foro con puntuación adicional
+            add: Añadir tema
+            no_data: No hay temas de foro asociados a esta acción.
+          columns:
+            id: ID
+            title: Título
+            author: Autor
+            start_date: Fecha de apertura
+            closing_date: Fecha de cierre
+            additional_score: Puntuación adicional
+        operations:
+          answer_question: Responder pregunta
+          create: Crear
+          comment: Comentar
+          comment_debate: Comentar en debate
+          create_proposal: Crear propuesta
+          comment_proposal: Comentar en propuesta
+          vote: Votar
+          support: Apoyar
+          support_proposal: Apoyar propuesta
+        additional_score:
+          new:
+            title: Nueva puntuación adicional
+            cannot_be_configured: Este proceso ya tiene puntuación adicional.
+          edit:
+            title: Editar puntuación adicional
+          destroy:
+            alert: "Esta acción eliminará la puntuación adicional."
+            success_notice: "Puntuación adicional eliminada correctamente"
+          submit_button: Guardar
+          flash: 
+            created: Puntuación adicional creada correctamente
+            updated: Puntuación adicional actualizada correctamente
+          form:
+            additional_score: Puntuación adicional
+      rewards:
+        index:
+          table_title: Recompensas
+          create: Crear recompensa
+          back: Volver a juego
+        form:
+          gamification: Juego
+          title: Título
+          description: Descripción
+          minimum_score: Puntuación mínima
+          active: Activa
+          request_to_administrators: Incluir en la recompensa un botón para solicitar la recompensa a los administradores
+          select_gamification: Selecciona un juego
+        new:
+          title: "Crear recompensa para el juego '%{gamification}'"
+          general_title: "Crear recompensa"
+          submit_button: Crear recompensa
+        edit:
+          title: "Editar recompensa del juego '%{gamification}'"
+          general_title: "Editar recompensa"
+          submit_button: Actualizar recompensa
+        show:
+          edit_reward: Editar recompensa
+      requested_rewards:
+        index:
+          description: "Las recompensas pueden incluir un botón para solicitarlas a los administradores. A continuación se muestran las solicitudes de los usuarios."
+          title: Recompensas solicitadas
+          solve: Resolver
+          no_records: No hay recompensas solicitadas
+          request_date: Fecha solicitud
+          user: Usuario
+          reward: Recompensa solicitada
+          administrator: Administrador
+          solve_date: Fecha de resolución
+          filter: Filtro
+          filters:
+            pending: Pendientes
+            done: Resueltas
+        edit:
+          back: Volver a la lista de solicitudes pendientes
+          solving: Resolver solicitud pendiente
+        form:
+          solve: Marcar como resuelta
+          send: Enviar
+          request_date: Fecha solicitud
+          user: Usuario
+          reward: Recompensa solicitada
+        update:
+          success: La solicitud ha sido marcada como resuelta
+    milestones:
+      index:
+        delete: "Eliminar"
+        no_milestones: "No hay acciones desarrolladas"
+        new_milestone: "Crear nueva acción desarrollada"
+      new:
+        title: Nueva acción desarrollada
+        submit_button: Crear acción desarrollada
+      edit:
+        title: Editar acción desarrollada
+        submit_button: Actualizar acción desarrollada
+      create:
+        notice: "¡Nueva acción creada con éxito!"
+      update:
+        notice: Acción actualizada
+      delete:
+        notice: Acción borrada correctamente
+    newsletters:
+      create_success: Notificación por email creada correctamente
+      update_success: Notificación por email actualizada correctamente
+      send_success: Notificación por email enviada correctamente
+      delete_success: Notificación por email borrada correctamente
+      index:
+        title: Envío de notificaciones por email
+        new_newsletter: Crear notificación por email
+        subject: Asunto
+        segment_recipient: Destinatarios
+        sent: Enviado
+        actions: Acciones
+        draft: Borrador
+        edit: Editar
+        delete: Eliminar
+        preview: Previsualizar
+        empty_newsletters: No hay notificaciones por email para mostrar
+      new:
+        title: Nueva notificación por email
+        header_footer_help_text: "El encabezado y pie son los mismos en todos los emails, puedes modificarlos en <code>app/views/layouts/mailer_header</code> y <code>app/views/layouts/mailer_footer</code>.<br>Puedes reemplazar la imagen del encabezado en %{link}."
+        image_link: "personalizar imágenes"
+      edit:
+        title: Editar notificación por email
+      show:
+        title: Vista previa de notificación por email
+        send: Enviar
+        affected_users: (%{n} usuarios afectados)
+        sent_emails:
+          one: 1 correo enviado
+          other: "%{count} correos enviados"
+        sent_at: Enviado
+        subject: Asunto
+        segment_recipient: Destinatarios
+        from: Dirección de correo electrónico que aparecerá como remitente
+        body: Contenido del email
+        body_help_text: Así es como verán el email los usuarios
+        send_alert: '¿Estás seguro/a de que quieres enviar esta notificación por email a %{n} usuarios?'
+    header_slides:
+      index:
+        title: Carrusel de imágenes
+        create: Añadir imagen
+        edit: Editar
+        delete: Eliminar
+        table:
+          page: Sección
+          title: Título
+        filters:
+          all: Todos
+          homepage: Página principal
+          budgets: Presupuestos
+          polls: Encuestas/Consultas
+          debates: Debates
+          proposals: Propuestas
+          legislation_processes: Procesos
+          forums: Foro
+          help: Ayuda
+      header_slide:
+        pages:
+          homepage: Página principal
+          budgets: Presupuestos
+          polls: Encuestas/Consultas
+          debates: Debates
+          proposals: Propuestas
+          legislation_processes: Procesos
+          forums: Foro
+          help: Ayuda
+      edit:
+        editing: Editar imagen
+        form:
+          submit_button: Guardar cambios
+      new:
+        creating: Añadir imagen
+    events:
+      index:
+        title: Gestor de eventos
+        create: Añadir evento
+        edit: Editar
+        delete: Eliminar
+        table:
+          title: Título
+          starts_at: Fecha inicio
+          ends_at: Fecha fin
+        filters:
+          all: Todos
+          previous: Anteriores
+          next: Siguientes
+      edit:
+        editing: Editar evento
+        form:
+          submit_button: Guardar cambios
+      new:
+        creating: Añadir evento

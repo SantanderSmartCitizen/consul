@@ -89,17 +89,44 @@ en:
         submit_button: Save changes
   layouts:
     footer:
+      title: Our Portals
       consul: Santander SmartCitizen application
       copyright: Santander town hall
+      privacy_policy_url: https://santander.es/politica_privacidad
+      legal_notice: Legal Notice
+      legal_notice_url: https://santander.es/aviso_legal
     header:
-      collaborative_legislation: PROCESSES
-      debates: DEBATES
+      title: Santander participa
+      collaborative_legislation: Processes
+      debates: Debates
       logo: Santander SmartCitizen logo
-      help: HELP
-      proposals: PROPOSALS
-      poll_questions: POLLS/QUESTIONS
-      budgets: BUDGETS
-      forum: FORUM
+      dependent_brand_logo: Dependent brand logo
+      help: Help
+      proposals: Proposals
+      poll_questions:
+        title: Polls/questions
+        current: Open polls
+        expired: Expired polls
+      budgets:
+        title: Budgets
+        legal_bases: Legal bases
+        check_ballot: My ballot
+        previous: Previous budgets
+      forum: Forum
+      notification_item:
+        new_notifications:
+          one: "(1 new)"
+          other: "(%{count} new)"
+      access: Access
+      participation: Participation
+      select_locale: Select language
+      open_access_menu: Open access menu
+      open_main_menu: Open menu
+      close: Close
+      my_rewards: My rewards
+      available_rewards:
+        one: "(1 available)"
+        other: "(%{count} available)"
   omniauth:
     finish_signup:
       username_warning: "Due to a change in the way we interact with social networks, it is possible that your username/alias now appears as 'already in use'. If that is your case, please choose a different username/alias."
@@ -112,6 +139,12 @@ en:
       section_footer:
         title: Help about polls/questions
       no_polls: "There are no open polls."
+      not_logged_in: "You must sign in to participate"
+      no_geozone_restricted: "Polls for all city"
+      geozone_restricted: "Polls for districts"
+      filters:
+        current: "See open polls"
+        expired: "See expired polls"
     show:
       back: Back to polls/questions
       evaluate: "Evaluate the poll/question"
@@ -122,14 +155,42 @@ en:
       user_profile_blank: "Select a profile"
       city_hall: City hall
       citizen: Citizen
+    author_info:
+      author_anonymous: Anonymous
+      author_anonymous_detail: It is published without personal data
+    events:
+      title: Events
   users:
     show:
       deleted_forum: This thread has been deleted
       forums: Forum threads
+      gamification: Game
+      score: Score
+      additional_score: Additional score
+      ranking_position: Ranking position
+      date: Date
+      gamification_action: Action (Game)
+      process: Process
       filters:
         forums:
           one: 1 Thread in the forum
-          other: "%{count} Threads in the forum"          
+          other: "%{count} Threads in the forum"
+        gamification_user_rankings:
+          one: 1 Score obtained
+          other: "%{count} Scores obtained"
+        gamification_user_actions:
+          one: 1 Scored action
+          other: "%{count} Scored actions"
+        gamification_rewards:
+          one: 1 Reward available
+          other: "%{count} Rewards available"
+      rewards:
+        points: "%{points} points"
+        required_score: "Required score: %{score}"
+        view_reward: See reward
+        reward_requested: Reward already requested
+        request_reward: Request reward
+        reward_locked: Reward locked
   welcome:
     feed:
       see_all_debates: SEE ALL DEBATES
@@ -141,3 +202,22 @@ en:
     regular: Regular
     good: Good
     gorgeous: Gorgeous
+  proposals:
+    index:
+      map: Proposals located geographically
+    show:
+      publish: Publish proposal
+    created:
+      motivation: "It is important to prepare the launch campaign for your proposal to be successful. The first few days are decisive."
+      motivation_2: "<strong>You can publish your proposal now or at another time</strong>"
+      publish: Publish now
+      draft: Publish at another time and go to proposals
+    proposal:
+      created: "You've published a proposal!"
+      share:
+        view_proposal: Go to proposal
+  simple_calendar:
+    previous: "<"
+    next: ">"
+  form:
+    poll: the poll/question

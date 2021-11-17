@@ -1,0 +1,14 @@
+<div class="row section-content text-center">
+  <div class="small-12 column">
+    <h2 id="polls" data-magellan-target="polls"><%= t("pages.help.polls.title") %></h2>
+    <p>
+      <%= sanitize(t("pages.help.polls.description",
+            link: link_to(t("pages.help.polls.link"), polls_path))) %>
+    </p>
+    <p>
+      <%= sanitize(t("pages.help.polls.feature_1",
+            link: link_to(t("pages.help.polls.feature_1_link", org_name: setting["org_name"]),
+                             new_user_registration_path))) %>
+    </p>
+  </div>
+</div>

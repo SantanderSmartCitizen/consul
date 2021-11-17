@@ -10,13 +10,13 @@
 // 1. CONSUL variables
 // --------------------
 
-$base-font-size:      17px;
+$base-font-size:      13pt;
 $base-line:           rem-calc(26);
 $small-font-size:     rem-calc(14);
 $line-height:         rem-calc(24);
 $tiny-font-size:      rem-calc(12);
 
-$brand:             #004a83;
+$brand:             rgb(38, 89, 118);
 $dark:              darken($brand, 10%);
 
 $text:              #222;
@@ -26,7 +26,7 @@ $text-light:        #bfbfbf;
 $border:            #dee0e3;
 
 $link:              $brand;
-$link-hover:        darken($link, 20%);
+$link-hover:        $brand;
 
 $debates:           $brand;
 
@@ -36,30 +36,34 @@ $unlike:            #ef8585;
 $delete:            #f04124;
 $check:             #46db91;
 
-$proposals:         #ffa42d;
-$proposals-dark:    #794500;
+$proposals:         $brand;
+$proposals-dark:    $dark;
 
-$budget:            #7e328a;
-$budget-hover:      #7571bf;
+$budget:            rgb(103, 138, 159);
+$budget-hover:      $brand;
 
-$highlight:         #e7f2fc;
+$highlight:         rgba($brand, .2);
 $highlight-soft:    #f3f8fd;
 $light:             #f5f7fa;
 $featured:          #ffdc5c;
 
 $footer-border:     #bfc1c3;
 
-$success-bg:        #dff0d8;
-$success-border:    #d6e9c6;
-$color-success:     #3c763d;
+$success-bg:        white;
+$success-border:    rgba($brand, .2);
+$color-success:     rgba($brand, .7);
 
-$info-bg:           #d9edf7;
-$info-border:       #bce8f1;
-$color-info:        #31708f;
+$notice-bg:        rgb(233, 238, 241);
+$notice-border:    rgba($brand, .1);
+$color-notice:     rgba($brand, .7);
 
-$warning-bg:        #fcf8e3;
-$warning-border:    #faebcc;
-$color-warning:     #8a6d3b;
+$info-bg:           white;
+$info-border:       rgba($brand, .2);
+$color-info:        rgba($brand, .7);
+
+$warning-bg:        white;
+$warning-border:    $brand;
+$color-warning:     $brand;
 
 $alert-bg:          #f2dede;
 $alert-border:      #ebccd1;

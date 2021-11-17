@@ -58,6 +58,7 @@ namespace :deploy do
   after :published, "deploy:restart"
   before "deploy:restart", "puma:smart_restart"
   before "deploy:restart", "delayed_job:restart"
+  after "deploy:restart", "stats_regenerate"
 
   after :finished, "refresh_sitemap"
 
@@ -65,6 +66,16 @@ namespace :deploy do
   task :upgrade do
     after "add_new_settings", "execute_release_tasks"
     invoke "deploy"
+  end
+end
+
+task :stats_regenerate do
+  on roles(:app) do |host|
+    with rails_env: fetch(:rails_env) do
+      within current_path do
+        execute :bundle, :exec, "rake stats:regenerate"
+      end
+    end
   end
 end
 

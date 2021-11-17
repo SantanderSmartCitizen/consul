@@ -1,0 +1,19 @@
+<% description = local_assigns.fetch(:description, "") %>
+<% description = truncate(ActionView::Base.full_sanitizer.sanitize(description), length: 140) %>
+<% mobile = local_assigns[:mobile] %>
+<% mobile_url = mobile.present? ? "#{mobile.gsub(/\s+/, "%20")}%20" : "" %>
+<% if local_assigns[:share_title].present? %>
+  <div id="social-share" class="sidebar-divider"></div>
+  <h2 class="sidebar-title"><%= share_title %></h2>
+<% end %>
+
+<div class="social-share-full">
+  <%= social_share_button_tag(title,
+                              allow_sites: %w(whatsapp_web whatsapp_app telegram facebook twitter),
+                              url: local_assigns[:url],
+                              image: local_assigns.fetch(:image_url, ""),
+                              desc: description,
+                              "data-twitter-title": local_assigns[:mobile],
+                              "data-facebook-title": local_assigns[:mobile],
+                              "data-telegram-title": local_assigns[:mobile]) %>
+</div>

@@ -7,7 +7,9 @@
   <div class="forum-show">
     <div id="<%= dom_id(@forum) %>" class="row">
       <div class="small-12 medium-9 column">
-        <%= back_link_to %>
+        <% content_for :breadcrumb do %>
+          <%= back_link_to %>
+        <% end %>
         <div>
           <div class="forum-header">
             <h1><%= @forum.title %></h1>

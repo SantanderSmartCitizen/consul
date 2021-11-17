@@ -5,6 +5,7 @@ class Admin::SettingsController < Admin::BaseController
     @feature_settings = all_settings["feature"]
     @participation_processes_settings = all_settings["process"]
     @map_configuration_settings = all_settings["map"]
+    @budget_map_configuration_settings = all_settings["budget_map"]
     @proposals_settings = all_settings["proposals"]
     @remote_census_general_settings = all_settings["remote_census.general"]
     @remote_census_request_settings = all_settings["remote_census.request"]
@@ -22,6 +23,19 @@ class Admin::SettingsController < Admin::BaseController
     Setting["map.latitude"] = params[:latitude].to_f
     Setting["map.longitude"] = params[:longitude].to_f
     Setting["map.zoom"] = params[:zoom].to_i
+    Setting["map.arcgis.feature_layer_url"] = params[:arcgis_feature_layer_url]
+    Setting["map.arcgis.district_code_field"] = params[:arcgis_district_code_field]
+
+    redirect_to admin_settings_path, notice: t("admin.settings.index.map.flash.update")
+  end
+
+  def update_budget_map
+    Setting["budget_map.latitude"] = params[:latitude].to_f
+    Setting["budget_map.longitude"] = params[:longitude].to_f
+    Setting["budget_map.zoom"] = params[:zoom].to_i
+    Setting["budget_map.arcgis.feature_layer_url"] = params[:arcgis_feature_layer_url]
+    Setting["budget_map.arcgis.district_code_field"] = params[:arcgis_district_code_field]
+
     redirect_to admin_settings_path, notice: t("admin.settings.index.map.flash.update")
   end
 

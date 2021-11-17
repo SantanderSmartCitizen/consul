@@ -1,0 +1,4 @@
+<% series = stats.participants_by_age %>
+<% if series.present? %>
+	<%= render "shared/stats/donut_chart", series: series, title: t("stats.by_age"), exportable: exportable %>
+<% end %>

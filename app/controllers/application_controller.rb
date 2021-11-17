@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   layout :set_layout
   respond_to :html
-  helper_method :current_budget
+  helper_method :current_budget, :current_budget_ballot
 
   private
 
@@ -70,6 +70,10 @@ class ApplicationController < ActionController::Base
 
     def set_debate_votes(debates)
       @debate_votes = current_user ? current_user.debate_votes(debates) : {}
+    end
+
+    def set_milestone_votes(milestones)
+      @milestone_votes = current_user ? current_user.milestone_votes(milestones) : {}
     end
 
     def set_forum_votes(forums)
@@ -125,6 +129,10 @@ class ApplicationController < ActionController::Base
 
     def current_budget
       Budget.current
+    end
+
+    def current_budget_ballot
+      Budget::Ballot.where(user: current_user, budget: current_budget) 
     end
 
     def redirect_with_query_params_to(options, response_status = {})

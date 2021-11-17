@@ -1,0 +1,29 @@
+<h2 class="inline-block"><%= t("admin.gamifications.index.table_title") %></h2>
+
+
+<!-- show_admin_ranking_path, -->
+<% link_to t("admin.gamifications.index.ranking"),
+            "/",
+            class: "button hollow float-right" %>
+
+<%= link_to t("admin.gamifications.index.create"),
+            new_admin_gamification_path,
+            class: "button float-right" %>
+
+<% if @gamifications.any? %>
+  <table>
+    <thead>
+      <th><%= t("admin.gamifications.index.key") %></th>
+      <th><%= t("admin.gamifications.index.title") %></th>
+      <th><%= t("admin.gamifications.index.description") %></th>
+      <th><%= t("admin.actions.actions") %></th>
+    </thead>
+    <tbody>
+      <%= render @gamifications %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="callout primary">
+    <%= t("admin.gamifications.index.no_gamifications") %>
+  </div>
+<% end %>

@@ -5,7 +5,8 @@ class Poll::Question < ApplicationRecord
   acts_as_paranoid column: :hidden_at
   include ActsAsParanoidAliases
 
-  ANSWER_TYPES = %w[simple multiple star_rating smileys free_text].freeze
+  # ANSWER_TYPES = %w[simple multiple star_rating smileys free_text].freeze
+  ANSWER_TYPES = %w[simple].freeze
 
   translates :title, touch: true
   include Globalizable

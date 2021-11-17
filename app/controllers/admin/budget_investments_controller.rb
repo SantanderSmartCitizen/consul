@@ -9,7 +9,7 @@ class Admin::BudgetInvestmentsController < Admin::BaseController
   has_filters %w[all], only: [:index, :toggle_selection]
 
   before_action :load_budget
-  before_action :load_investment, only: [:show, :edit, :update, :toggle_selection]
+  before_action :load_investment, only: [:show, :edit, :update, :toggle_selection, :edit_administrator, :update_administrator, :edit_valuators, :update_valuators]
   before_action :load_ballot, only: [:show, :index]
   before_action :parse_valuation_filters
   before_action :load_investments, only: [:index, :toggle_selection]
@@ -37,6 +37,17 @@ class Admin::BudgetInvestmentsController < Admin::BaseController
     load_tags
   end
 
+  def edit_administrator
+    authorize! :admin_update, @investment
+    load_administrators
+  end
+
+  def edit_valuators
+    authorize! :admin_update, @investment
+    load_valuators
+    load_valuator_groups
+  end
+
   def update
     authorize! :admin_update, @investment
     if @investment.update(budget_investment_params)
@@ -49,6 +60,31 @@ class Admin::BudgetInvestmentsController < Admin::BaseController
       load_valuator_groups
       load_tags
       render :edit
+    end
+  end
+
+  def update_administrator
+    authorize! :admin_update, @investment
+    if @investment.update(administrator_params)
+      redirect_to admin_budget_budget_investments_path(@budget, 
+                                                       Budget::Investment.filter_params(params).to_h), 
+                  notice: t("flash.actions.update.budget_investment")
+    else
+      load_administrators
+      render :edit_administrator
+    end
+  end
+
+  def update_valuators
+    authorize! :admin_update, @investment
+    if @investment.update(valuators_params)
+      redirect_to admin_budget_budget_investments_path(@budget, 
+                                                       Budget::Investment.filter_params(params).to_h), 
+                  notice: t("flash.actions.update.budget_investment")
+    else
+      load_valuators
+      load_valuator_groups
+      render :edit_valuators
     end
   end
 
@@ -83,9 +119,17 @@ class Admin::BudgetInvestmentsController < Admin::BaseController
 
     def budget_investment_params
       attributes = [:external_url, :heading_id, :administrator_id, :tag_list,
-                    :valuation_tag_list, :incompatible, :visible_to_valuators, :selected,
-                    :milestone_tag_list, valuator_ids: [], valuator_group_ids: []]
+                    :estimated_price, :valuation_tag_list, :incompatible, :visible_to_valuators, 
+                    :selected, :milestone_tag_list, valuator_ids: [], valuator_group_ids: []]
       params.require(:budget_investment).permit(attributes, translation_params(Budget::Investment))
+    end
+
+    def administrator_params
+      params.require(:budget_investment).permit(:administrator_id)
+    end
+
+    def valuators_params
+      params.require(:budget_investment).permit(valuator_ids: [], valuator_group_ids: [])
     end
 
     def load_budget
@@ -97,7 +141,15 @@ class Admin::BudgetInvestmentsController < Admin::BaseController
     end
 
     def load_staff
+      load_administrators
+      load_valuators
+    end
+
+    def load_administrators
       @admins = @budget.administrators.includes(:user)
+    end
+
+    def load_valuators
       @valuators = @budget.valuators.includes(:user).order(description: :asc).order("users.email ASC")
     end
 

@@ -1,0 +1,5 @@
+<% series = [
+	{name: t("stats.citizen_investments"), data: stats.total_citizen_investments},
+	{name: t("stats.city_hall_investments"), data: stats.total_city_hall_investments}
+] %>
+<%= render "shared/stats/donut_chart", series: series, title: t("stats.by_user_type"), exportable: exportable %>

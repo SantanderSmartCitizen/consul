@@ -1,0 +1,41 @@
+<!-- 
+  <h3 class="inline-block"><%= t("admin.gamifications.show.ranking_title") %></h3>
+-->
+
+<% if @gamification.user_rankings.empty? %>
+  
+  <div class="callout primary margin-top">
+    <%= t("admin.gamifications.show.no_user_rankings") %>
+  </div>
+
+<% else %>
+  
+  <table class="fixed">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th><%= t("admin.gamifications.show.ranking_table.user") %></th>
+        <th class="name text-right">
+          <%= t("admin.gamifications.show.ranking_table.score") %>
+        </th>
+      </tr>
+    </thead>
+    <% @gamification.user_rankings.each do |ranking| %>
+      <tr id="<%= dom_id(ranking) %>">
+        <td>
+          <%= ranking.ranking_position %>
+        </td>
+        <td>
+          <strong>
+            <%= ranking.user.name %>
+          </strong>
+        </td>
+        <td class="text-right">
+          <%= ranking.score %>
+        </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+<% end %>

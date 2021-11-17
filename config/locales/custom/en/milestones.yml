@@ -1,0 +1,24 @@
+en:
+  milestones:
+    sidebar:
+      title: Milestones
+      button_to_access: Go to milestones
+    show:
+      title: Developed action
+      comments_title: Comments
+      share: Share
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comments
+    milestone:
+      comments:
+        one: 1 comment
+        other: "%{count} comments"
+        zero: No comments
+      votes:
+        one: 1 vote
+        other: "%{count} votes"
+        zero: No votes
+    index:
+      no_milestones: Don't have defined actions

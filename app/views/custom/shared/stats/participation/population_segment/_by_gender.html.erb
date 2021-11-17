@@ -1,0 +1,6 @@
+​<% series = [
+	{name: t("stats.male"), data: stats.total_male_participants},
+	{name: t("stats.female"), data: stats.total_female_participants},
+	{name: t("stats.unknown"), data: stats.total_unknown_gender_participants}
+] %>
+<%= render "shared/stats/donut_chart", series: series, title: t("stats.by_gender"), exportable: exportable %>

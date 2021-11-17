@@ -1,0 +1,7 @@
+<% series = stats.total_winner_investments_by_budget_and_heading %>
+
+<% if series.present? %>
+	<div class="col-md-12 col-lg-8">
+		<%= render "shared/stats/column_chart", series: series, exportable: exportable %> 
+	</div>
+<% end %>

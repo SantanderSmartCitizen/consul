@@ -1,0 +1,5 @@
+<% series = [
+	{name: t("stats.feasible"), data: stats.total_feasible_investments},
+	{name: t("stats.unfeasible"), data: stats.total_unfeasible_investments}
+] %>
+<%= render "shared/stats/donut_chart", series: series, title: t("stats.feasibility"), exportable: exportable %>

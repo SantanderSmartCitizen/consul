@@ -1,0 +1,43 @@
+<%= back_link_to admin_stats_path %>
+
+<h2><%= t("admin.stats.budgets.title") %></h2>
+
+<% @budgets.each do |budget| %>
+  
+  <div class="row callout shadow pb-0">
+    <div class="small-12 medium-12 large-6 column table no-margin-bottom">
+      <div class="table-cell align-middle">
+        <h3 class="text-center mb-3"><%= budget.name %></h3>
+      </div>
+    </div>
+    <div class="small-12 medium-12 large-6 column table no-margin-bottom">
+      <div class="table-cell align-middle">
+
+        <%= link_to t("admin.stats.budgets.participation"),
+                    participation_admin_stats_path(budget_id: budget.id),
+                    class: "button expanded mb-3 mt-0" %>
+
+        <% if can? :read_admin_stats, budget %>
+
+          <%= link_to t("admin.stats.budgets.balloting_phase"),
+                      budget_balloting_admin_stats_path(budget_id: budget.id),
+                      class: "button expanded mb-3 mt-0" %>
+        <% end %>
+
+        <% if can? :read_final_admin_stats, budget %>
+
+          <%= link_to t("admin.stats.budgets.results"),
+                      results_admin_stats_path(budget_id: budget.id),
+                      class: "button expanded mb-3 mt-0" %>
+
+          <%= link_to t("admin.stats.budgets.comparative"),
+                      comparative_admin_stats_path(budget_id: budget.id),
+                      class: "button expanded mb-3 mt-0" %>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+  
+<% end %>

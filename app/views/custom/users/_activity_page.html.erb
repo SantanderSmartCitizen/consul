@@ -1,4 +1,3 @@
-<%= render "following" if @follows.present? %>
 <%= render "proposals" if @proposals.present? && feature?(:proposals) %>
 <%= render "debates" if @debates.present? && feature?(:debates) %>
 <%= render "forums" if @forums.present? && feature?(:forums) %>

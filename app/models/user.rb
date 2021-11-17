@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :flags
   has_many :identities, dependent: :destroy
   has_many :debates, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
+  has_many :milestones, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :forums, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :proposals, -> { with_hidden }, foreign_key: :author_id, inverse_of: :author
   has_many :activities
@@ -75,6 +76,10 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     inverse_of:  :author
   has_many :topics, foreign_key: :author_id, inverse_of: :author
+  
+  has_many :municipal_area_assignments, dependent: :destroy
+  has_many :municipal_areas, through: :municipal_area_assignments
+
   belongs_to :geozone
 
   validates :username, presence: true, if: :username_required?
@@ -100,6 +105,8 @@ class User < ApplicationRecord
   scope :officials,      -> { where("official_level > 0") }
   scope :male,           -> { where(gender: "male") }
   scope :female,         -> { where(gender: "female") }
+  scope :unknown_gender, -> { where("gender != 'male' and gender != 'female'") }
+  scope :civic_center,   -> { where(official_sublevel: "civic_center") }
   scope :newsletter,     -> { where(newsletter: true) }
   scope :for_render,     -> { includes(:organization) }
   scope :by_document,    ->(document_type, document_number) do
@@ -147,6 +154,11 @@ class User < ApplicationRecord
 
   def debate_votes(debates)
     voted = votes.for_debates(Array(debates).map(&:id))
+    voted.each_with_object({}) { |v, h| h[v.votable_id] = v.value }
+  end
+
+  def milestone_votes(milestones)
+    voted = votes.for_milestones(Array(milestones).map(&:id))
     voted.each_with_object({}) { |v, h| h[v.votable_id] = v.value }
   end
 
@@ -201,6 +213,10 @@ class User < ApplicationRecord
 
   def manager?
     manager.present?
+  end
+
+  def management?
+    administrator? || moderator? || valuator? || manager?
   end
 
   def poll_officer?
@@ -410,6 +426,10 @@ class User < ApplicationRecord
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def available_rewards
+    Gamification::Reward.active_for(self).count
   end
 
   private

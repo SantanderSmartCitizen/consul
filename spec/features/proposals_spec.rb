@@ -227,14 +227,14 @@ describe "Proposals" do
     scenario "Show YouTube video" do
       proposal = create(:proposal, video_url: "http://www.youtube.com/watch?v=a7UFm6ErMPU")
       visit proposal_path(proposal)
-      expect(page).to have_selector("div[id='js-embedded-video']")
+      expect(page).to have_selector("div[class='js-embedded-video']")
       expect(page.html).to include "https://www.youtube.com/embed/a7UFm6ErMPU"
     end
 
     scenario "Show Vimeo video" do
       proposal = create(:proposal, video_url: "https://vimeo.com/7232823")
       visit proposal_path(proposal)
-      expect(page).to have_selector("div[id='js-embedded-video']")
+      expect(page).to have_selector("div[class='js-embedded-video']")
       expect(page.html).to include "https://player.vimeo.com/video/7232823"
     end
 
@@ -242,7 +242,7 @@ describe "Proposals" do
       proposal = create(:proposal, video_url: nil)
 
       visit proposal_path(proposal)
-      expect(page).not_to have_selector("div[id='js-embedded-video']")
+      expect(page).not_to have_selector("div[class='js-embedded-video']")
     end
   end
 

@@ -1,0 +1,20 @@
+<div class="additional-score-form ">
+	<%= form_for @additional_score, url: form_url do |f| %>
+
+      	<%= f.hidden_field :process_id, value: @process.id %>
+
+		<div class="row">
+			<div class="small-12 medium-6 column required">
+			  <%= f.number_field :additional_score, step: 1, min: 1,
+			  	label: t("admin.gamification.actions.additional_score.form.additional_score") %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="small-12 medium-3 column clear end">
+			  <%= f.submit t("admin.gamification.actions.additional_score.submit_button"), class: "button success expanded margin-top" %>
+			</div>
+		</div>
+
+	<% end %>
+</div>

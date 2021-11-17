@@ -23,6 +23,11 @@
                   <span class="author">
                     <%= t("forums.show.author_deleted") %>
                   </span>
+                <% elsif forum.author.anonymous? %>
+                  <span class="bullet">&nbsp;&bull;&nbsp;</span>
+                  <span class="author" title="<%= t("shared.author_info.author_anonymous_detail") %>">
+                      <%= t("shared.author_info.author_anonymous") %>
+                  </span>
                 <% else %>
                   <span class="bullet">&nbsp;&bull;&nbsp;</span>
                   <span class="author">

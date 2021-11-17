@@ -1,0 +1,5 @@
+<%= back_link_to budgets_admin_stats_path %>
+
+<h2><%= @budget.name %> - <%= t("admin.stats.participation.title") %></h2>
+
+<%= render "shared/stats/participation", exportable: true, stats: @stats %>

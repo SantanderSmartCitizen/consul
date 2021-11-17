@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+  <li id="notifications">
+    <%= link_to notifications_path, rel: "nofollow",
+                class: "notifications" do %>
+      <span>
+        <%= t("layouts.header.notification_item.notifications") %>
+      </span>
+
+      <% if current_user.notifications.unread.count > 0 %>
+        <span >
+          <%= t("layouts.header.notification_item.new_notifications",
+              count: current_user.notifications_count) %>
+        </span>
+      <% end %>
+
+    <% end %>
+  </li>
+<% end %>

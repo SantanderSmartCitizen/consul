@@ -69,6 +69,11 @@ namespace :admin do
       resources :headings, except: [:show], controller: "budget_headings"
     end
 
+    get "budget_investments/:id/edit_administrator", to: "budget_investments#edit_administrator", as: "budget_investment_edit_administrator"
+    patch "budget_investments/:id/update_administrator", to: "budget_investments#update_administrator"
+    get "budget_investments/:id/edit_valuators", to: "budget_investments#edit_valuators", as: "budget_investment_edit_valuators"
+    patch "budget_investments/:id/update_valuators", to: "budget_investments#update_valuators"
+
     resources :budget_investments, only: [:index, :show, :edit, :update] do
       member { patch :toggle_selection }
 
@@ -85,6 +90,14 @@ namespace :admin do
   resources :signature_sheets, only: [:index, :new, :create, :show]
 
   resources :banners, only: [:index, :new, :create, :edit, :update, :destroy] do
+    collection { get :search }
+  end
+
+  resources :header_slides, only: [:index, :new, :create, :edit, :update, :destroy] do
+    collection { get :search }
+  end
+
+  resources :events, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection { get :search }
   end
 
@@ -105,6 +118,7 @@ namespace :admin do
 
   resources :settings, only: [:index, :update]
   put :update_map, to: "settings#update_map"
+  put :update_budget_map, to: "settings#update_budget_map"
   put :update_content_types, to: "settings#update_content_types"
 
   resources :moderators, only: [:index, :create, :destroy] do
@@ -209,6 +223,23 @@ namespace :admin do
     get :proposal_notifications, on: :collection
     get :direct_messages, on: :collection
     get :polls, on: :collection
+    get :participation, on: :member
+    get :results, on: :member
+    get :comparative, on: :member
+  end
+
+  scope module: :gamification do
+    resources :gamifications
+  end
+
+  namespace :gamification do
+    resources :actions, shallow: true do
+      get :search
+      resources :additional_scores, except: [:index, :show], controller: "actions/additional_scores"
+    end
+    get "update_operations", to: "actions#update_operations", as: "update_operations"
+    resources :rewards
+    resources :requested_rewards
   end
 
   namespace :legislation do
@@ -229,6 +260,7 @@ namespace :admin do
   end
 
   resources :geozones, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :budget_geozones, only: [:index, :new, :create, :edit, :update, :destroy]
 
   namespace :site_customization do
     resources :pages, except: [:show] do

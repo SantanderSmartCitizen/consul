@@ -1,0 +1,24 @@
+es:
+  milestones:
+    sidebar:
+      title: Seguimiento
+      button_to_access: Ir a seguimiento
+    show:
+      title: Acción desarrollada
+      comments_title: Comentarios
+      share: Compartir
+      comments:
+        zero: Sin comentarios
+        one: 1 Comentario
+        other: "%{count} Comentarios"
+    milestone:
+      comments:
+        zero: Sin comentarios
+        one: 1 Comentario
+        other: "%{count} Comentarios"
+      votes:
+        zero: Sin votos
+        one: 1 voto
+        other: "%{count} votos"
+    index:
+      no_milestones: No hay acciones definidas
