@@ -130,8 +130,8 @@ es:
       question_types:
         simple: Respuesta simple
         multiple: Respuesta múltiple
-        star_rating: Calificación de estrellas
-        smileys: Emoticonos
+        star_rating: Calificación con estrellas
+        smileys: Smileys
         free_text: Texto libre
       new:
         title: "Crear pregunta ciudadana para la encuesta/consulta %{poll}"

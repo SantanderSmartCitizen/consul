@@ -1,40 +1,172 @@
-<div class="poll-question-answers">
+<div class="poll-question-answers"> 
 
   <% if can?(:answer, question) && !question.poll.voted_in_booth?(current_user) %>
-    
-    <% question.question_answers.each do |answer| %>
-      <% if @answers_by_question_id[question.id] == answer.title &&
-            (!voted_before_sign_in(question) ||
-             question.poll.voted_in_booth?(current_user)) %>
-        <span class="button answered"
-              title="<%= t("poll_questions.show.voted", answer: answer.title) %>">
-          <%= answer.title %>
-        </span>
 
-      <% else %>
-        <%= link_to answer.title,
-          answer_question_path(question, answer: answer.title, token: token),
-          method: :post,
-          remote: true,
-          title: t("poll_questions.show.vote_answer", answer: answer.title),
-          class: "button secondary hollow js-question-answer" %>
+    <!-- Si usuario puede votar && no ha votado en cabina -->
+
+
+    <% case question.answer_type %>
+    <% when "simple" %>
+
+      <% question.question_answers.each do |answer| %>
+
+        <% if @answers_by_question_id[question.id]&.include?(answer.title) %>
+          <!-- Pregunta respondida -->
+          <span class="button answered"
+                title="<%= t("poll_questions.show.voted", answer: answer.title) %>">
+            <%= answer.title %>
+          </span>
+
+        <% else %>
+          <!-- Pregunta sin responder -->
+          <%= link_to answer.title,
+            answer_question_path(question, answer: answer.title, token: token),
+            method: :post,
+            remote: true,
+            title: t("poll_questions.show.vote_answer", answer: answer.title),
+            class: "button secondary hollow js-question-answer" %>
+        <% end %>
       <% end %>
+
+    <% when "multiple" %>
+      <% question.question_answers.each do |answer| %>
+
+        <% if @answers_by_question_id[question.id]&.include?(answer.title) %>
+          <!-- Pregunta respondida -->
+
+          <%= link_to answer.title,
+            answer_question_path(question, answer: answer.title, token: token),
+            method: :post,
+            remote: true,
+            title: t("poll_questions.show.voted", answer: answer.title),
+            class: "button answered js-question-answer" %>
+
+        <% else %>
+          <!-- Pregunta sin responder -->
+          <%= link_to answer.title,
+            answer_question_path(question, answer: answer.title, token: token),
+            method: :post,
+            remote: true,
+            title: t("poll_questions.show.vote_answer", answer: answer.title),
+            class: "button secondary hollow js-question-answer" %>
+        <% end %>
+      <% end %>
+    <% when "star_rating" %>
+      <% star_path = Array.new(5) {"vectors/star_off.svg"} %>
+
+      <% if @answers_by_question_id[question.id]&.present? %>
+        <!-- Pregunta respondida -->
+        <div class="stars answered">
+          <% star_path.fill("vectors/star_on.svg",0..@answers_by_question_id[question.id][0].to_i-1) %>
+      <% else %>
+        <!-- Pregunta sin responder -->
+        <div class="stars">
+      <% end %>
+
+      <% for ind in (1..5) %>
+          <%= link_to image_tag(image_path_for(star_path[ind-1]), alt: ""),
+            answer_question_path(question, answer: ind.to_s, token: token),
+            method: :post,
+            remote: true,
+            title: t("poll_questions.show.vote_answer", answer: ind.to_s),
+            class: "star js-question-answer" %>
+      <%end%>
+        </div>
+
+    <% when "smileys" %>
+
+      <% if @answers_by_question_id[question.id]&.present? %>
+        <!-- Pregunta respondida -->
+        <div class="smileys answered">
+          <% smiley_path = ["vectors/smiley_1_off.svg", "vectors/smiley_2_off.svg", "vectors/smiley_3_off.svg", "vectors/smiley_4_off.svg", "vectors/smiley_5_off.svg"] %>
+          <% smiley_path[@answers_by_question_id[question.id][0].to_i-1] = "vectors/smiley_#{@answers_by_question_id[question.id][0]}_on.svg" %>
+      <% else %>
+        <!-- Pregunta sin responder -->
+        <% smiley_path = ["vectors/smiley_1_on.svg", "vectors/smiley_2_on.svg", "vectors/smiley_3_on.svg", "vectors/smiley_4_on.svg", "vectors/smiley_5_on.svg"] %>
+        <div class="smileys">
+      <% end %>
+
+      <% for ind in (1..5) %>
+          <%= link_to image_tag(image_path_for(smiley_path[ind-1]), alt: ""),
+            answer_question_path(question, answer: ind.to_s, token: token),
+            method: :post,
+            remote: true,
+            title: t("poll_questions.show.vote_answer", answer: ind.to_s),
+            class: "smiley js-question-answer" %>
+      <%end%>
+
+        </div>
+    <% when "free_text" %>
+      
+      <%= form_tag answer_question_path(question, token: token), method: :post, remote: true do %>
+        <%= text_field_tag "Texto", params[:answer] %>
+        <input type="submit" value="Enviar">
+      <% end %>
+
+
+
+
+
+
+
     <% end %>
+
 
   <% elsif !user_signed_in? %>
-    <% question.question_answers.order(id: :desc).each do |answer| %>
-      <%= link_to answer.title, login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), class: "button secondary hollow" %>
-    <% end %>
+    <!-- Si usuario no esta logueado -->
+    <% case question.answer_type %>
+    <% when "simple", "multiple" %>
+      <% question.question_answers.order(id: :desc).each do |answer| %>
+        <%= link_to answer.title, 
+                    login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), 
+                    class: "button secondary hollow" %>
+      <% end %>
+    <% when "star_rating" %>
+      <% star_path = Array.new(5) {"vectors/star_disabled.svg"} %>
+      <div class="stars">
+        <% for ind in (1..5) %>
+          <%= link_to image_tag(image_path_for(star_path[ind-1]), alt: ""),
+                      login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer),
+                      class: "star" %>
+        <% end %>
+      </div>
+    <% when "smileys" %>
+      <% smiley_path = ["vectors/smiley_1_disabled.svg", "vectors/smiley_2_disabled.svg", "vectors/smiley_3_disabled.svg", "vectors/smiley_4_disabled.svg", "vectors/smiley_5_disabled.svg"] %>
+      <div class="smileys">
+        <% for ind in (1..5) %>
+          <%= link_to image_tag(image_path_for(smiley_path[ind-1]), alt: ""),
+                      login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer),
+                      class: "smiley" %>
+        <% end %>
+      </div>
+    <% when "free_text" %>
 
-  <% elsif !current_user.level_two_or_three_verified? %>
-    <% question.question_answers.order(id: :desc).each do |answer| %>
-      <%= link_to answer.title, verification_path, class: "button secondary hollow" %>
     <% end %>
-
   <% else %>
-    <% question.question_answers.order(id: :desc).each do |answer| %>
-      <span class="button secondary hollow disabled"><%= answer.title %></span>
+    <!-- Para cualquier otro caso se deshabilitan respuestas -->
+    <% case question.answer_type %>
+    <% when "simple", "multiple" %>
+      <% question.question_answers.order(id: :desc).each do |answer| %>
+        <span class="button secondary hollow disabled"><%= answer.title %></span>
+      <% end %>
+    <% when "star_rating" %>
+      <% star_path = Array.new(5) {"vectors/star_disabled.svg"} %>
+      <div class="stars">
+        <% for ind in (1..5) %>
+          <span class="star disabled"><%= image_tag(image_path_for(star_path[ind-1]), alt: "") %></span>
+        <%end%>
+      </div>
+    <% when "smileys" %>
+      <% smiley_path = ["vectors/smiley_1_disabled.svg", "vectors/smiley_2_disabled.svg", "vectors/smiley_3_disabled.svg", "vectors/smiley_4_disabled.svg", "vectors/smiley_5_disabled.svg"] %>
+      <div class="smileys">
+        <% for ind in (1..5) %>
+          <span class="smiley disabled"><%= image_tag(image_path_for(smiley_path[ind-1]), alt: "") %></span>
+        <%end%>
+    <% when "free_text" %>
+
     <% end %>
+
   <% end %>
+
 
 </div>

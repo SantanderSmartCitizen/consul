@@ -634,7 +634,7 @@ en:
       already_voted_in_booth: "You have already participated in a physical booth. You can not participate again."
       already_voted_in_web: "You have already participated in this poll. If you vote again it will be overwritten."
       back: Back to voting
-      cant_answer_not_logged_in: "You must %{signin} or %{signup} to participate."
+      cant_answer_not_logged_in: "You must %{signin} to participate."
       comments_tab: Comments
       cant_answer_verify: "You must %{verify_link} in order to answer."
       verify_link: "verify your account"
@@ -859,7 +859,7 @@ en:
   votes:
     agree: I agree
     anonymous: Too many anonymous votes to admit vote %{verify_account}.
-    comment_unauthenticated: You must %{signin} or %{signup} to vote.
+    comment_unauthenticated: You must %{signin} to vote.
     disagree: I disagree
     organizations: Organizations are not permitted to vote
     supports: Supports
