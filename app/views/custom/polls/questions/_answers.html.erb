@@ -10,7 +10,7 @@
 
       <% question.question_answers.each do |answer| %>
 
-        <% if @answers_by_question_id[question.id].include?(answer.title) %>
+        <% if @answers_by_question_id[question.id]&.include?(answer.title) %>
           <!-- Pregunta respondida -->
           <span class="button answered"
                 title="<%= t("poll_questions.show.voted", answer: answer.title) %>">
@@ -31,7 +31,7 @@
     <% when "multiple" %>
       <% question.question_answers.each do |answer| %>
 
-        <% if @answers_by_question_id[question.id].include?(answer.title) %>
+        <% if @answers_by_question_id[question.id]&.include?(answer.title) %>
           <!-- Pregunta respondida -->
 
           <%= link_to answer.title,
@@ -54,7 +54,7 @@
     <% when "star_rating" %>
       <% star_path = Array.new(5) {"vectors/star_off.svg"} %>
 
-      <% if @answers_by_question_id[question.id].present? %>
+      <% if @answers_by_question_id[question.id]&.present? %>
         <!-- Pregunta respondida -->
         <div class="stars answered">
           <% star_path.fill("vectors/star_on.svg",0..@answers_by_question_id[question.id][0].to_i-1) %>
@@ -75,7 +75,7 @@
 
     <% when "smileys" %>
 
-      <% if @answers_by_question_id[question.id].present? %>
+      <% if @answers_by_question_id[question.id]&.present? %>
         <!-- Pregunta respondida -->
         <div class="smileys answered">
           <% smiley_path = ["vectors/smiley_1_off.svg", "vectors/smiley_2_off.svg", "vectors/smiley_3_off.svg", "vectors/smiley_4_off.svg", "vectors/smiley_5_off.svg"] %>
