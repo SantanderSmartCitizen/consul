@@ -2012,6 +2012,45 @@
       }
     }
   }
+  .stars,
+  .smileys {
+    display: inline-flex;
+    &.answered {
+      background: #f4f8ec;
+      border: 2px solid #92ba48;
+      color: $text;
+      position: relative;
+      padding: 10px;
+      border-radius: 11px;
+      &::after {
+        background: #92ba48;
+        border-radius: 50%;
+        content: "\6c";
+        color: #fff;
+        font-family: "icons" !important;
+        font-size: rem-calc(12);
+        padding: 4px 7px;
+        position: absolute;
+        right: -6px;
+        top: -6px;
+        width: 25px;
+        height: 25px;
+      }
+    }
+    .disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+    .star {
+      width: 60px;
+      margin-right: 10px;
+    }
+    .smiley {
+      width: 60px;
+      margin-right: 10px;
+    }
+  }
+
 }
 
 // 09. Polls results and stats
