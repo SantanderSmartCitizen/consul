@@ -117,26 +117,28 @@
     <% case question.answer_type %>
     <% when "simple", "multiple" %>
       <% question.question_answers.order(id: :desc).each do |answer| %>
-        <%= link_to answer.title, new_user_session_path, class: "button secondary hollow" %>
+        <%= link_to answer.title, 
+                    login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), 
+                    class: "button secondary hollow" %>
       <% end %>
     <% when "star_rating" %>
       <% star_path = Array.new(5) {"vectors/star_disabled.svg"} %>
       <div class="stars">
         <% for ind in (1..5) %>
           <%= link_to image_tag(image_path_for(star_path[ind-1]), alt: ""),
-              new_user_session_path,
-              class: "star" %>
-        <%end%>
+                      login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer),
+                      class: "star" %>
+        <% end %>
       </div>
-
     <% when "smileys" %>
       <% smiley_path = ["vectors/smiley_1_disabled.svg", "vectors/smiley_2_disabled.svg", "vectors/smiley_3_disabled.svg", "vectors/smiley_4_disabled.svg", "vectors/smiley_5_disabled.svg"] %>
       <div class="smileys">
         <% for ind in (1..5) %>
           <%= link_to image_tag(image_path_for(smiley_path[ind-1]), alt: ""),
-              new_user_session_path,
-              class: "smiley" %>
-        <%end%>
+                      login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer),
+                      class: "smiley" %>
+        <% end %>
+      </div>
     <% when "free_text" %>
 
     <% end %>
