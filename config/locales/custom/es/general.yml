@@ -161,6 +161,10 @@ es:
       cant_answer_wrong_geozone: "Esta encuesta no está disponible en tu zona."
       evaluate: "Evaluar la encuesta/consulta"
       results_menu: "Resultados de la encuesta"
+  poll_questions:
+    show:
+      send_answer: Enviar
+      write_answer: Escribe la respuesta
   shared:
     send: "ENVIAR"
     advanced_search:

@@ -1620,6 +1620,31 @@ table {
   }
 }
 
+.stats-table {
+  table {
+    thead,
+    tfoot {
+      border: 0;
+      tr {
+        border: 0;
+      }
+    }
+    tbody {
+      border: 0;
+    }
+    th {
+      background: white;
+      color: rgba($brand,.7);
+      font-weight: normal;
+    }
+    tr {
+      border: 0;
+      border-top: 1px solid #dee0e3;
+      border-bottom: 1px solid #dee0e3;
+    }
+  }
+}
+
 // 12. Social
 // ----------
 

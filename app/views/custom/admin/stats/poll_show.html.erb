@@ -1,0 +1,43 @@
+<%= back_link_to polls_admin_stats_path %>
+
+<h2 id="top"><%= t("admin.stats.polls.title") %></h2>
+
+<h3 id="<%= dom_id(@poll) %>_questions">
+	<%= t("admin.stats.polls.poll_questions", poll: @poll.name) %>
+</h3>
+<table class="stack sortable">
+	<thead>
+		<tr>
+	    	<th><%= t("admin.stats.polls.table.question_name") %></th>
+	    	<th class="name text-right">
+	      		<%= t("admin.stats.polls.table.origin_web") %>
+	    	</th>
+		</tr>
+	</thead>
+	<% @poll.questions.each do |question| %>
+		<tr id="<%= dom_id(question) %>">
+	    	<td class="name">
+				<a href="#<%= dom_id(@poll) %>_<%= dom_id(question) %>"><%= question.title %></a>
+	    	</td>
+		    <td class="name text-right">
+		    	<%= ::Poll::Answer.by_question(question).select(:author_id).distinct.count %>
+		    </td>
+	  </tr>
+	<% end %>
+	<tfoot>
+		<tr id="<%= dom_id(@poll) %>_questions_total">
+			<th></th>
+	    	<th class="name text-right">
+	    		<strong>
+	        		<%= t("admin.stats.polls.table.origin_total") %>:
+	        		<%= ::Poll::Answer.where(question: @poll.questions)
+	                		          .select(:author_id).distinct.count %>
+	      		</strong>
+	    	</th>
+		</tr>
+	</tfoot>
+</table>
+
+<% @poll.questions.each do |question| %>
+	<%= render "shared/stats/polls/questions", exportable: true, poll: @poll, question: question %>
+<% end %>

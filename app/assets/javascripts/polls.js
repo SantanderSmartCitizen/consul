@@ -18,6 +18,13 @@
           this.href = this.href + token;
         }
       });
+      $(".js-token").each(function() {
+        var token_param;
+        token_param = this.value;
+        if (token_param === "") {
+          this.value = token;
+        }
+      });
     },
     initialize: function() {
       var token;

@@ -87,8 +87,14 @@
           return parseFloat(val).toLocaleString();
         }
       }
+    },
+    legend: {
+      show: true
+    },
+    plotOptions: {
+      bar: {
+      }
     }
-
   } 
 
   if defined?(exportable) && exportable.present?
@@ -103,6 +109,20 @@
         return parseFloat(val).toLocaleString()+'%';
     }
   end
+
+  if defined?(integer) && integer.present?
+    options[:tooltip][:y][:formatter] = function(val) {
+        return parseInt(val).toLocaleString();
+    }
+  end
+
+  if defined?(distributed) && distributed.present?
+    options[:plotOptions][:bar] = {
+      distributed: true
+    }
+    options[:legend][:show] = false
+  end
+
 %>
 
 <%= column_chart(series, options) %>

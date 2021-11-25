@@ -148,6 +148,10 @@ en:
     show:
       back: Back to polls/questions
       evaluate: "Evaluate the poll/question"
+  poll_questions:
+    show:
+      send_answer: Send
+      write_answer: Write answer
   shared:
     send: "SEND"
     advanced_search:
