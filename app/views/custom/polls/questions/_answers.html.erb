@@ -145,7 +145,7 @@
         <%= text_area_tag :answer, nil, placeholder: t("poll_questions.show.write_answer"), disabled: true %>
         <div class="text-right">
           <%= link_to t("poll_questions.show.send_answer"), 
-                      new_user_session_path, 
+                      login_saml_user_path(issuer: Settings.identity_providers.citizen_issuer), 
                       class: "button secondary" %>
         </div>
       </div>
