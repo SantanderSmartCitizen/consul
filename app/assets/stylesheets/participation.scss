@@ -2013,8 +2013,23 @@
     }
   }
   .stars,
-  .smileys {
+  .smileys{
     display: inline-flex;
+    .star,
+    .smiley {
+      width: 60px;
+      margin-right: 10px;
+    }
+  }
+  .free-text {
+    display: grid;
+    textarea {
+      resize: none;
+    }
+  }
+  .stars,
+  .smileys,
+  .free-text {
     &.answered {
       background: #f4f8ec;
       border: 2px solid #92ba48;
@@ -2041,16 +2056,9 @@
       opacity: 0.25;
       cursor: not-allowed;
     }
-    .star {
-      width: 60px;
-      margin-right: 10px;
-    }
-    .smiley {
-      width: 60px;
-      margin-right: 10px;
-    }
   }
 
+  
 }
 
 // 09. Polls results and stats

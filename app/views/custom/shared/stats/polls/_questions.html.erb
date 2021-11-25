@@ -1,0 +1,14 @@
+<h3 id="<%= dom_id(poll) %>_<%= dom_id(question) %>">
+	<%= question.title %>
+</h3>
+
+<% case question.answer_type %>
+    <% when "simple", "multiple" %>
+    	<%= render "shared/stats/polls/questions/simple", exportable: exportable, question: question %>
+    <% when "star_rating" %>
+    	<%= render "shared/stats/polls/questions/star_rating", exportable: exportable, question: question %>
+    <% when "smileys" %>
+    	<%= render "shared/stats/polls/questions/smileys", exportable: exportable, question: question %>
+    <% when "free_text" %>
+    	<%= render "shared/stats/polls/questions/free_text", exportable: exportable, question: question %>
+<% end %>

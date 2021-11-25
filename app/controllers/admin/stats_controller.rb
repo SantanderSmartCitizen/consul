@@ -107,6 +107,10 @@ class Admin::StatsController < Admin::BaseController
     @participants = ::Poll::Voter.where(poll: @polls)
   end
 
+  def poll_show
+    @poll = ::Poll.find(params[:id])
+  end
+
   private
 
     def load_budget

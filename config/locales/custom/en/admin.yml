@@ -132,6 +132,25 @@ en:
         results: Finished budget
         comparative: Comparative
         no_data_before_results_phase: "There isn't any data to show before finalizing the budget phases."
+      polls:
+        poll_questions: "Participation in '%{poll}'"
+        total_participants: Participants
+        votes: Votes
+        star:
+          one: "1 star"
+          other: "%{count} stars"
+        smiley:
+          :1: Very bad
+          :2: Bad
+          :3: Acceptable
+          :4: Well
+          :5: Very good
+        table:
+          poll_name: Poll/question
+          origin_web: Web participants
+          origin_total: Total participants
+          answer: Answer
+          average_vote: Average
       budget_balloting:
         title: Stats - Voting projects
         participants_per_heading: Participants per heading
