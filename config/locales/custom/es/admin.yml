@@ -155,9 +155,24 @@ es:
       polls:
         title: Estadísticas de encuestas/consultas
         all: Encuestas/Consultas
-        poll_questions: "Preguntas de encuesta/consulta: %{poll}"
+        poll_questions: "Participación en '%{poll}'"
+        total_participants: Participantes
+        votes: Votos
+        star:
+          one: "1 estrella"
+          other: "%{count} estrellas"
+        smiley:
+          :1: Muy malo
+          :2: Malo
+          :3: Aceptable
+          :4: Bueno
+          :5: Muy bueno
         table:
           poll_name: Encuesta/Consulta
+          origin_web: Participantes
+          origin_total: Total participantes
+          answer: Respuesta
+          average_vote: Media
       budget_balloting:
         title: Estadísticas - Votación final
         participants_per_heading: Participantes por partida

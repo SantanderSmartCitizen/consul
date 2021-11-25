@@ -1,0 +1,66 @@
+<% 
+	titles = []
+	votes = []
+	answer_score = 0
+	(1..5).map do |answer|
+		titles.push(t("admin.stats.polls.star", count: answer))
+		votes.push(Poll::Answer.where(question_id: question, answer: answer.to_s).count)
+		answer_score += votes.last*answer
+	end
+
+	series = [{
+		name: t("admin.stats.polls.votes"),
+		data: 
+			(0..4).map do |ind|
+				[
+					titles[ind], 
+					votes[ind]
+				]
+			end
+	}]
+
+	# Puntuación media
+	average = 0
+	if answer_score > 0
+		average = (answer_score / votes.sum(0.0)).round(1)
+	end
+%>
+
+<% if series.present? %>
+	<div class="row">
+		<div class="col-md-12 col-lg-4 stats-table">
+			<table id="<%= dom_id(question) %>_table" class="stack sortable">
+			  <thead>
+			    <tr>
+			      <th><%= t("admin.stats.polls.table.answer") %></th>
+			      <th class="name text-right"><%= t("admin.stats.polls.votes") %></th>
+			    </tr>
+			  </thead>
+			  <% (0..4).map do |ind| %>
+			    <tr>
+			      <td class="name">
+			        <%= titles[ind] %> 
+			      </td>
+			      <td class="name text-right">
+			        <%= votes[ind] %>
+			      </td>
+			    </tr>
+			  <% end %>
+			  <tfoot>
+				<tr>
+			    	<th class="name text-center" colspan="2">
+			    		<strong>
+			        		<%= t("admin.stats.polls.table.average_vote") %>:
+			        		<%= average %>
+			      		</strong>
+			    	</th>
+				</tr>
+			  </tfoot>
+			</table>
+		</div>
+
+		<div class="col-md-12 col-lg-8">
+			<%= render "shared/stats/column_chart", series: series, exportable: exportable, integer: true, distributed: true %> 
+		</div>
+	</div>
+<% end %>

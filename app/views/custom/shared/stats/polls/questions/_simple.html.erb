@@ -1,0 +1,44 @@
+<% 
+	series = [{
+		name: t("admin.stats.polls.votes"),
+		data: 
+			question.question_answers.map do |answer|
+				[
+					answer.title, 
+					answer.total_votes
+				]
+			end
+	}]
+%>
+
+<% if series.present? && question&.question_answers.any? %>
+
+<div class="stats-group">
+	<div class="row">
+		<div class="col-md-12 col-lg-4 stats-table">
+			<table id="<%= dom_id(question) %>_table" class="stack sortable">
+			  <thead>
+			    <tr>
+			      <th><%= t("admin.stats.polls.table.answer") %></th>
+			      <th class="name text-right"><%= t("admin.stats.polls.votes") %></th>
+			    </tr>
+			  </thead>
+			  <% question.question_answers.map do |answer| %>
+			    <tr>
+			      <td class="name">
+			        <%= answer.title %> 
+			      </td>
+			      <td class="name text-right">
+			        <%= answer.total_votes %>
+			      </td>
+			    </tr>
+			  <% end %>
+			</table>
+		</div>
+
+		<div class="col-md-12 col-lg-8">
+			<%= render "shared/stats/column_chart", series: series, exportable: exportable, integer: true, distributed: true %> 
+		</div>
+	</div>
+</div>
+<% end %>

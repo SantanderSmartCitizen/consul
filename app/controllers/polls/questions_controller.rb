@@ -23,25 +23,6 @@ class Polls::QuestionsController < ApplicationController
       @answers_by_question_id = { @question.id => [params[:answer]] }
 
     when "multiple"
-      # if answer.answer.present?
-      #   answer_json = JSON.parse(answer.answer)
-        
-      #   logger.info("XXXXXXXXXXXXXXXXXXXXXXX")
-      #   logger.info("answer_json = ")
-      #   logger.info(answer_json)
-      #   logger.info("XXXXXXXXXXXXXXXXXXXXXXX")
-
-      # else
-      #   answer.answer = params[:answer]
-
-      #   logger.info("XXXXXXXXXXXXXXXXXXXXXXX")
-      #   logger.info("params[:answer] = ")
-      #   logger.info(params[:answer])
-      #   logger.info("answer.answer = ")
-      #   logger.info(answer.answer)
-      #   logger.info("XXXXXXXXXXXXXXXXXXXXXXX")
-      # end
-
       answer = @question.answers.find_or_initialize_by(author: current_user, answer: params[:answer])
 
       if answer.persisted?
@@ -52,11 +33,6 @@ class Polls::QuestionsController < ApplicationController
       end
 
       @answers_by_question_id = { @question.id => @question.answers.where(author: current_user).pluck(:answer) }
-
     end
-
-
-
-
   end
 end
