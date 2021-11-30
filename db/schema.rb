@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211103113750) do
+ActiveRecord::Schema.define(version: 20211130091904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(version: 20211103113750) do
     t.index ["time"], name: "index_ahoy_events_on_time", using: :btree
     t.index ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
     t.index ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+  end
+
+  create_table "api_components", force: :cascade do |t|
+    t.string   "name"
+    t.string   "secret"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "audits", force: :cascade do |t|
@@ -1691,6 +1698,32 @@ ActiveRecord::Schema.define(version: 20211103113750) do
     t.index ["proposals_count"], name: "index_tags_on_proposals_count", using: :btree
   end
 
+  create_table "terminal_statuses", force: :cascade do |t|
+    t.integer  "terminal_id"
+    t.string   "location"
+    t.boolean  "switched_on"
+    t.float    "cpu"
+    t.float    "ram"
+    t.float    "storage"
+    t.float    "battery"
+    t.integer  "battery_saver"
+    t.text     "msg"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["terminal_id"], name: "index_terminal_statuses_on_terminal_id", using: :btree
+  end
+
+  create_table "terminals", force: :cascade do |t|
+    t.string   "code"
+    t.string   "service"
+    t.string   "description"
+    t.string   "location"
+    t.integer  "poll_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["poll_id"], name: "index_terminals_on_poll_id", using: :btree
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string   "title",                      null: false
     t.text     "description"
@@ -1943,6 +1976,8 @@ ActiveRecord::Schema.define(version: 20211103113750) do
   add_foreign_key "proposals", "communities"
   add_foreign_key "related_content_scores", "related_contents"
   add_foreign_key "related_content_scores", "users"
+  add_foreign_key "terminal_statuses", "terminals"
+  add_foreign_key "terminals", "polls"
   add_foreign_key "users", "geozones"
   add_foreign_key "valuators", "users"
 end
