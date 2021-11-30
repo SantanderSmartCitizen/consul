@@ -100,10 +100,18 @@ en:
       collaborative_legislation: Processes
       debates: Debates
       logo: Santander SmartCitizen logo
+      dependent_brand_logo: Dependent brand logo
       help: Help
       proposals: Proposals
-      poll_questions: Polls/questions
-      budgets: Budgets
+      poll_questions:
+        title: Polls/questions
+        current: Open polls
+        expired: Expired polls
+      budgets:
+        title: Budgets
+        legal_bases: Legal bases
+        check_ballot: My ballot
+        previous: Previous budgets
       forum: Forum
       notification_item:
         new_notifications:
@@ -115,6 +123,10 @@ en:
       open_access_menu: Open access menu
       open_main_menu: Open menu
       close: Close
+      my_rewards: My rewards
+      available_rewards:
+        one: "(1 available)"
+        other: "(%{count} available)"
   omniauth:
     finish_signup:
       username_warning: "Due to a change in the way we interact with social networks, it is possible that your username/alias now appears as 'already in use'. If that is your case, please choose a different username/alias."
@@ -127,9 +139,19 @@ en:
       section_footer:
         title: Help about polls/questions
       no_polls: "There are no open polls."
+      not_logged_in: "You must sign in to participate"
+      no_geozone_restricted: "Polls for all city"
+      geozone_restricted: "Polls for districts"
+      filters:
+        current: "See open polls"
+        expired: "See expired polls"
     show:
       back: Back to polls/questions
       evaluate: "Evaluate the poll/question"
+  poll_questions:
+    show:
+      send_answer: Send
+      write_answer: Write answer
   shared:
     send: "SEND"
     advanced_search:
@@ -137,6 +159,11 @@ en:
       user_profile_blank: "Select a profile"
       city_hall: City hall
       citizen: Citizen
+    author_info:
+      author_anonymous: Anonymous
+      author_anonymous_detail: It is published without personal data
+    events:
+      title: Events
   users:
     show:
       deleted_forum: This thread has been deleted
@@ -193,3 +220,8 @@ en:
       created: "You've published a proposal!"
       share:
         view_proposal: Go to proposal
+  simple_calendar:
+    previous: "<"
+    next: ">"
+  form:
+    poll: the poll/question

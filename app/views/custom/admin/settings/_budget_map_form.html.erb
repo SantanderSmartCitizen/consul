@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="small-12 column">
+    <div id="admin-budget-map" class="map"
+                        data-map
+                        data-map-center-latitude="<%= Setting["budget_map.latitude"] %>"
+                        data-map-center-longitude="<%= Setting["budget_map.longitude"] %>"
+                        data-map-zoom="<%= Setting["budget_map.zoom"] %>"
+                        data-map-tiles-provider="<%= Rails.application.secrets.map_tiles_provider %>"
+                        data-map-tiles-provider-attribution="<%= Rails.application.secrets.map_tiles_provider_attribution %>"
+                        data-marker-editable="true"
+                        data-marker-latitude="<%= Setting["budget_map.latitude"] %>"
+                        data-marker-longitude="<%= Setting["budget_map.longitude"] %>"
+                        data-latitude-input-selector="#latitude"
+                        data-longitude-input-selector="#longitude"
+                        data-zoom-input-selector="#zoom" 
+                        data-map-arcgis-feature-layer-url="<%= Setting["budget_map.arcgis.feature_layer_url"] %>" 
+                        data-map-arcgis-district-code-field="<%= Setting["budget_map.arcgis.district_code_field"] %>" 
+                        data-map-geozones="<%=BudgetGeozone.all.index_by(&:external_code).to_json%>" >
+    </div>
+
+    <small class="map-info-pane"></small>
+
+    <%= form_tag admin_update_budget_map_path, method: :put, id: "budget-map-form" do |f| %>
+
+      <%= hidden_field_tag :latitude,   Setting["budget_map.latitude"] %>
+      <%= hidden_field_tag :longitude,  Setting["budget_map.longitude"] %>
+      <%= hidden_field_tag :zoom,       Setting["budget_map.zoom"] %>
+      <%= hidden_field_tag :arcgis_feature_layer_url, Setting["budget_map.arcgis.feature_layer_url"] %>
+      <%= hidden_field_tag :arcgis_district_code_field, Setting["budget_map.arcgis.district_code_field"] %>
+
+      <div class="small-12 medium-6 large-4 margin-top">
+        <%= submit_tag t("admin.settings.index.map.form.submit"),
+                     class: "button expanded" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

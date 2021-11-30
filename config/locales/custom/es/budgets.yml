@@ -3,6 +3,14 @@ es:
     ballots:
       reasons_for_not_balloting:
         not_logged_in: Necesitas %{signin} para continuar.
+        not_enough_votes: "Ya has alcanzado el número máximo de votos permitidos.<br><small>Recuerda que puedes %{change_ballot} en cualquier momento</small>"
+        max_votes_allowed: "Ya has alcanzado el número máximo de votos permitidos."
+      show:
+        amount_spent: Has asignado
+        remaining: "Todavía disponible <span>%{amount}</span>"
+        voted:
+          one: "Has votado 1 propuesta"
+          other: "Has votado %{count} propuestas"
     index:
       title: Presupuestos
       empty_budgets: No hay presupuestos.
@@ -14,19 +22,95 @@ es:
       finished_budgets: Presupuestos terminados
       section_footer:
         title: Ayuda sobre presupuestos
-        description: Con los presupuestos la ciudadanía decide a qué proyectos va destinada una parte del presupuesto.
+        description: Con los presupuestos la ciudadanía decide a qué propuestas va destinada una parte del presupuesto.
       index:
         title: Presupuestos
+      see_stats: Ver estadísticas
+      map:
+        accepted: Propuestas presentadas
+        selected: Propuestas seleccionadas
+      investment_proyects: Ver lista completa de propuestas de gasto
+      unfeasible_investment_proyects: Ver lista de propuestas de gasto inviables
+      not_selected_investment_proyects: Ver propuestas de gasto no seleccionadas para la votación popular
+    previous_budgets:
+      title: Presupuestos anteriores
+      empty_budgets: No hay presupuestos anteriores.
+      results: Resultados
+      stats: Estadísticas
+      milestones: Seguimiento
     results:
       heading: "Resultados presupuestos"
     investments:
       index:
+        title: Presupuestos participativos
+        unfeasible: Propuestas de gasto no viables
+        unfeasible_text: "Las propuestas presentadas deben cumplir una serie de criterios (legalidad, concreción, no superar el tope del presupuesto) para ser declaradas viables y llegar hasta la fase de votación popular. Todas las propuestas que no cumplan estos criterios son marcadas como inviables y publicadas en la siguiente lista, junto con su informe de inviabilidad."
+        by_heading: "Propuestas de gasto con ámbito: %{heading}"
+        search_form:
+          button: Buscar
+          placeholder: Buscar propuestas de gasto...
+          title: Buscar
+        search_results:
+          one: " que contiene <strong>'%{search_term}'</strong>"
+          other: " que contienen <strong>'%{search_term}'</strong>"
         sidebar:
           voted:
-            one: "Has votado un proyecto por un valor de %{amount_spent}"
-            other: "Has votado %{count} proyectos por un valor de %{amount_spent}"
+            one: "Has votado una propuesta por un valor de %{amount_spent}"
+            other: "Has votado %{count} propuestas por un valor de %{amount_spent}"
+          voted_info: Puedes %{link} en cualquier momento hasta el cierre de esta fase. 
+          voted_info_max_votes_system: No es necesario gastar todos los votos disponibles.
+          voted_info_wallet_system: No es necesario gastar todo el dinero disponible.
+          different_heading_assigned: "Ya apoyaste propuestas de otra sección del presupuesto: %{heading_link}"
+          change_ballot: "Si cambias de opinión puedes borrar tus votos en %{check_ballot} y volver a empezar."
+          check_ballot_link: "revisar y confirmar mis votos"
+          zero: Todavía no has votado ninguna propuesta de gasto en este ámbito del presupuesto.
+          verified_only: "Para crear una propuesta de gasto %{verify}."
+          create: "Crear propuesta de gasto"
+          not_logged_in: "Para crear una propuesta de gasto debes %{sign_in} o %{sign_up}."
+          by_feasibility: Por viabilidad
+          feasible: Ver las propuesta viables
+          unfeasible: Ver las propuesta inviables
       form:
         estimated_price: Coste estimado (%{currency})
       show:
         estimated_price: "Coste estimado: <strong>%{estimated_price}</strong>"
-        
+        organization_name: "Propuesto por: <strong>%{name}</strong>"
+        organization_area_name: "Área competente: <strong>%{name}</strong>"
+        code: "Código de la propuesta: <strong>%{code}</strong>"
+        project_unfeasible: "Esta propuesta de gasto <strong>ha sido marcada como inviable</strong> y no pasará a la fase de votación."
+        project_selected: "Esta propuesta de gasto <strong>ha sido seleccionada</strong> para la fase de votación."
+        project_winner: "Propuesta de gasto ganadora"
+        project_not_selected: "Esta propuesta de gasto <strong>no ha sido seleccionada</strong> para la fase de votación."
+      share:
+        message: "Echa un vistazo a la propuesta de gasto '%{title}' presentado en '%{org_name}'."
+        message_accepting_phase: "¡Presenta una propuesta de gasto tú también!"
+        message_balloting_phase: "¡Aún puedes votar!"
+        message_other_phase: "¡Participa dejando tus comentarios!"
+    progress_bar:
+      max_votes: "Número máximo de votos permitidos: <strong>%{max_votes}</strong>"
+      voted: "Has votado: <strong>%{voted}</strong>"
+    voting_system:
+      wallet: Monedero
+      max_votes: Número máximo de votos
+    groups:
+      show:
+        title: Selecciona una opción
+        unfeasible_title: Propuestas de gasto inviables
+        unfeasible: Ver propuestas inviables
+        unselected_title: Propuestas no seleccionadas para la votación popular
+        unselected: Ver las propuestas no seleccionadas para la votación popular
+    phase:
+      drafting: Borrador (No visible para el público)
+      informing: Información
+      accepting: Presentación de ideas
+      reviewing: Preselección ideas propuestas
+      selecting: Selección ideas propuestas finalistas
+      valuating: Evaluación y análisis de viabilidad
+      balloting: Votación popular
+      reviewing_ballots: Votación popular finalizada
+      finished: Anuncio ideas ganadoras
+    show:
+      unfeasible_title: Propuestas de gasto inviables
+      unfeasible: Ver las propuestas inviables
+      unselected_title: Propuestas no seleccionadas para la votación popular
+      unselected: Ver las propuestas no seleccionadas para la votación popular

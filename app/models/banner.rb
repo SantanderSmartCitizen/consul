@@ -20,5 +20,5 @@ class Banner < ApplicationRecord
 
   scope :with_inactive, -> { where("post_started_at > ? or post_ended_at < ?", Time.current, Time.current) }
 
-  scope :in_section, ->(section_name) { joins(:web_sections, :sections).where("web_sections.name ilike ?", section_name) }
+  scope :in_section, ->(section_name) { joins(:web_sections).where("web_sections.name = ?", section_name) }
 end

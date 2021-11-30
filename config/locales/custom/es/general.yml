@@ -101,10 +101,18 @@ es:
       collaborative_legislation: Procesos
       debates: Debates
       logo: Logo de Santander SmartCitizen
+      dependent_brand_logo: Logo de marca dependiente
       help: Ayuda
       proposals: Propuestas
-      poll_questions: Encuestas/Consultas
-      budgets: Presupuestos
+      poll_questions:
+        title: Encuestas/Consultas
+        current: Encuestas abiertas
+        expired: Encuestas finalizadas
+      budgets:
+        title: Presupuestos
+        legal_bases: Bases legales
+        check_ballot: Mis votos
+        previous: Presupuestos anteriores
       forum: Foro
       moderation: Moderación
       notification_item:
@@ -117,6 +125,10 @@ es:
       open_access_menu: Abrir menú de acceso
       open_main_menu: Abrir menú
       close: Cerrar
+      my_rewards: Mis recompensas
+      available_rewards:
+        one: "(1 disponible)"
+        other: "(%{count} disponibles)"
   omniauth:
     finish_signup:
       username_warning: "Debido a que hemos cambiado la forma en la que nos conectamos con redes sociales y es posible que tu nombre de usuario/alias aparezca como 'ya en uso', incluso si antes podías acceder con él. Si es tu caso, por favor elige un nombre de usuario/alias distinto."
@@ -135,6 +147,12 @@ es:
         title: Ayuda sobre las encuestas/consultas
         description: Las encuestas ciudadanas son un mecanismo de participación por el que la ciudadanía con derecho a voto puede tomar decisiones de forma directa.
       no_polls: "No hay encuestas abiertas."
+      not_logged_in: "Necesitas iniciar sesión para participar"
+      no_geozone_restricted: "Encuestas para toda la ciudad"
+      geozone_restricted: "Encuestas para distritos"
+      filters:
+        current: "Ver encuestas abiertas"
+        expired: "Ver encuestas finalizadas"
     show:
       already_voted_in_booth: "Ya has participado en esta encuesta en urnas presenciales, no puedes volver a participar."
       already_voted_in_web: "Ya has participado en esta encuesta. Si vuelves a votar se sobreescribirá tu resultado anterior."
@@ -143,6 +161,10 @@ es:
       cant_answer_wrong_geozone: "Esta encuesta no está disponible en tu zona."
       evaluate: "Evaluar la encuesta/consulta"
       results_menu: "Resultados de la encuesta"
+  poll_questions:
+    show:
+      send_answer: Enviar
+      write_answer: Escribe la respuesta
   shared:
     send: "ENVIAR"
     advanced_search:
@@ -150,6 +172,11 @@ es:
       user_profile_blank: "Elige un perfil"
       city_hall: Ayuntamiento
       citizen: Ciudadano
+    author_info:
+      author_anonymous: Anónimo
+      author_anonymous_detail: Se publica sin datos personales
+    events:
+      title: Eventos
   users:
     show:
       deleted_forum: Este tema ha sido eliminado
@@ -212,3 +239,8 @@ es:
       created: "¡Has publicado una propuesta!"
       share:
         view_proposal: Acceder a propuesta
+  simple_calendar:
+    previous: "<"
+    next: ">"
+  form:
+    poll: la encuesta/consulta

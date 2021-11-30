@@ -1,0 +1,43 @@
+<%= link_to t("admin.header_slides.index.create"),
+              new_admin_header_slide_path, class: "button float-right" %>
+
+<h2 class="inline-block"><%= t("admin.header_slides.index.title") %></h2>
+
+<%= render "shared/filter_subnav", i18n_namespace: "admin.header_slides.index" %>
+
+<h3><%= page_entries_info @header_slides %></h3>
+
+<% if @header_slides.any? %>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col"><%= t("admin.header_slides.index.table.title") %></th>
+        <th scope="col"><%= t("admin.header_slides.index.table.page") %></th>
+        <th scope="col" class="small-4"><%= t("admin.actions.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @header_slides.each do |header_slide| %>
+        <tr id="<%= dom_id(header_slide) %>">
+          <td><%= header_slide.title %></td>
+          <td><%= t("admin.header_slides.header_slide.pages.#{header_slide.page}") %></td>
+          <td>
+            <div class="small-12 medium-6 column">
+              <%= link_to t("admin.header_slides.index.edit"), edit_admin_header_slide_path(header_slide),
+                          class: "button expanded" %>
+            </div>
+            <div class="small-12 medium-6 column">
+              <%= link_to t("admin.header_slides.index.delete"), admin_header_slide_path(header_slide),
+                          method: :delete,
+                          class: "button alert expanded" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @header_slides %>
+
+<% end %>

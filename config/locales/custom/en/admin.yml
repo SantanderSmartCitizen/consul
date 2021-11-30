@@ -1,9 +1,25 @@
 en:
   admin:
+    banners:
+      index:
+        table:
+          title: Título
+        edit: Edit
+        delete: Delete
+      banner:
+        sections:
+          homepage: Homepage
+          budgets: Budgets
+          polls: Poll/Questions
+          legislation_processes: Processes
+          forums: Forum
     budgets:
       destroy:
         unable_notice_polls: You cannot delete a budget that has an associated poll/question
     budget_investments:
+      index:
+        list:
+          ballot_lines_count: Votes
       edit:
         estimated_price: Estimated price (%{currency})
     forums:
@@ -32,6 +48,7 @@ en:
         button: Search
         placeholder: Search forum posts by title or description
     menu:
+      budget_geozones: Manage budget geozones
       polls: Polls/Questions
       forums: Forums
       site_customization:
@@ -46,6 +63,9 @@ en:
         requested_rewards: Requested rewards
         ranking: Ranking
       newsletters: Email notifications
+      header_slides: Image carousel
+      banner: Banner carousel
+      events: Event manager
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -96,6 +116,50 @@ en:
         title: "Edit Question"
       new:
         title: "Create question to poll/question %{poll}"
+    settings:
+      index:
+        map:
+          title: Proposal map
+        budget_map:
+          title: Budget investment map
+    stats:
+      show:
+        budgets_title: Budgets
+        participatory_budgets: Budgets
+      budgets:
+        title: "Budgets stats"
+        participation: Participation
+        results: Finished budget
+        comparative: Comparative
+        no_data_before_results_phase: "There isn't any data to show before finalizing the budget phases."
+      polls:
+        poll_questions: "Participation in '%{poll}'"
+        total_participants: Participants
+        votes: Votes
+        star:
+          one: "1 star"
+          other: "%{count} stars"
+        smiley:
+          :1: Very bad
+          :2: Bad
+          :3: Acceptable
+          :4: Well
+          :5: Very good
+        table:
+          poll_name: Poll/question
+          origin_web: Web participants
+          origin_total: Total participants
+          answer: Answer
+          average_vote: Average
+      budget_balloting:
+        title: Stats - Voting projects
+        participants_per_heading: Participants per heading
+      participation:
+        title: Stats - Participation
+      results:
+        title: Stats - Finished budget
+      comparative:
+        title: Stats - Comparative
     homepage:
       feeds:
         citizen_proposals: Citizen Proposals
@@ -103,6 +167,29 @@ en:
     geozones:
       geozone:
         external_code_help: Response code for this geozone on the GIS API
+    budget_geozones:
+      index:
+        title: Budget geozone
+        create: Create budget geozone
+        edit: Edit
+        delete: Delete
+      budget_geozone:
+        name: Name
+        external_code: External code
+        external_code_help: Response code for this geozone on the GIS API
+        coordinates: Coordinates
+        coordinates_help: Coordinates that will generate a clickable area on an HTML image map
+      edit:
+        form:
+          submit_button: Save changes
+        editing: Editing budget geozone
+        back: Go back
+      new:
+        back: Go back
+        creating: Create budget geozone
+      delete:
+        success: Budget geozone successfully deleted
+        error: This budget geozone can't be deleted since there are elements attached to it
     gamifications:
       index:
         table_title: Games
@@ -318,3 +405,58 @@ en:
         body: Email content
         body_help_text: This is how the users will see the email.
         send_alert: Are you sure you want to send this email notification to %{n} users?
+    header_slides:
+      index:
+        title: Image carousel
+        create: Create image
+        edit: Edit
+        delete: Delete
+        table:
+          page: Section
+          title: Title
+        filters:
+          all: All
+          homepage: Homepage
+          budgets: Budgets
+          polls: Poll/questions
+          debates: Debates
+          proposals: Proposals
+          legislation_processes: Processes
+          forums: Forum
+          help: Help
+      header_slide:
+        pages:
+          homepage: Homepage
+          budgets: Budgets
+          polls: Poll/questions
+          debates: Debates
+          proposals: Proposals
+          legislation_processes: Processes
+          forums: Forum
+          help: Help
+      edit:
+        editing: Edit imagen
+        form:
+          submit_button: Save changes
+      new:
+        creating: Create image
+    events:
+      index:
+        title: Event manager
+        create: Create event
+        edit: Edit
+        delete: Delete
+        table:
+          title: Title
+          starts_at: Start date
+          ends_at: End date
+        filters:
+          all: All
+          previous: Previous
+          next: next
+      edit:
+        editing: Edit event
+        form:
+          submit_button: Save changes
+      new:
+        creating: Create event

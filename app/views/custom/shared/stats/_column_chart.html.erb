@@ -1,0 +1,128 @@
+<% 
+  options = {
+    theme: 'custom-theme',
+    chart: {
+     	type: 'bar',
+      locales: [
+        {
+          'name': 'es',
+          'options': {
+            'months': ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            'shortMonths': ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            'days': ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            'shortDays': ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            'toolbar': {
+                'exportToSVG': 'Descargar SVG',
+                'exportToPNG': 'Descargar PNG',
+                'exportToCSV': 'Descargar CSV',
+                'menu': 'Descargar',
+                'selection': 'Seleccionar',
+                'selectionZoom': 'Seleccionar Zoom',
+                'zoomIn': 'Acercar Zoom',
+                'zoomOut': 'Alejar Zoom',
+                'pan': 'Mover',
+                'reset': 'Reestablecer Zoom'
+            }
+          }
+        },
+        {
+          'name': 'en',
+          'options': {
+            'months': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            'shortMonths': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            'days': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            'shortDays': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            'toolbar': {
+                'exportToSVG': 'Download SVG',
+                'exportToPNG': 'Download PNG',
+                'exportToCSV': 'Download CSV',
+                'menu': 'Download',
+                'selection': 'Selection',
+                'selectionZoom': 'Selection Zoom',
+                'zoomIn': 'Zoom In',
+                'zoomOut': 'Zoom Out',
+                'pan': 'Panning',
+                'reset': 'Reset Zoom'
+            }
+          }
+        }
+      ],
+      defaultLocale: I18n.locale,
+     	width: '100%',
+     	height: 400,
+  		toolbar: {
+  			show: false,
+        tools: {
+          download: '<i class="fa fa-download" aria-hidden="true"></i>'
+        }
+  		}
+    },
+    dataLabels: {
+      enabled: false
+    },
+    fill: {
+      opacity: 1
+    },
+    yaxis: {
+      title: {
+        text: "",
+        rotate: 0
+      },
+      tooltip: {
+        enabled: false
+      },
+      crosshairs: {
+        show: false,
+        position: 'front'
+      },
+      labels: {
+        formatter: function(val) {
+          return parseFloat(val).toLocaleString();
+        }
+      }
+    },
+    tooltip: {
+      y: {
+        formatter: function(val) {
+          return parseFloat(val).toLocaleString();
+        }
+      }
+    },
+    legend: {
+      show: true
+    },
+    plotOptions: {
+      bar: {
+      }
+    }
+  } 
+
+  if defined?(exportable) && exportable.present?
+    options[:chart][:toolbar][:show] = true
+  end
+
+  if defined?(percentage) && percentage.present?
+    options[:yaxis][:labels][:formatter] = function(val) {
+        return parseFloat(val).toLocaleString()+'%';
+      }
+    options[:tooltip][:y][:formatter] = function(val) {
+        return parseFloat(val).toLocaleString()+'%';
+    }
+  end
+
+  if defined?(integer) && integer.present?
+    options[:tooltip][:y][:formatter] = function(val) {
+        return parseInt(val).toLocaleString();
+    }
+  end
+
+  if defined?(distributed) && distributed.present?
+    options[:plotOptions][:bar] = {
+      distributed: true
+    }
+    options[:legend][:show] = false
+  end
+
+%>
+
+<%= column_chart(series, options) %>

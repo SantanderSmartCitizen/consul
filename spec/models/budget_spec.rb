@@ -141,23 +141,6 @@ describe Budget do
       end
     end
 
-    describe "#publishing_prices_or_later?" do
-      it "returns false before publishing prices" do
-        budget.phase = "valuating"
-        expect(budget).not_to be_publishing_prices_or_later
-      end
-
-      it "returns true while publishing prices" do
-        budget.phase = "publishing_prices"
-        expect(budget).to be_publishing_prices_or_later
-      end
-
-      it "returns true after publishing prices" do
-        budget.phase = "balloting"
-        expect(budget).to be_publishing_prices_or_later
-      end
-    end
-
     describe "#balloting_or_later?" do
       it "returns false before balloting" do
         budget.phase = "publishing_prices"

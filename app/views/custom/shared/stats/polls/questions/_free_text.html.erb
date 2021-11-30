@@ -1,0 +1,20 @@
+<% if question&.answers.any? %>
+	<div class="row">
+		<div class="col-md-12 stats-table">
+			<table id="<%= dom_id(question) %>_table" class="stack sortable">
+			  <thead>
+			    <tr>
+			      <th><%= t("admin.stats.polls.table.answer") %></th>
+			    </tr>
+			  </thead>
+			  <% question.answers.map do |answer| %>
+			    <tr>
+			      <td class="name">
+			        <%= answer.answer %> 
+			      </td>
+			    </tr>
+			  <% end %>
+			</table>
+		</div>
+	</div>
+<% end %>

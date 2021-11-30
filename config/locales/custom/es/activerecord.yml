@@ -1,4 +1,15 @@
 es:
+  attributes:
+    budget:
+        name: "Nombre"
+        description_accepting: "Descripción durante la fase de presentación de ideas"
+        description_reviewing: "Descripción durante la fase de preselección de ideas propuestas"
+        description_selecting: "Descripción durante la fase de selección de ideas propuestas finalistas"
+        description_valuating: "Descripción durante la fase de evaluación y análisis de viabilidad"
+        description_balloting: "Descripción durante la fase de votación"
+        description_reviewing_ballots: "Descripción durante la fase de revisión de votos"
+        description_finished: "Descripción durante la fase de anuncio de ideas ganadoras"
+    advanced_stats_enabled: "Mostrar estadísticas de la fase final"
   activerecord:
     models:
       budget:
@@ -16,7 +27,20 @@ es:
       legislation/annotation:
         one: "Proceso/Anotación"
         other: "Proceso/Anotaciones"
+      header_slide:
+        one: "Imagen"
+        other: "Imágenes"
+      event:
+        one: "Evento"
+        other: "Eventos"
     attributes:
+      budget:
+        voting_system: Sistema de votación
+        max_votes: Número máximo de votos
+        legal_bases_page: Ruta de acceso a bases legales
+      budget_geozone:
+        name: Nombre
+        external_code: Código externo
       user:
         login: "Email o nombre de usuario/alias"
         username: "Nombre de usuario/alias"
@@ -54,3 +78,27 @@ es:
         allow_comments: "Permitir comentarios"
       newsletter:
         from: "Dirección de correo electrónico que aparecerá como remitente"
+      forum:
+        author: "Autor"
+        description: "Contenido"
+        tag_list: "Etiquetas"
+        terms_of_service: "Términos de servicio"
+        title: "Título del tema"
+      forum/translation:
+        title: "Título del tema"
+        description: "Contenido del tema"
+      header_slide:
+        page: "Sección en la que aparece"
+      header_slide/translation:
+        title: "Título"
+      event:
+        start_time: "Fecha inicio"
+        end_time: "Fecha fin"
+      event/translation:
+        title: "Título"
+        description: "Descripción"
+      complaint:
+        type: Tipo
+        department: Departamento
+        subject: Asunto
+        body: Texto

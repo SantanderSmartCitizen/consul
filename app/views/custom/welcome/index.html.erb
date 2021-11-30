@@ -4,10 +4,6 @@
   <%= render "shared/canonical", href: root_url %>
 <% end %>
 
-<% if has_banners? %>
-  <%= render "shared/banner" %>
-<% end %>
-
 <% provide :social_media_meta_tags do %>
   <%= render "shared/social_media_meta_tags",
               social_url: root_url %>
@@ -17,20 +13,22 @@
 
 <main>
 
-  <div class="row">
-    <%= render "welcome/featured" %>
-  </div>
+  <% if has_banners? %>
+    <%= render "shared/banner" %>
+  <% end %>
+  
+  <%= render "welcome/featured_processes" %>
 
-  <div class="row separator">
-    <%= image_tag(image_path_for("body_start_separator.svg"), alt: "Body start separator") %>
-  </div>
+  <%= render "shared/right_separator" %>
 
   <%= render "welcome/indicators" %>
 
-  <div class="row separator">
-    <%= image_tag(image_path_for("body_content_separator.svg"), alt: "Body content separator") %>
-  </div>
+  <%= render "shared/left_separator" %>
 
-  <%= render "welcome/complaints_and_suggestions" %>
+  <%= render "shared/events" %>
+
+  <%= render "shared/right_separator" %>
+
+  <%= render "welcome/actions_and_complaint_form" %>
 
 </main>

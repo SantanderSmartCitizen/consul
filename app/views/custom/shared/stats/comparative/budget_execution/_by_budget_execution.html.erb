@@ -1,0 +1,7 @@
+<% series = stats.budget_execution %>
+
+<% if series.present? %>
+	<div class="col-md-12 col-lg-8">
+		<%= render "shared/stats/column_chart", series: series, exportable: exportable %> 
+	</div>
+<% end %>

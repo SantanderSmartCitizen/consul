@@ -82,6 +82,10 @@ module Statisticable
     participants.female.count
   end
 
+  def total_unknown_gender_participants
+    participants.unknown_gender.count
+  end
+
   def total_no_demographic_data
     participants.where("gender IS NULL OR date_of_birth IS NULL OR geozone_id IS NULL").count
   end
@@ -96,17 +100,11 @@ module Statisticable
 
   def participants_by_age
     age_groups.map do |start, finish|
-      count = participants.between_ages(start, finish).count
-
-      [
-        "#{start} - #{finish}",
-        {
-          range: range_description(start, finish),
-          count: count,
-          percentage: calculate_percentage(count, total_participants)
-        }
-      ]
-    end.to_h
+      {
+        name: range_description(start, finish), 
+        data: participants.between_ages(start, finish).count
+      }
+    end
   end
 
   def participants_by_geozone
@@ -148,22 +146,10 @@ module Statisticable
     end
 
     def age_groups
-      [[16, 19],
-       [20, 24],
-       [25, 29],
-       [30, 34],
-       [35, 39],
-       [40, 44],
-       [45, 49],
-       [50, 54],
-       [55, 59],
-       [60, 64],
-       [65, 69],
-       [70, 74],
-       [75, 79],
-       [80, 84],
-       [85, 89],
-       [90, 300]
+      [
+       [16, 30],
+       [31, 59],
+       [60, 300]
       ]
     end
 
@@ -180,7 +166,9 @@ module Statisticable
     end
 
     def range_description(start, finish)
-      if finish > 200
+      if start <= 16
+        I18n.t("stats.age_less_or_equal_than", finish: finish)
+      elsif finish > 200
         I18n.t("stats.age_more_than", start: start)
       else
         I18n.t("stats.age_range", start: start, finish: finish)

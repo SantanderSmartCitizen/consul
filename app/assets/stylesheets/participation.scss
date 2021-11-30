@@ -331,7 +331,12 @@
 .milestone-new,
 .milestone-edit,
 .image-form,
-.dashboard-action-form {
+.dashboard-action-form,
+.edit_budget,
+.edit_header_slide,
+.new_header_slide,
+.edit_event,
+.new_event {
   @include direct-uploads;
 }
 
@@ -635,7 +640,8 @@
 .investment-project,
 .budget-investment,
 .legislation,
-.communities-show {
+.communities-show,
+.poll {
   margin: $line-height / 4 0;
 
   .panel {
@@ -1187,11 +1193,7 @@
     .back,
     .icon-angle-left,
     .description {
-      color: #fff;
-    }
-
-    a {
-      text-decoration: underline;
+      /*color: #fff;*/
     }
 
     .callout {
@@ -1202,14 +1204,13 @@
     }
 
     .button {
-      background: #fff;
-      color: $budget;
       text-decoration: none;
     }
 
     .confirmed {
       font-size: rem-calc(24);
       font-weight: bold;
+      color: rgba($brand, .7);
     }
 
     .info {
@@ -1222,7 +1223,7 @@
     }
 
     .row {
-      background: $budget;
+      /*background: $budget;*/
     }
   }
 }
@@ -1283,6 +1284,7 @@
     a {
       display: block;
       padding: $line-height / 2;
+      color: rgba($brand, 0.7);
 
       &:hover {
         background: $highlight;
@@ -1294,8 +1296,12 @@
       padding: $line-height / 2;
     }
 
+    .is-active {
+      background: $highlight;
+    }
+
     span {
-      color: $text;
+      color: rgba($brand, 0.7);
       display: block;
       font-size: $small-font-size;
     }
@@ -1306,18 +1312,19 @@
   position: relative;
 
   .progress {
-    background: white;
+    background: $color-9;
     clear: both;
+    margin-bottom: 0;
   }
 
   .progress-meter {
-    background: $brand;
+    background: $color-3;
     border-radius: 0;
     transition: width 2s;
   }
 
   .progress-meter-text {
-    color: $brand;
+    color: rgba($brand, .7);
   }
 
   .spent-amount-progress,
@@ -1335,21 +1342,19 @@
     width: 100%;
 
     &::before {
-      color: #a5a1ff;
       content: "\57";
       font-family: "icons";
       font-size: $small-font-size;
       position: absolute;
-      right: -6px;
+      right: -7px;
       top: -17px;
     }
   }
 
   .total-amount {
     font-size: rem-calc(18);
-    font-weight: bold;
     float: right;
-    color: white;
+    color: rgba($brand, .7);
   }
 
   .amount-available {
@@ -1393,13 +1398,18 @@
   }
 
   .subtitle {
-    border-left: 2px solid $budget;
+    /*border-left: 2px solid $budget;*/
     margin: $line-height / 2 0;
-    padding-left: $line-height / 2;
+    /*padding-left: $line-height / 2;*/
+
+    h3 {
+      margin: 0;
+    }
   }
 
   .amount-spent {
-    /*background: $success-bg;*/
+    background: rgba($brand,0.1);
+    border-radius: 11px;
     font-weight: normal;
     padding: $line-height / 2;
 
@@ -1450,18 +1460,16 @@
     }
 
     &:hover {
-      background: $budget;
-      color: #fff;
+      background: rgba($brand, .1);
 
       a,
       span {
-        color: #fff;
         outline: 0;
         text-decoration: none;
       }
 
       .remove-investment-project .icon-x {
-        color: #fff;
+        /*color: #fff;*/
       }
     }
   }
@@ -1763,7 +1771,7 @@
   border-bottom: 1px solid #eee;
 
   .column:nth-child(odd) {
-    border-right: 2px solid $text;
+    border-right: 2px solid rgba($brand, .7);
   }
 
   .answer-divider {
@@ -1850,7 +1858,7 @@
   &.with-image {
 
     @include breakpoint(medium) {
-      padding: 0 $line-height / 2 0 0;
+      /*padding: 0 $line-height / 2 0 0;*/
     }
 
     img {
@@ -1863,14 +1871,12 @@
 
 .poll,
 .poll-question {
-  border: 1px solid $border;
   margin-bottom: $line-height / 2;
-  padding: $line-height / 2;
   position: relative;
 
   .icon-poll-answer {
     border-top: 0;
-    border-bottom: 60px solid transparent;
+    /*border-bottom: 60px solid transparent;*/
     height: 0;
     position: absolute;
     right: 0;
@@ -2006,6 +2012,53 @@
       }
     }
   }
+  .stars,
+  .smileys{
+    display: inline-flex;
+    .star,
+    .smiley {
+      width: 60px;
+      margin-right: 10px;
+    }
+  }
+  .free-text {
+    display: grid;
+    textarea {
+      resize: none;
+    }
+  }
+  .stars,
+  .smileys,
+  .free-text {
+    &.answered {
+      background: #f4f8ec;
+      border: 2px solid #92ba48;
+      color: $text;
+      position: relative;
+      padding: 10px;
+      border-radius: 11px;
+      &::after {
+        background: #92ba48;
+        border-radius: 50%;
+        content: "\6c";
+        color: #fff;
+        font-family: "icons" !important;
+        font-size: rem-calc(12);
+        padding: 4px 7px;
+        position: absolute;
+        right: -6px;
+        top: -6px;
+        width: 25px;
+        height: 25px;
+      }
+    }
+    .disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+  }
+
+  
 }
 
 // 09. Polls results and stats

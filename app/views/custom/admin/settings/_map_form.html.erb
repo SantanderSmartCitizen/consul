@@ -18,7 +18,7 @@
                         data-map-geozones="<%=Geozone.all.index_by(&:external_code).to_json%>" >
     </div>
 
-    <small id="info-pane" style="position: inherit; color: rgb(39, 90, 118); font-weight: bold; float: right;"></small>
+    <small class="map-info-pane"></small>
 
     <%= form_tag admin_update_map_path, method: :put, id: "map-form" do |f| %>
 
@@ -30,7 +30,7 @@
 
       <div class="small-12 medium-6 large-4 margin-top">
         <%= submit_tag t("admin.settings.index.map.form.submit"),
-                     class: "button hollow expanded" %>
+                     class: "button expanded" %>
       </div>
 
     <% end %>

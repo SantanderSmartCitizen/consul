@@ -21,6 +21,7 @@ class DebatesController < ApplicationController
 
   def index_customization
     @featured_debates = @debates.featured
+    @header_slides = HeaderSlide.debates
   end
 
   def show

@@ -1,0 +1,36 @@
+<div id="advanced_statistics">
+
+  <div id="by_feasibility" class="stats-group">
+    <h4><%= t("stats.by_feasibility") %></h4>
+    <div class="row justify-content-center">
+      <%= render "shared/stats/final_phase/feasibility/by_feasibility", stats: stats, exportable: exportable %>
+      <%= render "shared/stats/final_phase/feasibility/by_feasibility_requirements", stats: stats, exportable: exportable %>
+      <%= render "shared/stats/final_phase/feasibility/by_unfeasibility_reason", stats: stats, exportable: exportable %>
+    </div>
+  </div>
+
+  <div id="by_final_phase" class="stats-group">
+    <h4><%= t("stats.by_final_phase") %></h4>
+    <div class="row justify-content-center">
+      <%= render "shared/stats/final_phase/budget_investments/by_heading", stats: stats, exportable: exportable %>
+      <%= render "shared/stats/final_phase/budget_investments/by_municipal_area", stats: stats, exportable: exportable %>
+      <%= render "shared/stats/final_phase/budget_investments/by_execution_status", stats: stats, exportable: exportable %>
+    </div>
+  </div>
+
+  <div id="by_financial_data" class="stats-group">
+    <h4><%= t("stats.by_financial_data") %></h4>
+    <div class="row justify-content-center">
+      <%= render "shared/stats/final_phase/financial_data/by_heading", stats: stats, exportable: exportable %>
+    </div>
+  </div>
+
+  <div id="by_economic_effort" class="stats-group">
+    <h4><%= t("stats.by_economic_effort") %></h4>
+    <div class="row justify-content-center">
+      <%= render "shared/stats/final_phase/economic_effort/by_heading", stats: stats, exportable: exportable %>
+    </div>
+  </div>
+
+
+</div>

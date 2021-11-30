@@ -15,10 +15,10 @@
 // 1. Santander variables
 // --------------------
 
-$color-1:  	rgb(213, 132, 73);
+$color-1:  	rgb(225, 175, 70);
 $color-2: 	rgb(145, 192, 97);
-$color-3:  	rgb(53, 129, 170);
-$color-4:  	rgb(225, 175, 70);
+$color-3:  	rgba(53, 129, 170, .7);
+$color-4:  	rgb(213, 132, 73);
 $color-5:  	rgb(172, 203, 95);
 $color-6:  	rgb(173, 211, 240);
 $color-7:  	rgb(238, 211, 70);
@@ -37,3 +37,5 @@ $blue-3: $color-3;
 $orange-1: $color-7;
 $orange-2: $color-1;
 $orange-3: $color-4;
+
+$pagination-ellipsis-color: rgba(38, 89, 118, 0.7);

@@ -114,6 +114,7 @@
 //= require columns_selector
 //= require budget_edit_associations
 //= require admin_gamification_action
+//= require admin_budget
 //= require_tree .
 
 var initialize_modules = function() {
@@ -169,6 +170,7 @@ var initialize_modules = function() {
     App.ColumnsSelector.initialize();
   }
   App.BudgetEditAssociations.initialize();
+  $('.flexslider').flexslider();
 };
 
 $(function() {

@@ -99,7 +99,8 @@ a {
   }
 
   &.medium {
-    font-size: $small-font-size;
+    font-size: 14px;
+    padding: 10px 30px;
   }
 }
 
@@ -254,7 +255,7 @@ a {
     }
 
     a {
-      color: $text;
+      color: rgba($brand, .7);
       display: inline-block;
       font-weight: bold;
       position: relative;
@@ -406,12 +407,53 @@ a {
   margin: 0 $line-height / 2;
 }
 
-.pagination .current {
-  background: $brand;
+.pagination {
+  margin: 0 auto;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  width: fit-content;
+  .current {
+    background: rgba($brand, .7);
+  }
+  li {
+    display: inline-block;
+    border-radius: 0;
+    margin: 0;
+    &:not(:last-child) {
+      border-right: 1px solid rgb(204, 204, 204);
+    }
+  }
+  a {
+    color: rgba($brand, .7);
+  }
 }
 
-.pagination li {
+.pagination-first a::before,
+.pagination-first.disabled::before {
   display: inline-block;
+  margin-right: 5px;
+  content: "\000AB";
+}
+
+.pagination-previous a::before,
+.pagination-previous.disabled::before {
+  display: inline-block;
+  margin-right: 5px;
+  content: "\02039";
+}
+
+.pagination-next a::after,
+.pagination-next.disabled::after {
+  display: inline-block;
+  margin-left: 5px;
+  content: "\0203A";
+}
+
+.pagination-last a::after,
+.pagination-last.disabled::after {
+  display: inline-block;
+  margin-left: 5px;
+  content: "\000BB";
 }
 
 .truncate-horizontal-text {
@@ -655,7 +697,7 @@ header {
     margin: 0 rem-calc(6);
 
     &:hover {
-      text-decoration: underline;
+      color: rgb(212, 222, 228);
     }
   }
 
@@ -685,7 +727,7 @@ header {
   @include breakpoint(medium) {
     width: 100%;
     margin-top: 74px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
   }
 
   ul {
@@ -696,6 +738,9 @@ header {
       @include breakpoint(medium) {
         display: inline-block;
         margin-right: 45px;
+        &:last-child {
+          margin-right: 0;
+        }
       }
     }
   }
@@ -1177,9 +1222,10 @@ form {
 
   a:not(.button) {
     font-weight: bold;
-    /*text-decoration: underline;*/
-    /*border-bottom: 1px dotted $brand;
-    color: $brand;*/
+    color: rgba($brand, .7) !important;
+    &:hover {
+      color: $link !important;
+    }
   }
 
   &.success {
@@ -1230,6 +1276,14 @@ form {
   .button {
     margin-bottom: 0;
   }
+
+  strong {
+    color: rgba($brand, .7);
+  }
+}
+
+.shadow {
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
 }
 
 .no-error {
@@ -1299,7 +1353,9 @@ form {
 }
 
 .author-deleted,
-.user-deleted {
+.user-deleted,
+.author-anonymous,
+.user-anonymous {
   color: rgba(0, 0, 0, 0.4);
   display: inline-block;
   font-size: rem-calc(32);
@@ -1560,6 +1616,31 @@ table {
     td {
       display: block;
       text-align: left;
+    }
+  }
+}
+
+.stats-table {
+  table {
+    thead,
+    tfoot {
+      border: 0;
+      tr {
+        border: 0;
+      }
+    }
+    tbody {
+      border: 0;
+    }
+    th {
+      background: white;
+      color: rgba($brand,.7);
+      font-weight: normal;
+    }
+    tr {
+      border: 0;
+      border-top: 1px solid #dee0e3;
+      border-bottom: 1px solid #dee0e3;
     }
   }
 }
@@ -2747,6 +2828,7 @@ table {
 
 .images .button {
   margin-top: $line-height / 2;
+  margin-bottom: 1em;
 }
 
 // 23. Maps
@@ -2825,6 +2907,7 @@ table {
   .card {
     border: 0;
     overflow: visible;
+    margin: 0;
 
     a {
 
@@ -2860,15 +2943,20 @@ table {
       margin: 0;
       color: rgba(0, 0, 0, 0.7);
       font-weight: bold;
-      font-size: 16pt;
+      font-size: 16px;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
+      text-transform: uppercase;
+    }
+    .date-range{
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 12px;
     }
     .description {
       margin: 0;
       color: rgba(0, 0, 0, 0.7);
-      font-size: 12pt;
+      font-size: 14px;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;

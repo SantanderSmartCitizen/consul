@@ -1,23 +1,24 @@
-<div class="row section-content">
+<div class="row section-content text-center">
   <div class="small-12 column">
-    <h3 id="processes" data-magellan-target="processes">
+    <h2 id="processes" data-magellan-target="processes">
       <%= t("pages.help.processes.title") %>
-    </h3>
+    </h2>
 
     <p>
       <% link = link_to(t("pages.help.processes.link"), legislation_processes_path) %>
       <%= sanitize(t("pages.help.processes.description", link: link)) %>
     </p>
-    <ul class="features">
-      <li>
+    <div class="">
+      <p>
         <% link_1 = link_to(t("pages.help.processes.feature_1_link", org_name: setting["org_name"]),
                                new_user_registration_path) %>
-
+      </p>
+      <p>
         <% link_2 = link_to(t("pages.help.processes.link"), legislation_processes_path) %>
-
+      </p>
+      <p>
         <%= sanitize(t("pages.help.processes.feature_1", link_1: link_1, link_2: link_2))%>
-
-      </li>
-    </ul>
+      </p>
+    </div>
   </div>
 </div>

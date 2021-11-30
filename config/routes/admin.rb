@@ -93,6 +93,14 @@ namespace :admin do
     collection { get :search }
   end
 
+  resources :header_slides, only: [:index, :new, :create, :edit, :update, :destroy] do
+    collection { get :search }
+  end
+
+  resources :events, only: [:index, :new, :create, :edit, :update, :destroy] do
+    collection { get :search }
+  end
+
   resources :hidden_comments, only: :index do
     member do
       put :restore
@@ -110,6 +118,7 @@ namespace :admin do
 
   resources :settings, only: [:index, :update]
   put :update_map, to: "settings#update_map"
+  put :update_budget_map, to: "settings#update_budget_map"
   put :update_content_types, to: "settings#update_content_types"
 
   resources :moderators, only: [:index, :create, :destroy] do
@@ -214,6 +223,10 @@ namespace :admin do
     get :proposal_notifications, on: :collection
     get :direct_messages, on: :collection
     get :polls, on: :collection
+    get "/polls/:id", to: "stats#poll_show", as: "poll"
+    get :participation, on: :member
+    get :results, on: :member
+    get :comparative, on: :member
   end
 
   scope module: :gamification do
@@ -248,6 +261,7 @@ namespace :admin do
   end
 
   resources :geozones, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :budget_geozones, only: [:index, :new, :create, :edit, :update, :destroy]
 
   namespace :site_customization do
     resources :pages, except: [:show] do

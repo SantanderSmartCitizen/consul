@@ -39,16 +39,6 @@
 
   <div class="expanded poll-more-info">
 
-<!--     <div class="row margin">
-      <div class="small-12 medium-9 column">
-        <h3><%= t("polls.show.evaluate") %></h3>
-        <div style="display: flex;">
-          <div class="poll-rating" data-score="3.5" ></div>
-          <div id="targetKeep-hint" style="margin-left: 15px;"></div>
-        </div>
-      </div>
-    </div> -->
-
     <div class="row margin">
       <div class="small-12 medium-9 column">
         <h3><%= t("polls.show.more_info_title") %></h3>
@@ -141,32 +131,3 @@
     </div>
   </div>
 </div>
-
-<script>
-
-  /* Read and convert numeric rating to Stars (on views/reviews/_review): */
-  $(document).ready(function() {
-
-    $.fn.raty.defaults.hints = ['<%= t("rating.bad") %>', '<%= t("rating.poor") %>', '<%= t("rating.regular") %>', '<%= t("rating.good") %>', '<%= t("rating.gorgeous") %>'];
-
-    $( '.poll-rating' ).raty({
-      readOnly: false,
-      halfShow : true,
-      half: true,
-      target: '#targetKeep-hint',
-      targetKeep: true,
-      score: function() {
-        return $(this).attr('data-score');
-      },
-      starHalf:  "<%=asset_path('star-half.png')%>",
-      starOff:   "<%=asset_path('star-off.png')%>",
-      starOn:    "<%=asset_path('star-on.png')%>"
-    });
-    /* reload to remove ghost stars on browser back tracing: */
-    $( '.poll-rating' ).raty( 'reload' );
-
-  });
-    /* targetType : 'score' */
-
-
-</script>

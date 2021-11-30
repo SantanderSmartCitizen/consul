@@ -1,0 +1,12 @@
+<div class="row d-flex">
+  <div class="small-12 medium-12 large-6 p-4">
+    <div>
+      <h1 class="display-4 main-color"><%= sanitize(t(".initiative.title")) %></h1>
+      <p><%= t(".initiative.description") %></p>
+      <!-- <a class="button" href="#" role="button"><%= t(".initiative.button") %></a> -->
+    </div>
+  </div>
+  <div class="small-12 medium-12 large-6 d-none d-md-flex" >
+    <%= image_tag(image_path_for("Grafico1-02.png"), class: "", alt: "Generic placeholder image", style: "") %>
+  </div>
+</div>

@@ -14,7 +14,11 @@
       </div>
 
       <div class="header-title">
-        <h1><%= t("layouts.header.title") %></h1>
+        <% if params[:controller].start_with?("budgets") || params[:controller].start_with?("milestones") %>
+          <%= image_tag(image_path_for("dependent_brand_logo.png"), class: "logo-marca-dependiente hide-for-small-only", alt: t("layouts.header.dependent_brand_logo")) %>
+        <% else %>
+          <h1><%= t("layouts.header.title") %></h1>
+        <% end %>
       </div>
 
       <div class="header-buttons">
@@ -61,9 +65,29 @@
     <%= yield :breadcrumb %>
   </div>
 
-  <div class="row">
-    <%= image_tag(image_path_for("header_separator.svg"), alt: "Header separator") %>
-  </div>
+  <% if defined?(@header_slides) && @header_slides.any? %>
+    <div class="row">
+      <div class="flexslider">
+        <ul class="slides">
+          <% @header_slides.each do |header_slide| %>
+            <li>
+              <%= image_tag header_slide.image_url(:large), 
+                alt: header_slide.image.title.unicode_normalize %>
+              <p class="flex-caption"><%= header_slide.title %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 
+    <div class="row separator mt-0">
+      <%= image_tag(image_path_for("body_start_separator.svg"), alt: "Body content separator")%>
+    </div>
+
+  <% else %>
+    <div class="row">
+      <%= image_tag(image_path_for("header_separator.svg"), alt: "Header separator") %>
+    </div>
+  <% end %>
 
 </header>

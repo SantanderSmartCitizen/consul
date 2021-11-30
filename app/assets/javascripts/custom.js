@@ -6,3 +6,5 @@
 //
 //= require leaflet
 //= require esri-leaflet
+//= require 'apexcharts'
+//= require jquery.flexslider

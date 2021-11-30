@@ -75,6 +75,11 @@ class Poll::Question < ApplicationRecord
   end
 
   def possible_answers
-    question_answers.joins(:translations).pluck("poll_question_answer_translations.title")
+    case self.answer_type
+    when "simple", "multiple"
+      question_answers.joins(:translations).pluck("poll_question_answer_translations.title")
+    when "star_rating", "smileys"
+      ["1","2","3","4","5"]
+    end
   end
 end

@@ -1,14 +1,16 @@
 <div class="forum-form row">
 
   <div class="small-12 medium-9 column">
-    <%= back_link_to forums_path %>
+
+    <% content_for :breadcrumb do %>
+      <%= back_link_to forums_path %>
+    <% end %>
 
     <h1><%= t("forums.new.start_new") %></h1>
     <%= render "form" %>
   </div>
 
   <div class="small-12 medium-3 column">
-    <span class="icon-forums float-right"></span>
     <h2><%= t("forums.new.recommendations_title") %></h2>
     <ul class="recommendations">
       <li><%= t("forums.new.recommendation_one") %></li>

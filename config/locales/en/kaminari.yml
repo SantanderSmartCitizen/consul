@@ -15,8 +15,8 @@ en:
   views:
     pagination:
       current: You're on page
-      first: First
-      last: Last
-      next: Next
-      previous: Previous
-      truncate: "&hellip;"
+      first: first
+      last: last
+      next: next
+      previous: previous
+      truncate: ""

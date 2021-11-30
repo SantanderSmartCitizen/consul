@@ -21,6 +21,10 @@ module BudgetsHelper
     Budget::Phase::PHASE_KINDS.map { |ph| [t("budgets.phase.#{ph}"), ph] }
   end
 
+  def budget_voting_systems_select_options
+    Budget::VOTING_SYSTEM_KINDS.map { |vs| [t("budgets.voting_system.#{vs}"), vs] }
+  end
+
   def budget_currency_symbol_select_options
     Budget::CURRENCY_SYMBOLS.map { |cs| [cs, cs] }
   end
@@ -68,7 +72,7 @@ module BudgetsHelper
   def current_budget_map_locations
     return unless current_budget.present?
 
-    if current_budget.publishing_prices_or_later? && current_budget.investments.selected.any?
+    if current_budget.balloting_or_later? && current_budget.investments.selected.any?
       investments = current_budget.investments.selected
     else
       investments = current_budget.investments

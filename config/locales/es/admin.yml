@@ -1522,7 +1522,7 @@ es:
           status: Estado
           updated_at: Última actualización
           title: Título
-          slug: Slug
+          slug: Ruta de acceso
           cards_title: Tarjetas
           see_cards: Ver tarjetas
         cards:

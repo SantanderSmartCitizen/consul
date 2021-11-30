@@ -32,7 +32,7 @@
 
 <% if feature?(:map) && map_location_available?(@investment.map_location) %>
   <div class="margin">
-    <%= render_map(investment.map_location, "budget_investment", false, nil) %>
+    <%= render_budget_map(investment.map_location, "budget_investment", false, nil) %>
   </div>
 <% end %>
 
@@ -44,7 +44,11 @@
 
 <% if investment.organization_name.present? %>
   <p>
-    <%= sanitize(t("budgets.investments.show.organization_name", name: investment.organization_name)) %>
+    <% if investment.author&.management? %>
+      <%= sanitize(t("budgets.investments.show.organization_area_name", name: investment.organization_name)) %> 
+    <% else %>
+      <%= sanitize(t("budgets.investments.show.organization_name", name: investment.organization_name)) %>
+    <% end %>
   </p>
 <% end %>
 

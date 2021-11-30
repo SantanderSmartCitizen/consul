@@ -1,0 +1,105 @@
+<!--
+<% poll_group.each do |poll| %>
+  <div class="poll with-image">
+    <div class="panel">
+      <% if !user_signed_in? %>
+        <div class="icon-poll-answer not-logged-in" title="<%= t("polls.index.not_logged_in") %>">
+          <span class="show-for-sr"><%= t("polls.index.not_logged_in") %></span>
+        </div>
+      <% elsif user_signed_in? %>
+        <% if current_user.unverified? %>
+          <div class="icon-poll-answer unverified" title="<%= t("polls.index.unverified") %>">
+            <span class="show-for-sr"><%= t("polls.index.unverified") %></span>
+          </div>
+        <% elsif cannot?(:answer, poll) %>
+          <div class="icon-poll-answer cant-answer" title="<%= t("polls.index.cant_answer") %>">
+            <span class="show-for-sr"><%= t("polls.index.cant_answer") %></span>
+          </div>
+        <% elsif !poll.votable_by?(current_user) %>
+          <div class="icon-poll-answer already-answer" title="<%= t("polls.index.already_answer") %>">
+            <span class="show-for-sr"><%= t("polls.index.already_answer") %></span>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="row min-height-inherit" data-equalizer data-equalize-on="medium">
+        <div class="small-12 medium-4 large-3 column">
+          <div class="image-container" data-equalizer-watch>
+            <% if poll.image.present? %>
+              <%= image_tag poll.image_url(:large), alt: poll.image.title.unicode_normalize %>
+            <% end %>
+          </div>
+        </div>
+        <div class="small-12 medium-8 large-6 column" data-equalizer-watch>
+          <div class="dates"></div>
+          <% if poll.questions.one? %>
+            <h3><%= link_to_poll poll.questions.first.title, poll %></h3>
+            <%= poll_dates(poll) %>
+          <% else %>
+            <h3><%= link_to_poll poll.name, poll %></h3>
+            <%= poll_dates(poll) %>
+
+            <ul class="margin-top">
+              <% poll.questions.each do |question| %>
+                <li><%= question.title %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <% if poll.geozones.any? %>
+            <p>
+              <small><%= t("polls.index.geozone_info") %></small>
+            </p>
+          <% end %>
+          <ul class="no-bullet inline-block tags">
+            <% poll.geozones.each do |g| %>
+              <li class="inline-block"><span><%= g.name %></span></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="small-12 medium-12 large-3 column table padding text-center no-margin-bottom height-auto-medium" data-equalizer-watch>
+          <div class="table-cell align-middle">
+            <%= link_to poll_path(id: poll.slug || poll.id), class: "button" do %>
+              <% if poll.expired? %>
+                <%= t("polls.index.participate_button_expired") %>
+              <% else %>
+                <%= t("polls.index.participate_button") %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+-->
+
+<div class="card-deck text-center justify-content-center mt-4">
+  <% poll_group.each do |poll| %>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card margin-bottom">
+
+        <% if poll.expired? %>
+          <% poll_title = t("polls.index.participate_button_expired") %>
+        <% else %>
+          <% poll_title =  t("polls.index.participate_button") %>
+        <% end %>
+
+        <%= link_to poll_path(id: poll.slug || poll.id), title: poll_title do %>
+          <figure class="figure-card m-0">
+            <% if poll.image.present? %>
+              <%= image_tag poll.image_url(:large), alt: poll.image.title.unicode_normalize %>
+            <% end %>
+          </figure>
+          <div class="card-body">
+            <h5 class="title"><%= poll.name %></h5>
+            <p class="date-range">
+              <small><%= poll_dates(poll) %></small>
+            </p>
+            <p class="description"><%= poll.summary %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

@@ -313,7 +313,7 @@ es:
         content: Contenido
         created_at: Creada
         subtitle: Subtítulo
-        slug: Slug
+        slug: Ruta de acceso
         status: Estado
         status_draft: "Borrador"
         status_published: "Publicada"

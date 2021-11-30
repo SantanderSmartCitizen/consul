@@ -3,21 +3,21 @@
 	<div class="row">
 	    <div class="small-12 column">
 	    	<%= back_link_to user_path(current_user, filter: "gamification_rewards", page: 1) %>
-			<h3 class="title"><%= gamification_reward.title %></h3>
+			<h3 class="title"><%= @gamification_reward.title %></h3>
 
 			<div class="row expanded">
 			  <div class="small-12 medium-6 column">
-			    <p><%= gamification_reward.description %></p>
+			    <p><%= @gamification_reward.description %></p>
 			    <%= render "form" %>
 			  </div>
 
 			  <div class="small-12 medium-6 column">
-			    <%= render "documents/documents", documents: gamification_reward.documents %>
+			    <%= render "documents/documents", documents: @gamification_reward.documents %>
 
-			    <% if gamification_reward.links.any? %>
+			    <% if @gamification_reward.links.any? %>
 			      <div class="margin-top">
 			        <h4><%= t("dashboard.new_request.links") %></h4>
-			        <% gamification_reward.links.each do |link| %>
+			        <% @gamification_reward.links.each do |link| %>
 			          <p><%= link_to link.label, link.url, target: "_blank" %></p>
 			        <% end %>
 			      </div>

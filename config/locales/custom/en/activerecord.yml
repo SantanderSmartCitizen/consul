@@ -1,4 +1,6 @@
 en:
+  attributes:
+    advanced_stats_enabled: "Show final stats"
   activerecord:
     models:
       budget:
@@ -7,7 +9,20 @@ en:
       poll:
         one: "Poll/Question"
         other: "Polls/Questions"
+      header_slide:
+        one: "Image"
+        other: "Images"
+      event:
+        one: "Event"
+        other: "Events"
     attributes:
+      budget:
+        voting_system: Voting system
+        max_votes: Maximum number of votes
+        legal_bases_page: Legal bases URL
+      budget_geozone:
+        name: Name
+        external_code: External code
       user:
         login: "Email or username/alias"
         username: "Username/alias"
@@ -45,3 +60,27 @@ en:
         allow_comments: "Allow comments"
       newsletter:
         from: "E-mail address that will appear as sending"
+      forum:
+        author: "Author"
+        description: "Content"
+        tag_list: "Topics"
+        terms_of_service: "Terms of service"
+        title: "Title"
+      forum/translation:
+        title: "Thread title"
+        description: "Thread content"
+      header_slide:
+        page: "Section where it will appear"
+      header_slide/translation:
+        title: "Title"
+      event:
+        start_time: "Start date"
+        end_time: "End date"
+      event/translation:
+        title: "Title"
+        description: "Description"
+      complaint:
+        type: Type
+        department: Department
+        subject: Subject
+        body: Text

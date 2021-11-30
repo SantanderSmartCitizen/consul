@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210413071320) do
+ActiveRecord::Schema.define(version: 20211130091904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "unaccent"
   enable_extension "pg_trgm"
+  enable_extension "unaccent"
 
   create_table "active_poll_translations", force: :cascade do |t|
     t.integer  "active_poll_id", null: false
@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.index ["time"], name: "index_ahoy_events_on_time", using: :btree
     t.index ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
     t.index ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+  end
+
+  create_table "api_components", force: :cascade do |t|
+    t.string   "name"
+    t.string   "secret"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "audits", force: :cascade do |t|
@@ -175,6 +182,13 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["heading_id"], name: "index_budget_content_blocks_on_heading_id", using: :btree
+  end
+
+  create_table "budget_geozones", force: :cascade do |t|
+    t.string   "name"
+    t.string   "external_code"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "budget_group_translations", force: :cascade do |t|
@@ -275,6 +289,7 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.integer  "original_heading_id"
     t.bigint   "estimated_price"
     t.bigint   "maintenance_cost"
+    t.boolean  "meets_feasibility_requirements"
     t.index ["administrator_id"], name: "index_budget_investments_on_administrator_id", using: :btree
     t.index ["author_id"], name: "index_budget_investments_on_author_id", using: :btree
     t.index ["community_id"], name: "index_budget_investments_on_community_id", using: :btree
@@ -289,6 +304,7 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.datetime "updated_at",      null: false
     t.text     "description"
     t.text     "summary"
+    t.string   "kind"
     t.index ["budget_phase_id"], name: "index_budget_phase_translations_on_budget_phase_id", using: :btree
     t.index ["locale"], name: "index_budget_phase_translations_on_locale", using: :btree
   end
@@ -362,6 +378,9 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.text     "description_drafting"
     t.text     "description_publishing_prices"
     t.text     "description_informing"
+    t.string   "voting_system"
+    t.integer  "max_votes"
+    t.string   "legal_bases_page"
   end
 
   create_table "campaigns", force: :cascade do |t|
@@ -429,6 +448,17 @@ ActiveRecord::Schema.define(version: 20210413071320) do
   create_table "communities", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "complaints", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "type"
+    t.string   "department"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_complaints_on_user_id", using: :btree
   end
 
   create_table "dashboard_actions", force: :cascade do |t|
@@ -556,6 +586,23 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.index ["documentable_type", "documentable_id"], name: "index_documents_on_documentable_type_and_documentable_id", using: :btree
     t.index ["user_id", "documentable_type", "documentable_id"], name: "access_documents", using: :btree
     t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
+  end
+
+  create_table "event_translations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["event_id"], name: "index_event_translations_on_event_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "failed_census_calls", force: :cascade do |t|
@@ -769,6 +816,21 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.integer "poll_id"
     t.index ["geozone_id"], name: "index_geozones_polls_on_geozone_id", using: :btree
     t.index ["poll_id"], name: "index_geozones_polls_on_poll_id", using: :btree
+  end
+
+  create_table "header_slide_translations", force: :cascade do |t|
+    t.integer  "header_slide_id"
+    t.string   "locale"
+    t.string   "title"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["header_slide_id"], name: "index_header_slide_translations_on_header_slide_id", using: :btree
+  end
+
+  create_table "header_slides", force: :cascade do |t|
+    t.string   "page"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "i18n_content_translations", force: :cascade do |t|
@@ -1099,6 +1161,29 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.index ["user_id"], name: "index_moderators_on_user_id", using: :btree
   end
 
+  create_table "municipal_area_assignments", force: :cascade do |t|
+    t.integer  "municipal_area_id"
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["municipal_area_id", "user_id"], name: "idx_municipal_area_assignments_on_municipal_area_id_and_user_id", unique: true, using: :btree
+    t.index ["municipal_area_id"], name: "index_municipal_area_assignments_on_municipal_area_id", using: :btree
+    t.index ["user_id"], name: "index_municipal_area_assignments_on_user_id", using: :btree
+  end
+
+  create_table "municipal_area_translations", force: :cascade do |t|
+    t.integer  "municipal_area_id"
+    t.string   "locale"
+    t.string   "title"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["municipal_area_id", "locale"], name: "idx_municipal_area_translations_on_municipal_area_id_and_locale", unique: true, using: :btree
+    t.index ["municipal_area_id"], name: "index_municipal_area_translations_on_municipal_area_id", using: :btree
+  end
+
+  create_table "municipal_areas", force: :cascade do |t|
+  end
+
   create_table "newsletters", force: :cascade do |t|
     t.string   "subject"
     t.string   "segment_recipient", null: false
@@ -1118,6 +1203,27 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.datetime "emailed_at"
     t.datetime "read_at"
     t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  end
+
+  create_table "oauth_access_tokens", primary_key: "access_token", id: :string, limit: 40, force: :cascade do |t|
+    t.string   "client_id",   limit: 80,   null: false
+    t.string   "user_id",     limit: 255
+    t.datetime "expires"
+    t.string   "scope",       limit: 2000
+    t.datetime "marcatiempo"
+  end
+
+  create_table "oauth_clients", primary_key: "client_id", id: :string, limit: 80, force: :cascade do |t|
+    t.string "client_secret", limit: 80
+    t.string "redirect_uri",  limit: 2000
+    t.string "grand_types",   limit: 80
+    t.string "scope",         limit: 100
+    t.string "user_id",       limit: 80
+  end
+
+  create_table "oauth_scopes", id: false, force: :cascade do |t|
+    t.text    "scope"
+    t.integer "is_default", limit: 2
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -1592,6 +1698,32 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.index ["proposals_count"], name: "index_tags_on_proposals_count", using: :btree
   end
 
+  create_table "terminal_statuses", force: :cascade do |t|
+    t.integer  "terminal_id"
+    t.string   "location"
+    t.boolean  "switched_on"
+    t.float    "cpu"
+    t.float    "ram"
+    t.float    "storage"
+    t.float    "battery"
+    t.integer  "battery_saver"
+    t.text     "msg"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["terminal_id"], name: "index_terminal_statuses_on_terminal_id", using: :btree
+  end
+
+  create_table "terminals", force: :cascade do |t|
+    t.string   "code"
+    t.string   "service"
+    t.string   "description"
+    t.string   "location"
+    t.integer  "poll_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["poll_id"], name: "index_terminals_on_poll_id", using: :btree
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string   "title",                      null: false
     t.text     "description"
@@ -1667,6 +1799,8 @@ ActiveRecord::Schema.define(version: 20210413071320) do
     t.boolean  "recommended_debates",                       default: true
     t.boolean  "recommended_proposals",                     default: true
     t.string   "citizen_type"
+    t.string   "official_sublevel"
+    t.boolean  "anonymous"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["geozone_id"], name: "index_users_on_geozone_id", using: :btree
@@ -1791,6 +1925,7 @@ ActiveRecord::Schema.define(version: 20210413071320) do
   add_foreign_key "budget_investments", "communities"
   add_foreign_key "budget_valuators", "budgets"
   add_foreign_key "budget_valuators", "valuators"
+  add_foreign_key "complaints", "users"
   add_foreign_key "dashboard_administrator_tasks", "users"
   add_foreign_key "dashboard_executed_actions", "dashboard_actions", column: "action_id"
   add_foreign_key "dashboard_executed_actions", "proposals"
@@ -1818,6 +1953,8 @@ ActiveRecord::Schema.define(version: 20210413071320) do
   add_foreign_key "locks", "users"
   add_foreign_key "managers", "users"
   add_foreign_key "moderators", "users"
+  add_foreign_key "municipal_area_assignments", "municipal_areas"
+  add_foreign_key "municipal_area_assignments", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "organizations", "users"
   add_foreign_key "poll_answers", "poll_questions", column: "question_id"
@@ -1839,6 +1976,8 @@ ActiveRecord::Schema.define(version: 20210413071320) do
   add_foreign_key "proposals", "communities"
   add_foreign_key "related_content_scores", "related_contents"
   add_foreign_key "related_content_scores", "users"
+  add_foreign_key "terminal_statuses", "terminals"
+  add_foreign_key "terminals", "polls"
   add_foreign_key "users", "geozones"
   add_foreign_key "valuators", "users"
 end
