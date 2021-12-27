@@ -265,6 +265,7 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 					_PROCESS_TYPE 			constant varchar := 'Poll';
 					_OPERATION 				constant varchar := 'answer_question';
 					_process_id 			integer;
+					_only_terminals 		boolean;
 				BEGIN
 					
 					select pq.poll_id
@@ -276,8 +277,14 @@ class CreateGamificationTriggers < ActiveRecord::Migration[5.0]
 						where pa.id = NEW.id
 					);
 
-					PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, _process_id);
+					select p.only_terminals
+					into _only_terminals
+					from polls p
+					where p.id = _process_id;
 
+					if _only_terminals <> true
+						PERFORM insert_into_gamification_user(_GAMIFICATION_KEY, _PROCESS_TYPE, _OPERATION, NEW.author_id, _process_id);
+					end if;
 					RETURN NEW;
 				END;$$;
 

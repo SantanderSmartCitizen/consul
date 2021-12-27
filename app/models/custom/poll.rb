@@ -176,4 +176,8 @@ class Poll < ApplicationRecord
   def budget_poll?
     budget.present?
   end
+
+  def only_terminals?
+    only_terminals == true
+  end
 end

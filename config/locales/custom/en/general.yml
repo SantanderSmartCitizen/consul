@@ -225,3 +225,9 @@ en:
     next: ">"
   form:
     poll: the poll/question
+  satisfaction_surveys:
+    index:
+      start: "Start"
+      answered_all: "You have answered all the questions correctly!"
+      thanks: "Thanks for answering, your opinion is very helpful"
+      answer_again: "Answer again"

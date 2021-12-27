@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211130091904) do
+ActiveRecord::Schema.define(version: 20211215120437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1241,6 +1241,7 @@ ActiveRecord::Schema.define(version: 20211130091904) do
     t.string   "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "terminal_id"
     t.index ["author_id"], name: "index_poll_answers_on_author_id", using: :btree
     t.index ["question_id", "answer"], name: "index_poll_answers_on_question_id_and_answer", using: :btree
     t.index ["question_id"], name: "index_poll_answers_on_question_id", using: :btree
