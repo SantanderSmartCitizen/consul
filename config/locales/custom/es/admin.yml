@@ -60,6 +60,7 @@ es:
       budgets: Presupuestos
       budget_geozones: Gestionar zonas presupuestarias
       polls: Encuestas/Consultas
+      satisfaction_surveys: Encuestas de satisfacción
       forums: Foros
       site_customization:
         information_texts_menu:
@@ -115,6 +116,27 @@ es:
         alert: "Esta acción eliminará la encuesta/consulta y todas sus preguntas asociadas."
         success_notice: "Encuesta/Consulta eliminada correctamente"
         unable_notice: "No se pueden eliminar encuestas/consultas con votos"
+    satisfaction_surveys:
+      index:
+        title: "Listado de encuestas de satisfacción"
+        no_polls: "No hay encuestas de satisfacción."
+        create: "Crear encuesta de satistacción"
+      new:
+        title: "Nueva encuesta de satisfacción"
+        submit_button: "Crear encuesta de satisfacción"
+      edit:
+        title: "Editar encuesta de satisfacción"
+        submit_button: "Actualizar encuesta de satisfacción"
+      show:
+        no_questions: "No hay preguntas asignadas a esta encuesta."
+      questions:
+        new:
+          title: "Crear pregunta para la encuesta de satisfacción '%{poll}'"
+        edit:
+          title: "Editar pregunta"
+        destroy:
+          alert: "Esta acción eliminará la pregunta y todas las respuestas asociadas."
+          success_notice: "Pregunta eliminada correctamente"
     questions:
       index:
         title: "Preguntas de encuestas/consultas"
@@ -135,6 +157,9 @@ es:
         free_text: Texto libre
       new:
         title: "Crear pregunta ciudadana para la encuesta/consulta %{poll}"
+      destroy:
+        alert: "Esta acción eliminará la pregunta y todas las respuestas asociadas."
+        success_notice: "Pregunta eliminada correctamente"
     settings:
       index:
         map:

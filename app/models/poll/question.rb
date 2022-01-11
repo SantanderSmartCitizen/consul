@@ -6,6 +6,7 @@ class Poll::Question < ApplicationRecord
   include ActsAsParanoidAliases
 
   ANSWER_TYPES = %w[simple multiple star_rating smileys free_text].freeze
+  SATISFACTION_ANSWER_TYPES = %w[simple star_rating smileys free_text].freeze
 
   translates :title, touch: true
   include Globalizable

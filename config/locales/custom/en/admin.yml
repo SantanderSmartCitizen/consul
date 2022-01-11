@@ -50,6 +50,7 @@ en:
     menu:
       budget_geozones: Manage budget geozones
       polls: Polls/Questions
+      satisfaction_surveys: Satisfaction surveys
       forums: Forums
       site_customization:
         information_texts_menu:
@@ -96,6 +97,27 @@ en:
         alert: "This action will remove the poll/question and all its associated questions."
         success_notice: "Poll/Question deleted successfully"
         unable_notice: "You cannot delete a poll/question that has votes"
+    satisfaction_surveys:
+      index:
+        title: "List of satisfaction surveys"
+        no_polls: "There are no satisfaction surveys."
+        create: "Create satisfaction survey"
+      new:
+        title: "New satisfaction survey"
+        submit_button: "Create satisfaction survey"
+      edit:
+        title: "Edit satisfaction survey"
+        submit_button: "Update satisfaction survey"
+      show:
+        no_questions: "There are no questions assigned to this survey."
+      questions:
+        new:
+          title: "Create question to satisfaction survey '%{poll}'"
+        edit:
+          title: "Edit question"
+        destroy:
+          alert: "This action will remove the question and all its associated answers."
+          success_notice: "Question deleted successfully"
     questions:
       index:
         filter_poll: Filter by Poll/Question
@@ -113,9 +135,12 @@ en:
         smileys: Smileys
         free_text: Free text
       edit:
-        title: "Edit Question"
+        title: "Edit question"
       new:
         title: "Create question to poll/question %{poll}"
+      destroy:
+        alert: "This action will remove the question and all its associated answers."
+        success_notice: "Question deleted successfully"
     settings:
       index:
         map:

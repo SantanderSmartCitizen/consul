@@ -185,6 +185,14 @@ namespace :admin do
     resource :active_polls, only: [:create, :edit, :update]
   end
 
+  scope module: :satisfaction_survey do
+    resources :satisfaction_surveys do
+      patch :add_question, on: :member
+    end
+    resources :satisfaction_survey_questions, except: [:index], controller: "questions"
+    resources :satisfaction_survey_answers, except: [:index, :destroy], controller: "questions/answers"
+  end
+
   resources :verifications, controller: :verifications, only: :index do
     get :search, on: :collection
   end

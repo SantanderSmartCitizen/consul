@@ -33,9 +33,16 @@ module AdminHelper
   end
 
   def menu_polls?
-    controller.class.parent == Admin::Poll::Questions::Answers ||
+    !menu_satisfaction_surveys? &&
+    (controller.class.parent == Admin::Poll::Questions::Answers ||
       %w[polls active_polls recounts results questions answers].include?(controller_name) &&
-      action_name != "booth_assignments"
+      action_name != "booth_assignments")
+  end
+
+  def menu_satisfaction_surveys?
+    controllers_names = ["satisfaction_surveys"]
+    controller_params = ["admin/satisfaction_survey/questions", "admin/satisfaction_survey/questions/answers"]
+    controllers_names.include?(controller_name) || controller_params.include?(params[:controller])
   end
 
   def menu_gamifications?
