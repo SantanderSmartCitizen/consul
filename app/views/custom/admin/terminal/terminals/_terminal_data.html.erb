@@ -1,0 +1,99 @@
+<div id="terminal-data">
+		
+	<div class="row callout highlight">
+	  <div class="small-12 medium-12 large-6 column">
+	    <p>
+	      <strong><%= t("admin.terminals.show.code") %></strong>
+	      <br>
+	      <%= @terminal.code %>
+	    </p>
+	  </div>
+	  <div class="small-12 medium-12 large-6 column">
+	    <p>
+	      <strong><%= t("admin.terminals.show.serial_number") %></strong>
+	      <br>
+	      <%= @terminal.serial_number %>
+	    </p>
+	  </div>
+	  <div class="small-12 medium-12 large-6 column">
+	    <p>
+	      <strong><%= t("admin.terminals.show.name") %></strong>
+	      <br>
+	      <%= @terminal.name %>
+	    </p>
+	  </div>
+	  <div class="small-12 medium-12 large-6 column">
+	    <p>
+	      <strong><%= t("admin.terminals.show.description") %></strong>
+	      <br>
+	      <%= @terminal.description %>
+	    </p>
+	  </div>
+	  <div class="small-12 medium-12 large-6 column">
+	    <p>
+	      <strong><%= t("admin.terminals.show.service") %></strong>
+	      <br>
+	      <%= @terminal.service %>
+	    </p>
+	  </div>
+	</div>
+	<div class="row callout highlight">
+	  <% if @terminal.status.present? %>
+		  <div class="small-12 medium-12 large-6 column">
+		    <p>
+		      <strong><%= t("admin.terminals.show.last_update") %></strong>
+		      <br>
+		      <%= I18n.l @terminal.status.created_at, :format => :datetime %>
+		    </p>
+		  </div>
+		  <div class="small-12 medium-12 large-6 column">
+		    <p>
+		      <strong><%= t("admin.terminals.show.status") %></strong>
+		      <br>
+			  <% if @terminal.status.switched_on %>
+				<%= t("admin.terminals.show.status_on") %>
+			  <% else %>
+				<%= t("admin.terminals.show.status_off") %>
+			  <% end %>
+		    </p>
+		  </div>
+		  <div class="small-12 medium-12 large-6 column">
+		    <p>
+		      <strong><%= t("admin.terminals.show.cpu") %></strong>
+		      <br>
+		      <%= number_to_percentage(@terminal.status.cpu, precision:0) %>
+		    </p>
+		  </div>
+		  <div class="small-12 medium-12 large-6 column">
+		    <p>
+		      <strong><%= t("admin.terminals.show.ram") %></strong>
+		      <br>
+		      <%= number_to_percentage(@terminal.status.ram, precision:0) %>
+		    </p>
+		  </div>
+		  <div class="small-12 medium-12 large-6 column">
+		    <p>
+		      <strong><%= t("admin.terminals.show.storage") %></strong>
+		      <br>
+		      <%= number_to_percentage(@terminal.status.storage, precision:0) %>
+		    </p>
+		  </div>
+		  <div class="small-12 medium-12 large-6 column">
+		    <p>
+		      <strong><%= t("admin.terminals.show.battery") %></strong>
+		      <br>
+		      <%= number_to_percentage(@terminal.status.battery, precision:0) %>
+		    </p>
+		  </div>
+		<% else %>
+			<div class="small-12 column">
+				<p><%= t("admin.terminals.show.no_status") %></p>
+			</div>
+		<% end %>
+	</div>
+
+	<% if @terminal.status.present? && @terminal.status.latitude.present? && @terminal.status.longitude.present? %>
+		<%= render_simple_map([{lat: @terminal.status&.latitude,long: @terminal.status&.longitude}]) %>
+	<% end %>
+
+</div>

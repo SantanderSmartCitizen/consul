@@ -1,0 +1,19 @@
+<%= back_link_to admin_satisfaction_surveys_path %>
+
+<div class="clear"></div>
+
+<%= link_to t("admin.satisfaction_surveys.edit.title"),
+            edit_admin_satisfaction_survey_path(@poll),
+            class: "button float-right" %>
+
+<h2 class="inline-block">
+  <%= @poll.name %>
+</h2>
+
+<div class="clear"></div>
+
+<div class="callout highlight">
+  <div class="inline-block">
+    <strong>Aún no está asignada a ningún dispositivo</strong>
+  </div>
+</div>

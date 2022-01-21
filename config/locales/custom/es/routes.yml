@@ -19,3 +19,4 @@ es:
     polls: encuestas_consultas
     proposals: propuestas
     users: usuario
+    satisfaction_surveys: encuestas_satisfaccion

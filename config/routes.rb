@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     draw :gamification
     draw :legislation
     draw :poll
+    draw :satisfaction_survey
     draw :proposal
     draw :user
   end

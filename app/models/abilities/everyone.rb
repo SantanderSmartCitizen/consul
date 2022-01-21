@@ -28,6 +28,11 @@ module Abilities
       can [:search, :comments, :read, :create, :new_comment], Legislation::Annotation
       can :read, Milestone
       can :read, Event
+
+      can :answer, Poll do |poll|
+        poll.only_terminals?
+      end
+
     end
   end
 end
