@@ -46,11 +46,11 @@ class Admin::Poll::QuestionsController < Admin::Poll::BaseController
 
   def destroy
     if @question.destroy
-      notice = "Question destroyed succesfully"
+      notice = t("admin.satisfaction_surveys.questions.destroy.success_notice")
     else
       notice = t("flash.actions.destroy.error")
     end
-    redirect_to admin_questions_path, notice: notice
+    redirect_to request.referer, notice: notice
   end
 
   private

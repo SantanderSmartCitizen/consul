@@ -236,6 +236,11 @@
   font-weight: normal;
 }
 
+.icon-smile::before {
+  content: "\f118";
+  font-weight: normal;
+}
+
 .icon-minus-square::before {
   content: "\f146";
   font-weight: normal;
@@ -248,6 +253,10 @@
 
 .icon-expand::before {
   content: "\f31e";
+}
+
+.icon-terminal::before {
+  content: "\f3fa";
 }
 
 .icon-telegram::before {

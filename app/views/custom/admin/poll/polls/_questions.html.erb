@@ -42,6 +42,7 @@
 
           <%= link_to t("shared.delete"), admin_question_path(question),
                                           class: "button alert mb-2",
+                                          "data-confirm": t("admin.questions.destroy.alert"),
                                           method: :delete %>
         </td>
       </tr>

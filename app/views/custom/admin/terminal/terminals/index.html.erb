@@ -1,0 +1,23 @@
+<h2 class="inline-block"><%= t("admin.terminals.index.table_title") %></h2>
+
+<%= link_to t("admin.terminals.index.create"),
+            new_admin_terminal_path,
+            class: "button float-right" %>
+
+<% if @terminals.any? %>
+  <table>
+    <thead>
+      <!-- <th><%= t("admin.terminals.index.code") %></th> -->
+      <th><%= t("admin.terminals.index.name") %></th>
+      <th><%= t("admin.terminals.index.description") %></th>
+      <th><%= t("admin.actions.actions") %></th>
+    </thead>
+    <tbody>
+      <%= render @terminals %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="callout primary">
+    <%= t("admin.terminals.index.no_terminals") %>
+  </div>
+<% end %>

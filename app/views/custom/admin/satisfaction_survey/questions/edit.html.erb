@@ -1,0 +1,7 @@
+<%= back_link_to %>
+
+<h2 class="margin-top"><%= t("admin.satisfaction_surveys.questions.edit.title") %></h2>
+
+<div class="poll-question-form">
+  <%= render "form", form_url: admin_satisfaction_survey_question_path(@question) %>
+</div>

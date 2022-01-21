@@ -1982,6 +1982,18 @@
   }
 }
 
+@keyframes blink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .poll-question-answers {
 
   .button {
@@ -2058,8 +2070,49 @@
     }
   }
 
-  
+  &.satisfaction-survey {
+    .stars .star,
+    .smileys .smiley {
+      width: 100px;
+      margin-top: 15px;
+    }
+    .button {
+      width: auto;
+      height: 50px;
+      padding: 15px;
+      margin-top: 40px;
+    }
+    .free-text {
+      width: 60%;
+      margin: 0 auto;
+    }
+    .stars .star,
+    .smileys .smiley,
+    .button {
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+      &:last-child {
+        margin-right: 0px;
+      }
+      &.active {
+        transition: .3s easy-in;
+        animation: blink 1.5s;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
 }
+
+.start-survey {
+  height: 50px; 
+  padding: 15px 30px;
+  transition: .3s easy-in;
+  animation: blink 1.5s;
+  animation-iteration-count: infinite;
+}
+
+
 
 // 09. Polls results and stats
 // ---------------------------

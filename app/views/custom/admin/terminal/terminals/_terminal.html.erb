@@ -1,0 +1,25 @@
+<tr id="<%= dom_id(terminal) %>" class="terminal">
+  <td>
+    <strong>
+      <%= terminal.name %>
+    </strong>
+  </td>
+  <td>
+    <%= terminal.description %>
+  </td>
+  <td>
+    <%= link_to t("admin.actions.edit"),
+                edit_admin_terminal_path(terminal),
+                class: "button mb-2" %>
+
+    <%= link_to t("admin.actions.delete"),
+                admin_terminal_path(terminal),
+                method: :delete,
+                "data-confirm": t("admin.terminals.destroy.alert"),
+                class: "button alert mb-2" %>
+
+    <%= link_to t("admin.terminals.index.see_status"),
+                admin_terminal_path(terminal),
+                class: "button mb-2" %>
+  </td>
+</tr>
