@@ -32,7 +32,7 @@ class SatisfactionSurveysController < ApplicationController
   private
 
     def load_terminal
-      hmac_secret = "secret-key"
+      hmac_secret = "q3t6w9z$C&E)H@McQfTjWnZr4u7x!A%D"
       token = params[:t]
 
       logger.info "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -47,11 +47,17 @@ class SatisfactionSurveysController < ApplicationController
         logger.info "terminal.code= #{terminal_code}"
         
         if terminal_code.present?
-          @terminal = Terminal.find_or_create_by!(code: terminal_code)
-          logger.info "terminal.id= #{@terminal.id}"
+          # @terminal = Terminal.find_or_create_by!(code: terminal_code)
+          @terminal = Terminal.find_by(code: terminal_code)
+          unless @terminal.present?
+            logger.error "El dispositivo '#{terminal_code}' no está registrado, contacte con el administrador"
+            @error = "El dispositivo '#{terminal_code}' no está registrado, contacte con el administrador"
+          else
+            logger.info "terminal.id= #{@terminal.id}"
+          end
         else
-          logger.error "El dispositivo no puede registrarse correctamente, indique un código válido"
-          @error = "El dispositivo no puede registrarse correctamente, indique un código válido"
+          logger.error "El dispositivo no puede registrarse correctamente, código de dispositivo obligatorio"
+          @error = "El dispositivo no puede registrarse correctamente, código de dispositivo obligatorio"
         end
       rescue JWT::VerificationError
         logger.error "Se ha producido un error al verificar la firma, contacte con el administrador"

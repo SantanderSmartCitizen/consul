@@ -51,6 +51,11 @@ module AdminHelper
     controllers_names.include?(controller_name) || controller_params.include?(params[:controller])
   end
 
+  def menu_terminals?
+    controllers_names = ["terminals"]
+    controllers_names.include?(controller_name)
+  end
+
   def menu_booths?
     %w[officers booths shifts booth_assignments officer_assignments].include?(controller_name) ||
       controller_name == "polls" && action_name == "booth_assignments"

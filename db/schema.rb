@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211215120437) do
+ActiveRecord::Schema.define(version: 20220117122020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1701,7 +1701,6 @@ ActiveRecord::Schema.define(version: 20211215120437) do
 
   create_table "terminal_statuses", force: :cascade do |t|
     t.integer  "terminal_id"
-    t.string   "location"
     t.boolean  "switched_on"
     t.float    "cpu"
     t.float    "ram"
@@ -1711,17 +1710,21 @@ ActiveRecord::Schema.define(version: 20211215120437) do
     t.text     "msg"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["terminal_id"], name: "index_terminal_statuses_on_terminal_id", using: :btree
   end
 
   create_table "terminals", force: :cascade do |t|
     t.string   "code"
-    t.string   "service"
+    t.string   "serial_number"
+    t.string   "name"
     t.string   "description"
+    t.string   "service"
     t.string   "location"
     t.integer  "poll_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["poll_id"], name: "index_terminals_on_poll_id", using: :btree
   end
 

@@ -77,6 +77,7 @@ es:
       header_slides: Carrusel de imágenes
       banner: Carrusel de banners
       events: Gestor de eventos
+      satisfaction_terminals: Terminales de satisfacción
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -514,3 +515,44 @@ es:
           submit_button: Guardar cambios
       new:
         creating: Añadir evento
+    terminals:
+      index:
+        table_title: Terminales de satisfacción
+        create: Crear terminal
+        code: Código
+        serial_number: Número de serie
+        name: Alias        
+        description: Descripción
+        service: Servicio
+        no_terminals: No hay terminales de satisfacción.
+        see_status: Ver estado
+      new:
+        title: Nuevo terminal de satisfacción
+        submit_button: Crear terminal de satisfacción
+        success_notice: "Terminal de satisfacción creado correctamente"
+      edit:
+        title: Editar terminal de satisfacción
+        submit_button: Actualizar terminal de satisfacción
+        success_notice: "Terminal de satisfacción actualizado correctamente"
+      form:
+        satisfaction_survey: Encuesta de satisfacción
+        select_satisfaction_survey: Selecciona encuesta de satisfacción
+      show:
+        header_title: "Terminal de satisfacción: "
+        code: Código
+        serial_number: Número de serie
+        name: Alias
+        description: "Descripción"
+        service: "Servicio"
+        last_update: "Última actualización"
+        status: "Estado"
+        status_on: Conectado
+        status_off: Desconectado
+        cpu: "Porcentaje de uso de CPU"
+        ram: "Porcentaje de uso de RAM"
+        storage: "Porcentaje de uso de memoria interna"
+        battery: "Porcentaje de batería disponible"
+        no_status: Este terminal aún no ha enviado información de estado
+      destroy:
+        alert: "Esta acción eliminará el terminal de satisfacción."
+        success_notice: "Terminal de satisfacción eliminado correctamente"

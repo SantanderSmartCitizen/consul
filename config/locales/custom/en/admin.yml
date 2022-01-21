@@ -67,6 +67,7 @@ en:
       header_slides: Image carousel
       banner: Banner carousel
       events: Event manager
+      satisfaction_terminals: Satisfaction terminals
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -485,3 +486,44 @@ en:
           submit_button: Save changes
       new:
         creating: Create event
+    terminals:
+      index:
+        table_title: Satisfaction terminals
+        create: Create terminal
+        code: Code
+        serial_number: Serial number
+        name: Alias
+        description: Description
+        service: Service
+        no_terminals: There are no satisfaction terminals.
+        see_status: See status
+      new:
+        title: New satisfaction terminal
+        submit_button: Create satisfaction terminal
+        success_notice: "Satisfaction terminal created successfully"
+      edit:
+        title: Edit satisfaction terminal
+        submit_button: Update satisfaction terminal
+        success_notice: "Satisfaction terminal updated successfully"
+      form:
+        satisfaction_survey: Satisfaction survey
+        select_satisfaction_survey: Select satisfaction survey
+      show:
+        header_title: "Satisfaction terminal: "
+        code: Code
+        serial_number: Serial number
+        name: Alias
+        description: "Description"
+        service: "Service"
+        last_update: "Last update"
+        status: "Estatus"
+        status_on: Online
+        status_off: Offline
+        cpu: "CPU usage percentage"
+        ram: "RAM  usage percentage"
+        storage: "Internal memory  usage percentage"
+        battery: "Battery percentage available"
+        no_status: This terminal has not yet sent status information
+      destroy:
+        alert: "This action will remove the satisfaction terminal."
+        success_notice: "Satisfaction terminal deleted successfully"
