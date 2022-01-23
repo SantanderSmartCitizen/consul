@@ -239,6 +239,8 @@ namespace :admin do
     get :direct_messages, on: :collection
     get :polls, on: :collection
     get "/polls/:id", to: "stats#poll_show", as: "poll"
+    get :satisfaction_surveys, on: :collection
+    get "/satisfaction_surveys/:id", to: "stats#satisfaction_survey_show", as: "satisfaction_survey"
     get :participation, on: :member
     get :results, on: :member
     get :comparative, on: :member

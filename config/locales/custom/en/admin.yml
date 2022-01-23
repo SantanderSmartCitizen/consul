@@ -152,6 +152,7 @@ en:
       show:
         budgets_title: Budgets
         participatory_budgets: Budgets
+        satisfaction_surveys: Satisfaction surveys
       budgets:
         title: "Budgets stats"
         participation: Participation
@@ -177,6 +178,13 @@ en:
           origin_total: Total participants
           answer: Answer
           average_vote: Average
+      satisfaction_surveys:
+        title: Satisfaction surveys stats
+        all: Satisfaction surveys
+        table:
+          poll_name: Satisfaction survey
+          votes: Votes
+          total_votes: Total Votes
       budget_balloting:
         title: Stats - Voting projects
         participants_per_heading: Participants per heading

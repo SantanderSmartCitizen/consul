@@ -172,6 +172,7 @@ es:
         budgets_title: Presupuestos
         participatory_budgets: Presupuestos
         polls: Encuestas/Consultas
+        satisfaction_surveys: Encuestas de satisfacción
       budgets:
         title: "Estadísticas de presupuestos"
         participation: Participación
@@ -199,6 +200,13 @@ es:
           origin_total: Total participantes
           answer: Respuesta
           average_vote: Media
+      satisfaction_surveys:
+        title: Estadísticas de encuestas de satisfacción
+        all: Encuestas de satisfacción
+        table:
+          poll_name: Encuesta de satisfacción
+          votes: Votos
+          total_votes: Total Votos
       budget_balloting:
         title: Estadísticas - Votación final
         participants_per_heading: Participantes por partida
