@@ -185,6 +185,21 @@ namespace :admin do
     resource :active_polls, only: [:create, :edit, :update]
   end
 
+  scope module: :satisfaction_survey do
+    resources :satisfaction_surveys do
+      patch :add_question, on: :member
+    end
+  end
+
+  namespace :satisfaction_survey do
+    resources :questions, shallow: true, except: [:index], controller: "questions"
+    resources :answers, shallow: true, except: [:index, :destroy], controller: "questions/answers"
+  end
+
+  scope module: :terminal do
+    resources :terminals
+  end
+
   resources :verifications, controller: :verifications, only: :index do
     get :search, on: :collection
   end
@@ -224,6 +239,8 @@ namespace :admin do
     get :direct_messages, on: :collection
     get :polls, on: :collection
     get "/polls/:id", to: "stats#poll_show", as: "poll"
+    get :satisfaction_surveys, on: :collection
+    get "/satisfaction_surveys/:id", to: "stats#satisfaction_survey_show", as: "satisfaction_survey"
     get :participation, on: :member
     get :results, on: :member
     get :comparative, on: :member

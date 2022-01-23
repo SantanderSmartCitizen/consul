@@ -103,12 +103,23 @@ class Admin::StatsController < Admin::BaseController
   end
 
   def polls
-    @polls = ::Poll.current
+    @polls = ::Poll.only_users.current
     @participants = ::Poll::Voter.where(poll: @polls)
   end
 
   def poll_show
     @poll = ::Poll.find(params[:id])
+  end
+
+  def satisfaction_surveys
+    @satisfaction_surveys = ::Poll.only_terminals
+
+    question_ids = ::Poll::Question.where(poll: @satisfaction_surveys).pluck(:id)
+    @total_votes = ::Poll::Answer.where(question_id: question_ids).count
+  end
+
+  def satisfaction_survey_show
+    @satisfaction_survey = ::Poll.only_terminals.find(params[:id])
   end
 
   private

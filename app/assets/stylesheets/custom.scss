@@ -231,6 +231,10 @@ textarea {
       background-color: $brand;
       color: #fefefe;
     }
+    &.start-survey {
+      height: 50px; 
+      padding: 15px 30px;
+    }
 }
 
 .icon-forum-background {
@@ -943,6 +947,11 @@ a.footer-social-icons.instagram:hover {
 }
 
 .complaint-form {
+}
+
+.survey-content {
+  // max-height: 240px;
+  // margin: 0 auto -6em;
 }
 
 @media screen and (max-width: 39.99875em) {

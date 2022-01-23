@@ -1,0 +1,59 @@
+<%= back_link_to admin_satisfaction_survey_path(@question.poll) %>
+
+<%= link_to t("admin.questions.show.edit_question"), edit_admin_satisfaction_survey_question_path(@question),
+            class: "button float-right" %>
+
+<div class="clear"></div>
+
+<div class="small-12 medium-6">
+  <div class="callout highlight">
+    <p>
+      <strong><%= t("admin.questions.show.question") %></strong>
+      <br>
+      <%= @question.title %>
+    </p>
+
+    <p>
+      <strong><%= t("admin.questions.index.answer_type") %></strong>
+      <br>
+      <%=  t("admin.questions.question_types.#{@question.answer_type}") %>
+    </p>
+
+    <p>
+      <strong><%= t("admin.questions.show.author") %></strong>
+      <br>
+      <%= link_to @question.author.name, user_path(@question.author) %>
+    </p>
+
+  </div>
+</div>
+
+<% if @question.answer_type == "simple" || @question.answer_type == "multiple"%>
+  <div class="clear">
+    <%= link_to t("admin.questions.show.add_answer"), new_admin_satisfaction_survey_answer_path(question_id: @question.id), class: "button float-right mb-2" %>
+  </div>
+
+  <table class="margin-top">
+    <tr>
+      <th colspan="5" scope="col" class="with-button">
+        <%= t("admin.questions.show.valid_answers") %>
+      </th>
+    </tr>
+
+    <tr>
+      <th><%= t("admin.questions.show.answers.title") %></th>
+      <th scope="col" class="medium-7"><%= t("admin.questions.show.answers.description") %></th>
+    </tr>
+
+    <tbody class="sortable" data-js-url="<%= admin_question_answers_order_answers_path(@question.id) %>">
+      <% @question.question_answers.each do |answer| %>
+        <tr id="<%= dom_id(answer) %>" class="poll_question_answer" data-answer-id="<%= answer.id %>">
+          <td class="align-top"><%= link_to answer.title, admin_satisfaction_survey_answer_path(answer) %></td>
+          <td class="align-top break"><%= wysiwyg(answer.description) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>
+

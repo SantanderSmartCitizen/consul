@@ -1,0 +1,26 @@
+
+<h2 class="inline-block"><%= t("admin.satisfaction_surveys.index.title") %></h2>
+
+<%= link_to t("admin.satisfaction_surveys.index.create"),
+            new_admin_satisfaction_survey_path,
+            class: "button float-right margin-bottom" %>
+
+<!--  render "filter_subnav", i18n_namespace: "admin.polls.index" -->
+
+<% if @polls.any? %>
+  <table>
+    <thead>
+      <th class="small-5"><%= t("admin.polls.index.name") %></th>
+      <th><%= t("admin.actions.actions") %></th>
+    </thead>
+    <tbody>
+      <% @polls.each do |poll| %>
+        <%= render "/admin/satisfaction_survey/satisfaction_surveys/poll", poll: poll %>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="callout primary">
+    <%= t("admin.satisfaction_surveys.index.no_polls") %>
+  </div>
+<% end %>

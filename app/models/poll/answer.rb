@@ -1,11 +1,12 @@
 class Poll::Answer < ApplicationRecord
   belongs_to :question, -> { with_hidden }, inverse_of: :answers
   belongs_to :author, ->   { with_hidden }, class_name: "User", inverse_of: :poll_answers
+  belongs_to :terminal
 
   delegate :poll, :poll_id, to: :question
 
   validates :question, presence: true
-  validates :author, presence: true
+  validates :author, presence: true, unless: ->(a) { a.question.poll.only_terminals?}
   validates :answer, presence: true
 
   validates :answer, inclusion: { in: ->(a) { a.question.possible_answers }},
