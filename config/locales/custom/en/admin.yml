@@ -50,6 +50,7 @@ en:
     menu:
       budget_geozones: Manage budget geozones
       polls: Polls/Questions
+      satisfaction_surveys: Satisfaction surveys
       forums: Forums
       site_customization:
         information_texts_menu:
@@ -66,6 +67,7 @@ en:
       header_slides: Image carousel
       banner: Banner carousel
       events: Event manager
+      satisfaction_terminals: Satisfaction terminals
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -96,6 +98,27 @@ en:
         alert: "This action will remove the poll/question and all its associated questions."
         success_notice: "Poll/Question deleted successfully"
         unable_notice: "You cannot delete a poll/question that has votes"
+    satisfaction_surveys:
+      index:
+        title: "List of satisfaction surveys"
+        no_polls: "There are no satisfaction surveys."
+        create: "Create satisfaction survey"
+      new:
+        title: "New satisfaction survey"
+        submit_button: "Create satisfaction survey"
+      edit:
+        title: "Edit satisfaction survey"
+        submit_button: "Update satisfaction survey"
+      show:
+        no_questions: "There are no questions assigned to this survey."
+      questions:
+        new:
+          title: "Create question to satisfaction survey '%{poll}'"
+        edit:
+          title: "Edit question"
+        destroy:
+          alert: "This action will remove the question and all its associated answers."
+          success_notice: "Question deleted successfully"
     questions:
       index:
         filter_poll: Filter by Poll/Question
@@ -113,9 +136,12 @@ en:
         smileys: Smileys
         free_text: Free text
       edit:
-        title: "Edit Question"
+        title: "Edit question"
       new:
         title: "Create question to poll/question %{poll}"
+      destroy:
+        alert: "This action will remove the question and all its associated answers."
+        success_notice: "Question deleted successfully"
     settings:
       index:
         map:
@@ -126,6 +152,7 @@ en:
       show:
         budgets_title: Budgets
         participatory_budgets: Budgets
+        satisfaction_surveys: Satisfaction surveys
       budgets:
         title: "Budgets stats"
         participation: Participation
@@ -151,6 +178,13 @@ en:
           origin_total: Total participants
           answer: Answer
           average_vote: Average
+      satisfaction_surveys:
+        title: Satisfaction surveys stats
+        all: Satisfaction surveys
+        table:
+          poll_name: Satisfaction survey
+          votes: Votes
+          total_votes: Total Votes
       budget_balloting:
         title: Stats - Voting projects
         participants_per_heading: Participants per heading
@@ -460,3 +494,44 @@ en:
           submit_button: Save changes
       new:
         creating: Create event
+    terminals:
+      index:
+        table_title: Satisfaction terminals
+        create: Create terminal
+        code: Code
+        serial_number: Serial number
+        name: Alias
+        description: Description
+        service: Service
+        no_terminals: There are no satisfaction terminals.
+        see_status: See status
+      new:
+        title: New satisfaction terminal
+        submit_button: Create satisfaction terminal
+        success_notice: "Satisfaction terminal created successfully"
+      edit:
+        title: Edit satisfaction terminal
+        submit_button: Update satisfaction terminal
+        success_notice: "Satisfaction terminal updated successfully"
+      form:
+        satisfaction_survey: Satisfaction survey
+        select_satisfaction_survey: Select satisfaction survey
+      show:
+        header_title: "Satisfaction terminal: "
+        code: Code
+        serial_number: Serial number
+        name: Alias
+        description: "Description"
+        service: "Service"
+        last_update: "Last update"
+        status: "Estatus"
+        status_on: Online
+        status_off: Offline
+        cpu: "CPU usage percentage"
+        ram: "RAM  usage percentage"
+        storage: "Internal memory  usage percentage"
+        battery: "Battery percentage available"
+        no_status: This terminal has not yet sent status information
+      destroy:
+        alert: "This action will remove the satisfaction terminal."
+        success_notice: "Satisfaction terminal deleted successfully"

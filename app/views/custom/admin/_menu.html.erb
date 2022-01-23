@@ -19,6 +19,13 @@
       </li>
     <% end %>
 
+    <li class="section-title <%= "is-active" if menu_satisfaction_surveys? %>">
+      <%= link_to admin_satisfaction_surveys_path do %>
+        <span class="icon-smile"></span>
+        <strong><%= t("admin.menu.satisfaction_surveys") %></strong>
+      <% end %>
+    </li>
+
     <% if feature?(:debates) %>
       <li class="section-title <%= "is-active" if controller_name == "debates" %>">
         <%= link_to admin_debates_path do %>
@@ -253,5 +260,14 @@
 
       </ul>
     </li>
+
+    <li class="section-title <%= "is-active" if menu_terminals? %>">
+      <%= link_to admin_terminals_path do %>
+        <span class="icon-terminal"></span>
+        <strong><%= t("admin.menu.satisfaction_terminals") %></strong>
+      <% end %>
+    </li>
+
   </ul>
+
 </div>

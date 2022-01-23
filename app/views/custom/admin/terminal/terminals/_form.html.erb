@@ -1,0 +1,45 @@
+
+<%= form_for [:admin, @terminal] do |f| %>
+
+  <%= render "shared/errors", resource: @terminal %>
+
+  <div class="row">
+    <div class="small-12 medium-6 column required">
+      <%= f.text_field :code,
+                        label: t("admin.terminals.index.code") %>
+    </div>
+
+    <div class="small-12 medium-6 column required">
+      <%= f.text_field :serial_number,
+                        label: t("admin.terminals.index.serial_number") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 column required">
+      <%= f.text_field :name,
+                        label: t("admin.terminals.index.name") %>
+    </div>
+    <div class="small-12 column">
+      <%= f.text_area :description, rows: 8,
+                      label: t("admin.terminals.index.description") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 column">
+      <%= f.select :poll_id,
+                    satisfaction_survey_select_options(@terminal.poll&.id),
+                    {label: t("admin.terminals.form.satisfaction_survey"), include_blank: "..."} %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="clear">
+      <div class="small-12 medium-3 column clear end">
+        <%= f.submit t("admin.terminals.#{admin_submit_action(@terminal)}.submit_button"), class: "button expanded margin-top" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

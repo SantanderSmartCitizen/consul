@@ -127,6 +127,8 @@ module Abilities
       can [:read, :create, :update], Gamification::Reward
       can :destroy, Gamification::Reward
       can [:read, :update], Gamification::RequestedReward
+
+      can [:read, :create, :update, :destroy], Terminal
     end
   end
 end

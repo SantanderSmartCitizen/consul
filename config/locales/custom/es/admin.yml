@@ -60,6 +60,7 @@ es:
       budgets: Presupuestos
       budget_geozones: Gestionar zonas presupuestarias
       polls: Encuestas/Consultas
+      satisfaction_surveys: Encuestas de satisfacción
       forums: Foros
       site_customization:
         information_texts_menu:
@@ -76,6 +77,7 @@ es:
       header_slides: Carrusel de imágenes
       banner: Carrusel de banners
       events: Gestor de eventos
+      satisfaction_terminals: Terminales de satisfacción
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -115,6 +117,27 @@ es:
         alert: "Esta acción eliminará la encuesta/consulta y todas sus preguntas asociadas."
         success_notice: "Encuesta/Consulta eliminada correctamente"
         unable_notice: "No se pueden eliminar encuestas/consultas con votos"
+    satisfaction_surveys:
+      index:
+        title: "Listado de encuestas de satisfacción"
+        no_polls: "No hay encuestas de satisfacción."
+        create: "Crear encuesta de satistacción"
+      new:
+        title: "Nueva encuesta de satisfacción"
+        submit_button: "Crear encuesta de satisfacción"
+      edit:
+        title: "Editar encuesta de satisfacción"
+        submit_button: "Actualizar encuesta de satisfacción"
+      show:
+        no_questions: "No hay preguntas asignadas a esta encuesta."
+      questions:
+        new:
+          title: "Crear pregunta para la encuesta de satisfacción '%{poll}'"
+        edit:
+          title: "Editar pregunta"
+        destroy:
+          alert: "Esta acción eliminará la pregunta y todas las respuestas asociadas."
+          success_notice: "Pregunta eliminada correctamente"
     questions:
       index:
         title: "Preguntas de encuestas/consultas"
@@ -135,6 +158,9 @@ es:
         free_text: Texto libre
       new:
         title: "Crear pregunta ciudadana para la encuesta/consulta %{poll}"
+      destroy:
+        alert: "Esta acción eliminará la pregunta y todas las respuestas asociadas."
+        success_notice: "Pregunta eliminada correctamente"
     settings:
       index:
         map:
@@ -146,6 +172,7 @@ es:
         budgets_title: Presupuestos
         participatory_budgets: Presupuestos
         polls: Encuestas/Consultas
+        satisfaction_surveys: Encuestas de satisfacción
       budgets:
         title: "Estadísticas de presupuestos"
         participation: Participación
@@ -173,6 +200,13 @@ es:
           origin_total: Total participantes
           answer: Respuesta
           average_vote: Media
+      satisfaction_surveys:
+        title: Estadísticas de encuestas de satisfacción
+        all: Encuestas de satisfacción
+        table:
+          poll_name: Encuesta de satisfacción
+          votes: Votos
+          total_votes: Total Votos
       budget_balloting:
         title: Estadísticas - Votación final
         participants_per_heading: Participantes por partida
@@ -489,3 +523,44 @@ es:
           submit_button: Guardar cambios
       new:
         creating: Añadir evento
+    terminals:
+      index:
+        table_title: Terminales de satisfacción
+        create: Crear terminal
+        code: Código
+        serial_number: Número de serie
+        name: Alias        
+        description: Descripción
+        service: Servicio
+        no_terminals: No hay terminales de satisfacción.
+        see_status: Ver estado
+      new:
+        title: Nuevo terminal de satisfacción
+        submit_button: Crear terminal de satisfacción
+        success_notice: "Terminal de satisfacción creado correctamente"
+      edit:
+        title: Editar terminal de satisfacción
+        submit_button: Actualizar terminal de satisfacción
+        success_notice: "Terminal de satisfacción actualizado correctamente"
+      form:
+        satisfaction_survey: Encuesta de satisfacción
+        select_satisfaction_survey: Selecciona encuesta de satisfacción
+      show:
+        header_title: "Terminal de satisfacción: "
+        code: Código
+        serial_number: Número de serie
+        name: Alias
+        description: "Descripción"
+        service: "Servicio"
+        last_update: "Última actualización"
+        status: "Estado"
+        status_on: Conectado
+        status_off: Desconectado
+        cpu: "Porcentaje de uso de CPU"
+        ram: "Porcentaje de uso de RAM"
+        storage: "Porcentaje de uso de memoria interna"
+        battery: "Porcentaje de batería disponible"
+        no_status: Este terminal aún no ha enviado información de estado
+      destroy:
+        alert: "Esta acción eliminará el terminal de satisfacción."
+        success_notice: "Terminal de satisfacción eliminado correctamente"

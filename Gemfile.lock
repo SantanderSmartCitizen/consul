@@ -684,6 +684,7 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails (~> 4.3.3)
   jquery-ui-rails (~> 6.0.1)
+  jwt
   kaminari (~> 1.1.1)
   knapsack_pro (~> 1.15.0)
   launchy (~> 2.4.3)

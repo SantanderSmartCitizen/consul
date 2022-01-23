@@ -66,6 +66,10 @@ module PollsHelper
     Poll::Question::ANSWER_TYPES.map { |type| [t("admin.questions.question_types.#{type}"), type] }
   end
 
+  def satisfaction_survey_question_answer_types
+    Poll::Question::SATISFACTION_ANSWER_TYPES.map { |type| [t("admin.questions.question_types.#{type}"), type] }
+  end
+
   def poll_question_answer_types_select_options(include_all = nil)
     answer_type_options = Poll::Question::ANSWER_TYPES.map do |type| 
       [t("admin.questions.question_types.#{type}"), current_path_with_query_params(answer_type: type)] 

@@ -1,0 +1,18 @@
+<%= form_tag "", method: :get do %>
+	<div class="row">
+		<div class="small-12 medium-12 large-6 column pl-0">
+	  		<%= label_tag :poll_id, t("admin.questions.index.filter_poll") %>
+	  		<%= select_tag "poll_id",
+	                 		poll_select_options(true),
+	                 		prompt: t("admin.questions.index.select_poll"),
+	                 		class: "js-location-changer" %>
+	    </div>
+		<div class="small-12 medium-12 large-6 column pl-0">
+	  		<%= label_tag :answer_type, t("admin.questions.index.filter_answer_type") %>
+	  		<%= select_tag "answer_type",
+	                 		poll_question_answer_types_select_options(true),
+	                 		prompt: t("admin.questions.index.select_answer_type"),
+	                 		class: "js-location-changer" %>
+		</div>
+	</div>
+<% end %>

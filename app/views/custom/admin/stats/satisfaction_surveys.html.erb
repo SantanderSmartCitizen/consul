@@ -1,0 +1,38 @@
+<%= back_link_to admin_stats_path %>
+
+<h2 id="top"><%= t("admin.stats.satisfaction_surveys.title") %></h2>
+
+<div class="stats">
+  <div class="row stats-numbers">
+
+    <div class="small-12 medium-3 column end">
+      <p class="featured">
+        <%= t("admin.stats.satisfaction_surveys.table.total_votes") %><br>
+        <span id="total_votes" class="number">
+          <%= @total_votes %>
+        </span>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<table id="satisfaction_surveys" class="stack sortable">
+  <thead>
+    <tr>
+      <th><%= t("admin.stats.satisfaction_surveys.table.poll_name") %></th>
+      <th class="name text-right"><%= t("admin.stats.satisfaction_surveys.table.votes") %></th>
+    </tr>
+  </thead>
+  <% @satisfaction_surveys.each do |satisfaction_survey| %>
+    <tr id="<%= dom_id(satisfaction_survey) %>">
+      <td class="name">
+        <%= link_to satisfaction_survey.name, 
+                    satisfaction_survey_admin_stats_path(satisfaction_survey.id) %> 
+      </td>
+      <td class="name text-right">
+        <%= ::Poll::Answer.where(question: satisfaction_survey.questions).count %>
+      </td>
+    </tr>
+  <% end %>
+</table>

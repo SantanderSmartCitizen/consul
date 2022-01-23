@@ -34,7 +34,7 @@ class Poll < ApplicationRecord
   belongs_to :budget
 
   validates_translation :name, presence: true
-  validate :date_range
+  validate :date_range, unless: :only_terminals?
   validate :only_one_active, unless: :public?
 
   accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
@@ -175,5 +175,9 @@ class Poll < ApplicationRecord
 
   def budget_poll?
     budget.present?
+  end
+
+  def only_terminals?
+    only_terminals == true
   end
 end

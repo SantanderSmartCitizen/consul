@@ -1,0 +1,43 @@
+<%= back_link_to satisfaction_surveys_admin_stats_path %>
+
+<h2 id="top"><%= t("admin.stats.satisfaction_surveys.title") %></h2>
+
+<h3 id="<%= dom_id(@satisfaction_survey) %>_questions">
+	<%= t("admin.stats.polls.poll_questions", poll: @satisfaction_survey.name) %>
+</h3>
+<table class="stack sortable">
+	<thead>
+		<tr>
+	    	<th><%= t("admin.stats.polls.table.question_name") %></th>
+	    	<th class="name text-right">
+	      		<%= t("admin.stats.satisfaction_surveys.table.votes") %>
+	    	</th>
+		</tr>
+	</thead>
+	<% @satisfaction_survey.questions.each do |question| %>
+		<tr id="<%= dom_id(question) %>">
+	    	<td class="name">
+				<a href="#<%= dom_id(@satisfaction_survey) %>_<%= dom_id(question) %>"><%= question.title %></a>
+	    	</td>
+		    <td class="name text-right">
+		    	<%= ::Poll::Answer.by_question(question).count %>
+		    </td>
+	  </tr>
+	<% end %>
+	<tfoot>
+		<tr id="<%= dom_id(@satisfaction_survey) %>_questions_total">
+			<th></th>
+	    	<th class="name text-right">
+	    		<strong>
+	        		<%= t("admin.stats.satisfaction_surveys.table.total_votes") %>:
+	        		<%= ::Poll::Answer.where(question: @satisfaction_survey.questions)
+	                		.count %>
+	      		</strong>
+	    	</th>
+		</tr>
+	</tfoot>
+</table>
+
+<% @satisfaction_survey.questions.each do |question| %>
+	<%= render "shared/stats/polls/questions", exportable: true, poll: @satisfaction_survey, question: question %>
+<% end %>
