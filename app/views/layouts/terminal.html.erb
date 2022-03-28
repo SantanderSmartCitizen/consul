@@ -32,12 +32,12 @@
 
       <div class="st-pusher">
 
-        <div class="st-content" style="overflow: hidden;">
+        <div class="st-content" style="overflow: hidden; max-width: 1200px; margin: 0 auto;">
 
           <h1 class="show-for-sr"><%= setting["org_name"] %></h1>
 
           <div class="wrapper <%= yield (:wrapper_class) %>" style="margin: 0 auto -6em;">
-            <%= render "layouts/minimal_header" %>
+            <%= render "layouts/terminal_header" %>
 
             <%= render "layouts/flash" %>
 
@@ -46,7 +46,7 @@
             <div class="push"></div>
           </div>
           
-          <%= render "layouts/minimal_footer" %>
+          <%= render "layouts/terminal_footer" %>
 
         </div> <!-- /st-content-->
       </div> <!-- /st-pusher-->
