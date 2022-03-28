@@ -1,0 +1,17 @@
+<header>
+
+
+  <div>
+    <div id="header_bar" >
+    
+      <div class="header-logo">
+        <%= link_to current_path_with_query_params(locale: I18n.locale, t: params[:t], page: 0) do %>
+          <%= image_tag(image_path_for("provincia_digital_header.jpeg"), alt: t("layouts.header.logo")) %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+
+</header>
