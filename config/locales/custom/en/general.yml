@@ -227,7 +227,7 @@ en:
     poll: the poll/question
   satisfaction_surveys:
     index:
-      start: "Start"
+      start: "START"
       answered_all: "You have answered all the questions correctly!"
-      thanks: "Thanks for answering, your opinion is very helpful"
-      answer_again: "Answer again"
+      thanks: "Thanks for answering, your opinion will be very helpful"
+      answer_again: "ANSWER AGAIN"

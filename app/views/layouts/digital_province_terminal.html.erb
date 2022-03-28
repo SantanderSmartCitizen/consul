@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-current-user-id="<%= current_user.try(:id) %>">
+  <head>
+    <%= render "layouts/common_head", default_title: setting["org_name"] %>
+    <%= render "layouts/tracking_data" %>
+    <%= render "layouts/meta_tags" %>
+    <%= content_for :canonical %>
+    <%= favicon_link_tag image_path_for("apple-touch-icon-200.png"),
+                     rel: "icon apple-touch-icon",
+                     sizes: "200x200",
+                     type: "image/png" %>
+    <%= content_for :social_media_meta_tags %>
+
+    <%= raw setting["html.per_page_code_head"] %>
+  </head>
+  <body class="<%= yield (:body_class) %>">
+    <%= raw setting["html.per_page_code_body"] %>
+
+    <div id="st-container" class="st-container">
+
+      <nav class="st-menu st-locale" id="menu-1">
+        <div class="st-menu-content">
+
+          <div class="st-buttons">
+            <div class="st-buttons-right">
+              <%= render "shared/locale_switcher" %>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+
+      <div class="st-pusher">
+
+        <div class="st-content" style="overflow: hidden; max-width: 1200px; margin: 0 auto;">
+
+          <h1 class="show-for-sr"><%= setting["org_name"] %></h1>
+
+          <div class="wrapper <%= yield (:wrapper_class) %>" style="margin: 0 auto -6em;">
+            <%= render "layouts/header_digital_province" %>
+
+            <%= render "layouts/flash" %>
+
+            <%= yield %>
+
+            <div class="push"></div>
+          </div>
+          
+          <%= render "layouts/footer_digital_province" %>
+
+        </div> <!-- /st-content-->
+      </div> <!-- /st-pusher-->
+    </div> <!-- /st-container-->
+
+    <%= javascript_include_tag "classie", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "sidebarEffects", "data-turbolinks-track" => true %>
+
+  </body>
+</html>

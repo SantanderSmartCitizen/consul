@@ -246,8 +246,8 @@ es:
     poll: la encuesta/consulta
   satisfaction_surveys:
     index:
-      start: "Comenzar"
+      start: "COMENZAR"
       answered_all: "Ha respondido todas las preguntas correctamente!"
-      thanks: "Gracias por responder, su opinión es de gran ayuda"
-      answer_again: "Volver a responder"
+      thanks: "Gracias por responder, tu opinión será de gran ayuda"
+      answer_again: "VOLVER A RESPONDER"
     

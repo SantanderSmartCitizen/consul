@@ -235,6 +235,21 @@ textarea {
       height: 50px; 
       padding: 15px 30px;
     }
+    &.start-digital-province-survey {
+      background-color: #e21d1a;
+      color: #ffffff;
+      border-radius: 0;
+      font-size: 16px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      padding-left: 22px;
+      padding-right: 22px;
+      font-weight: normal;
+    }
+}
+
+.digital-province-title {
+  color: #202a4f;
 }
 
 .icon-forum-background {

@@ -1,0 +1,112 @@
+<% if @current_page > 0 && @current_page <= @questions_count %>
+	
+	<h1 class="digital-province-title"><%= question.title %></h1>
+
+	<div class="poll-question-answers satisfaction-survey"> 
+	  	<%= form_tag satisfaction_surveys_digital_province_answer_path, method: :post do %>
+	        <%= hidden_field_tag :terminal_id, @terminal.id %>
+	        <%= hidden_field_tag :question_id, question.id %>
+	        <%= hidden_field_tag :page, @current_page %>
+	        <%= hidden_field_tag :t, params["t"] %>
+	    	<% case question.answer_type %>
+	    	<% when "simple" %>
+				<% question.question_answers.each do |answer| %>
+		        	<%= submit_tag answer.title,
+		        		id: "submit_#{dom_id(answer)}", 
+		        		class: "d-none",
+	        			name: :answer,
+		        		value: answer.title %>
+	        		<div id="<%= dom_id(answer) %>" 
+	        			 title="<%= answer.title %>" 
+	        			 class="button secondary hollow answer" >
+	        			<%= answer.title %>
+	        		</div>
+		        <% end %>
+
+	    	<% when "multiple" %>
+				<% question.question_answers.each do |answer| %>
+		        	<%= submit_tag answer.title,
+		        		id: "submit_#{dom_id(answer)}", 
+		        		class: "d-none",
+	        			name: :answer,
+		        		value: answer.title %>
+	        		<div id="<%= dom_id(answer) %>" 
+	        			 title="<%= answer.title %>" 
+	        			 class="button secondary hollow answer" >
+	        			<%= answer.title %>
+	        		</div>
+		        <% end %>
+		    <% when "star_rating" %>
+			  <% star_path = "vectors/star_off.svg" %>
+		      <div class="stars">
+					<% for ind in (1..5) %>
+			        	<%= submit_tag ind.to_s,
+			        		id: "submit_star_#{ind.to_s}", 
+			        		class: "d-none",
+		        			name: :answer,
+			        		value: ind.to_s %>
+		        		<%= image_tag image_path_for(star_path), 
+		        			class: "star answer",
+		        			id: "star_#{ind.to_s}" %>
+			        <% end %>
+		      </div>
+
+	    	<% when "smileys" %>
+	        	<% smiley_path = ["vectors/smiley_1_on.svg", "vectors/smiley_2_on.svg", "vectors/smiley_3_on.svg", "vectors/smiley_4_on.svg", "vectors/smiley_5_on.svg"] %>
+	        	<div class="smileys">
+			        <% for ind in (1..5) %>
+			        	<%= submit_tag ind.to_s,
+			        		id: "submit_smiley_#{ind.to_s}", 
+			        		class: "d-none",
+		        			name: :answer,
+			        		value: ind.to_s %>
+		        		<%= image_tag image_path_for(smiley_path[ind-1]), 
+		        			class: "smiley answer",
+		        			id: "smiley_#{ind.to_s}" %>
+			        <% end %>
+		    	</div>
+
+	    	<% when "free_text" %>
+	        	<div class="free-text">
+		        	<%= text_area_tag :answer, nil, placeholder: t("poll_questions.show.write_answer"), maxlength: 50 %>
+		        	<%= submit_tag t("poll_questions.show.send_answer"),
+		        		id: "submit_free_text", 
+		        		class: "d-none" %>
+	        		<div>
+	        			<div id="free_text" 
+	        			 title="<%= t('poll_questions.show.send_answer') %>" 
+	        			 class="button float-right mt-0 answer"><%= t("poll_questions.show.send_answer") %></div>
+        			</div>
+	      		</div>
+
+		    <% end %>
+
+	    <% end %>
+	</div>
+
+	<script>
+		$(".answer").on('click', function(){
+			$('.answer').off('click');
+			$(this).toggleClass('active');
+			id = $(this).attr('id');
+			$('#submit_'+id).click();
+		});
+	</script>
+
+<% elsif @current_page > @questions_count %>
+	<% # Welcome page %>
+	<div class="welcome-survey">
+    	<h1 class="digital-province-title"><%= t("satisfaction_surveys.index.answered_all") %></h1>
+    	<p><%= t("satisfaction_surveys.index.thanks") %></p>
+		<%= link_to t("satisfaction_surveys.index.answer_again"), current_path_with_query_params(locale: I18n.locale, t: params[:t], page: 1), class: "button mt-2 start-digital-province-survey" %>
+	</div>
+
+<% else %>
+	<% # Welcome page %>
+	<div class="welcome-survey">
+    	<h1 class="digital-province-title"><%= poll_name %></h1>
+    	<%= auto_link_already_sanitized_html simple_format(poll_summary) %>
+		<%= link_to t("satisfaction_surveys.index.start"), current_path_with_query_params(locale: I18n.locale, t: params[:t], page: 1), class: "button mt-2 start-digital-province-survey" %>
+	</div>
+
+<% end %>

@@ -1,0 +1,17 @@
+<% provide :title do %><%= t("polls.index.title") %><% end %>
+
+<%= render_custom_partial "meta_description" %>
+
+<div class="survey-content">
+  <div class="row">
+    <div class="small-12 column text-center">
+      <% if @error.present? %>
+        <div class="callout primary margin-top">
+          <%= @error %>
+        </div>
+      <% else %>
+        <%= render "satisfaction_surveys_digital_province/questions", question: @question, poll_name: @terminal.poll.name, poll_summary: @terminal.poll.summary %>
+      <% end %>
+    </div>
+  </div>
+</div>
