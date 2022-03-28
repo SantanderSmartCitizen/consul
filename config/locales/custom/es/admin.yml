@@ -530,7 +530,7 @@ es:
         code: Código
         serial_number: Número de serie
         name: Alias        
-        description: Descripción
+        msg: Mensaje
         service: Servicio
         no_terminals: No hay terminales de satisfacción.
         see_status: Ver estado
@@ -550,7 +550,7 @@ es:
         code: Código
         serial_number: Número de serie
         name: Alias
-        description: "Descripción"
+        msg: "Mensaje"
         service: "Servicio"
         last_update: "Última actualización"
         status: "Estado"

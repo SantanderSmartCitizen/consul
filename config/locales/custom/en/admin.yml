@@ -501,7 +501,7 @@ en:
         code: Code
         serial_number: Serial number
         name: Alias
-        description: Description
+        msg: Message
         service: Service
         no_terminals: There are no satisfaction terminals.
         see_status: See status
@@ -521,7 +521,7 @@ en:
         code: Code
         serial_number: Serial number
         name: Alias
-        description: "Description"
+        msg: "Message"
         service: "Service"
         last_update: "Last update"
         status: "Estatus"
