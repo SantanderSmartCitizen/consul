@@ -118,9 +118,15 @@
 
     <div class="small-12 medium-3 column">
       <aside class="margin-bottom">
-        <%= link_to t("proposals.index.start_proposal"),
-                    new_proposal_path,
-                    class: "button expanded" %>
+        
+        <% if user_signed_in? %>
+          <%= link_to t("proposals.index.start_proposal"), new_proposal_path, class: "button expanded" %>
+        <% else %>
+          <br>
+          <div data-alert class="callout primary">
+            <%= sanitize(t("users.login_to_create_proposal", signin: link_to_signin)) %>
+          </div>
+        <% end %>
 
         <div class="sidebar-divider"></div>
         <h2 class="sidebar-title"><%= t("proposals.index.selected_proposals") %></h2>
