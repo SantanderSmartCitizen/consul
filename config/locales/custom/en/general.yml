@@ -165,6 +165,11 @@ en:
     events:
       title: Events
   users:
+    login_to_comment: "You must %{signin} to leave a comment."
+    login_to_continue: "You must %{signin} to continue."
+    login_to_create_debate: "You must %{signin} to start a debate."
+    login_to_create_proposal: "You must %{signin} to create a proposal."
+    login_to_create_forum: "You must %{signin} to start a thread."
     show:
       deleted_forum: This thread has been deleted
       forums: Forum threads
