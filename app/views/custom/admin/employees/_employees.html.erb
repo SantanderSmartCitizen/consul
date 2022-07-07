@@ -1,0 +1,28 @@
+<% if @employees.any? %>
+  <h3 class="margin"><%= page_entries_info @employees %></h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col"><%= t("admin.employees.columns.name") %></th>
+        <th scope="col"><%= t("admin.employees.columns.email") %></th>
+        <th scope="col"><%= t("admin.employees.columns.roles") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employees.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user_path(user), target: "_blank" %></td>
+          <td><%= user.email %></td>
+          <td><%= display_user_roles(user) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @employees %>
+<% else %>
+  <div class="callout primary">
+    <%= t("admin.employees.index.no_employees") %>
+  </div>
+<% end %>

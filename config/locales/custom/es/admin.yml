@@ -78,6 +78,8 @@ es:
       banner: Carrusel de banners
       events: Gestor de eventos
       satisfaction_terminals: Terminales de satisfacción
+      citizen: Ciudadanos
+      employees: Ayuntamiento
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -216,6 +218,16 @@ es:
         title: Estadísticas - Resultados
       comparative:
         title: Estadísticas - Comparativa
+    citizen:
+      index:
+        title: Ciudadanos
+        no_users: No hay ciudadanos.
+    employees:
+      index:
+        title: Usuarios del Ayuntamiento
+        no_users: No hay usuarios del Ayuntamiento.
+      search:
+        placeholder: Buscar usuario por email o nombre
     homepage:
       feeds:
         citizen_proposals: Propuestas ciudadanos

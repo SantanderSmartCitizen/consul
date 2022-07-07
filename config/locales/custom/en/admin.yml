@@ -68,6 +68,8 @@ en:
       banner: Banner carousel
       events: Event manager
       satisfaction_terminals: Satisfaction terminals
+      citizen: Citizen
+      employees: City Hall
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -194,6 +196,16 @@ en:
         title: Stats - Finished budget
       comparative:
         title: Stats - Comparative
+    citizen:
+      index:
+        title: Citizen
+        no_users: There are no citizen.
+    employees:
+      index:
+        title: City Hall users
+        no_users: There are no City Hall users.
+      search:
+        placeholder: Search user by email or name
     homepage:
       feeds:
         citizen_proposals: Citizen Proposals
