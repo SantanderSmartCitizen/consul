@@ -1149,7 +1149,7 @@ es:
         official_updated: Datos del cargo público guardados
       index:
         title: Cargos Públicos
-        help: Las cuentas de usuario marcadas como cargos públicos tendrán resaltadas sus intervenciones en la plataforma. Puedes definir la etiqueta que aparece al lado de los nombres de usuario de estas cuentas de mayor importancia (nivel 1) a menor (nivel 5).
+        help: Las cuentas de usuario marcadas como cargos públicos tendrán resaltadas sus intervenciones en la plataforma. Puedes definir la etiqueta que aparece al lado de los nombres de usuario de estas cuentas de menor importancia (nivel 1) a mayor (nivel 5).
         no_officials: No hay cargos públicos.
         name: Nombre
         official_position: Cargo público

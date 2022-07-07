@@ -47,6 +47,12 @@ en:
       forum_search:
         button: Search
         placeholder: Search forum posts by title or description
+    managers:
+      index:
+        title: Area managers
+        no_managers: There are no area managers.
+      search:
+        title: "Area managers: User search"
     menu:
       budget_geozones: Manage budget geozones
       polls: Polls/Questions
@@ -70,6 +76,8 @@ en:
       satisfaction_terminals: Satisfaction terminals
       citizen: Citizen
       employees: City Hall
+      title_profiles: City Hall profiles
+      managers: Area managers
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -155,6 +163,11 @@ en:
         budgets_title: Budgets
         participatory_budgets: Budgets
         satisfaction_surveys: Satisfaction surveys
+        summary:
+          citizen: Citizen
+          organizations: Organizations
+          employees: City Hall users
+          forum_votes: Forum votes
       budgets:
         title: "Budgets stats"
         participation: Participation

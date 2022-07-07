@@ -34,11 +34,7 @@ class Organization < ApplicationRecord
   end
 
   def self.search(text)
-    if text.present?
-      joins(:user).where("users.email = ? OR users.phone_number = ? OR organizations.name ILIKE ?", text, text, "%#{text}%")
-    else
-      none
-    end
+    joins(:user).where("users.email ILIKE ? OR users.phone_number ILIKE ? OR organizations.name ILIKE ?", "%#{text}%", "%#{text}%", "%#{text}%")
   end
 
   def self.name_max_length

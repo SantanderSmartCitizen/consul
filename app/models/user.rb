@@ -322,7 +322,7 @@ class User < ApplicationRecord
   end
 
   def self.search(term)
-    term.present? ? where("email = ? OR username ILIKE ?", term, "%#{term}%") : none
+    where("email ILIKE ? OR username ILIKE ?", "%#{term}%", "%#{term}%")
   end
 
   def self.username_max_length

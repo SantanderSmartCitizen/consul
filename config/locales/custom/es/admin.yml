@@ -56,6 +56,14 @@ es:
       forum_search:
         button: Buscar
         placeholder: Buscar temas de foro por título o descripción
+    managers:
+      index:
+        title: Gestores de área
+        no_managers: No hay gestores de área.
+      manager:
+        add: Añadir como gestor de área
+      search:
+        title: "Gestores de área: Búsqueda de usuarios"
     menu:
       budgets: Presupuestos
       budget_geozones: Gestionar zonas presupuestarias
@@ -80,6 +88,8 @@ es:
       satisfaction_terminals: Terminales de satisfacción
       citizen: Ciudadanos
       employees: Ayuntamiento
+      title_profiles: Perfiles Ayuntamiento
+      managers: Gestores de Área
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -175,6 +185,11 @@ es:
         participatory_budgets: Presupuestos
         polls: Encuestas/Consultas
         satisfaction_surveys: Encuestas de satisfacción
+        summary:
+          citizen: Ciudadanos
+          organizations: Organizaciones
+          employees: Usuarios Ayuntamiento
+          forum_votes: Votos en foro
       budgets:
         title: "Estadísticas de presupuestos"
         participation: Participación
