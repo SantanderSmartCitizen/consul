@@ -132,7 +132,7 @@ namespace :admin do
 
   resources :valuator_groups
 
-  resources :managers, only: [:index, :create, :destroy] do
+  resources :managers, only: [:index, :edit, :update, :create, :destroy] do
     get :search, on: :collection
   end
 

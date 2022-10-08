@@ -56,14 +56,6 @@ es:
       forum_search:
         button: Buscar
         placeholder: Buscar temas de foro por título o descripción
-    managers:
-      index:
-        title: Gestores de área
-        no_managers: No hay gestores de área.
-      manager:
-        add: Añadir como gestor de área
-      search:
-        title: "Gestores de área: Búsqueda de usuarios"
     menu:
       budgets: Presupuestos
       budget_geozones: Gestionar zonas presupuestarias
@@ -90,6 +82,28 @@ es:
       employees: Ayuntamiento
       title_profiles: Perfiles Ayuntamiento
       managers: Gestores de Área
+    administrators:
+      administrator:
+        delete: Eliminar
+    valuators:
+      valuator:
+        delete: Eliminar
+    managers:
+      index:
+        title: Gestores de Área
+        no_managers: No hay gestores de área.
+      search:
+        title: "Gestores de Área: Búsqueda de usuarios"
+      form:
+        edit_title: "Gestores de Área: Editar Gestor"
+        created: "Gestor de Área creado correctamente"
+        updated: "Gestor de Área actualizado correctamente"
+      manager:
+        delete: Eliminar
+        add: Añadir como gestor de área
+    moderators:
+      moderator:
+        delete: Eliminar
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."

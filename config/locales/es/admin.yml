@@ -622,6 +622,7 @@ es:
         title: Gestores
         name: Nombre
         email: Email
+        area: Area
         no_managers: No hay gestores.
       manager:
         add: Añadir como gestor
