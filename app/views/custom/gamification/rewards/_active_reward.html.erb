@@ -2,22 +2,22 @@
   <div class="resource-card <%= gamification_reward_card_class(active_reward, current_user) %>"
        data-equalizer-watch="gamification_rewards"
        title="<%= gamification_reward_tooltip(active_reward, current_user) %>">
-    <h4><%= active_reward.title %></h4>
+    <h4 class="mt-0"><%= active_reward.title %></h4>
     <p class="gamification_reward-description">
       <%= active_reward.description %>
     </p>
 
-    <div class="small-12 column small-centered margin-top">
+    <div class="small-12 column">
       <% if active_reward.executed_for?(current_user) || (!active_reward.request_to_administrators && active_reward.active_for?(current_user)) %>
         <%= link_to t("users.show.rewards.view_reward"),
                     gamification_reward_path(active_reward),
-                    class: "button expanded" %>
+                    class: "button" %>
       <% elsif active_reward.requested_for?(current_user) %>
         <strong><%= t("users.show.rewards.reward_requested") %></strong>
       <% elsif active_reward.active_for?(current_user) %>
         <%= link_to t("users.show.rewards.request_reward"),
                     gamification_reward_path(active_reward),
-                    class: "button expanded" %>
+                    class: "button" %>
       <% else %>
         <strong>
           <%= gamification_reward_availability_label(active_reward) %>

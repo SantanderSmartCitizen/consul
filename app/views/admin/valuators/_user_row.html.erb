@@ -8,7 +8,7 @@
     <%= form_for Valuator.new(user: user), url: admin_valuators_path do |f| %>
       <%= f.hidden_field :user_id %>
       <%= f.submit t("admin.valuators.valuator.add"),
-                   class: "button success expanded" %>
+                   class: "button success expanded mb-1" %>
     <% end %>
   </td>
 </tr>

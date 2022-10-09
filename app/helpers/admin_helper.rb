@@ -61,8 +61,14 @@ module AdminHelper
       controller_name == "polls" && action_name == "booth_assignments"
   end
 
+  def menu_admin_users?
+    controllers_names = ["employees", "users", "organizations"]
+    controllers_names.include?(controller_name)
+  end
+
   def menu_profiles?
-    %w[administrators organizations officials moderators valuators managers users].include?(controller_name)
+    controllers_names = ["administrators", "valuators", "managers", "moderators", "officials"]
+    controllers_names.include?(controller_name)
   end
 
   def menu_settings?

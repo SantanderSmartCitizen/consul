@@ -78,6 +78,32 @@ es:
       banner: Carrusel de banners
       events: Gestor de eventos
       satisfaction_terminals: Terminales de satisfacción
+      citizen: Ciudadanos
+      employees: Ayuntamiento
+      title_profiles: Perfiles Ayuntamiento
+      managers: Gestores de Área
+    administrators:
+      administrator:
+        delete: Eliminar
+    valuators:
+      valuator:
+        delete: Eliminar
+    managers:
+      index:
+        title: Gestores de Área
+        no_managers: No hay gestores de área.
+      search:
+        title: "Gestores de Área: Búsqueda de usuarios"
+      form:
+        edit_title: "Gestores de Área: Editar Gestor"
+        created: "Gestor de Área creado correctamente"
+        updated: "Gestor de Área actualizado correctamente"
+      manager:
+        delete: Eliminar
+        add: Añadir como gestor de área
+    moderators:
+      moderator:
+        delete: Eliminar
     system_emails:
       budget_investment_created:
         description: "Enviado cuando un usuario crea un proyecto de presupuestos."
@@ -173,6 +199,11 @@ es:
         participatory_budgets: Presupuestos
         polls: Encuestas/Consultas
         satisfaction_surveys: Encuestas de satisfacción
+        summary:
+          citizen: Ciudadanos
+          organizations: Organizaciones
+          employees: Usuarios Ayuntamiento
+          forum_votes: Votos en foro
       budgets:
         title: "Estadísticas de presupuestos"
         participation: Participación
@@ -216,6 +247,30 @@ es:
         title: Estadísticas - Resultados
       comparative:
         title: Estadísticas - Comparativa
+    citizen:
+      index:
+        title: Ciudadanos
+        no_users: No hay ciudadanos.
+    employees:
+      index:
+        title: Usuarios del Ayuntamiento
+        no_users: No hay usuarios del Ayuntamiento.
+        new: Nuevo Usuario Ayuntamiento
+      search:
+        placeholder: Buscar usuario por email o nombre
+      form:
+        new:
+          title: "Crear Usuario Ayuntamiento"
+          submit_button: Crear Usuario Ayuntamiento
+        edit:
+          title: "Editar Usuario Ayuntamiento"
+          submit_button: Actualizar Usuario Ayuntamiento
+      notice:
+        create: "¡Usuario creado con éxito!"
+        update: "¡Usuario actualizado con éxito!"
+        destroy: 
+          success: "Usuario eliminado correctamente"
+          unable: "No puedes eliminar tu usuario"
     homepage:
       feeds:
         citizen_proposals: Propuestas ciudadanos
