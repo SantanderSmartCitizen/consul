@@ -255,8 +255,22 @@ es:
       index:
         title: Usuarios del Ayuntamiento
         no_users: No hay usuarios del Ayuntamiento.
+        new: Nuevo Usuario Ayuntamiento
       search:
         placeholder: Buscar usuario por email o nombre
+      form:
+        new:
+          title: "Crear Usuario Ayuntamiento"
+          submit_button: Crear Usuario Ayuntamiento
+        edit:
+          title: "Editar Usuario Ayuntamiento"
+          submit_button: Actualizar Usuario Ayuntamiento
+      notice:
+        create: "¡Usuario creado con éxito!"
+        update: "¡Usuario actualizado con éxito!"
+        destroy: 
+          success: "Usuario eliminado correctamente"
+          unable: "No puedes eliminar tu usuario"
     homepage:
       feeds:
         citizen_proposals: Propuestas ciudadanos

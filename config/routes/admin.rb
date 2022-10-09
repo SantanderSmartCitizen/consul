@@ -141,7 +141,7 @@ namespace :admin do
   end
 
   resources :users, only: [:index, :show]
-  resources :employees, only: [:index]
+  resources :employees, only: [:index, :edit, :update, :new, :create, :destroy]
 
   scope module: :poll do
     resources :polls do

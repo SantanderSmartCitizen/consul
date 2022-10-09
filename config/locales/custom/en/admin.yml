@@ -234,8 +234,22 @@ en:
       index:
         title: City Hall users
         no_users: There are no City Hall users.
+        new: New City Hall User
       search:
         placeholder: Search user by email or name
+      form:
+        new:
+          title: Create City Hall user
+          submit_button: Create City Hall user
+        edit:
+          title: Edit City Hall user
+          submit_button: Edit City Hall user
+      notice:
+        create: User successfully created
+        update: User successfully updated
+        destroy: 
+          success: User successfully deleted
+          unable: You cannot delete your user
     homepage:
       feeds:
         citizen_proposals: Citizen Proposals

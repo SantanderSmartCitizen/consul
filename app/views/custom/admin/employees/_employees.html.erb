@@ -6,15 +6,29 @@
       <tr>
         <th scope="col"><%= t("admin.employees.columns.name") %></th>
         <th scope="col"><%= t("admin.employees.columns.email") %></th>
-        <th scope="col"><%= t("admin.employees.columns.roles") %></th>
+        <!-- <th scope="col"><%= t("admin.employees.columns.roles") %></th> -->
+        <th scope="col"><%= t("admin.shared.actions") %></th>
       </tr>
     </thead>
     <tbody>
-      <% @employees.each do |user| %>
+      <% @employees.each do |employee| %>
         <tr>
-          <td><%= link_to user.name, user_path(user), target: "_blank" %></td>
-          <td><%= user.email %></td>
-          <td><%= display_user_roles(user) %></td>
+          <td><%= link_to employee.name, user_path(employee), target: "_blank" %></td>
+          <td><%= employee.email %></td>
+          <!-- <td><%= display_user_roles(employee) %></td> -->
+          <td>
+            <%= link_to t("admin.actions.edit"),
+              edit_admin_employee_path(employee),
+              class: "button hollow expanded mb-0" %>
+
+            <% if (employee != current_user)  %>
+              <%= link_to t("admin.employees.employee.delete"),
+                          admin_employee_path(employee),
+                          method: :delete,
+                          class: "button hollow alert expanded mb-1",
+                          data: { confirm: t("admin.actions.confirm") } %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
