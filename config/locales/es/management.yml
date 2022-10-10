@@ -1,5 +1,7 @@
 es:
   management:
+    header:
+      title: Gestión de Área
     account:
       menu:
         reset_password_email: Restablecer contraseña via email
@@ -30,8 +32,8 @@ es:
     check: Comprobar documento
     dashboard:
       index:
-        title: Gestión
-        info: Desde aquí puedes gestionar usuarios a través de las acciones listadas en el menú de la izquierda.
+        title: Gestión de Área
+        info: Desde aquí puedes gestionar tu área a través de las acciones listadas en el menú de la izquierda.
     document_verifications:
       already_verified: Esta cuenta de usuario ya está verificada.
       has_no_account: Para crear un usuario entre en %{link} y haga clic en la opción <b>'Registrarse'</b> en la parte superior derecha de la pantalla.
@@ -66,6 +68,7 @@ es:
       users: Gestión de usuarios
       user_invites: Enviar invitaciones
       select_user: Seleccionar usuario
+      button: Menú de gestión
     permissions:
       create_proposals: Crear nuevas propuestas
       debates: Participar en debates
