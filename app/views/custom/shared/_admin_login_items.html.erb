@@ -19,13 +19,11 @@
     </li>
   <% end %>
 
-  <!--    
   <% if current_user.administrator? || current_user.manager? %>
     <li>
       <%= link_to t("layouts.header.management"), management_sign_in_path %>
     </li>
   <% end %> 
-  -->
 
   <% if current_user.poll_officer? && Poll.current.any? %>
     <li>

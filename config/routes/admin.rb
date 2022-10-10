@@ -132,7 +132,7 @@ namespace :admin do
 
   resources :valuator_groups
 
-  resources :managers, only: [:index, :create, :destroy] do
+  resources :managers, only: [:index, :edit, :update, :create, :destroy] do
     get :search, on: :collection
   end
 
@@ -141,6 +141,7 @@ namespace :admin do
   end
 
   resources :users, only: [:index, :show]
+  resources :employees, only: [:index, :edit, :update, :new, :create, :destroy]
 
   scope module: :poll do
     resources :polls do

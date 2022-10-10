@@ -180,6 +180,9 @@ es:
   users:
     login_to_comment: "Necesitas %{signin} para comentar."
     login_to_continue: "Necesitas %{signin} para continuar."
+    login_to_create_debate: "Necesitas %{signin} para crear un debate."
+    login_to_create_proposal: "Necesitas %{signin} para crear una propuesta."
+    login_to_create_forum: "Necesitas %{signin} para empezar un tema."
     show:
       deleted_forum: Este tema ha sido eliminado
       budget_investments: Proyectos de presupuestos

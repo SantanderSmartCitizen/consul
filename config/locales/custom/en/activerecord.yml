@@ -84,3 +84,5 @@ en:
         department: Department
         subject: Subject
         body: Text
+      manager:
+        management_area_id: "Area"

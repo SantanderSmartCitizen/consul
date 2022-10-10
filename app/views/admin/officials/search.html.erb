@@ -29,17 +29,19 @@
             <% end %>
           </td>
           <td>
-            <%= t("admin.officials.level_#{user.official_level}") %>
+            <% if user.official? %>
+                <%= [user.official_level, setting["official_level_#{user.official_level}_name"]].compact.join(": ") %>
+              <% end %>
           </td>
           <td>
             <% if user.official? %>
               <%= link_to  t("admin.officials.search.edit_official"),
                            edit_admin_official_path(user),
-                           class: "button hollow expanded" %>
+                           class: "button hollow expanded mb-1" %>
             <% else %>
               <%= link_to t("admin.officials.search.make_official"),
                           edit_admin_official_path(user),
-                          class: "button expanded" %>
+                          class: "button expanded mb-1" %>
             <% end %>
           </td>
         </tr>

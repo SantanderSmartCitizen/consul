@@ -99,6 +99,8 @@ class User < ApplicationRecord
   attr_accessor :use_redeemable_code
   attr_accessor :login
 
+  scope :citizen,        -> { where(citizen_type: "01") }
+  scope :employees,      -> { where(citizen_type: nil) }
   scope :administrators, -> { joins(:administrator) }
   scope :moderators,     -> { joins(:moderator) }
   scope :organizations,  -> { joins(:organization) }
@@ -320,7 +322,7 @@ class User < ApplicationRecord
   end
 
   def self.search(term)
-    term.present? ? where("email = ? OR username ILIKE ?", term, "%#{term}%") : none
+    where("email ILIKE ? OR username ILIKE ?", "%#{term}%", "%#{term}%")
   end
 
   def self.username_max_length
