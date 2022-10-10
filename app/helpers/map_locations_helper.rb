@@ -34,12 +34,12 @@ module MapLocationsHelper
     map
   end
 
-  def render_simple_map(coordinates)
+  def render_simple_map(latitude, longitude)
     map_location = MapLocation.new 
     map = content_tag :div, "",
                       id: dom_id(map_location),
                       class: "map_location map",
-                      data: prepare_simple_map_settings(map_location, coordinates)
+                      data: prepare_simple_map_settings(map_location, latitude, longitude)
     map += map_info_pane
     map
   end
@@ -86,15 +86,15 @@ module MapLocationsHelper
       options
     end
 
-    def prepare_simple_map_settings(map_location, coordinates = nil)
+    def prepare_simple_map_settings(map_location, latitude, longitude)
       options = {
         map: "",
-        map_center_latitude: map_location_latitude(map_location),
-        map_center_longitude: map_location_longitude(map_location),
+        map_center_latitude: latitude,
+        map_center_longitude: longitude,
         map_zoom: map_location_zoom(map_location),
         map_tiles_provider: Rails.application.secrets.map_tiles_provider,
         map_tiles_provider_attribution: Rails.application.secrets.map_tiles_provider_attribution,
-        marker_investments_coordinates: coordinates,
+        marker_investments_coordinates: [{lat: latitude,long: longitude}],
         map_arcgis_feature_layer_url: Setting["map.arcgis.feature_layer_url"],
         map_arcgis_district_code_field: Setting["map.arcgis.district_code_field"],
         map_geozones: Geozone.all.index_by(&:external_code)

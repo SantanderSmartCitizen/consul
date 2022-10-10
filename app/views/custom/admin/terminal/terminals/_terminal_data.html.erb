@@ -85,6 +85,15 @@
 		      <%= number_to_percentage(@terminal.status.battery, precision:0) %>
 		    </p>
 		  </div>
+		  <% if @terminal.status.msg %>
+			  <div class="small-12 medium-12 large-6 column">
+			    <p>
+			      <strong><%= t("admin.terminals.show.msg") %></strong>
+			      <br>
+			      <%= @terminal.status.msg %>
+			    </p>
+			  </div>
+		  <% end %>
 		<% else %>
 			<div class="small-12 column">
 				<p><%= t("admin.terminals.show.no_status") %></p>
@@ -93,7 +102,7 @@
 	</div>
 
 	<% if @terminal.status.present? && @terminal.status.latitude.present? && @terminal.status.longitude.present? %>
-		<%= render_simple_map([{lat: @terminal.status&.latitude,long: @terminal.status&.longitude}]) %>
+		<%= render_simple_map(@terminal.status&.latitude, @terminal.status&.longitude) %>
 	<% end %>
 
 </div>

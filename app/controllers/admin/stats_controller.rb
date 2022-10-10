@@ -20,17 +20,20 @@ class Admin::StatsController < Admin::BaseController
 
     @votes = Vote.count
 
-    @user_level_two   = User.active.level_two_verified.count
-    @user_level_three = User.active.level_three_verified.count
-    @verified_users   = User.active.level_two_or_three_verified.count
-    @unverified_users = User.active.unverified.count
+    # @user_level_two   = User.active.level_two_verified.count
+    # @user_level_three = User.active.level_three_verified.count
+    # @verified_users   = User.active.level_two_or_three_verified.count
+    # @unverified_users = User.active.unverified.count
     @users = User.active.count
+    @employees = User.employees.count
+    @organizations = User.organizations.count
+    @citizen = User.citizen.count
 
     @user_ids_who_voted_proposals = ActsAsVotable::Vote.where(votable_type: "Proposal")
                                                        .distinct
                                                        .count(:voter_id)
 
-    @user_ids_who_didnt_vote_proposals = @verified_users - @user_ids_who_voted_proposals
+    @user_ids_who_didnt_vote_proposals = @users - @user_ids_who_voted_proposals
     budgets_ids = Budget.where.not(phase: "finished").pluck(:id)
     @budgets = budgets_ids.size
     @investments = Budget::Investment.where(budget_id: budgets_ids).count

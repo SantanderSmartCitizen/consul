@@ -102,3 +102,5 @@ es:
         department: Departamento
         subject: Asunto
         body: Texto
+      manager:
+        management_area_id: "Área"

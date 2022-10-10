@@ -25,11 +25,11 @@
             </span>
           </td>
           <td>
-            <%= t("admin.officials.level_#{official.official_level}") %>
+            <%= [official.official_level, setting["official_level_#{official.official_level}_name"]].compact.join(": ") %>
           </td>
           <td>
             <%= link_to official.official? ? t("admin.officials.search.edit_official") : t("admin.officials.search.make_official"),
-                        edit_admin_official_path(official), class: "button hollow expanded" %>
+                        edit_admin_official_path(official), class: "button hollow expanded mb-1" %>
           </td>
         </tr>
       <% end %>

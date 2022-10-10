@@ -10,6 +10,7 @@
       <thead>
         <th scope="col"><%= t("admin.managers.index.name") %></th>
         <th scope="col"><%= t("admin.managers.index.email") %></th>
+        <th scope="col"><%= t("admin.managers.index.area") %></th>
         <th scope="col" class="small-3"><%= t("admin.shared.actions") %></th>
       </thead>
       <tbody>
@@ -22,19 +23,27 @@
               <%= manager.email %>
             </td>
             <td>
+              <% if manager.management_area.present? %>
+                <%= manager.management_area.try(:name) %>
+              <% end %>
+            </td>
+            <td>
               <% if manager.persisted? %>
+                <%= link_to t("admin.actions.edit"),
+                  edit_admin_manager_path(manager),
+                  class: "button hollow expanded mb-0" %>
+
                 <%= link_to t("admin.managers.manager.delete"),
                   admin_manager_path(manager),
                   method: :delete,
-                  class: "button hollow alert expanded"
-                %>
+                  class: "button hollow alert expanded mb-1" %>
               <% else %>
                 <%= link_to t("admin.managers.manager.add"),
                              { controller: "admin/managers",
                                action: :create,
                                user_id: manager.user_id },
                                method: :post,
-                               class: "button success expanded" %>
+                               class: "button success expanded mb-1" %>
               <% end %>
             </td>
           </tr>
