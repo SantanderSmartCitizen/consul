@@ -1,0 +1,28 @@
+<div class="admin-sidebar">
+  
+  <ul id="admin_menu" data-accordion-menu data-multi-open="true">
+  
+    <% if feature?(:polls) %>
+      <li class="section-title <%= "is-active" if menu_polls? %>">
+        <%= link_to admin_polls_path do %>
+          <span class="icon-checkmark-circle"></span>
+          <strong><%= t("admin.menu.polls") %></strong>
+        <% end %>
+      </li>
+    <% end %>
+
+    <li class="section-title <%= "is-active" if menu_satisfaction_surveys? %>">
+      <%= link_to admin_satisfaction_surveys_path do %>
+        <span class="icon-smile"></span>
+        <strong><%= t("admin.menu.satisfaction_surveys") %></strong>
+      <% end %>
+    </li>
+
+    <li class="section-title <%= "is-active" if menu_terminals? %>">
+      <%= link_to admin_terminals_path do %>
+        <span class="icon-terminal"></span>
+        <strong><%= t("admin.menu.satisfaction_terminals") %></strong>
+      <% end %>
+    </li>
+
+</div>
