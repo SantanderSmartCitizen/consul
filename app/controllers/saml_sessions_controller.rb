@@ -1,4 +1,6 @@
 require 'idp_settings_adapter'
+require 'json'
+require 'rest-client'
 
 class SamlSessionsController < Devise::SessionsController
   skip_before_action :verify_authenticity_token, raise: false
@@ -32,8 +34,6 @@ class SamlSessionsController < Devise::SessionsController
       #puts "settings.private_key = #{settings.private_key}"
       #puts "response_to_validate.is_valid = #{response_to_validate.is_valid?}"
       #puts "response_to_validate.nameid = #{response_to_validate.nameid}"
-
-      logger.info "response_to_validate=#{response_to_validate}"
       
       logger.info "SessionIndex = '#{response_to_validate.sessionindex}'"
 
@@ -49,6 +49,7 @@ class SamlSessionsController < Devise::SessionsController
           else
 
             # Aqui hay que llamar al CRM para obtener los datos del ciudadano
+            get_crm_user_data()
 
             user = create_citizen(username, response_to_validate.attributes)
             
@@ -302,6 +303,28 @@ class SamlSessionsController < Devise::SessionsController
       organization.save!
     end
     user
+  end
+
+  def get_crm_user_data
+    
+    logger.info "get_crm_user_data xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+    # get token
+
+    crm_token_url = Settings.crm.token_url
+    crm_token_authorization = Settings.crm.token_authorization
+
+    # get user data
+
+    crm_data_url = Settings.crm.data_url
+    crm_data_body =  {:app => Settings.crm.data_body_app, :token => Settings.crm.data_body_token}
+        
+    # TEST
+    logger.info "crm_token_url = '#{crm_token_url}'"
+    logger.info "crm_token_authorization = '#{crm_token_authorization}'"
+    logger.info "crm_data_url = '#{crm_data_url}'"
+    logger.info "crm_data_body = '#{crm_data_body}'"
+
   end
 
   def set_issuer
