@@ -1,4 +1,6 @@
 require 'idp_settings_adapter'
+require 'json'
+require 'rest-client'
 
 class SamlSessionsController < Devise::SessionsController
   skip_before_action :verify_authenticity_token, raise: false
@@ -45,6 +47,10 @@ class SamlSessionsController < Devise::SessionsController
               raise "Could not login as citizen: Username '#{username}' exist but is not a citizen"
             end
           else
+
+            # Aqui hay que llamar al CRM para obtener los datos del ciudadano
+            get_crm_user_data()
+
             user = create_citizen(username, response_to_validate.attributes)
             
 
@@ -297,6 +303,28 @@ class SamlSessionsController < Devise::SessionsController
       organization.save!
     end
     user
+  end
+
+  def get_crm_user_data
+    
+    logger.info "get_crm_user_data xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+    # get token
+
+    crm_token_url = Settings.crm.token_url
+    crm_token_authorization = Settings.crm.token_authorization
+
+    # get user data
+
+    crm_data_url = Settings.crm.data_url
+    crm_data_body =  {:app => Settings.crm.data_body_app, :token => Settings.crm.data_body_token}
+        
+    # TEST
+    logger.info "crm_token_url = '#{crm_token_url}'"
+    logger.info "crm_token_authorization = '#{crm_token_authorization}'"
+    logger.info "crm_data_url = '#{crm_data_url}'"
+    logger.info "crm_data_body = '#{crm_data_body}'"
+
   end
 
   def set_issuer
