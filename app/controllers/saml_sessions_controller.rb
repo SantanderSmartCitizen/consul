@@ -32,6 +32,8 @@ class SamlSessionsController < Devise::SessionsController
       #puts "settings.private_key = #{settings.private_key}"
       #puts "response_to_validate.is_valid = #{response_to_validate.is_valid?}"
       #puts "response_to_validate.nameid = #{response_to_validate.nameid}"
+
+      logger.info "response_to_validate=#{response_to_validate}"
       
       logger.info "SessionIndex = '#{response_to_validate.sessionindex}'"
 
@@ -45,6 +47,9 @@ class SamlSessionsController < Devise::SessionsController
               raise "Could not login as citizen: Username '#{username}' exist but is not a citizen"
             end
           else
+
+            # Aqui hay que llamar al CRM para obtener los datos del ciudadano
+
             user = create_citizen(username, response_to_validate.attributes)
             
 
