@@ -7,6 +7,7 @@ class SamlSessionsController < Devise::SessionsController
   before_action :set_issuer
 
   def init
+    get_crm_user_data
     if params[:issuer]
       request = OneLogin::RubySaml::Authrequest.new
       settings = IdpSettingsAdapter.saml_settings(@issuer)
@@ -309,21 +310,80 @@ class SamlSessionsController < Devise::SessionsController
     
     logger.info "get_crm_user_data xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-    # get token
+    # get crm token
 
-    crm_token_url = Settings.crm.token_url
-    crm_token_authorization = Settings.crm.token_authorization
+    crm_settings = Rails.application.secrets.crm_settings
+    token_url = crm_settings[:token_url]
+    token_headers = {
+      params: { grant_type: "client_credentials" },
+      authorization: crm_settings[:token_header_authorization]
+    }
 
-    # get user data
+    RestClient.log = STDOUT
+    token_response = RestClient::Request.execute(
+      method: :post,
+      url: token_url, 
+      timeout: 10,
+      headers: token_headers,
+      verify_ssl: false)
 
-    crm_data_url = Settings.crm.data_url
-    crm_data_body =  {:app => Settings.crm.data_body_app, :token => Settings.crm.data_body_token}
+    logger.info "token_response = '#{token_response}'"
+
+    if token_response.code == 200
+
+      # get crm user data
+      username = "cidemoots"
+      data_url = "#{crm_settings[:data_url]}/#{username}"
+      # data_params = crm_settings[:data_params] # :data_params: "getperson=true"
+
+      token_response_body = JSON.parse(token_response.body)
+      #logger.info "token_response.body = '#{token_response_body}'"
+
+      data_body_app = crm_settings[:data_body_app]
+      token_type = token_response_body["token_type"]
+      token_secret = token_response_body["access_token"]
+      data_header_authorization = "#{token_type} #{token_secret}"
+      data_body_token = crm_settings[:data_body_token]
+
+      #logger.info "token_type = '#{token_type}'"
+      #logger.info "token_secret = '#{token_secret}'"
+      #logger.info "data_headers_authorization = '#{data_headers_authorization}'"
+      
+      data_payload =  "{'app': '#{data_body_app}', 'token': '#{data_body_token}'}"
+
+      #logger.info "data_url = '#{data_url}'"
+      #logger.info "data_body = '#{data_body}'"
+
+      data_headers = {
+        params: { getperson: "true" },
+        content_type: :json,
+        accept: :json,
+        authorization: data_header_authorization
+      }
+
+      data_response = RestClient::Request.execute(
+        method: :post,
+        url: data_url, 
+        payload: data_payload,
+        timeout: 10,
+        headers: data_headers,
+        verify_ssl: false)
+
+      logger.info "data_response = '#{data_response}'"
+
+    else
+      logger.error "Failed to get Token. Response: #{token_response}"
+    end
+
         
     # TEST
-    logger.info "crm_token_url = '#{crm_token_url}'"
-    logger.info "crm_token_authorization = '#{crm_token_authorization}'"
-    logger.info "crm_data_url = '#{crm_data_url}'"
-    logger.info "crm_data_body = '#{crm_data_body}'"
+    # logger.info "crm_settings = '#{crm_settings}'"
+    # logger.info "token_url = '#{token_url}'"
+    # logger.info "token_params = '#{token_params}'"
+    # logger.info "token_header_authorization = '#{token_header_authorization}'"
+    # logger.info "data_url = '#{data_url}'"
+    # logger.info "data_params = '#{data_params}'"
+    # logger.info "data_body = '#{data_body}'"
 
   end
 
