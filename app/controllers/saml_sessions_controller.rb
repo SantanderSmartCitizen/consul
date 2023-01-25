@@ -1,13 +1,13 @@
 require 'idp_settings_adapter'
 require 'json'
 require 'rest-client'
+require 'date'
 
 class SamlSessionsController < Devise::SessionsController
   skip_before_action :verify_authenticity_token, raise: false
   before_action :set_issuer
 
   def init
-    get_crm_user_data
     if params[:issuer]
       request = OneLogin::RubySaml::Authrequest.new
       settings = IdpSettingsAdapter.saml_settings(@issuer)
@@ -49,11 +49,8 @@ class SamlSessionsController < Devise::SessionsController
             end
           else
 
-            # Aqui hay que llamar al CRM para obtener los datos del ciudadano
-            get_crm_user_data()
-
-            user = create_citizen(username, response_to_validate.attributes)
-            
+            crm_attributes = get_crm_user_data(username)
+            user = create_citizen(username, crm_attributes)
 
           end
         elsif @issuer == Settings.identity_providers.city_hall_issuer
@@ -250,23 +247,29 @@ class SamlSessionsController < Devise::SessionsController
   #  Rails.logger.error "Error details: #{errors.details}"
   #end
 
-  def create_citizen (username, attributes)
-    email = attributes[Settings.identity_providers.attributes.email]
-    document_type = attributes[Settings.identity_providers.attributes.document_type]
-    document_number = attributes[Settings.identity_providers.attributes.document_number]
-    gender = attributes[Settings.identity_providers.attributes.gender]
-    date_of_birth = attributes[Settings.identity_providers.attributes.date_of_birth]
-    geozone_code = attributes[Settings.identity_providers.attributes.geozone_code]
-    citizen_type = attributes[Settings.identity_providers.attributes.user_type]
-    organization_name = attributes[Settings.identity_providers.attributes.organization_name]
-    organization_responsible_name = attributes[Settings.identity_providers.attributes.organization_responsible_name]
+  def create_citizen (username, crm_attributes)
+    logger.info "create_citizen xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    email = crm_attributes["email"]
+    document_type = crm_attributes["person"]["identificationType"]["value"]
+    document_number = crm_attributes["person"]["identificationDoc"]
+    gender = crm_attributes["person"]["genre"]["value"]
+    birthDate = crm_attributes["person"]["censusData"]["birthDate"]
+    date_of_birth = Time.at(birthDate/1000).to_datetime
+
+    logger.info "date_of_birth = '#{date_of_birth}'"
+    
+    geozone_code = crm_attributes["person"]["censusData"]["district"]
+    #citizen_type = crm_attributes[Settings.identity_providers.attributes.user_type]
+    #organization_name = crm_attributes[Settings.identity_providers.attributes.organization_name]
+    #organization_responsible_name = crm_attributes[Settings.identity_providers.attributes.organization_responsible_name]
+    citizen_type = "01"
 
     case document_type
-    when "NIF", "DNI", "NIE"
+    when "nif", "dni", "cif"
       document_type = "1"
-    when "Pasaporte"
+    when "pasaporte"
       document_type = "2"
-    when "Tarjeta Residencia"
+    when "tarjResidencia"
       document_type = "3"
     else
       document_type = nil
@@ -290,7 +293,7 @@ class SamlSessionsController < Devise::SessionsController
       created_from_signature: true,
       confirmed_at: Time.current,
       terms_of_service: true,
-      date_of_birth: date_of_birth.to_datetime,
+      date_of_birth: date_of_birth,
       gender: gender,
       geozone: Geozone.find_by(external_code: geozone_code),
       citizen_type: citizen_type)
@@ -306,7 +309,7 @@ class SamlSessionsController < Devise::SessionsController
     user
   end
 
-  def get_crm_user_data
+  def get_crm_user_data (username)
     
     logger.info "get_crm_user_data xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
@@ -327,33 +330,20 @@ class SamlSessionsController < Devise::SessionsController
       headers: token_headers,
       verify_ssl: false)
 
-    logger.info "token_response = '#{token_response}'"
+    # logger.info "token_response = '#{token_response}'"
 
     if token_response.code == 200
 
       # get crm user data
-      username = "cidemoots"
+
       data_url = "#{crm_settings[:data_url]}/#{username}"
-      # data_params = crm_settings[:data_params] # :data_params: "getperson=true"
-
       token_response_body = JSON.parse(token_response.body)
-      #logger.info "token_response.body = '#{token_response_body}'"
-
       data_body_app = crm_settings[:data_body_app]
       token_type = token_response_body["token_type"]
       token_secret = token_response_body["access_token"]
       data_header_authorization = "#{token_type} #{token_secret}"
       data_body_token = crm_settings[:data_body_token]
-
-      #logger.info "token_type = '#{token_type}'"
-      #logger.info "token_secret = '#{token_secret}'"
-      #logger.info "data_headers_authorization = '#{data_headers_authorization}'"
-      
       data_payload =  "{'app': '#{data_body_app}', 'token': '#{data_body_token}'}"
-
-      #logger.info "data_url = '#{data_url}'"
-      #logger.info "data_body = '#{data_body}'"
-
       data_headers = {
         params: { getperson: "true" },
         content_type: :json,
@@ -369,21 +359,18 @@ class SamlSessionsController < Devise::SessionsController
         headers: data_headers,
         verify_ssl: false)
 
-      logger.info "data_response = '#{data_response}'"
+      # logger.info "data_response = '#{data_response}'"
+
+      if data_response.code == 200
+        # Return crm_attributes
+        JSON.parse(data_response.body)
+      else
+        raise "Failed to get CRM Data. Response: #{data_response}"
+      end
 
     else
-      logger.error "Failed to get Token. Response: #{token_response}"
+      raise "Failed to get CRM Token. Response: #{token_response}"
     end
-
-        
-    # TEST
-    # logger.info "crm_settings = '#{crm_settings}'"
-    # logger.info "token_url = '#{token_url}'"
-    # logger.info "token_params = '#{token_params}'"
-    # logger.info "token_header_authorization = '#{token_header_authorization}'"
-    # logger.info "data_url = '#{data_url}'"
-    # logger.info "data_params = '#{data_params}'"
-    # logger.info "data_body = '#{data_body}'"
 
   end
 
