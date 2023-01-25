@@ -4,18 +4,6 @@
 identity_providers:
     city_hall_issuer: saml2.ssc.c4.empleados
     citizen_issuer: saml2.ssc.c4
-    attributes:
-        email: http://wso2.org/claims/emailaddress
-        username: http://wso2.org/claims/lastname
-        #document_type: http://wso2.org/claims/doctype
-        #document_number: http://wso2.org/claims/documento
-        #date_of_birth: http://wso2.org/claims/dobNew
-        #gender: http://wso2.org/claims/genero
-        #geozone_code: http://wso2.org/claims/distrito
-        #user_type: http://wso2.org/claims/user_type
-        #organization_name: http://wso2.org/claims/business_name
-        #organization_responsible_name: http://wso2.org/claims/responsable
-        #http://wso2.org/claims/givenname
     onelogin:
         #Mandatory Settings
         #Page of IDP where user accesses all his/her apps authenticated by the IDP
@@ -48,9 +36,3 @@ identity_providers:
             #digest_method: http://www.w3.org/2001/04/xmlenc#sha256
             signature_method: http://www.w3.org/2000/09/xmldsig#rsa-sha1
             digest_method: http://www.w3.org/2000/09/xmldsig#sha1
-crm:
-    token_url: https://172.30.10.206:8243/token?grant_type=client_credentials
-    data_url: https://172.30.10.206:8243/bus/api/crm/users/username/{username}?getperson=true
-    token_authorization: Basic MjJTY2lCTVZ1Q080TWdoSG5IVm02Y25nSkRZYTpkeWtQQzlSaUhWblhuekxsSTZLaGNfY3RYd0Vh
-    data_body_app: C04_participa
-    data_body_token: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhcGlrZXkiOlsiUEVSU09OU19WSUVXIiwiSU5URVJBQ1RJT05TX0NSRUFURSIsIkFVVEhfVklFVyIsIklOVEVSQUNUSU9OU19WSUVXIl0sImV4dGVybmFsQXBsaWNhdGlvbklkIjoiQUVDNFQiLCJqdGkiOiI2MWZhYWVkNTEyYWIyZjY0MjI4OGY4ZTkifQ.b437bp6sGmqxIIFtTYgqbLL4FteU1hGdh_7PBixoMxU

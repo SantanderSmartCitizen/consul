@@ -4,18 +4,6 @@
 identity_providers:
     city_hall_issuer: saml2.ssc.c4.empleados
     citizen_issuer: saml2.ssc.c4
-    attributes:
-        document_type: http://wso2.org/claims/doctype
-        document_number: http://wso2.org/claims/documento
-        date_of_birth: http://wso2.org/claims/dobNew
-        gender: http://wso2.org/claims/genero
-        email: http://wso2.org/claims/emailaddress
-        geozone_code: http://wso2.org/claims/distrito
-        user_type: http://wso2.org/claims/user_type
-        organization_name: http://wso2.org/claims/business_name
-        organization_responsible_name: http://wso2.org/claims/responsable
-        #http://wso2.org/claims/lastname
-        #http://wso2.org/claims/givenname
     onelogin:
         #Mandatory Settings
         #Page of IDP where user accesses all his/her apps authenticated by the IDP
@@ -27,8 +15,8 @@ identity_providers:
         #issuer: saml2.ssc.c4.empleados
         #Assertion consumer service URL
         assertion_consumer_service_url: http://192.168.0.66:3000/users/saml/auth
-        assertion_consumer_service_binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
         name_identifier_format: urn:oasis:names:tc:SAML:2.0:nameid-format:entityid
+        assertion_consumer_service_binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
 
         #idp_cert_fingerprint_algorithm: http://www.w3.org/2000/09/xmldsig#sha256
         #Most IDPs would provide this, otherwise run openssl x509 -text -noout -in ~/path/to/your/certificate  -fingerprint -sha256
