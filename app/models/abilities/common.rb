@@ -132,6 +132,7 @@ module Abilities
 
       can :disable_recommendations, [Debate, Forum, Proposal]
 
+      can [:read], Gamification::Reward
       can :request_reward, Gamification::Reward do |reward|
         reward.active_for?(user)
       end
