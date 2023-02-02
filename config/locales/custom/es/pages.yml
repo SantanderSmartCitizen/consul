@@ -3,7 +3,7 @@ es:
     help:
       menu:
         forums: "Foro"
-        budgets: "Presupuestos"
+        budgets: "Presupuestos participativos"
         polls: "Encuestas/Consultas"
         processes: "Procesos"
       forums:
@@ -13,10 +13,10 @@ es:
         feature: "Puedes abrir temas en el foro y comentarlos. Para ello tienes que %{link}."
         feature_link: "registrarte en %{org}"
       budgets:
-        title: "Presupuestos"
-        link: "presupuestos"
-        image_alt: "Fase de votación de presupuestos"
-        figcaption: 'Fase de "Votación" de presupuestos.'
+        title: "Presupuestos participativos"
+        link: "presupuestos participativos"
+        image_alt: "Fase de votación de presupuestos participativos"
+        figcaption: 'Fase de "Votación" de presupuestos participativos.'
       polls:
         title: "Encuestas/Consultas"
         link: "encuestas/consultas"
@@ -39,7 +39,7 @@ es:
             - key_column: 3
               page_column: Encuestas/consultas
             - key_column: 4
-              page_column: Presupuestos
+              page_column: Presupuestos participativos
             - key_column: 5
               page_column: Procesos
             - key_column: 6

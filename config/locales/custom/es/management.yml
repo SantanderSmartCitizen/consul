@@ -3,5 +3,5 @@ es:
     account_info:
       username_label: "Usuario/alias:"
     budgets:
-      no_budgets: No hay presupuestos activos.
+      no_budgets: No hay presupuestos participativos activos.
     username_label: Nombre de usuario/alias
