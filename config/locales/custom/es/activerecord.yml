@@ -13,8 +13,8 @@ es:
   activerecord:
     models:
       budget:
-        one: "Presupuesto"
-        other: "Presupuestos"
+        one: "Presupuesto participativo"
+        other: "Presupuestos participativos"
       poll:
         one: "Encuesta/Consulta"
         other: "Encuestas/Consultas"

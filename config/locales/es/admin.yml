@@ -135,7 +135,7 @@ es:
         edit: "Editar grupo"
         submit: "Guardar grupo"
       index:
-        back: "Volver a presupuestos"
+        back: "Volver a presupuestos participativos"
     budget_headings:
       no_headings: "No hay partidas."
       amount:
@@ -729,11 +729,11 @@ es:
       administrators: Administradores
       all_proposal_authors: Usuarios autores de propuestas (incluyendo archivadas y retiradas)
       proposal_authors: Usuarios autores de propuestas
-      investment_authors: Usuarios autores de proyectos de gasto en los actuales presupuestos
-      feasible_and_undecided_investment_authors: "Usuarios autores de algún proyecto de gasto en los actuales presupuestos que no cumpla: [evaluación finalizada inviable]"
-      selected_investment_authors: Usuarios autores de proyectos de gasto seleccionadas en los actuales presupuestos
-      winner_investment_authors: Usuarios autores de proyectos de gasto ganadoras en los actuales presupuestos
-      not_supported_on_current_budget: Usuarios que no han apoyado proyectos de los actuales presupuestos
+      investment_authors: Usuarios autores de propuestas de gasto en los actuales presupuestos participativos
+      feasible_and_undecided_investment_authors: "Usuarios autores de algún proyecto de gasto en los actuales presupuestos participativos que no cumpla: [evaluación finalizada inviable]"
+      selected_investment_authors: Usuarios autores de propuestas de gasto seleccionadas en los actuales presupuestos participativos
+      winner_investment_authors: Usuarios autores de propuestas de gasto ganadoras en los actuales presupuestos participativos
+      not_supported_on_current_budget: Usuarios que no han apoyado propuestas de los actuales presupuestos participativos
       invalid_recipients_segment: "El segmento de destinatarios es inválido"
     newsletters:
       create_success: Newsletter creada correctamente
@@ -1371,7 +1371,7 @@ es:
           debates: Debates
           proposal_votes: Votos en propuestas
           proposals: Propuestas
-          budgets: Presupuestos abiertos
+          budgets: Presupuestos participativos abiertos
           budget_investments: Proyectos de gasto
           unverified_users: Usuarios sin verificar
           user_level_three: Usuarios de nivel tres
