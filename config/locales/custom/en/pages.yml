@@ -3,8 +3,8 @@ en:
     help:
       menu:
         forums: "Forum"
-        budgets: "Budgets"
-        polls: "Polls/Questions"
+        budgets: "Participatory budgets"
+        polls: "Polls / Questions"
       forums:
         title: "Forum"
         description: "In the %{link} section you can present and share your opinion with other people on issues of concern to you related to the city."
@@ -17,7 +17,7 @@ en:
         image_alt: "Voting phase of budgets"
         figcaption: '"Voting" phase of budgets.'
       polls:
-        title: "Polls/Questions"
+        title: "Polls / Questions"
         link: "polls/questions"
       processes:
         feature_1: To participate in a process you have to %{link_1} and check the %{link_2} page periodically to see which regulations and policies are being discussed and consulted.

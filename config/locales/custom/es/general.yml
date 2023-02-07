@@ -105,7 +105,7 @@ es:
       help: Ayuda
       proposals: Propuestas
       poll_questions:
-        title: Encuestas/Consultas
+        title: Encuestas / Consultas
         current: Encuestas abiertas
         expired: Encuestas finalizadas
       budgets:
