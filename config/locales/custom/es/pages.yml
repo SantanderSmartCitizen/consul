@@ -4,7 +4,7 @@ es:
       menu:
         forums: "Foro"
         budgets: "Presupuestos participativos"
-        polls: "Encuestas/Consultas"
+        polls: "Encuestas / Consultas"
         processes: "Procesos"
       forums:
         title: "Foro"
@@ -18,7 +18,7 @@ es:
         image_alt: "Fase de votación de presupuestos participativos"
         figcaption: 'Fase de "Votación" de presupuestos participativos.'
       polls:
-        title: "Encuestas/Consultas"
+        title: "Encuestas / Consultas"
         link: "encuestas/consultas"
         feature_1: "Para participar en las encuestas/consultas tienes que %{link} y verificar tu cuenta."
       processes:

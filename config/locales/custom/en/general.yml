@@ -104,7 +104,7 @@ en:
       help: Help
       proposals: Proposals
       poll_questions:
-        title: Polls/questions
+        title: Polls / questions
         current: Open polls
         expired: Expired polls
       budgets:
