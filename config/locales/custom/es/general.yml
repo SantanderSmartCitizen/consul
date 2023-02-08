@@ -62,7 +62,7 @@ es:
         title: Ayuda sobre el foro
         description: Inicia un tema para compartir puntos de vista con otras personas sobre los temas que te preocupan.
         help_text_1: "El espacio de Foro está dirigido a que cualquier persona pueda exponer temas que le preocupan y sobre los que quiera compartir puntos de vista con otras personas."
-        help_text_2: 'Para abrir un tema es necesario registrarse en %{org}. Los usuarios ya registrados también pueden comentar los temas abiertos.'
+        help_text_2: 'Es necesario %{login} para abrir un tema o participar en ellos.'
     new:
       form:
         submit_button: Empieza un tema
@@ -89,6 +89,10 @@ es:
     update:
       form:
         submit_button: Guardar cambios
+  debates:
+    index:
+      section_footer:
+        help_text_2: 'Es necesario %{login} para abrir un debate o participar en ellos.'
   layouts:
     footer:
       title: Nuestros Portales

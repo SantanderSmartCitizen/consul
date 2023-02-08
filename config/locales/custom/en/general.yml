@@ -61,7 +61,7 @@ en:
         title: Help about forum
         description: Start a thread to share opinions with others about the topics you are concerned about.
         help_text_1: "The space for forum is aimed at anyone who can expose issues of their concern and those who want to share opinions with other people."
-        help_text_2: 'To open a thread you need to sign up on %{org}. Users can also comment on open threads.'
+        help_text_2: 'To open a thread you need %{login}. Users can also comment on open threads.'
     new:
       form:
         submit_button: Start a thread
@@ -88,6 +88,10 @@ en:
     update:
       form:
         submit_button: Save changes
+  debates:
+    index:
+      section_footer:
+        help_text_2: 'To open a debate you need %{login}. Users can also comment on open debates and rate them with the "I agree" or "I disagree" buttons found in each of them.'
   layouts:
     footer:
       title: Our Portals

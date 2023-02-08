@@ -1,4 +1,4 @@
-devise_for :users, skip: [:saml_authenticatable]
+devise_for :users, skip: [:sessions, :registrations, :passwords, :password_expired, :confirmations, :omniauth_callbacks]
 devise_scope :user do
   get 'users/saml/sign_in' => 'saml_sessions#init', as: :login_saml_user
   post 'users/saml/auth' => 'saml_sessions#consume', as: :consume_saml_user

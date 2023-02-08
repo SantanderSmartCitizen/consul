@@ -92,7 +92,7 @@
           <p><%= t("forums.index.section_footer.description") %></p>
           <p><%= t("forums.index.section_footer.help_text_1") %></p>
           <p><%= sanitize(t("forums.index.section_footer.help_text_2",
-                    org: link_to(setting["org_name"], new_user_registration_path))) %></p>
+                    login: link_to_signin)) %></p>
           </p>
         </div>
       <% end %>
