@@ -9,20 +9,20 @@ es:
       banner:
         sections:
           homepage: Página principal
-          budgets: Presupuestos
+          budgets: Presupuestos participativos
           polls: Encuestas/Consultas
           legislation_processes: Procesos
           forums: Foro
     budgets:
       index:
-        title: Presupuestos
-        no_budgets: "No hay presupuestos."
+        title: Presupuestos participativos
+        no_budgets: "No hay presupuestos participativos."
       create:
-        notice: '¡Presupuestos creados con éxito!'
+        notice: '¡Presupuestos participativos creados con éxito!'
       update:
-        notice: Presupuestos actualizados
+        notice: Presupuestos participativos actualizados
       edit:
-        title: Editar presupuestos
+        title: Editar presupuestos participativos
       destroy:
         unable_notice_polls: No se puede eliminar un presupuesto con una encuesta/consulta asociada
     budget_investments:
@@ -57,7 +57,7 @@ es:
         button: Buscar
         placeholder: Buscar temas de foro por título o descripción
     menu:
-      budgets: Presupuestos
+      budgets: Presupuestos participativos
       budget_geozones: Gestionar zonas presupuestarias
       polls: Encuestas/Consultas
       satisfaction_surveys: Encuestas de satisfacción
@@ -106,13 +106,13 @@ es:
         delete: Eliminar
     system_emails:
       budget_investment_created:
-        description: "Enviado cuando un usuario crea un proyecto de presupuestos."
+        description: "Enviado cuando un usuario crea una propuesta de gasto."
       budget_investment_selected:
-        description: "Enviado al autor de un proyecto de presupuestos que ha sido seleccionado."
+        description: "Enviado al autor de una propuesta de gasto que ha sido seleccionada."
       budget_investment_unfeasible:
-        description: "Enviado al autor de un proyecto de presupuestos que ha sido marcado como inviable."
+        description: "Enviado al autor de una propuesta de gasto que ha sido marcada como inviable."
       budget_investment_unselected:
-        description: "Enviado al autor de un proyecto de presupuestos que no ha sido seleccionado para la fase de votación."
+        description: "Enviado al autor de una propuesta de gasto que no ha sido seleccionada para la fase de votación."
     active_polls:
       edit:
         title: "Descripción general de encuestas/consultas"
@@ -195,8 +195,8 @@ es:
           title: Mapa de proyectos de gasto
     stats:
       show:
-        budgets_title: Presupuestos
-        participatory_budgets: Presupuestos
+        budgets_title: Presupuestos participativos
+        participatory_budgets: Presupuestos participativos
         polls: Encuestas/Consultas
         satisfaction_surveys: Encuestas de satisfacción
         summary:
@@ -535,7 +535,7 @@ es:
         filters:
           all: Todos
           homepage: Página principal
-          budgets: Presupuestos
+          budgets: Presupuestos participativos
           polls: Encuestas/Consultas
           debates: Debates
           proposals: Propuestas
@@ -545,7 +545,7 @@ es:
       header_slide:
         pages:
           homepage: Página principal
-          budgets: Presupuestos
+          budgets: Presupuestos participativos
           polls: Encuestas/Consultas
           debates: Debates
           proposals: Propuestas

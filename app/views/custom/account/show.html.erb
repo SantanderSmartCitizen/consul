@@ -10,22 +10,36 @@
 
       <div class="row">
         <div class=" column">
-
           <h2><%= t("account.show.personal") %></h2>
-
-          <div class="small-12 medium-10">
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
             <% if @account.organization? %>
               <%= f.fields_for :organization do |fo| %>
-                <%= fo.text_field :name, autofocus: true, maxlength: Organization.name_max_length, placeholder: t("account.show.organization_name_label"), disabled: true %>
-                <%= fo.text_field :responsible_name, autofocus: true, maxlength: Organization.responsible_name_max_length, placeholder: t("account.show.organization_responsible_name_placeholder"), disabled: true %>
+                <div class="column small-12 medium-6">
+                  <%= fo.text_field :name, autofocus: true, maxlength: Organization.name_max_length, placeholder: t("account.show.organization_name_label"), disabled: true %>
+                </div>
+                <div class="column small-12 medium-6">
+                  <%= fo.text_field :responsible_name, autofocus: true, maxlength: Organization.responsible_name_max_length, placeholder: t("account.show.organization_responsible_name_placeholder"), disabled: true %>
+              </div>
               <% end %>
-              <%= f.text_field :phone_number, placeholder: t("account.show.phone_number_label"), disabled: true %>
-
+              <div class="column small-12 medium-6">
+                <%= f.text_field :phone_number, placeholder: t("account.show.phone_number_label"), disabled: true %>
+              </div>
             <% else %>
-              <%= f.text_field :username, maxlength: User.username_max_length, placeholder: t("account.show.username_label"), disabled: true %>
+              <div class="column small-12 medium-6">
+                <%= f.text_field :username, maxlength: User.username_max_length, placeholder: t("account.show.username_label"), disabled: true %>
+              </div>
+              <div class="column small-12 medium-6">
+                <%= f.text_field :alias, maxlength: User.username_max_length, placeholder: t("account.show.alias_label") %>
+              </div>
             <% end %>
-          </div>
 
+        </div>
+      </div>
+      <div class="row">
+        <div class=" column">
           <% if @account.email.present? %>
             <br>
             <h2><%= t("account.show.notifications") %></h2>

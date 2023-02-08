@@ -1,10 +1,10 @@
 es:
   valuation:
     menu:
-      budgets: Presupuestos
+      budgets: Presupuestos participativos
     budgets:
       index:
-        title: Presupuestos
+        title: Presupuestos participativos
     budget_investments:
       show:
         maintenance_cost: Coste de mantenimiento

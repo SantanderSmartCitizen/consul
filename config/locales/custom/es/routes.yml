@@ -3,7 +3,7 @@ es:
     accessibility: accesibilidad
     account: cuenta
     allegations: alegaciones
-    budgets: presupuestos
+    budgets: presupuestos_participativos
     debates: debates
     draft_versions: versiones_borrador
     edit: editar
@@ -14,7 +14,7 @@ es:
     legislation: legislacion
     map: mapa
     new: nuevo
-    previous_budgets: presupuestos_anteriores
+    previous_budgets: presupuestos_participativos_anteriores
     processes: procesos
     polls: encuestas_consultas
     proposals: propuestas
