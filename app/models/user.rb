@@ -84,6 +84,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, if: :username_required?
   validates :username, uniqueness: { scope: :registering_with_oauth }, if: :username_required?
+  validates :alias, uniqueness: true
   validates :document_number, uniqueness: { scope: :document_type }, allow_nil: true
 
   validate :validate_username_length
@@ -133,6 +134,7 @@ class User < ApplicationRecord
   end
 
   before_validation :clean_document_number
+  before_validation :clean_alias
 
   # Get the existing user by email if the provider gives us a verified email.
   def self.first_or_initialize_for_oauth(auth)
@@ -151,7 +153,13 @@ class User < ApplicationRecord
   end
 
   def name
-    organization? ? organization.name : username
+    if organization? 
+      organization.name
+    elsif self.alias.present? 
+      self.alias
+    else 
+      username
+    end
   end
 
   def debate_votes(debates)
@@ -440,6 +448,12 @@ class User < ApplicationRecord
       return unless document_number.present?
 
       self.document_number = document_number.gsub(/[^a-z0-9]+/i, "").upcase
+    end
+
+    def clean_alias
+      return unless self.alias.present?
+
+      self.alias = self.alias.gsub(/[^a-zA-Z0-9]+/i, "")
     end
 
     def validate_username_length

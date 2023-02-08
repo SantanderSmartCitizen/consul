@@ -42,8 +42,9 @@ es:
         name: Nombre
         external_code: Código externo
       user:
-        login: "Email o nombre de usuario/alias"
-        username: "Nombre de usuario/alias"
+        login: "Email o nombre de usuario"
+        username: "Nombre de usuario"
+        alias: "Alias"
       poll:
         only_terminals: Mostrar solo en Terminales
       gamification:

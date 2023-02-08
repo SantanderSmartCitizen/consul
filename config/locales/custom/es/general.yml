@@ -2,7 +2,8 @@ es:
   account:
     show:
       user_permission_votes: Participar en las encuestas finales*
-      username_label: Nombre de usuario/alias
+      username_label: Nombre de usuario
+      alias_label: Alias
   forums:
     create:
       form:
