@@ -1,7 +1,8 @@
 en:
   account:
     show:
-      username_label: Username/alias
+      username_label: Username
+      alias_label: Alias
   forums:
     create:
       form:
