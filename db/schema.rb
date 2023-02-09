@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221008084606) do
+ActiveRecord::Schema.define(version: 20230207220133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1813,6 +1813,7 @@ ActiveRecord::Schema.define(version: 20221008084606) do
     t.string   "citizen_type"
     t.string   "official_sublevel"
     t.boolean  "anonymous"
+    t.string   "alias"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["geozone_id"], name: "index_users_on_geozone_id", using: :btree

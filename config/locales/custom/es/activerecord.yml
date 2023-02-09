@@ -13,8 +13,8 @@ es:
   activerecord:
     models:
       budget:
-        one: "Presupuesto"
-        other: "Presupuestos"
+        one: "Presupuesto participativo"
+        other: "Presupuestos participativos"
       poll:
         one: "Encuesta/Consulta"
         other: "Encuestas/Consultas"
@@ -42,8 +42,9 @@ es:
         name: Nombre
         external_code: Código externo
       user:
-        login: "Email o nombre de usuario/alias"
-        username: "Nombre de usuario/alias"
+        login: "Email o nombre de usuario"
+        username: "Nombre de usuario"
+        alias: "Alias"
       poll:
         only_terminals: Mostrar solo en Terminales
       gamification:

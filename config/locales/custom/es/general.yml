@@ -2,7 +2,8 @@ es:
   account:
     show:
       user_permission_votes: Participar en las encuestas finales*
-      username_label: Nombre de usuario/alias
+      username_label: Nombre de usuario
+      alias_label: Alias
   forums:
     create:
       form:
@@ -61,7 +62,7 @@ es:
         title: Ayuda sobre el foro
         description: Inicia un tema para compartir puntos de vista con otras personas sobre los temas que te preocupan.
         help_text_1: "El espacio de Foro está dirigido a que cualquier persona pueda exponer temas que le preocupan y sobre los que quiera compartir puntos de vista con otras personas."
-        help_text_2: 'Para abrir un tema es necesario registrarse en %{org}. Los usuarios ya registrados también pueden comentar los temas abiertos.'
+        help_text_2: 'Es necesario %{login} para abrir un tema o participar en ellos.'
     new:
       form:
         submit_button: Empieza un tema
@@ -88,6 +89,10 @@ es:
     update:
       form:
         submit_button: Guardar cambios
+  debates:
+    index:
+      section_footer:
+        help_text_2: 'Es necesario %{login} para abrir un debate o participar en ellos.'
   layouts:
     footer:
       title: Nuestros Portales
@@ -105,14 +110,14 @@ es:
       help: Ayuda
       proposals: Propuestas
       poll_questions:
-        title: Encuestas/Consultas
+        title: Encuestas / Consultas
         current: Encuestas abiertas
         expired: Encuestas finalizadas
       budgets:
-        title: Presupuestos
+        title: Presupuestos participativos
         legal_bases: Bases legales
         check_ballot: Mis votos
-        previous: Presupuestos anteriores
+        previous: Presupuestos participativos anteriores
       forum: Foro
       moderation: Moderación
       notification_item:
@@ -185,7 +190,7 @@ es:
     login_to_create_forum: "Necesitas %{signin} para empezar un tema."
     show:
       deleted_forum: Este tema ha sido eliminado
-      budget_investments: Proyectos de presupuestos
+      budget_investments: Propuestas de gasto
       forums: Temas del foro
       gamification: Juego
       score: Puntos
@@ -208,8 +213,8 @@ es:
           one: 1 Recompensa disponible
           other: "%{count} Recompensas disponibles"
         budget_investments:
-          one: 1 Proyecto de presupuestos
-          other: "%{count} Proyectos de presupuestos"
+          one: 1 Propuesta de gasto
+          other: "%{count} Propuestas de gasto"
       rewards:
         points: "%{points} puntos"
         required_score: "%{score} puntos necesarios"

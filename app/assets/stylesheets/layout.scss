@@ -738,6 +738,7 @@ header {
       @include breakpoint(medium) {
         display: inline-block;
         margin-right: 45px;
+        max-width: 145px;
         &:last-child {
           margin-right: 0;
         }
@@ -2908,6 +2909,7 @@ table {
     border: 0;
     overflow: visible;
     margin: 0;
+    background: white;
 
     a {
 

@@ -12,19 +12,19 @@ es:
           one: "Has votado 1 propuesta"
           other: "Has votado %{count} propuestas"
     index:
-      title: Presupuestos
+      title: Presupuestos participativos
       empty_budgets: No hay presupuestos.
       section_header:
-        icon_alt: Icono de Presupuestos
-        title: Presupuestos
+        icon_alt: Icono de Presupuestos participativos
+        title: Presupuestos participativos
         help: Ayuda sobre presupuestos
       all_phases: Fases de los presupuestos
-      finished_budgets: Presupuestos terminados
+      finished_budgets: Presupuestos participativos terminados
       section_footer:
         title: Ayuda sobre presupuestos
         description: Con los presupuestos la ciudadanía decide a qué propuestas va destinada una parte del presupuesto.
       index:
-        title: Presupuestos
+        title: Presupuestos participativos
       see_stats: Ver estadísticas
       map:
         accepted: Propuestas presentadas
@@ -33,13 +33,13 @@ es:
       unfeasible_investment_proyects: Ver lista de propuestas de gasto inviables
       not_selected_investment_proyects: Ver propuestas de gasto no seleccionadas para la votación popular
     previous_budgets:
-      title: Presupuestos anteriores
+      title: Presupuestos participativos anteriores
       empty_budgets: No hay presupuestos anteriores.
       results: Resultados
       stats: Estadísticas
       milestones: Seguimiento
     results:
-      heading: "Resultados presupuestos"
+      heading: "Resultados presupuestos participativos"
     investments:
       index:
         title: Presupuestos participativos
