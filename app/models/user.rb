@@ -100,7 +100,7 @@ class User < ApplicationRecord
   attr_accessor :use_redeemable_code
   attr_accessor :login
 
-  scope :citizen,        -> { where(citizen_type: "01") }
+  scope :citizen,        -> { where(citizen_type: "PF") }
   scope :employees,      -> { where(citizen_type: nil) }
   scope :administrators, -> { joins(:administrator) }
   scope :moderators,     -> { joins(:moderator) }
