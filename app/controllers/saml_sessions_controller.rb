@@ -77,7 +77,9 @@ class SamlSessionsController < Devise::SessionsController
         raise "SAMLResponse is invalid or username does not exist"
       end
     rescue Exception => e
-      Rails.logger.error "Exception: #{e}"
+      exception_msg = "Exception: #{e} - #{e.backtrace.select {|x| x.match("/app/controllers")}}"
+      Rails.logger.error exception_msg
+      LoginError.create(issuer: @issuer, username: username, error: exception_msg)
       flash[:error] = t("flash.actions.error.login")
       redirect_to root_path
     end
