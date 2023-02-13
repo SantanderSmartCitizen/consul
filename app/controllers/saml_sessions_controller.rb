@@ -285,14 +285,16 @@ class SamlSessionsController < Devise::SessionsController
   end
 
   def crm_user_params(username, crm_attributes)
-    email = crm_attributes["email"]
-    document_type = crm_attributes["person"]["identificationType"]["value"]
-    document_number = crm_attributes["person"]["identificationDoc"]
-    gender = crm_attributes["person"]["genre"]["value"]
-    birthDate = crm_attributes["person"]["censusData"]["birthDate"]
-    date_of_birth = Time.at(birthDate/1000).to_datetime
-    geozone_code = crm_attributes["person"]["censusData"]["district"]
+    email = crm_attributes.dig("email")
+    document_type = crm_attributes.dig("person", "identificationType", "value")
+    document_number = crm_attributes.dig("person", "identificationDoc")
+    gender = crm_attributes.dig("person", "genre", "value")
+    birthDate = crm_attributes.dig("person", "censusData", "birthDate")
+    logger.info "birthDate = '#{birthDate}'"
+    date_of_birth = birthDate.present? ? Time.at(birthDate/1000).to_datetime : Time.at(946702800).to_datetime
     #logger.info "date_of_birth = '#{date_of_birth}'"
+    geozone_code = crm_attributes.dig("person", "censusData", "district")
+
     
     # citizen_type:
     # "PF": Persona física (Ciudadanos de Santander)
@@ -306,7 +308,7 @@ class SamlSessionsController < Devise::SessionsController
     # "PJPRI": Persona jurídica - Empresa privada
     # "PJPUB": Persona jurídica - Empresa pública
     # "PJUNI": Persona jurídica – Universidad
-    citizen_type = crm_attributes["person"]["personType"]["value"]
+    citizen_type = crm_attributes.dig("person", "personType", "value")
     unless ["PF","PFA","PFEMB","PFGUI","PJA","PJAYTO","PJC","PJFUN","PJPRI","PJPUB","PJUNI"].include?(citizen_type)
       raise "Could not login: Username '#{username}' is not a valid person_type in CRM"
     end
@@ -349,8 +351,8 @@ class SamlSessionsController < Devise::SessionsController
   def crm_organization_params(user, crm_attributes)
     organization_params = nil
     if user.citizen_type != "PF"
-      organization_responsible_name = crm_attributes["person"]["representantes"][0]["name"]
-      organization_name = crm_attributes["name"]
+      organization_responsible_name = crm_attributes.dig("person", "representantes", 0, "name")
+      organization_name = crm_attributes.dig("person", "name")
       organization_params = {
         user: user, 
         responsible_name: organization_responsible_name, 
