@@ -43,17 +43,18 @@ class SamlSessionsController < Devise::SessionsController
         session[:saml_session_index] = response_to_validate.sessionindex
 
         if @issuer == Settings.identity_providers.citizen_issuer
+          # Es ciudadano, se obtienen los datos del CRM
+          crm_attributes = get_crm_user_data(username)
+
           if user = User.find_by(username: username)
-            unless user.citizen_type
-              raise "Could not login as citizen: Username '#{username}' exist but is not a citizen"
-            end
+            # Usuario existente, se actualiza con los datos del CRM
+            user = update_citizen(user, crm_attributes)
           else
-
-            crm_attributes = get_crm_user_data(username)
+            # Usuario nuevo, se inserta con los datos del CRM
             user = create_citizen(username, crm_attributes)
-
           end
         elsif @issuer == Settings.identity_providers.city_hall_issuer
+          # Es Ayto.
           unless user = User.find_by(username: username)
             raise "Could not login as city hall user: Username '#{username}' does not exist"
           end
@@ -76,7 +77,9 @@ class SamlSessionsController < Devise::SessionsController
         raise "SAMLResponse is invalid or username does not exist"
       end
     rescue Exception => e
-      Rails.logger.error "Exception: #{e}"
+      exception_msg = "Exception: #{e} - #{e.backtrace.select {|x| x.match("/app/controllers")}}"
+      Rails.logger.error exception_msg
+      LoginError.create(issuer: @issuer, username: username, error: exception_msg)
       flash[:error] = t("flash.actions.error.login")
       redirect_to root_path
     end
@@ -249,20 +252,67 @@ class SamlSessionsController < Devise::SessionsController
 
   def create_citizen (username, crm_attributes)
     logger.info "create_citizen xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-    email = crm_attributes["email"]
-    document_type = crm_attributes["person"]["identificationType"]["value"]
-    document_number = crm_attributes["person"]["identificationDoc"]
-    gender = crm_attributes["person"]["genre"]["value"]
-    birthDate = crm_attributes["person"]["censusData"]["birthDate"]
-    date_of_birth = Time.at(birthDate/1000).to_datetime
 
+    user_params = crm_user_params(username, crm_attributes)
+    user = User.new(user_params)
+    user.save!
+
+    organization_params = crm_organization_params(user, crm_attributes)
+    if organization_params.present?
+      organization = Organization.new(organization_params)
+      organization.save!
+    end
+
+    user
+  end
+
+  def update_citizen (user, crm_attributes)
+    logger.info "update_citizen xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+    user_params = crm_user_params(user.username, crm_attributes)
+    logger.info "user_params = '#{user_params}'"
+    user.update!(user_params)
+   
+    organization_params = crm_organization_params(user, crm_attributes)
+    if organization_params.present?
+      if organization = Organization.find_by(user: user)
+        organization.update!(organization_params)
+      else
+        organization = Organization.new(organization_params)
+        organization.save!
+      end
+    end
+
+    user
+  end
+
+  def crm_user_params(username, crm_attributes)
+    email = crm_attributes.dig("email")
+    document_type = crm_attributes.dig("person", "identificationType", "value")
+    document_number = crm_attributes.dig("person", "identificationDoc")
+    gender = crm_attributes.dig("person", "genre", "value")
+    birthDate = crm_attributes.dig("person", "censusData", "birthDate")
+    date_of_birth = birthDate.present? ? Time.at(birthDate/1000).to_datetime : DateTime.new(1000,1,1)
     logger.info "date_of_birth = '#{date_of_birth}'"
+    geozone_code = crm_attributes.dig("person", "censusData", "district")
+
     
-    geozone_code = crm_attributes["person"]["censusData"]["district"]
-    #citizen_type = crm_attributes[Settings.identity_providers.attributes.user_type]
-    #organization_name = crm_attributes[Settings.identity_providers.attributes.organization_name]
-    #organization_responsible_name = crm_attributes[Settings.identity_providers.attributes.organization_responsible_name]
-    citizen_type = "01"
+    # citizen_type:
+    # "PF": Persona física (Ciudadanos de Santander)
+    # "PFA": Persona física autónomo
+    # "PFEMB": Persona física – Embajador
+    # "PFGUI": Persona jurídica – Guía
+    # "PJA": Persona jurídica – Asociación
+    # "PJAYTO": Persona jurídica – Ayuntamiento
+    # "PJC": Persona jurídica – Colegio
+    # "PJFUN": Persona jurídica – Fundación
+    # "PJPRI": Persona jurídica - Empresa privada
+    # "PJPUB": Persona jurídica - Empresa pública
+    # "PJUNI": Persona jurídica – Universidad
+    citizen_type = crm_attributes.dig("person", "personType", "value")
+    unless ["PF","PFA","PFEMB","PFGUI","PJA","PJAYTO","PJC","PJFUN","PJPRI","PJPUB","PJUNI"].include?(citizen_type)
+      raise "Could not login: Username '#{username}' is not a valid person_type in CRM"
+    end
 
     case document_type
     when "nif", "dni", "cif"
@@ -284,10 +334,10 @@ class SamlSessionsController < Devise::SessionsController
       gender = "unknown"
     end
 
-    user = User.new(
+    user_params = {
       username: username,
-      email: email,
       password: SecureRandom.base58(24),
+      email: email,
       document_type: document_type,
       document_number: document_number,
       created_from_signature: true,
@@ -296,17 +346,20 @@ class SamlSessionsController < Devise::SessionsController
       date_of_birth: date_of_birth,
       gender: gender,
       geozone: Geozone.find_by(external_code: geozone_code),
-      citizen_type: citizen_type)
+      citizen_type: citizen_type}
+  end
 
-    user.save!
-    if ["02","03","04"].include?(citizen_type)
-      organization = Organization.new(
+  def crm_organization_params(user, crm_attributes)
+    organization_params = nil
+    if user.citizen_type != "PF"
+      organization_responsible_name = crm_attributes.dig("person", "representantes", 0, "name")
+      organization_name = crm_attributes.dig("person", "name")
+      organization_params = {
         user: user, 
         responsible_name: organization_responsible_name, 
-        name: organization_name)
-      organization.save!
+        name: organization_name}
     end
-    user
+    organization_params
   end
 
   def get_crm_user_data (username)
@@ -314,7 +367,6 @@ class SamlSessionsController < Devise::SessionsController
     logger.info "get_crm_user_data xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
     # get crm token
-
     crm_settings = Rails.application.secrets.crm_settings
     token_url = crm_settings[:token_url]
     token_headers = {
@@ -335,7 +387,6 @@ class SamlSessionsController < Devise::SessionsController
     if token_response.code == 200
 
       # get crm user data
-
       data_url = "#{crm_settings[:data_url]}/#{username}"
       token_response_body = JSON.parse(token_response.body)
       data_body_app = crm_settings[:data_body_app]

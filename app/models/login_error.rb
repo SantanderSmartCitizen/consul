@@ -1,0 +1,3 @@
+class LoginError < ApplicationRecord
+
+end
