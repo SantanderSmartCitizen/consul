@@ -292,9 +292,8 @@ class SamlSessionsController < Devise::SessionsController
     document_number = crm_attributes.dig("person", "identificationDoc")
     gender = crm_attributes.dig("person", "genre", "value")
     birthDate = crm_attributes.dig("person", "censusData", "birthDate")
-    logger.info "birthDate = '#{birthDate}'"
-    date_of_birth = birthDate.present? ? Time.at(birthDate/1000).to_datetime : Time.at(946702800).to_datetime
-    #logger.info "date_of_birth = '#{date_of_birth}'"
+    date_of_birth = birthDate.present? ? Time.at(birthDate/1000).to_datetime : DateTime.new(1000,1,1)
+    logger.info "date_of_birth = '#{date_of_birth}'"
     geozone_code = crm_attributes.dig("person", "censusData", "district")
 
     
