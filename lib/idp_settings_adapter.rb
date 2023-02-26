@@ -5,6 +5,11 @@ class IdpSettingsAdapter
     settings["idp_cert"] = Rails.application.secrets.idp_cert
     settings["certificate"] = Rails.application.secrets.certificate
     settings["private_key"] = Rails.application.secrets.private_key
+    full_domain_path = Rails.application.secrets.server_protocol + '://' + Rails.application.secrets.server_name
+    # full_domain_path = request.env['rack.url_scheme'] + '://' + request.host_with_port
+    settings["assertion_consumer_service_url"] = full_domain_path + '/users/saml/auth'
+    settings["single_logout_service_url"] = full_domain_path + '/users/saml/sign_out'
+
     return OneLogin::RubySaml::Settings.new(settings)
   end
 

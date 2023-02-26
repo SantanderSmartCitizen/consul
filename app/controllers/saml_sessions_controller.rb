@@ -26,6 +26,7 @@ class SamlSessionsController < Devise::SessionsController
   def consume
     redirect_path = root_path
     begin
+      logger.info "request.host = #{request.env['rack.url_scheme']}://#{request.host_with_port}"
       settings = IdpSettingsAdapter.saml_settings(@issuer)
       response_to_validate = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: settings)
     
@@ -131,7 +132,6 @@ class SamlSessionsController < Devise::SessionsController
 
   # Crer un SLO iniciado por SP
   def sp_logout_request
-
     # LogoutRequest acepta solicitudes simples del navegador sin parametros
     settings = IdpSettingsAdapter.saml_settings(@issuer)
 
