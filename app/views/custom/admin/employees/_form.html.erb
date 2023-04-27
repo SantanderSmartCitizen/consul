@@ -1,0 +1,24 @@
+<%= back_link_to admin_employees_path %>
+<h1 class="margin-top"><%= t("admin.employees.form.#{admin_submit_action(@employee)}.title") %></h1>
+
+<%= form_for [:admin, @employee], url: path  do |f| %>
+
+  <%= render "shared/errors", resource: @employee %>
+
+  <div class="row">
+      <div class="small-12 medium-6 column required">
+        <%= f.text_field :username %>
+      </div>
+
+      <div class="small-12 medium-6 column required">
+        <%= f.text_field :email %>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="actions small-12 medium-3 column">
+      <%= f.submit(class: "button expanded", value: t("admin.employees.form.#{admin_submit_action(@employee)}.submit_button")) %>
+    </div>
+  </div>
+
+<% end %>

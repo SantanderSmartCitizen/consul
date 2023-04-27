@@ -68,6 +68,33 @@ en:
       banner: Banner carousel
       events: Event manager
       satisfaction_terminals: Satisfaction terminals
+      citizen: Citizen
+      employees: City Hall
+      title_profiles: City Hall profiles
+      managers: Area managers
+    administrators:
+      administrator:
+        add: Add
+        delete: Delete
+    valuators:
+      valuator:
+        delete: Delete
+    managers:
+      index:
+        title: Area Managers
+        no_managers: There are no area managers.
+      search:
+        title: "Area Managers: User search"
+      form:
+        edit_title: "Area Managers: Edit Manager"
+        created: "Area Manager successfully created"
+        updated: "Area Manager successfully updated"
+      manager:
+        delete: Delete
+        add: Add as Area Manager
+    moderators:
+      moderator:
+        delete: Delete
     active_polls:
       edit:
         title: "Polls/Questions description"
@@ -153,6 +180,11 @@ en:
         budgets_title: Budgets
         participatory_budgets: Budgets
         satisfaction_surveys: Satisfaction surveys
+        summary:
+          citizen: Citizen
+          organizations: Organizations
+          employees: City Hall users
+          forum_votes: Forum votes
       budgets:
         title: "Budgets stats"
         participation: Participation
@@ -194,6 +226,30 @@ en:
         title: Stats - Finished budget
       comparative:
         title: Stats - Comparative
+    citizen:
+      index:
+        title: Citizen
+        no_users: There are no citizen.
+    employees:
+      index:
+        title: City Hall users
+        no_users: There are no City Hall users.
+        new: New City Hall User
+      search:
+        placeholder: Search user by email or name
+      form:
+        new:
+          title: Create City Hall user
+          submit_button: Create City Hall user
+        edit:
+          title: Edit City Hall user
+          submit_button: Edit City Hall user
+      notice:
+        create: User successfully created
+        update: User successfully updated
+        destroy: 
+          success: User successfully deleted
+          unable: You cannot delete your user
     homepage:
       feeds:
         citizen_proposals: Citizen Proposals

@@ -84,6 +84,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, if: :username_required?
   validates :username, uniqueness: { scope: :registering_with_oauth }, if: :username_required?
+  validates :alias, uniqueness: true, allow_nil: true, allow_blank: true
   validates :document_number, uniqueness: { scope: :document_type }, allow_nil: true
 
   validate :validate_username_length
@@ -99,6 +100,8 @@ class User < ApplicationRecord
   attr_accessor :use_redeemable_code
   attr_accessor :login
 
+  scope :citizen,        -> { where(citizen_type: "01") }
+  scope :employees,      -> { where(citizen_type: nil) }
   scope :administrators, -> { joins(:administrator) }
   scope :moderators,     -> { joins(:moderator) }
   scope :organizations,  -> { joins(:organization) }
@@ -131,6 +134,7 @@ class User < ApplicationRecord
   end
 
   before_validation :clean_document_number
+  before_validation :clean_alias
 
   # Get the existing user by email if the provider gives us a verified email.
   def self.first_or_initialize_for_oauth(auth)
@@ -149,7 +153,13 @@ class User < ApplicationRecord
   end
 
   def name
-    organization? ? organization.name : username
+    if organization? 
+      organization.name
+    elsif self.alias.present? 
+      self.alias
+    else 
+      username
+    end
   end
 
   def debate_votes(debates)
@@ -320,7 +330,7 @@ class User < ApplicationRecord
   end
 
   def self.search(term)
-    term.present? ? where("email = ? OR username ILIKE ?", term, "%#{term}%") : none
+    where("email ILIKE ? OR username ILIKE ?", "%#{term}%", "%#{term}%")
   end
 
   def self.username_max_length
@@ -438,6 +448,12 @@ class User < ApplicationRecord
       return unless document_number.present?
 
       self.document_number = document_number.gsub(/[^a-z0-9]+/i, "").upcase
+    end
+
+    def clean_alias
+      return unless self.alias.present?
+
+      self.alias = self.alias.gsub(/[^a-zA-Z0-9]+/i, "")
     end
 
     def validate_username_length

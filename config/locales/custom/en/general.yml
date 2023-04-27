@@ -1,7 +1,8 @@
 en:
   account:
     show:
-      username_label: Username/alias
+      username_label: Username
+      alias_label: Alias
   forums:
     create:
       form:
@@ -104,7 +105,7 @@ en:
       help: Help
       proposals: Proposals
       poll_questions:
-        title: Polls/questions
+        title: Polls / questions
         current: Open polls
         expired: Expired polls
       budgets:

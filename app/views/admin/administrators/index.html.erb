@@ -32,17 +32,17 @@
             <% if administrator.persisted? %>
               <%= link_to t("admin.actions.edit"),
                           edit_admin_administrator_path(administrator),
-                          class: "button hollow" %>
+                          class: "button hollow expanded mb-0" %>
               <%= link_to t("admin.administrators.administrator.delete"),
                           admin_administrator_path(administrator),
                           method: :delete,
-                          class: "button hollow alert" %>
+                          class: "button hollow alert expanded mb-1" %>
             <% else %>
               <%= link_to t("admin.administrators.administrator.add"),
                           { controller: "admin/administrators", action: :create,
                             user_id: administrator.user_id },
                             method: :post,
-                            class: "button success expanded" %>
+                            class: "button success expanded mb-1" %>
             <% end %>
           </td>
         </tr>

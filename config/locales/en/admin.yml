@@ -623,6 +623,7 @@ en:
         title: Managers
         name: Name
         email: Email
+        area: Area
         no_managers: There are no managers.
       manager:
         add: Add
@@ -1150,7 +1151,7 @@ en:
         official_updated: Details of official saved
       index:
         title: Officials
-        help: User accounts marked as officials will have their interventions on the platform highlighted. You can define the label that appears next to the user names of these accounts from most important (level 1) to least (level 5).
+        help: User accounts marked as officials will have their interventions on the platform highlighted. You can define the label that appears next to the user names of these accounts from least  important (level 1) to most important (level 5).
         no_officials: There are no officials.
         name: Name
         official_position: Official position

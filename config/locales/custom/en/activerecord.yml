@@ -24,8 +24,9 @@ en:
         name: Name
         external_code: External code
       user:
-        login: "Email or username/alias"
-        username: "Username/alias"
+        login: "Email or username"
+        username: "Username"
+        alias: "Alias"
       poll:
         only_terminals: Show only in Terminals
       gamification:
@@ -84,3 +85,5 @@ en:
         department: Department
         subject: Subject
         body: Text
+      manager:
+        management_area_id: "Area"

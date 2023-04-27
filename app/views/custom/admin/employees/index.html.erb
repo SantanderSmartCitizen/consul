@@ -1,0 +1,18 @@
+<h2 class="inline-block"><%= t("admin.employees.index.title") %></h2>
+
+<%= link_to t("admin.employees.index.new"), new_admin_employee_path, class: "button float-right" %>
+
+<div class="small-12 medium-6">
+  <%= form_tag admin_employees_path, method: :get, remote: true  do %>
+    <div class="input-group">
+      <%= text_field_tag :search, "", placeholder: t("admin.employees.search.placeholder") %>
+      <div class="input-group-button">
+        <%= submit_tag t("admin.users.search.search"), class: "button" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div id="employees">
+  <%= render "employees" %>
+</div>

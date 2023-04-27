@@ -977,13 +977,7 @@ a.footer-social-icons.instagram:hover {
         margin-top: 2px;
       }
       .header-title {
-        max-width: 50%;
-        padding-left: 30px;
-        h1 {
-          font-size: 30px;
-          margin-top: 20px;
-          margin-bottom: 0;
-        }
+        display: none;
       }
       .header-buttons {
         margin: 10px 30px 24px 0;
@@ -991,6 +985,11 @@ a.footer-social-icons.instagram:hover {
           font-size: 30px;
         }
       }
+    }
+  }
+  .flexslider {
+    .flex-caption {
+      font-size: 26px;
     }
   }
 }

@@ -166,23 +166,31 @@
     <li class="section-title">
       <a href="#">
         <span class="icon-organizations"></span>
-        <strong><%= t("admin.menu.title_profiles") %></strong>
+        <strong><%= t("admin.menu.users") %> </strong>
       </a>
-      <ul <%= "class=is-active" if menu_profiles? %>>
-        <li <%= "class=is-active" if controller_name == "administrators" %>>
-          <%= link_to t("admin.menu.administrators"), admin_administrators_path %>
+      <ul <%= "class=is-active" if menu_admin_users? %>>
+        <li <%= "class=is-active" if controller_name == "employees" %>>
+          <%= link_to t("admin.menu.employees"), admin_employees_path %>
         </li>
 
         <li <%= "class=is-active" if controller_name == "organizations" %>>
           <%= link_to t("admin.menu.organizations"), admin_organizations_path %>
         </li>
 
-        <li <%= "class=is-active" if controller_name == "officials" %>>
-          <%= link_to t("admin.menu.officials"), admin_officials_path %>
+        <li <%= "class=is-active" if controller_name == "users" %>>
+          <%= link_to t("admin.menu.citizen"), admin_users_path %>
         </li>
+      </ul>
+    </li>
 
-        <li <%= "class=is-active" if controller_name == "moderators" %>>
-          <%= link_to t("admin.menu.moderators"), admin_moderators_path %>
+    <li class="section-title">
+      <a href="#">
+        <span class="icon-organizations"></span>
+        <strong><%= t("admin.menu.title_profiles") %></strong>
+      </a>
+      <ul <%= "class=is-active" if menu_profiles? %>>
+        <li <%= "class=is-active" if controller_name == "administrators" %>>
+          <%= link_to t("admin.menu.administrators"), admin_administrators_path %>
         </li>
 
         <li <%= "class=is-active" if controller_name == "valuators" %>>
@@ -193,8 +201,12 @@
           <%= link_to t("admin.menu.managers"), admin_managers_path %>
         </li>
 
-        <li <%= "class=is-active" if controller_name == "users" %>>
-          <%= link_to t("admin.menu.users"), admin_users_path %>
+        <li <%= "class=is-active" if controller_name == "moderators" %>>
+          <%= link_to t("admin.menu.moderators"), admin_moderators_path %>
+        </li>
+
+        <li <%= "class=is-active" if controller_name == "officials" %>>
+          <%= link_to t("admin.menu.officials"), admin_officials_path %>
         </li>
       </ul>
     </li>

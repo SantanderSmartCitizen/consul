@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220117122020) do
+ActiveRecord::Schema.define(version: 20230401094326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -701,6 +701,15 @@ ActiveRecord::Schema.define(version: 20220117122020) do
     t.index ["process_type", "process_id"], name: "idx_gamification_additional_scores_on_process_type_process_id", using: :btree
   end
 
+  create_table "gamification_action_games", force: :cascade do |t|
+    t.integer  "gamification_action_id", null: false
+    t.integer  "gamification_id",        null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_action_id"], name: "index_gamification_action_games_on_gamification_action_id", using: :btree
+    t.index ["gamification_id"], name: "index_gamification_action_games_on_gamification_id", using: :btree
+  end
+
   create_table "gamification_action_translations", force: :cascade do |t|
     t.integer  "gamification_action_id"
     t.string   "locale"
@@ -713,16 +722,13 @@ ActiveRecord::Schema.define(version: 20220117122020) do
   end
 
   create_table "gamification_actions", force: :cascade do |t|
-    t.string   "key",             null: false
+    t.string   "key",                          null: false
     t.integer  "score"
-    t.integer  "gamification_id", null: false
     t.string   "process_type"
     t.string   "operation"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["gamification_id", "process_type", "operation"], name: "idx_gamification_internal_actions", unique: true, where: "((process_type IS NOT NULL) AND ((process_type)::text <> ''::text) AND (operation IS NOT NULL) AND ((operation)::text <> ''::text))", using: :btree
-    t.index ["gamification_id"], name: "index_gamification_actions_on_gamification_id", using: :btree
-    t.index ["key", "gamification_id"], name: "index_gamification_actions_on_key_and_gamification_id", unique: true, using: :btree
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "locked",       default: false, null: false
   end
 
   create_table "gamification_requested_rewards", force: :cascade do |t|
@@ -1096,8 +1102,24 @@ ActiveRecord::Schema.define(version: 20220117122020) do
     t.index ["user_id"], name: "index_locks_on_user_id", using: :btree
   end
 
+  create_table "login_errors", force: :cascade do |t|
+    t.string   "issuer"
+    t.string   "username"
+    t.string   "error"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "management_areas", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "managers", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "management_area_id"
+    t.index ["management_area_id"], name: "index_managers_on_management_area_id", using: :btree
     t.index ["user_id"], name: "index_managers_on_user_id", using: :btree
   end
 
@@ -1805,6 +1827,7 @@ ActiveRecord::Schema.define(version: 20220117122020) do
     t.string   "citizen_type"
     t.string   "official_sublevel"
     t.boolean  "anonymous"
+    t.string   "alias"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["geozone_id"], name: "index_users_on_geozone_id", using: :btree
@@ -1939,7 +1962,8 @@ ActiveRecord::Schema.define(version: 20220117122020) do
   add_foreign_key "flags", "users"
   add_foreign_key "follows", "users"
   add_foreign_key "gamification_action_additional_scores", "gamification_actions"
-  add_foreign_key "gamification_actions", "gamifications"
+  add_foreign_key "gamification_action_games", "gamification_actions"
+  add_foreign_key "gamification_action_games", "gamifications"
   add_foreign_key "gamification_requested_rewards", "gamification_rewards"
   add_foreign_key "gamification_requested_rewards", "users"
   add_foreign_key "gamification_requested_rewards", "users", column: "administrator_id"
@@ -1955,6 +1979,7 @@ ActiveRecord::Schema.define(version: 20220117122020) do
   add_foreign_key "legislation_draft_versions", "legislation_processes"
   add_foreign_key "legislation_proposals", "legislation_processes"
   add_foreign_key "locks", "users"
+  add_foreign_key "managers", "management_areas"
   add_foreign_key "managers", "users"
   add_foreign_key "moderators", "users"
   add_foreign_key "municipal_area_assignments", "municipal_areas"

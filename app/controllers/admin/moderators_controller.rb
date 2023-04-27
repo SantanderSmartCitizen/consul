@@ -6,7 +6,7 @@ class Admin::ModeratorsController < Admin::BaseController
   end
 
   def search
-    @users = User.search(params[:name_or_email])
+    @users = User.employees.search(params[:name_or_email])
                  .includes(:moderator)
                  .page(params[:page])
                  .for_render

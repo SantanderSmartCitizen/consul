@@ -16,7 +16,6 @@
       <tr>
 	      <th><%= t("admin.gamification.actions.form.key") %></th>
 	      <th><%= t("admin.gamification.actions.form.title") %></th>
-	      <th><%= t("admin.gamification.actions.form.gamification") %></th>
 	      <th class="text-right"><%= t("admin.gamification.actions.form.score") %></th>
 	      <th><%= t("admin.actions.actions") %></th>
       </tr>
@@ -31,9 +30,6 @@
     		<td>
     			<%= action.title %>
     		</td>
-    		<td>
-          <%= action.gamification.key %>
-    		</td>
     		<td class="text-right">
     			<%= action.score %>
     		</td>
@@ -41,7 +37,7 @@
 	        <%= link_to t("shared.edit"), edit_admin_gamification_action_path(action),
             class: "button hollow" %>
 
-          <% unless action.gamification&.locked %>
+          <% unless action.locked %>
             <%= link_to t("shared.delete"), 
                         admin_gamification_action_path(action),
                         method: :delete,
