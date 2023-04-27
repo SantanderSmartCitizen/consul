@@ -9,28 +9,11 @@
   <% end %>
 
   <div class="row">
-    <div class="small-12">
-      <% if @gamification.present? %>
-        <%= f.hidden_field :gamification_id, value: @gamification.id %>
-      <% elsif @action.gamification.present? %>
-        <%= f.hidden_field :gamification_id, value: @action.gamification.id %>
-      <% else %>
-        <div class="small-12 medium-6 large-4 column required">
-          <%= f.select :gamification_id,
-                        gamification_select_options,
-                        prompt: t("admin.gamification.actions.form.select_gamification"),
-                        label: t("admin.gamification.actions.form.gamification") %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
     <div class="clear">
       <div class="small-12 medium-6 column required">
         <%= f.text_field :key,
                           label: t("admin.gamification.actions.form.key"),
-                          disabled: @action.gamification&.locked %>
+                          disabled: @action.locked %>
       </div>
     </div>
   </div>
@@ -65,13 +48,13 @@
       <%= f.select :process_type,
                     get_process_type_select_options,
                     {label: t("admin.gamification.actions.form.process_type"), include_blank: "..."},
-                    {disabled: @action.gamification&.locked} %>
+                    {disabled: @action.locked} %>
     </div>
     <div class="small-12 medium-6 column">
       <%= f.select :operation,
                     get_operation_select_options(@action.process_type),
                     {label: t("admin.gamification.actions.form.operation"), include_blank: "..."},
-                    {disabled: @action.gamification&.locked} %>
+                    {disabled: @action.locked} %>
     </div>
   </div>
 
