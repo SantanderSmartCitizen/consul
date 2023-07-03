@@ -1,5 +1,8 @@
 class Gamification < ApplicationRecord
-  has_many :actions, inverse_of: :gamification, dependent: :restrict_with_error
+
+  has_many :action_games, inverse_of: :gamification, dependent: :restrict_with_error
+  has_many :actions, through: :action_games
+
   has_many :rewards, inverse_of: :gamification, dependent: :restrict_with_error
   has_many :user_rankings, inverse_of: :gamification, dependent: :restrict_with_error, class_name: "Gamification::UserRanking", foreign_key: "gamification_id"
 
