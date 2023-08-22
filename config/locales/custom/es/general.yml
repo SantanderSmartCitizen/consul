@@ -131,6 +131,7 @@ es:
       open_main_menu: Abrir menú
       close: Cerrar
       my_rewards: Mis recompensas
+      my_complaints: Mis quejas y sugerencias
       available_rewards:
         one: "(1 disponible)"
         other: "(%{count} disponibles)"

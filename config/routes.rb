@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     draw :satisfaction_survey
     draw :proposal
     draw :user
+    draw :complaint
   end
 
   draw :admin

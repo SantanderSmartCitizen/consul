@@ -81,7 +81,7 @@ en:
         title: "Title"
         description: "Description"
       complaint:
-        type: Type
+        request_type: Type
         department: Department
         subject: Subject
         body: Text
