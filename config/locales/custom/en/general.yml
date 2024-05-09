@@ -129,6 +129,7 @@ en:
       open_main_menu: Open menu
       close: Close
       my_rewards: My rewards
+      my_complaints: My complaints and sugestions
       available_rewards:
         one: "(1 available)"
         other: "(%{count} available)"

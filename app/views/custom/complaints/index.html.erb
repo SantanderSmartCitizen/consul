@@ -1,0 +1,44 @@
+<main>
+  <div class="activity row margin-top">
+    <div class="small-12 column">
+
+     	<h2 class="inline-block">
+        	<%= avatar_image(current_user, seed: current_user.id, size: 60) %>
+        	<%= current_user.name %>
+        	<% if current_administrator? %>
+        		<small><%= current_user.email %></small>
+        	<% end %>
+      	</h2>
+
+		<table class="margin-top">
+		  <thead>
+		    <tr>
+			  <th scope="col"><%= t("users.show.date") %></th>
+			  <th scope="col"><%= t("users.show.request_number") %></th>
+			  <th scope="col"><%= t("users.show.exp_number") %></th>
+		      <th scope="col"><%= t("users.show.department") %></th>
+		      <th scope="col"><%= t("users.show.status") %></th>
+		      <th scope="col"><%= t("users.show.request_name") %></th>
+		      <th scope="col"><%= t("users.show.response_name") %></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <% @user_complaints.each do |user_complaint| %>
+		      <tr id="user_complaint_<%= user_complaint.id %>">
+		      	<td><%= I18n.l user_complaint.created_at, :format => :datetime %></td>
+		        <td><%= user_complaint.request_number %></td>
+				<td><%= user_complaint.exp_number %></td>
+				<td><%= user_complaint.department %></td>
+				<td><%= user_complaint.status %></td>
+				<td><%= user_complaint.request_name %></td>
+				<td><%= user_complaint.response_name %></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+
+		<%= paginate @user_complaints %>
+
+    </div>
+  </div>
+</main>

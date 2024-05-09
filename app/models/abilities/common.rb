@@ -137,6 +137,7 @@ module Abilities
         reward.active_for?(user)
       end
       
+      can [:read], Complaint
     end
   end
 end
