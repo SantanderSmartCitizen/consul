@@ -12,12 +12,20 @@
     <% if current_user.available_rewards > 0 %>
       <% my_rewards_title += " "+t("layouts.header.available_rewards", count: current_user.available_rewards) %>
     <% end %>
-    <%= layout_menu_link_to   my_rewards_title,
-                              gamification_rewards_path,
-                              controller_name == "rewards",
-                              rel: "nofollow",
-                              title: t("shared.go_to_page") +
-                                     t("layouts.header.my_rewards") %>
+    <%= layout_menu_link_to my_rewards_title,
+                            gamification_rewards_path,
+                            controller_name == "rewards",
+                            rel: "nofollow",
+                            title: t("shared.go_to_page") +
+                              t("layouts.header.my_rewards") %>
+  </li>
+  <li>
+    <%= layout_menu_link_to t("layouts.header.my_complaints") ,
+                            complaints_path,
+                            controller_name == "complaints",
+                            rel: "nofollow",
+                            title: t("shared.go_to_page") +
+                                     t("layouts.header.my_complaints") %>
   </li>
   <li>
     <%= layout_menu_link_to t("layouts.header.my_account_link"),
@@ -25,7 +33,7 @@
                               controller_name == "account",
                               rel: "nofollow",
                               title: t("shared.go_to_page") +
-                                     t("layouts.header.my_account_link") %>
+                                t("layouts.header.my_account_link") %>
   </li>
   <li>
     <% if session[:saml_issuer] %>

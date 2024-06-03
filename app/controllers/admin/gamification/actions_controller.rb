@@ -4,7 +4,6 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   before_action :load_action, only: [:show, :edit, :update, :search]
   before_action :load_search, only: [:search]
 
-  load_and_authorize_resource :gamification
   load_and_authorize_resource :action, class: "Gamification::Action"
 
   def index
@@ -18,7 +17,7 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
     @action = ::Gamification::Action.new(action_params)
 
     if @action.save
-      redirect_to return_path(params[:gamification_action][:return_to]), 
+      redirect_to return_path(params[:gamification_action][:gamification_id]), 
                   notice: t("flash.actions.create.gamification_action")
     else
       render :new
@@ -34,7 +33,7 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
 
   def update
     if @action.update(action_params)
-      redirect_to return_path(params[:gamification_action][:return_to]), 
+      redirect_to return_path(params[:gamification_action][:gamification_id]), 
                   notice: t("flash.actions.update.gamification_action")
     else
       render :edit
@@ -48,7 +47,7 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
       flash[:error] = @action.errors.full_messages.join(",")
     end
 
-    redirect_to return_path(params[:return_to])
+    redirect_to return_path(params[:gamification_id])
   end
 
   def update_operations
@@ -87,7 +86,7 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
   private
 
     def action_params
-      attributes = [:gamification_id, :key, :process_type, :operation, :score]
+      attributes = [:key, :process_type, :operation, :score]
       params.require(:gamification_action).permit(
         *attributes, translation_params(Gamification::Action)
       )
@@ -106,9 +105,9 @@ class Admin::Gamification::ActionsController < Admin::Gamification::BaseControll
       @search = params.permit(:search)[:search]
     end
 
-    def return_path (return_to)
-      if return_to == "gamification"
-        admin_gamification_path(@action.gamification)
+    def return_path (gamification_id)
+      if gamification_id.present?
+        admin_gamification_path(gamification_id: gamification_id)
       else
         admin_gamification_actions_path()
       end

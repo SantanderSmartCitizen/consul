@@ -99,7 +99,7 @@ es:
         title: "Título"
         description: "Descripción"
       complaint:
-        type: Tipo
+        request_type: Tipo
         department: Departamento
         subject: Asunto
         body: Texto

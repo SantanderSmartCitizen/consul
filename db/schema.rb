@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230213213551) do
+ActiveRecord::Schema.define(version: 20230716214454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -452,12 +452,25 @@ ActiveRecord::Schema.define(version: 20230213213551) do
 
   create_table "complaints", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "type"
     t.string   "department"
     t.string   "subject"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "department_id"
+    t.string   "department_code"
+    t.string   "complaint_id"
+    t.string   "complaint_code"
+    t.string   "status"
+    t.string   "request_type"
+    t.string   "request_code"
+    t.string   "request_name"
+    t.text     "request"
+    t.string   "response_code"
+    t.string   "response_name"
+    t.text     "response"
+    t.string   "request_number"
+    t.string   "exp_number"
     t.index ["user_id"], name: "index_complaints_on_user_id", using: :btree
   end
 
@@ -701,6 +714,15 @@ ActiveRecord::Schema.define(version: 20230213213551) do
     t.index ["process_type", "process_id"], name: "idx_gamification_additional_scores_on_process_type_process_id", using: :btree
   end
 
+  create_table "gamification_action_games", force: :cascade do |t|
+    t.integer  "gamification_action_id", null: false
+    t.integer  "gamification_id",        null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["gamification_action_id"], name: "index_gamification_action_games_on_gamification_action_id", using: :btree
+    t.index ["gamification_id"], name: "index_gamification_action_games_on_gamification_id", using: :btree
+  end
+
   create_table "gamification_action_translations", force: :cascade do |t|
     t.integer  "gamification_action_id"
     t.string   "locale"
@@ -713,16 +735,13 @@ ActiveRecord::Schema.define(version: 20230213213551) do
   end
 
   create_table "gamification_actions", force: :cascade do |t|
-    t.string   "key",             null: false
+    t.string   "key",                          null: false
     t.integer  "score"
-    t.integer  "gamification_id", null: false
     t.string   "process_type"
     t.string   "operation"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["gamification_id", "process_type", "operation"], name: "idx_gamification_internal_actions", unique: true, where: "((process_type IS NOT NULL) AND ((process_type)::text <> ''::text) AND (operation IS NOT NULL) AND ((operation)::text <> ''::text))", using: :btree
-    t.index ["gamification_id"], name: "index_gamification_actions_on_gamification_id", using: :btree
-    t.index ["key", "gamification_id"], name: "index_gamification_actions_on_key_and_gamification_id", unique: true, using: :btree
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "locked",       default: false, null: false
   end
 
   create_table "gamification_requested_rewards", force: :cascade do |t|
@@ -1956,7 +1975,8 @@ ActiveRecord::Schema.define(version: 20230213213551) do
   add_foreign_key "flags", "users"
   add_foreign_key "follows", "users"
   add_foreign_key "gamification_action_additional_scores", "gamification_actions"
-  add_foreign_key "gamification_actions", "gamifications"
+  add_foreign_key "gamification_action_games", "gamification_actions"
+  add_foreign_key "gamification_action_games", "gamifications"
   add_foreign_key "gamification_requested_rewards", "gamification_rewards"
   add_foreign_key "gamification_requested_rewards", "users"
   add_foreign_key "gamification_requested_rewards", "users", column: "administrator_id"
