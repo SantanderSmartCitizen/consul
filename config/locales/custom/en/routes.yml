@@ -6,6 +6,7 @@ en:
     budgets: budgets
     debates: debates
     draft_versions: draft_versions
+    annotations: annotations
     edit: edit
     forums: forum
     gamifications: gamification

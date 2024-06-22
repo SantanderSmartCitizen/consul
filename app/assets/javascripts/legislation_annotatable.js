@@ -32,6 +32,9 @@
       });
     },
     renderAnnotationComments: function(event) {
+      var locale, annotations_path;
+      locale = $("#js-locale").data("current-locale");
+      annotations_path = locale === "en"?"/annotations/":"/anotaciones/";
       if (event.offset) {
         $("#comments-box").css({
           top: event.offset - $(".calc-comments").offset().top
@@ -42,17 +45,19 @@
       }
       $.ajax({
         method: "GET",
-        url: event.annotation_url + "/annotations/" + event.annotation_id + "/comments",
+        url: event.annotation_url + annotations_path + event.annotation_id + "/comments",
         dataType: "script"
       });
     },
     onClick: function(event) {
-      var annotation_id, annotation_url, parents, parents_ids, target;
+      var annotation_id, annotation_url, parents, parents_ids, target, locale, annotations_path;
+      locale = $("#js-locale").data("current-locale");
+      annotations_path = locale === "en"?"/annotations/":"/anotaciones/";
       event.preventDefault();
       event.stopPropagation();
       if (App.LegislationAnnotatable.isMobile()) {
         annotation_url = $(event.target).closest(".legislation-annotatable").data("legislation-annotatable-base-url");
-        window.location.href = annotation_url + "/annotations/" + ($(this).data("annotation-id"));
+        window.location.href = annotation_url + annotations_path + ($(this).data("annotation-id"));
         return;
       }
       $("[data-annotation-id]").removeClass("current-annotation");
@@ -87,16 +92,25 @@
       return viewer._onHighlightMouseover = function() {};
     },
     customShow: function(position) {
-      var annotation_url;
+      var annotation_url, locale, annotations_path, new_path;
       $(this.element).html("");
       // Clean comments section and open it
       $("#comments-box").html("");
       App.LegislationAllegations.show_comments();
       $("#comments-box").show();
       annotation_url = $("[data-legislation-annotatable-base-url]").data("legislation-annotatable-base-url");
+      locale = $("#js-locale").data("current-locale");
+      if (locale === 'en') {
+        annotations_path = "/annotations/";
+        new_path = "new";
+      }
+      else {
+        annotations_path = "/anotaciones/";
+        new_path = "nuevo";
+      }
       $.ajax({
         method: "GET",
-        url: annotation_url + "/annotations/new",
+        url: annotation_url + annotations_path + new_path,
         dataType: "script"
       }).done((function() {
         $("#new_legislation_annotation #legislation_annotation_quote").val(this.annotation.quote);
@@ -114,7 +128,7 @@
               $("#comments-box").html("").hide();
               $.ajax({
                 method: "GET",
-                url: annotation_url + "/annotations/" + data.responseJSON.id + "/comments",
+                url: annotation_url + annotations_path + data.responseJSON.id + "/comments",
                 dataType: "script"
               });
             } else {
@@ -199,9 +213,12 @@
       });
       current_user_id = $("html").data("current-user-id");
       $(".legislation-annotatable").each(function() {
-        var ann_id, base_url;
+        var ann_id, base_url, locale, annotations_path, search_path;
         ann_id = $(this).data("legislation-draft-version-id");
         base_url = $(this).data("legislation-annotatable-base-url");
+        locale = $("#js-locale").data("current-locale");
+        annotations_path = locale === "en"?"/annotations/":"/anotaciones/";
+        search_path = "search";
         App.LegislationAnnotatable.app = new annotator.App().include(function() {
           return {
             beforeAnnotationCreated: function(ann) {
@@ -217,7 +234,7 @@
         }).include(App.LegislationAnnotatable.scrollToAnchor).include(App.LegislationAnnotatable.addWeightClasses).include(annotator.storage.http, {
           prefix: base_url,
           urls: {
-            search: "/annotations/search"
+            search: annotations_path + search_path
           }
         });
         App.LegislationAnnotatable.app.start().then(function() {
